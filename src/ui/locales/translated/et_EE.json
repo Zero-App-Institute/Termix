@@ -131,6 +131,8 @@
     "updateLinkLabel": "Uuendus saadaval. Ava GitHubil väljalaske märkmed"
   },
   "common": {
+    "showPassword": "Näita parooli",
+    "hidePassword": "Peida parool",
     "scrollTabsLeft": "Kerige vahekaardid vasakule",
     "scrollTabsRight": "Kerige vahekaardid paremale",
     "close": "Sulge",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Lisamoodulite nimekirja ei õnnestunud laadida. Saad lisamooduleid hiljem valida lisamoodulite vahelehelt.",
     "securityTitle": "Turusta oma konto",
     "securityIntro": "Lisa oma kontole passkey või autentimise rakendus. Saad seda teha ka hiljem Seadistustes, jaotises Turvalisus.",
-    "pluginsDocsLink": "Loe igaühe kohta"
+    "pluginsDocsLink": "Loe igaühe kohta",
+    "layoutTitle": "Vali paigutus",
+    "layoutIntro": "Paigutus määrab ära kogu rakendi ülesehituse: menüüd, külgriba ja vahekaardid. Klõpsa paigutusele, et seda kasutada. Muutus toimub kohe.",
+    "layoutInstalled": "Paigaldatud",
+    "layoutMore": "Rohkem paigutusi",
+    "layoutNoMore": "Praegu ei ole teisi paigutusi saadaval.",
+    "layoutDefault": "Vaikimisi",
+    "layoutInstall": "Paigalda",
+    "layoutTurnOn": "Lülita sisse",
+    "layoutVideo": "Vaata videot",
+    "layoutChangeLater": "Saad paigutust igal ajal muuta Seadistustes jaotises Välimus. Kui soovid rohkem paigutusi paigaldada, küsi haldurilt abi.",
+    "layoutChangeLaterAdmin": "Saad paigutust igal ajal muuta Seadistustes jaotises Välimus. Rohkem paigutusi saab hiljem paigaldada pistikprogrammide vahekaardilt."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix töötab endiselt",
+    "noticeBody": "Akna sulgemisel jätkab Termix töötamist teatealal. Väljumiseks avage teateala ikooni menüü ja valige Välju. Selle saate seadistustes välja lülitada."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automaatne",
@@ -495,6 +512,7 @@
     "deleteSelected": "Kustuta",
     "exitSelection": "Lõpeta valik",
     "collapseBtn": "Ahenda",
+    "importExportBtn": "Impordi / Ekspordi",
     "hostStatusesRefreshed": "Hostide olekud värskendatud",
     "failedToRefreshHosts": "Hostide värskendamine ebaõnnestus",
     "movedHostTo": "Liigutati {{host}} kausta \"{{folder}}\"",
@@ -609,6 +627,7 @@
     "hostClickBehavior": "Hosti klõpsamine",
     "hostClickBehaviorDesc": "Mis juhtub, kui klõpsad hostil, millel on juba avatud vahekaart. Ctrl/Cmd klõps, kesklõpu klõps või „Ava uuel vahekaardil” alustavad alati uut.",
     "hostClickNewTab": "Ava alati uus vahekaart",
+    "hostClickHostPage": "Ava peremehe leht, kui pistmikul on selline võimalus",
     "hostClickFocusExisting": "Lülitu avatud vahekaardile",
     "hostClickFocusExistingDoubleNew": "Klõpsa lülitumiseks, kahekordne klõps uue vahekaardi jaoks",
     "openInNewTab": "Ava uuel vahekaardil",
@@ -828,7 +847,12 @@
     "editorUpdate": "Uuenda hosti",
     "editorAdd": "Lisa host",
     "speedSearch": "Otsi hoste. Nooleklahvid valimiseks, Enter ühendamiseks, Esc sulgemiseks",
-    "speedSearchList": "Hostide loend. Tüüpi või vajuta / otsimiseks."
+    "speedSearchList": "Hostide loend. Tüüpi või vajuta / otsimiseks.",
+    "openFromLink": {
+      "title": "Avada {{name}}?",
+      "description": "Ühenduslink palus Termixil sellele hostiga ühendust võtta.",
+      "confirm": "Ühendu"
+    }
   },
   "splitScreen": {
     "title": "Jagatud ekraan",
@@ -907,6 +931,16 @@
     "empty": "Kaarte pole. Kasutage allolevat Lisa, et kaarte lisada."
   },
   "auth": {
+    "inviteIntro": "Sind kutsuti sellele serverile. Vali kasutajanimi ja parool, et luua oma konto.",
+    "inviteInvalid": "See kutselink on aegunud või on juba kasutatud. Palu haldajalt uus link.",
+    "accountDisabled": "See konto on keelatud. Palu haldajal see uuesti lubada.",
+    "accountPending": "Sinu konto ootab haldaja heakskiitu.",
+    "stepUp": {
+      "title": "Kinnita, et sa oled sina",
+      "description": "Kinnita oma teine autentimistegur, et jätkata.",
+      "noFactor": "Sul ei ole teist autentimistegurit seadistatud. Lisa see Seadistustes ja proovi uuesti.",
+      "failed": "See ei õnnestunud. Proovi uuesti."
+    },
     "tagline": "Enne hostitud, pistikprogrammipõhine serverihaldus.",
     "loginTitle": "Tere tulemast tagasi",
     "registerTitle": "Loo konto",
@@ -933,6 +967,14 @@
     "loginWithExternal": "Logi sisse välise pakkujaga",
     "loginWithExternalDesc": "Logi sisse oma konfigureeritud välise identiteedipakkujaga",
     "loginWithProvider": "Logi sisse {{name}}-ga",
+    "pluginLogin": {
+      "signIn": "Logi sisse",
+      "verify": "Kinnita",
+      "code": "Kood",
+      "useKey": "Kasuta turvavõtit",
+      "keyPrompt": "Kasuta turvavõtit või Passkeyt, et jätkata.",
+      "keyFailed": "Turvavõtme samm ei õnnestunud. Proovi uuesti."
+    },
     "resetPasswordButton": "Lähtesta parool",
     "sendResetCode": "Saada lähtestuskood",
     "resetCodeDesc": "Sisestage oma kasutajanimi, et saada parooli lähtestamise kood. Kood logitakse Docker-i konteineri logidesse.",
@@ -1010,6 +1052,8 @@
     "registrationSuccess": "Registreerumine õnnestus"
   },
   "placeholders": {
+    "username": "Sinu kasutajanimi",
+    "newUsername": "Vali kasutajanimi",
     "keyPassword": "võtmega seotud salasõna",
     "pastePrivateKey": "Kleepi oma privaatvõti siia...",
     "enterPassword": "Sisesta oma salasõna"
@@ -1052,7 +1096,8 @@
         "actionNextTab": "Lülitu järgmisele vahelehele",
         "actionPreviousTab": "Lülitu eelmisele vahelehele",
         "actionOpenCommandPalette": "Ava kiire otsing",
-        "actionReconnectSession": "Ühenda praegune sessioon uuesti"
+        "actionReconnectSession": "Ühenda praegune sessioon uuesti",
+        "actionToggleSidebar": "Külgriba näitamine/varjamine"
       },
       "userProfile": {
         "preset_simple": "Lihtne",
@@ -1194,6 +1239,10 @@
         "title": "Pääs internetisse",
         "consequence": "See saab saata päringuid väljastpoolt olevatele teenustele."
       },
+      "network:sockets": {
+        "title": "Ava oma võrguühendused",
+        "consequence": "See saab kuulata porti ja ühenduda mis tahes aadressiga otse, ilma et Termix kontrolliks iga ühendust."
+      },
       "network:serve": {
         "title": "Ühenduste vastuvõtmine",
         "consequence": "See avab poordi Termixi serveris."
@@ -1214,6 +1263,18 @@
         "title": "Hoiatuste saatmine",
         "consequence": "Sulle või teistele kasutajatele ning nende poolt seadistatud kanalite kaudu."
       },
+      "operations:provide": {
+        "title": "Toimingute pakkumine",
+        "consequence": "Selle toiminguid saavad käivitada automatsioonid, käsurea liides, mobiilirakendus ja muud kohad, kui kasutajal on selleks õigus."
+      },
+      "operations:invoke": {
+        "title": "Teiste pistmike toimingute käivitamine",
+        "consequence": "Toimib sisseloginud kasutaja nimel oma manifestis loetletud toimingute puhul. Kinnituse reeglid kehtivad endiselt."
+      },
+      "operations:approve": {
+        "title": "Määra, mis vajab kinnitust",
+        "consequence": "Võib lubada toiminguid käivitada ilma kinnitust või blokeerida neid igale kasutajale."
+      },
       "notify:hub": {
         "title": "Kõigi hoiatuste vastuvõtmine",
         "consequence": "Salvestab ja edastab kõikide pluginatelt saadetud hoiatused, sealhulgas nende sisu."
@@ -1224,7 +1285,7 @@
       },
       "network:probe": {
         "title": "Kontrolli, kas pordid vastavad",
-        "consequence": "Võib avada serverist tavalise ühenduse suvalise aadressiga, et näha, kas see on saadaval."
+        "consequence": "Võib avada serverist mis tahes aadressile lihtsa ühenduse, et kontrollida selle saavutatavust ja otsida hostinimesi."
       },
       "hosts:status-provide": {
         "title": "Paku peremeasarvuti olekut",
@@ -1237,6 +1298,10 @@
       "hosts:lock": {
         "title": "Hostide haldamine kirjutuskaitstult",
         "consequence": "Ülejäänud kasutajad ei saa selle haldatavaid hoste muuta, kustutada ega uuesti jagada."
+      },
+      "hosts:connect-policy": {
+        "title": "Määra, kes saab ühendust luua",
+        "consequence": "Võib blokeerida või lubada igat SSH ja kauglaua ühendust mis tahes peremeheni."
       },
       "desktop:window": {
         "title": "Töölaua akende avamine",
@@ -1274,6 +1339,10 @@
         "title": "Salvesta oma saladused",
         "consequence": "Krüpteeritud Termixi poolt. Pistikprogramm ei hoia võtit kunagi."
       },
+      "config:secrets": {
+        "title": "Loe serveri hoiustatud saladusi",
+        "consequence": "Keskkonnamuutujad ja failid serveril, välja arvatud Termixi enda võtmed."
+      },
       "settings:read-core": {
         "title": "Loe Termixi seadeid",
         "consequence": "Serveri seaded, mitte sinu hostid ega sisselogimisandmed."
@@ -1294,6 +1363,10 @@
         "title": "Lisa värviteemad",
         "consequence": "Ainult värvid ja stiilid. Teema jaoks ei käivitata koodi."
       }
+    },
+    "webView": {
+      "unavailable": "See leht pole enam saadaval. Ava see uuesti selle pluginast.",
+      "isolationUnavailable": "See brauser ei saa seda lehte siin turvaliselt avada. Kasuta uut Chrome'i või Edge'i või lauaarvuti rakendust."
     },
     "runtime": {
       "needsPlugin": "{{name}} ei ole saadaval",
@@ -1318,7 +1391,7 @@
         "running": "Käimas",
         "disabled": "Keelatud",
         "failed": "Peatati ootamatult",
-        "blocked": "Ootab teist pistikprogrammi",
+        "blocked": "Ei saa käivitada",
         "server": "Töötab sinu serveris",
         "safeMode": "Turvarežiimis välja lülitatud"
       },
@@ -1340,7 +1413,8 @@
         "version": "Versioon",
         "status": "Olek",
         "category": "Kategooria",
-        "downloads": "Allalaadimised"
+        "downloads": "Allalaadimised",
+        "memory": "Mälu"
       },
       "risk": {
         "critical": "Kriitiline",
@@ -1403,9 +1477,12 @@
         "updated": "{{name}} uuendatud versioonile {{version}}",
         "updatedMany_one": "{{count}} pistikprogramm uuendatud",
         "updatedMany_other": "{{count}} pistikprogrammi uuendatud",
+        "needsReview_one": "1 pistmiku jaoks on vaja uusi õigusi. Uuendamiseks vaata seda läbi.",
+        "needsReview_other": "{{count}} pistmiku jaoks on vaja uusi õigusi. Uuendamiseks vaata igaühte läbi.",
         "uninstalled": "{{name}} eemaldatud",
         "dataDeleted": "{{name}} andmed kustutatud",
-        "failedToStart": "{{name}} ei suutnud käivituda. Ava see, et näha põhjust."
+        "failedToStart": "{{name}} ei suutnud käivituda. Ava see, et näha põhjust.",
+        "held": "{{name}} ootab {{minutes}} minutit enne muudatuse rakendumist, et teised haldajad saaksid seda näha"
       },
       "errors": {
         "generic": "Midagi läks valesti",
@@ -1458,6 +1535,23 @@
       "pin": "Jää sellele versioonile",
       "pinHint": "Hoiab versiooni {{version}} ja jätab uuendused vahele, kuni lülitate selle välja.",
       "pinnedTo": "Fikseeritud versioonile {{version}}",
+      "legacy": {
+        "notice_one": "1 plugin on loodud vanema Termixi jaoks ja jääb välja, kuni see on uuendatud: {{names}}.",
+        "notice_other": "{{count}} pluginat on loodud vanema Termixi jaoks ja jäävad välja, kuni need on uuendatud: {{names}}.",
+        "why": "Need on loodud plugin API 1 jaoks, mis töötas serveri sees. Termix käitab nüüd iga pluginat oma protsessis, seega vajab igaüks versiooni, mis on loodud plugin API 2 jaoks. Uuenda ametlikke pluginasid siin ja küsi kogukonna pluginate autorilt uus versioon.",
+        "guide": "Kuidas pluginad liiguvad API 2-le"
+      },
+      "provenance": {
+        "verified": "Ehitus kontrollitud",
+        "verifiedHint": "Selle ehituse päritolu on alla kirjutatud Termixi registriväljalaske töövooga ja see vastab sellele failile. Avab ehituse.",
+        "unchecked": "Ehitust ei kontrollitud",
+        "uncheckedHint": "Selle ehituse päritolu ei õnnestunud allalaadimisel kontrollida. Selle registrisignatuur oli kontrollitud."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} on välja antud. 1 plugin jääb sellel välja, kuni sa selle uuendad: {{names}}.",
+        "notice_other": "Termix {{version}} on välja antud. {{count}} pluginat jäävad sellel välja, kuni sa need uuendad: {{names}}.",
+        "needs": "{{name}} (vajab Termix {{range}})"
+      },
       "version": "Versioon",
       "versionPickHint": "Paigalda vanem versioon uusima asemel. See jääb sellele versioonile, kuni fikseerimine eemaldatakse.",
       "versionPickHintInstalled": "Lülita teisele versioonile. Kui valite mitte uusima versiooni, fikseeritakse see.",
@@ -1531,7 +1625,13 @@
         "unreachable": "Selle lugemine ei õnnestunud: {{error}}",
         "filter": "Registri",
         "allRegistries": "Kõik registrid",
-        "browseHint": "Lülitage sisse kogukonna pluginad või lisage oma registri Registrid-kaardil."
+        "browseHint": "Lülitage sisse kogukonna pluginad või lisage oma registri Registrid-kaardil.",
+        "looksName": "Kogukonna paigutused ja teemad",
+        "looksHint": "Lubab Termixist mitte pärit paigutustel ja teemadel töötada väljaspool liivakasti, nagu ametlikud. Paigutus joonistab kogu rakenduse, seega näeb ja teeb kõike, mida sina saad. Paigalda ainult neid, kellele usaldad. Muudatuse rakendamiseks laadi leht uuesti.",
+        "looksConfirmTitle": "Lubada kogukonna paigutustel töötada väljaspool liivakasti?",
+        "looksConfirmBody": "Kogukonna paigutus või teema töötab lehel täieliku ligipääsuga Termixile sisseloginud kasutajana. See võib olla riskantne. Lülita see sisse ainult siis, kui usaldad paigaldatavaid paigutusi ja teemasid.",
+        "looksConfirm": "Lülita sisse",
+        "looksSaved": "Salvestatud. Rakendamiseks laadi leht uuesti."
       },
       "upToDate": "Kõik on ajakohane.",
       "lastChecked": "Viimati kontrollitud {{time}}",
@@ -1614,8 +1714,28 @@
       "unsupportedHint": "Sellel Termixi versioonil ei tööta selle plugina ühtegi väljaannet. Uuenda Termixit, et see installida.",
       "needsTermix": "Nõuab Termixit {{range}}",
       "showUnsupported": "Kuva mittetoetatud ({{count}})",
-      "showMore": "Kuva {{count}} rohkem (jäänud {{total}})"
-    }
+      "showMore": "Kuva {{count}} rohkem (jäänud {{total}})",
+      "memory": {
+        "summary": "Mälu: {{total}} / {{limit}} | pluginad {{plugins}} | {{running}} töötab",
+        "lowTitle": "Sellel serveril on vähe mälu",
+        "lowBody": "Termix ja selle pluginad kasutavad {{total}} / {{limit}}. Anna serverile rohkem mälu või lülita välja pluginad, mida sa ei kasuta.",
+        "idle": "Ootel",
+        "idleHint": "Praegu ei tööta. See käivitub, kui midagi seda vajab.",
+        "keptOn": "Jätkab tööd: {{reason}}",
+        "stopsWhenIdle": "Peatub ootel olekus"
+      }
+    },
+    "firstLoad": {
+      "title": "Pluginade ettevalmistamine",
+      "progress": "{{done}} / {{total}}",
+      "hint": "Pistikud käivituvad esimest korda. Pärast seda avaneb Termix kohe.",
+      "skip": "Jätka"
+    },
+    "framesBlocked": "Pistikud ei saa oma faile laadida. Termixi ees olev sisselogimisproksi tõenäoliselt blokeerib neid.",
+    "framesBlockedHelp": "Kuidas parandada",
+    "framesFailed_one": "{{names}} ei saanud laadida, seega on selle osad peidetud",
+    "framesFailed_other": "{{count}} pistikut ei saanud laadida, seega on nende osad peidetud: {{names}}",
+    "framesFailedReload": "Laadi uuesti"
   },
   "settings": {
     "secretSet": "Määratud",
@@ -1663,6 +1783,12 @@
       "title": "Veerud",
       "auto": "Automaatne",
       "count": "{{count}} veeru laiune"
+    },
+    "pager": {
+      "previous": "Eelmine",
+      "next": "Järgmine",
+      "page": "Lehekülg {{page}}",
+      "pageOf": "Lehekülg {{page}} / {{pages}}"
     }
   },
   "fields": {
@@ -1679,7 +1805,108 @@
   "rbac": {
     "roles": {
       "admin": "Administraator",
-      "user": "Kasutaja"
+      "user": "Kasutaja",
+      "viewer": "Vaataja",
+      "operator": "Operaator",
+      "auditor": "Auditor",
+      "helpdesk": "Tugi"
+    }
+  },
+  "tileGrid": {
+    "empty": "Plaatseid pole veel. Lisa neid nimekirjast.",
+    "move": "Lohista, et liigutada",
+    "moveTile": "Liiguta {{tile}}",
+    "settings": "{{tile}} seaded",
+    "remove": "Eemalda {{tile}}",
+    "width": "Laius",
+    "height": "Kõrgus",
+    "addTiles": "Lisa plaate",
+    "closePicker": "Sulge",
+    "search": "Otsi plaate",
+    "noMatches": "Ühtegi sobivat tulemust ei leitud.",
+    "kind": {
+      "all": "Kõik",
+      "card": "Kaardid",
+      "chart": "Diagrammid",
+      "signal": "Olek",
+      "action": "Toimingud",
+      "resource": "Nimekirjad",
+      "session": "Seansid"
+    },
+    "reset": "Lähtesta",
+    "done": "Valmis"
+  },
+  "diagnostics": {
+    "title": "Diagnostika",
+    "makeReport": "Loo diagnostikaaruanne",
+    "slowBoot": "Kas võtab aega? Loo diagnostikaaruanne",
+    "troubleSigningIn": "Kas sisselogimisega on probleeme? Loo diagnostikaaruanne",
+    "reportTab": "Aruanne",
+    "logsTab": "Serveri logid",
+    "intro": "See loob ühe faili, mis sisaldab Termixile probleemi leidmiseks vajalikku teavet: vigu, logisid, pistikprogrammide olekut ja päringute jõudmise viisi serverisse. Laadi see alla ja lisa see GitHubi probleemipõhisele teatekirjale või saada see Discordis.",
+    "notAdmin": "Serveri logide ja serveri üksikasjade vaatamiseks on vaja halduri õigusi. Kui probleem on serveris, palu oma halduril luua ka aruanne.",
+    "signedOut": "Sa ei ole sisse logitud, seega sisaldab aruanne ainult brauseri osa.",
+    "whatHappened": "Mis juhtus",
+    "whatHappenedHint": "Valikuline. Mida sa tegid ja mis läks valesti?",
+    "include": "Kaasa",
+    "adminOnly": "Vajab haldurit",
+    "privacy": "Privaatsus",
+    "mask": "Peida nimed ja aadressid",
+    "maskHint": "IP-aadressid, perenime, kasutajanimed ja e-posti aadressid muutuvad vastavalt host-1, user-1 jne. Paroolid, võtmed ja tokenid eemaldatakse alati.",
+    "domText": "Kaasa lehekülje tekst",
+    "domTextHint": "Lisab ekraanil oleva teksti lehekülje paigutusele. Vaikimisi väljas, kuna see võib näidata sinu andmeid.",
+    "warnOnly": "Ainult hoiatused ja vead serveri logist",
+    "warnOnlyHint": "Teeb faili väiksemaks.",
+    "focus": "Pistikprogramm",
+    "focusHint": "Kuvab selle pistikprogrammi esimesena ja esitab selle repo probleemipõhise teatekirja.",
+    "allPlugins": "Kõik pistikprogrammid",
+    "findings": "Kontrollide poolt leitud",
+    "preview": "Mis saadetakse",
+    "previewCut": "(Eelvaade lõpeb siin. Fail sisaldab kõike.)",
+    "cut": "Fail oli üle 5 MB, seega vanimad logiridad lõigati ära.",
+    "footerHint": "Kontrolli eelvaadet enne saatmist.",
+    "copy": "Kopeeri",
+    "copied": "Aruanne kopeeritud",
+    "copyFailed": "Aruannet ei õnnestunud kopeerida",
+    "download": "Laadi alla",
+    "downloaded": "Aruanne alla laaditud",
+    "openIssue": "Ava GitHubi probleemipõhine teatekiri",
+    "logsSearch": "Otsi logidest",
+    "logsLevel": "Tase",
+    "logsAll": "Kõik tasemed",
+    "logsWarn": "Hoiatused ja vead",
+    "logsError": "Vead",
+    "logsPlugin": "Pistikprogramm",
+    "logsCount": "{{count}} rida",
+    "logsFailed": "Logisid ei õnnestunud laadida",
+    "logsPause": "Paus",
+    "logsResume": "Jätka",
+    "logsEmpty": "Logiridu pole veel.",
+    "parts": {
+      "server": "Server",
+      "plugins": "Pistikprogrammid",
+      "sections": "Pistikprogrammi üksikasjad",
+      "logs": "Serveri logid",
+      "request": "Ühendus",
+      "probes": "Ühenduse kontrollid",
+      "errors": "Brauseri vead",
+      "console": "Brauseri konsool",
+      "network": "Võrk",
+      "page": "Brauser ja aken",
+      "dom": "Lehe paigutus"
+    },
+    "partHints": {
+      "server": "Versioon, andmebaas, SSL ja millised seaded on määratud",
+      "plugins": "Versioonid ja olekud serveris ning brauseris",
+      "sections": "Lisandmoodulite poolt lisatavad täiendavad üksikasjad",
+      "logs": "Serveri logi käivitamisest alates ja viimased read",
+      "request": "Päise nimed, mis näitavad Termixi ees olevat proksit",
+      "probes": "Testid, et Termixi ja lisandmoodulite failid laaduvad",
+      "errors": "Püüdmata vead ja blokeeritud laadimised",
+      "console": "Viimased konsooli read lehelt ja lisandmoodulitest",
+      "network": "Viimased päringud ja nende olek",
+      "page": "Brauser, ekraani suurus ja salvestusvõtmete nimed",
+      "dom": "Lehe paigutus ilma tekstita"
     }
   }
 }

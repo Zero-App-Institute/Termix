@@ -31,8 +31,19 @@ export const users = mysqlTable(
     registeredAt: text("registered_at")
       .notNull()
       .default(sql`(CURRENT_TIMESTAMP)`),
+    displayName: text("display_name"),
+    email: varchar("email", { length: 255 }),
+    // Set while the account is turned off or waiting for approval.
+    disabledAt: text("disabled_at"),
+    disabledReason: text("disabled_reason"),
+    lastLoginAt: text("last_login_at"),
+    // Plugin that created the account, like a SCIM provisioner.
+    managedBy: text("managed_by"),
   },
-  (table) => [uniqueIndex("idx_users_username").on(table.username)],
+  (table) => [
+    uniqueIndex("idx_users_username").on(table.username),
+    uniqueIndex("idx_users_email").on(table.email),
+  ],
 );
 
 export const settings = mysqlTable("settings", {
@@ -289,6 +300,7 @@ export const sshCredentials = mysqlTable(
   lastUsed: text("last_used"),
   syncId: varchar("sync_id", { length: 255 }).unique(),
   sharedSource: text("shared_source"),
+  localOnly: boolean("local_only").notNull().default(false),
   createdAt: text("created_at")
     .notNull()
     .default(sql`(CURRENT_TIMESTAMP)`),
@@ -647,6 +659,11 @@ export const auditLogs = mysqlTable(
     timestamp: varchar("timestamp", { length: 255 })
       .notNull()
       .default(sql`(CURRENT_TIMESTAMP)`),
+
+    // Each row's hash covers the one before, so an edit or a removed row shows.
+    // Null on rows written before the chain existed.
+    prevHash: text("prev_hash"),
+    hash: text("hash"),
   },
   // This table only grows, and is always read newest-first with an optional
   // filter. Each composite leads with the filtered column so the same index
@@ -657,6 +674,29 @@ export const auditLogs = mysqlTable(
     index("idx_audit_logs_action_ts").on(table.action, table.timestamp),
     index("idx_audit_logs_resource_ts").on(table.resourceType, table.timestamp),
   ],
+);
+
+// Dangerous admin changes waiting out the cooling-off time.
+export const adminHolds = mysqlTable(
+  "admin_holds",
+  {
+    id: varchar("id", { length: 255 }).primaryKey(),
+    kind: text("kind").notNull(),
+    // Ids and flags only, never secrets.
+    payload: text("payload").notNull(),
+    summary: text("summary").notNull(),
+    requestedBy: varchar("requested_by", { length: 255 }).references(() => users.id, {
+      onDelete: "set null",
+    }),
+    requestedByName: text("requested_by_name").notNull(),
+    requestedAt: text("requested_at").notNull(),
+    runsAt: varchar("runs_at", { length: 255 }).notNull(),
+    status: varchar("status", { length: 255 }).notNull().default("pending"),
+    decidedBy: text("decided_by"),
+    decidedAt: text("decided_at"),
+    error: text("error"),
+  },
+  (table) => [index("idx_admin_holds_status_runs").on(table.status, table.runsAt)],
 );
 
 export const apiKeys = mysqlTable(
@@ -673,8 +713,124 @@ export const apiKeys = mysqlTable(
     expiresAt: text("expires_at"),
     lastUsedAt: text("last_used_at"),
     isActive: boolean("is_active").notNull().default(true),
+    // JSON list. Null means full access, which every older key has.
+    scopes: text("scopes"),
   },
   (table) => [index("idx_api_keys_user_id").on(table.userId)],
+);
+
+// A link an admin hands out so someone can make an account.
+export const userInvites = mysqlTable(
+  "user_invites",
+  {
+    id: varchar("id", { length: 255 }).primaryKey(),
+    tokenHash: varchar("token_hash", { length: 255 }).notNull(),
+    note: text("note"),
+    // JSON list of role ids given on sign up.
+    roleIds: text("role_ids"),
+    makeAdmin: boolean("make_admin").notNull().default(false),
+    maxUses: int("max_uses").notNull().default(1),
+    uses: int("uses").notNull().default(0),
+    createdBy: varchar("created_by", { length: 255 }).references(() => users.id, {
+      onDelete: "set null",
+    }),
+    createdAt: text("created_at")
+      .notNull()
+      .default(sql`(CURRENT_TIMESTAMP)`),
+    expiresAt: text("expires_at").notNull(),
+    revokedAt: text("revoked_at"),
+  },
+  (table) => [uniqueIndex("idx_user_invites_token_hash").on(table.tokenHash)],
+);
+
+export const operationRuns = mysqlTable(
+  "operation_runs",
+  {
+    id: varchar("id", { length: 255 }).primaryKey(),
+    actionId: text("action_id").notNull(),
+    actionVersion: int("action_version").notNull().default(1),
+    pluginId: text("plugin_id").notNull(),
+    pluginVersion: text("plugin_version").notNull(),
+
+    // Nullable on purpose: history outlives the account, like audit_logs.
+    userId: varchar("user_id", { length: 255 }).references(() => users.id, { onDelete: "set null" }),
+    username: text("username").notNull(),
+
+    origin: text("origin").notNull(),
+    hostId: int("host_id"),
+    hostName: text("host_name"),
+    batchId: varchar("batch_id", { length: 255 }),
+    dryRun: boolean("dry_run").notNull().default(false),
+    risk: text("risk").notNull(),
+    status: varchar("status", { length: 255 }).notNull(),
+    summary: text("summary"),
+    changed: boolean("changed"),
+    input: text("input"),
+    // Only until the run ends, then wiped.
+    sealedInput: text("sealed_input"),
+    output: text("output"),
+    undoInput: text("undo_input"),
+    error: text("error"),
+    errorCode: text("error_code"),
+    undoOf: text("undo_of"),
+    idempotencyKey: text("idempotency_key"),
+    createdAt: varchar("created_at", { length: 255 }).notNull(),
+    startedAt: text("started_at"),
+    finishedAt: text("finished_at"),
+  },
+  (table) => [
+    index("idx_operation_runs_created").on(table.createdAt),
+    index("idx_operation_runs_user_created").on(table.userId, table.createdAt),
+    index("idx_operation_runs_host_created").on(table.hostId, table.createdAt),
+    index("idx_operation_runs_status").on(table.status),
+    index("idx_operation_runs_batch").on(table.batchId),
+  ],
+);
+
+export const operationApprovals = mysqlTable(
+  "operation_approvals",
+  {
+    id: varchar("id", { length: 255 }).primaryKey(),
+    runId: varchar("run_id", { length: 255 })
+      .notNull()
+      .references(() => operationRuns.id, { onDelete: "cascade" }),
+    requestedBy: text("requested_by"),
+    reason: text("reason"),
+    allowSelf: boolean("allow_self")
+      .notNull()
+      .default(false),
+    status: varchar("status", { length: 255 }).notNull(),
+    decidedBy: text("decided_by"),
+    comment: text("comment"),
+    createdAt: text("created_at").notNull(),
+    expiresAt: varchar("expires_at", { length: 255 }).notNull(),
+    decidedAt: text("decided_at"),
+  },
+  (table) => [
+    index("idx_operation_approvals_status").on(table.status, table.expiresAt),
+    index("idx_operation_approvals_run").on(table.runId),
+  ],
+);
+
+export const operationEvents = mysqlTable(
+  "operation_events",
+  {
+    id: varchar("id", { length: 255 }).primaryKey(),
+    eventId: text("event_id").notNull(),
+    pluginId: text("plugin_id").notNull(),
+    hostId: int("host_id"),
+    severity: text("severity"),
+    payload: text("payload"),
+    runId: text("run_id"),
+    createdAt: varchar("created_at", { length: 255 }).notNull(),
+  },
+  (table) => [
+    index("idx_operation_events_created").on(table.createdAt),
+    index("idx_operation_events_host_created").on(
+      table.hostId,
+      table.createdAt,
+    ),
+  ],
 );
 
 export const userOpenTabs = mysqlTable(
@@ -772,6 +928,33 @@ export const uiPreferences = mysqlTable("ui_preferences", {
     .notNull()
     .default(sql`(CURRENT_TIMESTAMP)`),
 });
+
+/**
+ * What a framed plugin registers, per user, client kind and plugin, so a new
+ * browser or device skips booting every plugin's frame. No answers or values.
+ */
+export const frameRegistrations = mysqlTable(
+  "frame_registrations",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: varchar("user_id", { length: 255 })
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    client: varchar("client", { length: 255 }).notNull(),
+    pluginId: varchar("plugin_id", { length: 255 }).notNull(),
+    data: text("data").notNull(),
+    updatedAt: text("updated_at")
+      .notNull()
+      .default(sql`(CURRENT_TIMESTAMP)`),
+  },
+  (table) => [
+    uniqueIndex("idx_frame_registrations_user_client_plugin").on(
+      table.userId,
+      table.client,
+      table.pluginId,
+    ),
+  ],
+);
 
 // --- sync begin ---
 /**
@@ -1031,6 +1214,13 @@ export const plugins = mysqlTable(
     pinnedVersion: text("pinned_version"),
     /** stable | beta: which registry releases updates offer. */
     channel: text("channel").notNull().default("stable"),
+    /**
+     * An admin let this API 1 plugin run inside the server process. Only
+     * official plugins can have it; API 2 plugins ignore it.
+     */
+    runUnisolated: boolean("run_unisolated")
+      .notNull()
+      .default(false),
     manifestJson: text("manifest_json").notNull(),
   },
   (table) => [index("idx_plugins_registry_id").on(table.registryId)],

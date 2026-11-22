@@ -11,6 +11,7 @@ import path from "node:path";
 import * as tar from "tar";
 import { createFixturePlugin } from "./fixture-plugin.js";
 import type { LoadedPlugin } from "../../plugins/loader.js";
+import { LEGACY_OFFICIAL_ERROR } from "../../plugins/isolation.js";
 
 interface Row {
   id: string;
@@ -81,6 +82,12 @@ vi.mock("../../database/repositories/factory.js", () => ({
     listKeys: async () => [],
     countKeys: async () => 0,
   }),
+}));
+
+const desktopLink = vi.hoisted(() => ({ linked: false }));
+
+vi.mock("../../sync/client/link-store.js", () => ({
+  getLink: async () => (desktopLink.linked ? { serverUrl: "https://s" } : null),
 }));
 
 vi.mock("../../plugins/data.js", () => ({
@@ -200,7 +207,11 @@ async function stageArtifact(
   fs.mkdirSync(staging, { recursive: true });
   const file = path.join(staging, `${id}-staged.tmxplug`);
   await tar.c({ gzip: true, file, cwd: path.join(build, id) }, ["."]);
-  return { file, signatureFile: `${file}.sig` };
+  return {
+    file,
+    signatureFile: `${file}.sig`,
+    provenanceFile: `${file}.provenance.json`,
+  };
 }
 
 async function boot() {
@@ -228,6 +239,7 @@ beforeEach(() => {
   registry.index.plugins = [];
   registry.others = {};
   registry.download.mockReset();
+  desktopLink.linked = false;
 });
 
 afterEach(async () => {
@@ -236,6 +248,7 @@ afterEach(async () => {
   for (const plugin of loader.list()) loader.forget(plugin.id);
   delete process.env.TERMIX_BUNDLED_PLUGINS_DIR;
   delete process.env.DATA_DIR;
+  delete process.env.ELECTRON_EMBEDDED;
   while (roots.length) {
     fs.rmSync(roots.pop()!, { recursive: true, force: true });
   }
@@ -360,6 +373,33 @@ describe("installing from the registry", () => {
     ]);
   });
 
+  it("keeps the checked build provenance beside the plugin and drops it on uninstall", async () => {
+    registry.index.plugins = [registryEntry("notes", [{ version: "1.0.0" }])];
+    registry.download.mockImplementation(async () => {
+      const staged = await stageArtifact("notes", { capabilities: ["kv:own"] });
+      fs.writeFileSync(
+        staged.provenanceFile,
+        JSON.stringify({
+          status: "verified",
+          checkedAt: "x",
+          signer: null,
+          runUrl: null,
+          bundleUrl: "https://b",
+        }),
+      );
+      return staged;
+    });
+    await boot();
+    await manage.installPlugin("notes", {
+      userId: "admin",
+      capabilities: DEFAULT_CAPS,
+    });
+    const kept = path.join(data, "plugins", "notes.tmxplug.provenance.json");
+    expect(JSON.parse(fs.readFileSync(kept, "utf8")).status).toBe("verified");
+    await manage.uninstallPlugin("notes");
+    expect(fs.existsSync(kept)).toBe(false);
+  });
+
   it("refuses a plugin that is not in the registry", async () => {
     await boot();
     await expect(
@@ -420,6 +460,20 @@ describe("updates", () => {
       code: "CAPABILITIES_ADDED",
       details: { capabilities: ["notify:send"] },
     });
+    expect(registry.download).not.toHaveBeenCalled();
+  });
+
+  it("never moves to an older version unless the admin names it", async () => {
+    createFixturePlugin({ id: "docker", root: bundled });
+    registry.index.plugins = [registryEntry("docker", [{ version: "0.9.0" }])];
+    await boot();
+
+    await expect(
+      manage.updatePlugin("docker", { userId: "admin" }),
+    ).rejects.toMatchObject({ code: "NOT_NEWER" });
+    expect(registry.download).not.toHaveBeenCalled();
+    const result = await manage.updateAllPlugins({ userId: "admin" });
+    expect(result.updated).toEqual([]);
     expect(registry.download).not.toHaveBeenCalled();
   });
 
@@ -1086,8 +1140,12 @@ describe("more registries", () => {
       capabilities: DEFAULT_CAPS,
     });
     expect(result.state).toBe("active");
-    const keys = registry.download.mock.calls[0][2] as Array<{ id: string }>;
-    expect(keys.map((key) => key.id)).toEqual(["be5b24ea07b36624"]);
+    const source = registry.download.mock.calls[0][2] as {
+      tier: string;
+      keys: Array<{ id: string }>;
+    };
+    expect(source.tier).toBe("community");
+    expect(source.keys.map((key) => key.id)).toEqual(["be5b24ea07b36624"]);
     expect(db.rows.get("neat")).toMatchObject({
       registryId: "community",
       tier: "community",
@@ -1120,9 +1178,10 @@ describe("more registries", () => {
     );
     const result = await manage.updatePlugin("neat", { userId: "admin" });
     expect(result.version).toBe("1.1.0");
-    const [, release, keys] = registry.download.mock.calls[0];
+    const [, release, source] = registry.download.mock.calls[0];
     expect(release.url).toContain("neat-1.1.0");
-    expect(keys.map((key: { id: string }) => key.id)).toEqual([
+    expect(source.tier).toBe("community");
+    expect(source.keys.map((key: { id: string }) => key.id)).toEqual([
       "be5b24ea07b36624",
     ]);
     expect(db.rows.get("neat")).toMatchObject({ registryId: "community" });
@@ -1273,4 +1332,108 @@ it("requires exact consent before enabling a mirrored plugin with capabilities",
       grantedBy: "admin",
     }),
   );
+});
+
+describe("plugins made for plugin API 1", () => {
+  const legacy = { engine: { termix: ">=2.9.0", api: "^1.15" } };
+
+  it("keeps an official API 1 plugin off, with no way to run it inside the server", async () => {
+    createFixturePlugin({
+      id: "docker",
+      root: bundled,
+      manifestOverrides: legacy,
+    });
+    const loader = await boot();
+    expect(loader.get("docker")).toMatchObject({
+      state: "blocked",
+      lastError: LEGACY_OFFICIAL_ERROR,
+    });
+
+    const options = await manage.setPluginOptions("docker", {
+      runUnisolated: true,
+    } as never);
+    expect(options).not.toHaveProperty("runUnisolated");
+    expect(loader.get("docker")?.state).toBe("blocked");
+  });
+
+  describe("the sync provider on a linked desktop", () => {
+    const syncCaps = ["sync:provide", "kv:own"];
+
+    function stuckSync() {
+      // A copy the desktop once took from its server, signed by the
+      // official key.
+      createFixturePlugin({
+        id: "sync",
+        root: path.join(data, "plugins"),
+        capabilities: syncCaps,
+        manifestOverrides: legacy,
+      });
+      db.rows.set("sync", {
+        id: "sync",
+        name: "Sync",
+        version: "1.0.0",
+        tier: "official",
+        source: "user",
+        state: "enabled",
+        lastError: null,
+        registryId: "official",
+        autoUpdate: false,
+        pinnedVersion: null,
+        manifestJson: "{}",
+      });
+      registry.index.plugins = [
+        registryEntry("sync", [
+          { version: "1.1.0", capabilities: [...syncCaps, "notify:send"] },
+        ]),
+      ];
+      registry.download.mockImplementation(() =>
+        stageArtifact("sync", {
+          version: "1.1.0",
+          capabilities: [...syncCaps, "notify:send"],
+        }),
+      );
+    }
+
+    it("updates an official API 1 sync provider from the registry", async () => {
+      process.env.ELECTRON_EMBEDDED = "true";
+      desktopLink.linked = true;
+      stuckSync();
+      const loader = await boot();
+      loader.get("sync")!.signedTier = "official";
+      expect(loader.get("sync")?.state).toBe("blocked");
+
+      expect(await manage.updateStuckSyncProvider()).toEqual(["sync"]);
+      expect(loader.get("sync")).toMatchObject({
+        state: "active",
+        manifest: { version: "1.1.0" },
+      });
+    });
+
+    it("leaves it alone when the desktop is not linked", async () => {
+      process.env.ELECTRON_EMBEDDED = "true";
+      stuckSync();
+      const loader = await boot();
+      loader.get("sync")!.signedTier = "official";
+
+      expect(await manage.updateStuckSyncProvider()).toEqual([]);
+      expect(registry.download).not.toHaveBeenCalled();
+    });
+
+    it("leaves other API 1 plugins to the sync", async () => {
+      process.env.ELECTRON_EMBEDDED = "true";
+      desktopLink.linked = true;
+      createFixturePlugin({
+        id: "docker",
+        root: bundled,
+        manifestOverrides: legacy,
+      });
+      registry.index.plugins = [
+        registryEntry("docker", [{ version: "1.1.0" }]),
+      ];
+      await boot();
+
+      expect(await manage.updateStuckSyncProvider()).toEqual([]);
+      expect(registry.download).not.toHaveBeenCalled();
+    });
+  });
 });

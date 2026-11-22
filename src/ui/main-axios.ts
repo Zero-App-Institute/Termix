@@ -61,6 +61,11 @@ import {
 } from "@/lib/frontend-logger";
 import { dbHealthMonitor } from "@/lib/db-health-monitor";
 import { getDeviceId } from "@/lib/device-id";
+import { APP_CHALLENGE_HEADER, pendingAppChallenge } from "@/lib/app-return";
+import {
+  clearCoreReadCache,
+  noteCoreRequest,
+} from "@/plugin-host/frames/core-read-cache";
 
 export type ServerStatus = {
   status: "online" | "offline";
@@ -82,6 +87,8 @@ export interface AuthResponse {
   temp_token?: string;
   rememberMe?: boolean;
   token?: string;
+  /** One-time code for the mobile app, when it asked for this login. */
+  app_code?: string;
 }
 
 export interface UserInfo {
@@ -97,6 +104,15 @@ export interface UserInfo {
   is_dual_auth?: boolean;
   password_hash?: string;
   data_unlocked?: boolean;
+  display_name?: string | null;
+  disabled?: boolean;
+  /** Admin user list only, from here down. */
+  email?: string | null;
+  disabled_at?: string | null;
+  /** "admin" or "pending_approval". */
+  disabled_reason?: string | null;
+  last_login_at?: string | null;
+  registered_at?: string;
   /** On a desktop linked to a server, the account it is signed in to there. */
   linked?: LinkedAccountInfo | null;
 }
@@ -246,6 +262,7 @@ let latestAuthSuccessAt = 0;
 let authInvalidationHandled = false;
 
 export function markUserAuthenticated(): void {
+  if (!userWasAuthenticated) clearCoreReadCache();
   userWasAuthenticated = true;
   authInvalidationHandled = false;
   latestAuthSuccessAt =
@@ -253,6 +270,7 @@ export function markUserAuthenticated(): void {
 }
 
 function clearClientAuthState(): void {
+  clearCoreReadCache();
   clearTermixSessionStorage();
   try {
     localStorage.removeItem("jwt");
@@ -318,12 +336,19 @@ function createApiInstance(
   });
 
   instance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+    noteCoreRequest(config.method);
     const startTime = performance.now();
     const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
     const configWithMetadata = config as AxiosRequestConfigExtended;
     configWithMetadata.startTime = startTime;
     configWithMetadata.requestId = requestId;
+
+    // A sign in the mobile app asked for: logins answer with a code for it.
+    const appChallenge = pendingAppChallenge();
+    if (appChallenge && serviceName === "AUTH") {
+      config.headers.set(APP_CHALLENGE_HEADER, appChallenge);
+    }
 
     const method = config.method?.toUpperCase() || "UNKNOWN";
     const url = config.url || "UNKNOWN";
@@ -408,6 +433,7 @@ function createApiInstance(
 
   instance.interceptors.response.use(
     (response: AxiosResponse) => {
+      noteCoreRequest(response.config.method);
       const endTime = performance.now();
       const responseConfig = response.config as AxiosRequestConfigExtended;
       const startTime = responseConfig.startTime;
@@ -449,6 +475,7 @@ function createApiInstance(
       return response;
     },
     (error: AxiosErrorExtended) => {
+      noteCoreRequest(error.config?.method);
       const endTime = performance.now();
       const startTime = error.config?.startTime;
       const requestId = error.config?.requestId;
@@ -676,6 +703,18 @@ function initializeApiInstances() {
 
   // Authentication API (port 30001)
   authApi = createApiInstance(getApiUrl("", 30001), "AUTH");
+  const healthApi = authApi;
+  dbHealthMonitor.setReachabilityProbe(() =>
+    healthApi
+      .get("/health", {
+        timeout: 5000,
+        __silentRetry: true,
+      } as AxiosRequestConfigExtended)
+      .then(
+        () => true,
+        () => false,
+      ),
+  );
 
   // RBAC API (port 30001)
   rbacApi = createApiInstance(getApiUrl("", 30001), "RBAC");
@@ -879,7 +918,12 @@ export {
   updateSSHHost,
   bulkUpdateSSHHosts,
   reorderSSHHosts,
+  getFolderDeviceAuth,
+  getHostDeviceAuth,
   getHostPolicy,
+  setFolderDeviceAuth,
+  setHostDeviceAuth,
+  type DeviceLogin,
   type HostPolicy,
   deleteSSHHost,
   getSSHHostById,
@@ -993,6 +1037,7 @@ export async function requestTrustedProxyLogin(): Promise<{
   userId?: string;
   is_admin?: boolean;
   token?: string;
+  app_code?: string;
 }> {
   const response = await authApi.post("/users/proxy-login");
   if (response.data.token) localStorage.setItem("jwt", response.data.token);
@@ -1003,6 +1048,8 @@ export async function requestTrustedProxyLogin(): Promise<{
 export async function logoutUser(): Promise<{
   success: boolean;
   message: string;
+  /** Where the login method wants the browser to go next, if anywhere. */
+  redirectUrl?: string;
 }> {
   try {
     const response = await authApi.post("/users/logout");
@@ -1222,7 +1269,11 @@ export {
   updateRegistrationAllowed,
   getExternalAutoProvision,
   updateExternalAutoProvision,
+  getCredentialStorage,
+  getHostKeyPolicy,
   getSecondFactorAfterExternalLogin,
+  updateCredentialStorage,
+  updateHostKeyPolicy,
   updateSecondFactorAfterExternalLogin,
   updatePasswordLoginAllowed,
   getPasswordResetAllowed,
@@ -1231,7 +1282,47 @@ export {
   adminExportUserData,
   type ApiKey,
   type CreatedApiKey,
+  getMyApiKeys,
+  revokeMyApiKey,
+  revokeAllMyApiKeys,
+  revokeEveryoneSessions,
+  isAdminHoldTicket,
+  getAdminHoldSettings,
+  setAdminHoldMinutes,
+  getAdminHolds,
+  cancelAdminHold,
+  type AdminHoldTicket,
+  type AdminHoldSettings,
+  type AdminHold,
 } from "@/api/user-management-api";
+
+export {
+  disableUser,
+  enableUser,
+  updateMyProfile,
+  adminUpdateUserProfile,
+  getAdminHostBypass,
+  updateAdminHostBypass,
+  getExternalSignupApproval,
+  updateExternalSignupApproval,
+  listUserInvites,
+  createUserInvite,
+  revokeUserInvite,
+  checkUserInvite,
+  acceptUserInvite,
+  inviteLink,
+  getAccessReview,
+  downloadAccessReviewCsv,
+  type UserStatusFilter,
+  type UserProfile,
+  type UserProfileUpdate,
+  type UserInvite,
+  type NewUserInvite,
+  type CreatedUserInvite,
+  type AccessKind,
+  type AccessReviewRow,
+  type AccessReviewFilter,
+} from "@/api/user-lifecycle-api";
 
 // ADMIN USER DATA MANAGEMENT
 // ============================================================================
@@ -1268,12 +1359,7 @@ export {
   deleteCredential,
   getCredentialHosts,
   getCredentialFolders,
-  getSSHHostWithCredentials,
   getHostPassword,
-  applyCredentialToHost,
-  removeCredentialFromHost,
-  migrateHostToCredential,
-  getFoldersWithStats,
   renameFolder,
   getSSHFolders,
   updateFolderMetadata,

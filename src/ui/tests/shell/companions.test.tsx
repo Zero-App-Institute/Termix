@@ -40,6 +40,17 @@ describe("companions", () => {
     expect(companionApplies(def, tab({ host: undefined }))).toBe(false);
   });
 
+  it("treats a when that throws as not applying", () => {
+    const def = {
+      id: "a",
+      component: () => null,
+      when: () => {
+        throw new Error("boom");
+      },
+    };
+    expect(companionApplies(def, tab())).toBe(false);
+  });
+
   it("toggles open and closed, defaulting to the first match", () => {
     registerCompanionDef({ id: "a", component: () => null });
     toggleCompanion(tab());
@@ -75,6 +86,24 @@ describe("companions", () => {
     expect(screen.getByText("content")).toBeTruthy();
     act(() => toggleCompanion(tab(), "a"));
     expect(getCompanionState("t1").openId).toBeNull();
+  });
+
+  it("scrolls the edge bar instead of growing past the tab", () => {
+    for (let i = 0; i < 30; i++) {
+      registerCompanionDef({
+        id: `c${i}`,
+        titleKey: `c${i}.title`,
+        component: () => null,
+      });
+    }
+    render(
+      <CompanionFrame tab={tab()} isVisible>
+        <div>content</div>
+      </CompanionFrame>,
+    );
+    const bar = screen.getByTitle("c0.title").parentElement!;
+    expect(bar.className).toContain("min-h-0");
+    expect(bar.className).toContain("overflow-y-auto");
   });
 });
 

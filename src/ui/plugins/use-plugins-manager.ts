@@ -25,6 +25,7 @@ import {
   type RegistryListing,
 } from "@/api/plugins-api";
 import { useConfirm } from "@/components/surface/surface-scope";
+import { isAdminHoldTicket } from "@/api/user-management-api";
 import { pluginDescription, pluginName } from "@/lib/plugin-i18n";
 import { mergePlugins, uploadEntry, type PluginEntry } from "./plugin-model";
 import type { ConsentRequest } from "./PluginConsentPrompt";
@@ -61,6 +62,8 @@ export function usePluginsManager() {
   const [refreshing, setRefreshing] = useState(false);
   const [busy, setBusy] = useState<Set<string>>(new Set());
   const [consent, setConsent] = useState<ConsentRequest | null>(null);
+  // Plugins "Update all" skipped because they ask for something new.
+  const [reviewQueue, setReviewQueue] = useState<string[]>([]);
   const [developer, setDeveloper] = useState<DeveloperModeState>({
     enabled: false,
     signedOnly: false,
@@ -366,7 +369,14 @@ export function usePluginsManager() {
             version: request.version,
             capabilities: request.capabilities,
           });
-          if (result.state === "failed" || result.state === "blocked") {
+          if (isAdminHoldTicket(result)) {
+            toast.info(
+              t("plugins.manager.toast.held", {
+                name: request.plugin.name,
+                minutes: result.minutes,
+              }),
+            );
+          } else if (result.state === "failed" || result.state === "blocked") {
             toast.error(
               t("plugins.manager.toast.failedToStart", {
                 name: request.plugin.name,
@@ -454,7 +464,14 @@ export function usePluginsManager() {
       await run(plugin.id, async () => {
         try {
           const result = await setPluginState(plugin.id, enable);
-          if (result.state === "failed" || result.state === "blocked") {
+          if (isAdminHoldTicket(result)) {
+            toast.info(
+              t("plugins.manager.toast.held", {
+                name: plugin.name,
+                minutes: result.minutes,
+              }),
+            );
+          } else if (result.state === "failed" || result.state === "blocked") {
             toast.error(
               t("plugins.manager.toast.failedToStart", { name: plugin.name }),
             );
@@ -621,12 +638,37 @@ export function usePluginsManager() {
               }),
             );
           }
+          if (result.needsReview.length > 0) {
+            toast.info(
+              t("plugins.manager.toast.needsReview", {
+                count: result.needsReview.length,
+              }),
+            );
+            setReviewQueue(result.needsReview.map((entry) => entry.id));
+          }
         } catch (error) {
           failToast(error, "plugins.manager.errors.updateAll", "");
         }
       }),
     [run, t, failToast, nameOf],
   );
+
+  // Walks through the skipped plugins one review at a time.
+  useEffect(() => {
+    if (consent || busy.size > 0 || reviewQueue.length === 0) return;
+    const [next, ...rest] = reviewQueue;
+    setReviewQueue(rest);
+    const plugin = plugins.find((p) => p.id === next);
+    if (plugin?.updateAvailable && !plugin.pinnedVersion) {
+      void requestUpdate(plugin);
+    }
+  }, [consent, busy, reviewQueue, plugins, requestUpdate]);
+
+  /** Closing a review also stops the rest of the queue. */
+  const cancelConsent = useCallback(() => {
+    setConsent(null);
+    setReviewQueue([]);
+  }, []);
 
   return {
     plugins,
@@ -640,6 +682,7 @@ export function usePluginsManager() {
     busy,
     consent,
     setConsent,
+    cancelConsent,
     developerMode: developer.enabled,
     signedOnly: developer.signedOnly,
     requestUpload,

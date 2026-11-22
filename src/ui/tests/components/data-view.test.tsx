@@ -47,9 +47,11 @@ describe("DataView", () => {
         empty={null}
       />,
     );
-    const grid = container.firstElementChild as HTMLElement;
+    const grid = container.querySelector(".grid") as HTMLElement;
     expect(grid.className).not.toContain("md:grid-cols-2");
-    expect(grid.style.gridTemplateColumns).toContain("/ 3");
+    expect(grid.className).not.toContain("gap-");
+    // jsdom 31 folds the calc, so "/ 3" reads as "33.33...%"
+    expect(grid.style.gridTemplateColumns).toMatch(/\/ 3|33\.33/);
   });
 
   it("renders a header and clickable rows in list mode", () => {

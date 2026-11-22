@@ -131,6 +131,8 @@
     "updateLinkLabel": "Opdatering beskikbaar. Open die vrygawenoetes op GitHub"
   },
   "common": {
+    "showPassword": "Wys wagwoord",
+    "hidePassword": "Versteek wagwoord",
     "scrollTabsLeft": "Skakel oortjies links",
     "scrollTabsRight": "Skakel oortjies regs",
     "close": "Maak toe",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Die pluginlys kon nie gelaai word nie. Jy kan plugins later kies vanaf die Plugins-oortjie.",
     "securityTitle": "Beveilig jou rekening",
     "securityIntro": "Voeg 'n passkey of 'n autentikator-toepassing by jou rekening. Jy kan dit ook later doen in Instellings, onder Beveiliging.",
-    "pluginsDocsLink": "Lees oor elkeen"
+    "pluginsDocsLink": "Lees oor elkeen",
+    "layoutTitle": "Kies 'n uitleg",
+    "layoutIntro": "Die uitleg bepaal hoe die hele app gerangskik is: die menuss, die sybalk en die oortjies. Klik een om dit te gebruik. Dit verander onmiddellik.",
+    "layoutInstalled": "Geïnstalleer",
+    "layoutMore": "Meer uitleg",
+    "layoutNoMore": "Daar is tans geen ander uitleg beskikbaar nie.",
+    "layoutDefault": "Verstek",
+    "layoutInstall": "Installeer",
+    "layoutTurnOn": "Skakel aan",
+    "layoutVideo": "Bekyk video",
+    "layoutChangeLater": "Jy kan jou uitleg enige tyd in Instellings, onder Voorkoms, verander. Vra 'n admin as jy meer uitleg wil hê geïnstalleer.",
+    "layoutChangeLaterAdmin": "Jy kan jou uitleg enige tyd in Instellings, onder Voorkoms, verander. Meer uitleg kan later vanaf die Plugins-oortjie geïnstalleer word."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix loop nog",
+    "noticeBody": "As jy die venster sluit, loop Termix steeds in die taakbalk. Om af te sluit, open die taakbalk-ikoon se kieslys en kies Afsluit. Jy kan dit afskakel in Instellings."
   },
   "desktopUpdates": {
     "modeAutomatic": "Outomaties",
@@ -495,6 +512,7 @@
     "deleteSelected": "Vee uit",
     "exitSelection": "Verlaat seleksie",
     "collapseBtn": "Vou in",
+    "importExportBtn": "Voer in / Voer uit",
     "hostStatusesRefreshed": "Gasheer-statusse opgedateer",
     "failedToRefreshHosts": "Kon nie gasheer opdateer nie",
     "movedHostTo": "Het {{host}} na \"{{folder}}\" geskuif",
@@ -609,6 +627,7 @@
     "hostClickBehavior": "Klik op 'n gasheer",
     "hostClickBehaviorDesc": "Wat gebeur wanneer jy op 'n gasheer klik wat reeds 'n oop tab het. Ctrl/Cmd-klik, middel-klik, of \"Maak oop in nuwe tab\" begin altyd 'n nuwe een.",
     "hostClickNewTab": "Maak altyd 'n nuwe tab oop",
+    "hostClickHostPage": "Open die gasheerblad, as 'n invoegprogram een bied",
     "hostClickFocusExisting": "Skakel oor na die oop tab",
     "hostClickFocusExistingDoubleNew": "Klik om te skakel, dubbelklik vir 'n nuwe tab",
     "openInNewTab": "Maak oop in nuwe tab",
@@ -828,7 +847,12 @@
     "editorUpdate": "Wysig Gasheer",
     "editorAdd": "Voeg Gasheer by",
     "speedSearch": "Soek gasheer. Pyltjies om te kies, Enter om te verbind, Esc om te sluit",
-    "speedSearchList": "Gasheerlys. Tik of druk / om te soek."
+    "speedSearchList": "Gasheerlys. Tik of druk / om te soek.",
+    "openFromLink": {
+      "title": "Open {{name}}?",
+      "description": "'n Skakel het Termix versoek om aan hierdie gasheer te koppel.",
+      "confirm": "Koppel"
+    }
   },
   "splitScreen": {
     "title": "Gesplete skerm",
@@ -907,6 +931,16 @@
     "empty": "Geen kaarte nie. Gebruik Voeg by hieronder om kaarte te plaas."
   },
   "auth": {
+    "inviteIntro": "U is na hierdie bediener uitgenooi. Kies 'n gebruikersnaam en wagwoord om u rekening te skep.",
+    "inviteInvalid": "Hierdie uitnodigingskoppel het verval of is reeds gebruik. Vra 'n bestuurder vir 'n nuwe een.",
+    "accountDisabled": "Hierdie rekening is afgeskakel. Vra 'n bestuurder om dit weer aan te skakel.",
+    "accountPending": "U rekening wag vir 'n bestuurder om dit te goedgeef.",
+    "stepUp": {
+      "title": "Verifieer dat dit u is",
+      "description": "Bewys u tweede faktor om voort te gaan.",
+      "noFactor": "U het geen tweede faktor ingestel nie. Voeg een by in Instellings, en probeer weer.",
+      "failed": "Dit het nie gewerk nie. Probeer weer."
+    },
     "tagline": "Self-gehoste, plug-in-gebaseerde bedienerbestuur.",
     "loginTitle": "Welkom terug",
     "registerTitle": "Skep Rekening",
@@ -933,6 +967,14 @@
     "loginWithExternal": "Meld aan met Eksterne Verskaffer",
     "loginWithExternalDesc": "Meld aan met jou gekonfigureerde eksterne identiteitsverskaffer",
     "loginWithProvider": "Meld aan met {{name}}",
+    "pluginLogin": {
+      "signIn": "Teken aan",
+      "verify": "Verifieer",
+      "code": "Kode",
+      "useKey": "Gebruik sekuriteitsleutel",
+      "keyPrompt": "Gebruik u sekuriteitsleutel of passleutel om voort te gaan.",
+      "keyFailed": "Die sekuriteitsleutelstap het nie gewerk nie. Probeer weer."
+    },
     "resetPasswordButton": "Stel Wagwoord Her",
     "sendResetCode": "Stuur Herstelkode",
     "resetCodeDesc": "Voer jou gebruikersnaam in om 'n wagwoordherstelkode te ontvang. Die kode sal in die Docker-houer se logboeke verskyn.",
@@ -1010,6 +1052,8 @@
     "registrationSuccess": "Registrasie suksesvol"
   },
   "placeholders": {
+    "username": "Jou gebruikersnaam",
+    "newUsername": "Kies 'n gebruikersnaam",
     "keyPassword": "sleutelwagwoord",
     "pastePrivateKey": "Plak jou privaat sleutel hier...",
     "enterPassword": "Voer jou wagwoord in"
@@ -1052,7 +1096,8 @@
         "actionNextTab": "Wissel na volgende tab",
         "actionPreviousTab": "Wissel na vorige tab",
         "actionOpenCommandPalette": "Maak vinnige soek oop",
-        "actionReconnectSession": "Herstel huidige sessie"
+        "actionReconnectSession": "Herstel huidige sessie",
+        "actionToggleSidebar": "Wissel sybalk"
       },
       "userProfile": {
         "preset_simple": "Eenvoudig",
@@ -1194,6 +1239,10 @@
         "title": "Bereik die internet",
         "consequence": "Dit kan versoeke na buitedienste stuur."
       },
+      "network:sockets": {
+        "title": "Maak sy eie netwerkverbindinge oop",
+        "consequence": "Dit kan op poorte luister en direk met enige adres verbind, sonder dat Termix elke verbinding toets."
+      },
       "network:serve": {
         "title": "Aanvaar verbindinge",
         "consequence": "Dit maak 'n poort op die Termix-bedieners oop."
@@ -1214,6 +1263,18 @@
         "title": "Stuur waarskuwings",
         "consequence": "Na jou of ander gebruikers, en deur die kanale wat hulle opgestel het."
       },
+      "operations:provide": {
+        "title": "Bied aksies aan",
+        "consequence": "Sy aksies kan uitgevoer word outomaties, vanaf die CLI, die foon-app en ander plekke, deur mense wat toestemming het om dit te gebruik."
+      },
+      "operations:invoke": {
+        "title": "Voer aksies van ander invoegprogramme uit",
+        "consequence": "Handel namens die aangemelde gebruiker op die aksies wat in sy manifest gelys word. Goedkeuringsreëls geld steeds."
+      },
+      "operations:approve": {
+        "title": "Bepaal wat goedkeuring benodig",
+        "consequence": "Kan aksies laat uitvoer sonder goedkeuring, of dit blokkeer, vir elke gebruiker."
+      },
       "notify:hub": {
         "title": "Ontvang elke waarskuwing",
         "consequence": "Bewaar en lewer die waarskuwings wat alle plugins stuur, insluitend hul inhoud."
@@ -1224,7 +1285,7 @@
       },
       "network:probe": {
         "title": "Kyk of poorte antwoord",
-        "consequence": "Kan 'n plat verbinding na enige adres vanaf die bediener oopmaak, om te sien of dit bereikbaar is."
+        "consequence": "Kan 'n eenvoudige verbinding na enige adres vanaf die bediener oopmaak om te sien of dit bereikbaar is, en gasheername opsoek."
       },
       "hosts:status-provide": {
         "title": "Verskaf gasheerstatus",
@@ -1237,6 +1298,10 @@
       "hosts:lock": {
         "title": "Bestuur gasheer as slegs-lees",
         "consequence": "Gasheer wat dit bestuur, kan nie deur iemand anders redigeer, verwyder of hergedeel word nie."
+      },
+      "hosts:connect-policy": {
+        "title": "Bepaal wie kan verbind",
+        "consequence": "Kan elke SSH- en afstandsbureaubladverbinding na enige gasheer blokkeer of toelaat."
       },
       "desktop:window": {
         "title": "Maak burebladvensters oop",
@@ -1274,6 +1339,10 @@
         "title": "Bewaar sy eie geheime",
         "consequence": "Versleutel deur Termix. Die plugin hou nooit die sleutel nie."
       },
+      "config:secrets": {
+        "title": "Lees geheime wat die bediener hou",
+        "consequence": "Omgewingsveranderlikes en lêers op die bediener, behalwe Termix se eie sleutels."
+      },
       "settings:read-core": {
         "title": "Lees Termix-instellings",
         "consequence": "Bedienerinstellings, nie jou gasheer of inlogbesonderhede nie."
@@ -1294,6 +1363,10 @@
         "title": "Voeg kleurtemas by",
         "consequence": "Slegs kleure en styl. Geen kode word vir 'n tema uitgevoer nie."
       }
+    },
+    "webView": {
+      "unavailable": "Hierdie bladsy is nie meer beskikbaar nie. Maak dit weer oop vanaf sy invoegprogram.",
+      "isolationUnavailable": "Hierdie blaaier kan die bladsy nie veilig hier oopmaak nie. Gebruik 'n onlangse Chrome of Edge, of die lessenaarprogram."
     },
     "runtime": {
       "needsPlugin": "{{name}} is nie beskikbaar nie",
@@ -1318,7 +1391,7 @@
         "running": "Aktief",
         "disabled": "Afgeskakel",
         "failed": "Onverwags gestop",
-        "blocked": "Wag op 'n ander plugin",
+        "blocked": "Kan nie begin nie",
         "server": "Loop op jou bediener",
         "safeMode": "Af in veilige modus"
       },
@@ -1340,7 +1413,8 @@
         "version": "Weergawe",
         "status": "Status",
         "category": "Kategorie",
-        "downloads": "Aflaai"
+        "downloads": "Aflaai",
+        "memory": "Geheue"
       },
       "risk": {
         "critical": "Krities",
@@ -1403,9 +1477,12 @@
         "updated": "{{name}} opgedateer na {{version}}",
         "updatedMany_one": "{{count}} plugin opgedateer",
         "updatedMany_other": "{{count}} plugins opgedateer",
+        "needsReview_one": "1 plugin vra om nuwe toestemmings. Hersien dit om te herstel.",
+        "needsReview_other": "{{count}} plugins vra om nuwe toestemmings. Hersien elkeen om te herstel.",
         "uninstalled": "{{name}} deïnstalleer",
         "dataDeleted": "Data vir {{name}} verwyder",
-        "failedToStart": "{{name}} kon nie begin nie. Maak dit oop om te sien waarom."
+        "failedToStart": "{{name}} kon nie begin nie. Maak dit oop om te sien waarom.",
+        "held": "{{name}} wag {{minutes}} minute voordat die verandering toegepas word, sodat die ander bestuurders dit kan sien"
       },
       "errors": {
         "generic": "Iets het verkeerd geloop",
@@ -1458,6 +1535,23 @@
       "pin": "Bly by hierdie weergawe",
       "pinHint": "Hou {{version}} en slaan elke opdatering oor tot jy dit afskakel.",
       "pinnedTo": "Vasgepen aan {{version}}",
+      "legacy": {
+        "notice_one": "1 invoegprogram is vir 'n ouer Termix gemaak en bly af tot dit opgedateer is: {{names}}.",
+        "notice_other": "{{count}} invoegprogramme is vir 'n ouer Termix gemaak en bly af tot hulle opgedateer is: {{names}}.",
+        "why": "Hulle is vir invoegprogram-API 1 gemaak, wat binne die bediener geloop het. Termix loop nou elke invoegprogram in sy eie proses, so elkeen het 'n weergawe nodig wat vir invoegprogram-API 2 gemaak is. Dateer amptelike eenes hier op, en vra die outeur van 'n gemeenskapsinvoegprogram vir een.",
+        "guide": "Hoe invoegprogramme na API 2 beweeg"
+      },
+      "provenance": {
+        "verified": "Bou gecontroleer",
+        "verifiedHint": "Sy bouherkoms is geteken deur die Termix-registrasievrystellingswerkstroom en stem ooreen met hierdie lêer. Maak die bou oop.",
+        "unchecked": "Bou nie gecontroleer nie",
+        "uncheckedHint": "Sy bouherkoms kon nie gecontroleer word toe dit afgelaai is nie. Sy registrasietekening is wel."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} is beskikbaar. 1 invoegprogram sal daarop af bly tot u dit opdateer: {{names}}.",
+        "notice_other": "Termix {{version}} is beskikbaar. {{count}} invoegprogramme sal daarop af bly tot u hulle opdateer: {{names}}.",
+        "needs": "{{name}} (benodig Termix {{range}})"
+      },
       "version": "Weergawe",
       "versionPickHint": "Installeer 'n ouer vrystelling in plaas van die nuutste. Dit bly by daardie weergawe tot jy dit ontpen.",
       "versionPickHintInstalled": "Skakel oor na 'n ander vrystelling. As jy een kies wat nie die nuutste is nie, word dit vasgepen.",
@@ -1531,7 +1625,13 @@
         "unreachable": "Kon nie dit lees nie: {{error}}",
         "filter": "Register",
         "allRegistries": "Alle registers",
-        "browseHint": "Skakel gemeenskapsplugins aan of voeg jou eie register by in die Registers-oortjie."
+        "browseHint": "Skakel gemeenskapsplugins aan of voeg jou eie register by in die Registers-oortjie.",
+        "looksName": "Gemeenskapslêers en temas",
+        "looksHint": "Laat lêers en temas wat nie van Termix is nie, buite die sandboks loop, soos die amptelikes. 'n Lêer teken die hele app, so dit kan sien en doen wat jy kan. Installeer slegs dié wat jy vertrou. Herlaai die bladsy nadat jy dit verander het.",
+        "looksConfirmTitle": "Laat gemeenskapslêers buite die sandboks loop?",
+        "looksConfirmBody": "'n Gemeenskapslêer of tema sal in die bladsy loop met volle toegang tot Termix as diegene wat aangemeld is. Dit kan riskant wees. Skakel dit slegs aan as jy die lêers en temas vertrou wat jy installeer.",
+        "looksConfirm": "Skakel aan",
+        "looksSaved": "Opgeslaan. Herlaai die bladsy om dit toe te pas."
       },
       "upToDate": "Alles is op datum.",
       "lastChecked": "Laas gecheck {{time}}",
@@ -1614,8 +1714,28 @@
       "unsupportedHint": "Geen vrylasing van hierdie invoegprogram loop op hierdie weergawe van Termix nie. Werk Termix op om dit te installeer.",
       "needsTermix": "Benodig Termix {{range}}",
       "showUnsupported": "Wys nie-ondersteunde ({{count}})",
-      "showMore": "Wys {{count}} meer ({{total}} oor)"
-    }
+      "showMore": "Wys {{count}} meer ({{total}} oor)",
+      "memory": {
+        "summary": "Geheue: {{total}} van {{limit}} | invoegprogramme {{plugins}} | {{running}} loop",
+        "lowTitle": "Hierdie bediener het min geheue",
+        "lowBody": "Termix en sy invoegprogramme gebruik {{total}} van {{limit}}. Gee die bediener meer geheue of skakel invoegprogramme af wat u nie gebruik nie.",
+        "idle": "Rus",
+        "idleHint": "Loop nie nou nie. Dit begin wanneer iets dit nodig het.",
+        "keptOn": "Bly loop: {{reason}}",
+        "stopsWhenIdle": "Stop wanneer rus"
+      }
+    },
+    "firstLoad": {
+      "title": "Maak invoegprogramme gereed",
+      "progress": "{{done}} van {{total}}",
+      "hint": "Plugins begin vir die eerste keer. Daarna open Termix dadelik.",
+      "skip": "Gaan voort"
+    },
+    "framesBlocked": "Plugins kan nie hul lêers laai nie. 'n Aanmeldproxy voor Termix blokkeer hulle waarskynlik.",
+    "framesBlockedHelp": "Hoe om dit te regstel",
+    "framesFailed_one": "{{names}} kon nie laai nie, so sy dele is versteek",
+    "framesFailed_other": "{{count}} plugins kon nie laai nie, so hul dele is versteek: {{names}}",
+    "framesFailedReload": "Herlaai"
   },
   "settings": {
     "secretSet": "Stel",
@@ -1663,6 +1783,12 @@
       "title": "Kolomme",
       "auto": "Outo",
       "count": "{{count}} breed"
+    },
+    "pager": {
+      "previous": "Vorige",
+      "next": "Volgende",
+      "page": "Bladsy {{page}}",
+      "pageOf": "Bladsy {{page}} van {{pages}}"
     }
   },
   "fields": {
@@ -1679,7 +1805,108 @@
   "rbac": {
     "roles": {
       "admin": "Admin",
-      "user": "Gebruiker"
+      "user": "Gebruiker",
+      "viewer": "Besigtiger",
+      "operator": "Operator",
+      "auditor": "Oudit",
+      "helpdesk": "Helpburo"
+    }
+  },
+  "tileGrid": {
+    "empty": "Nog geen teëls nie. Voeg 'n paar by vanaf die lys.",
+    "move": "Sleep om te beweeg",
+    "moveTile": "Beweeg {{tile}}",
+    "settings": "{{tile}}-instellings",
+    "remove": "Verwyder {{tile}}",
+    "width": "Wydte",
+    "height": "Hoogte",
+    "addTiles": "Voeg teëls by",
+    "closePicker": "Maak toe",
+    "search": "Soek teëls",
+    "noMatches": "Niets pas nie.",
+    "kind": {
+      "all": "Almal",
+      "card": "Kaarte",
+      "chart": "Grafieke",
+      "signal": "Status",
+      "action": "Aksies",
+      "resource": "Lyste",
+      "session": "Sessies"
+    },
+    "reset": "Stel terug",
+    "done": "Klaar"
+  },
+  "diagnostics": {
+    "title": "Diagnostiek",
+    "makeReport": "Stel 'n diagnostiese verslag op",
+    "slowBoot": "Neem dit 'n rukkie? Stel 'n diagnostiese verslag op",
+    "troubleSigningIn": "Probleme om aan te meld? Stel 'n diagnostiese verslag op",
+    "reportTab": "Verslag",
+    "logsTab": "Bedienerlogboeke",
+    "intro": "Dit skep een lêer met wat Termix nodig het om 'n probleem te vind: foute, logboeke, plugin-staat en hoe versoek die bediener bereik. Laai dit af en heg dit aan 'n GitHub-kwessie of stuur dit in Discord.",
+    "notAdmin": "Bedienerlogboeke en bedienerbesonderhede benodig 'n admin. Vra jou admin om ook 'n verslag op te stel as die probleem op die bediener is.",
+    "signedOut": "Jy is nie aangemeld nie, dus word slegs die blaaier-deel ingesluit.",
+    "whatHappened": "Wat het gebeur",
+    "whatHappenedHint": "Opsioneel. Wat het jy gedoen en wat het verkeerd geloop?",
+    "include": "Sluit in",
+    "adminOnly": "Benodig 'n admin",
+    "privacy": "Privaatheid",
+    "mask": "Versteek name en adresse",
+    "maskHint": "IP's, gasheername, gebruikersname en e-posse word host-1, user-1, ens. Wagwoorde, sleutels en tokens word altyd verwyder.",
+    "domText": "Sluit bladsytekst in",
+    "domTextHint": "Voeg die teks op die skerm by die bladsy-uitleg. Af by verstek aangesien dit jou data kan wys.",
+    "warnOnly": "Slegs waarskuwings en foute van die bedienerlogboek",
+    "warnOnlyHint": "Maak die lêer kleiner.",
+    "focus": "Plugin",
+    "focusHint": "Wys hierdie plugin eerste en lê die kwessie op sy repo.",
+    "allPlugins": "Alle plugins",
+    "findings": "Vind deur die kontroles",
+    "preview": "Wat gestuur sal word",
+    "previewCut": "(Die voorskou stop hier. Die lêer het alles.)",
+    "cut": "Die lêer was meer as 5 MB, dus is die oudste logreëls afgesny.",
+    "footerHint": "Kontroleer die voorskou voordat jy dit stuur.",
+    "copy": "Kopieer",
+    "copied": "Verslag gekopieer",
+    "copyFailed": "Kon nie die verslag kopieer nie",
+    "download": "Laai af",
+    "downloaded": "Verslag afgelaai",
+    "openIssue": "Open GitHub-kwessie",
+    "logsSearch": "Soek logboeke",
+    "logsLevel": "Vlak",
+    "logsAll": "Alle vlakke",
+    "logsWarn": "Waarskuwings en foute",
+    "logsError": "Foute",
+    "logsPlugin": "Plugin",
+    "logsCount": "{{count}} reëls",
+    "logsFailed": "Kon nie logboeke laai nie",
+    "logsPause": "Pouseer",
+    "logsResume": "Hervat",
+    "logsEmpty": "Nog geen logreëls nie.",
+    "parts": {
+      "server": "Bediener",
+      "plugins": "Plugins",
+      "sections": "Plugin-besonderhede",
+      "logs": "Bedienerlogboeke",
+      "request": "Verbinding",
+      "probes": "Verbindingskontroles",
+      "errors": "Blaaierfoute",
+      "console": "Blaaierkonsole",
+      "network": "Netwerk",
+      "page": "Blaaier en venster",
+      "dom": "Bladsy-opmaak"
+    },
+    "partHints": {
+      "server": "Weergawe, databasis, SSL en watter instellings gestel is",
+      "plugins": "Weergawes en toestande op die bediener en in die blaaier",
+      "sections": "Bykomende besonderhede wat lopende plugins byvoeg",
+      "logs": "Bedienerlogboek sedert begin en onlangse reëls",
+      "request": "Kopname wat 'n proxy voor Termix wys",
+      "probes": "Toetse dat Termix en plugin-lêers laai",
+      "errors": "Ongevangene foute en geblokkeerde laai",
+      "console": "Onlangse konsolereëls van die bladsy en plugins",
+      "network": "Onlangse versoeke en hul status",
+      "page": "Blaaier, skermgrootte en stoor sleutelname",
+      "dom": "Die opmaak van die bladsy, sonder teks"
     }
   }
 }

@@ -2,13 +2,20 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, renderHook, waitFor } from "@testing-library/react";
 
 const getPluginUserSettings = vi.hoisted(() => vi.fn());
+const getPluginHostSettings = vi.hoisted(() => vi.fn());
 
 vi.mock("@/api/plugins-api", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/api/plugins-api")>()),
   getPluginUserSettings,
+  getPluginHostSettings,
 }));
 
-import { pluginHostBridge, toHostRecord } from "@/plugin-host/bridge";
+import {
+  pluginHostBridge,
+  toHostRecord,
+  toPluginHostRecord,
+} from "@/plugin-host/bridge";
+import { registerHostProtocol } from "@/sidebar/host-protocols";
 import { PLUGIN_SETTINGS_CHANGED_EVENT } from "@/api/plugins-api";
 
 afterEach(cleanup);
@@ -44,6 +51,32 @@ describe("useSettings", () => {
   });
 });
 
+describe("useSettings for hosts", () => {
+  it("never shows the last host's values for a new host", async () => {
+    let finish: (values: Record<string, unknown>) => void = () => {};
+    getPluginHostSettings.mockResolvedValueOnce({ port: 1 });
+    const { result, rerender } = renderHook(
+      ({ hostId }: { hostId: number }) =>
+        pluginHostBridge.useSettings("docker", "host", hostId),
+      { initialProps: { hostId: 1 } },
+    );
+    await waitFor(() => expect(result.current.values).toEqual({ port: 1 }));
+
+    getPluginHostSettings.mockReturnValueOnce(
+      new Promise((resolve) => {
+        finish = resolve;
+      }),
+    );
+    rerender({ hostId: 2 });
+    expect(result.current.loaded).toBe(false);
+    expect(result.current.values).toEqual({});
+
+    await act(async () => finish({ port: 2 }));
+    expect(result.current.values).toEqual({ port: 2 });
+    expect(result.current.loaded).toBe(true);
+  });
+});
+
 describe("toHostRecord", () => {
   it("copies only the fields the SDK types", () => {
     const record = toHostRecord({
@@ -73,6 +106,17 @@ describe("toHostRecord", () => {
     expect(loose).not.toHaveProperty("password");
     expect(loose).not.toHaveProperty("terminalConfig");
     expect(loose).not.toHaveProperty("enableDocker");
+  });
+
+  it("passes the saved password flags so a terminal can offer to fill them", () => {
+    const record = toHostRecord({
+      id: 7,
+      hasPassword: true,
+      hasSudoPassword: true,
+      sudoPassword: "secret",
+    } as never);
+    expect(record).toMatchObject({ hasPassword: true, hasSudoPassword: true });
+    expect(record).not.toHaveProperty("sudoPassword");
   });
 });
 
@@ -125,5 +169,38 @@ describe("useShell", () => {
   it("is null outside the signed-in shell", () => {
     const { result } = renderHook(() => pluginHostBridge.useShell());
     expect(result.current).toBeNull();
+  });
+});
+
+describe("toPluginHostRecord", () => {
+  it("hands a quick connect login only to the plugin whose protocol it opens", () => {
+    const remove = registerHostProtocol({
+      id: "rdp",
+      pluginId: "remote",
+      settingKey: "enableRdp",
+      defaultPort: 3389,
+      titleKey: "rdp",
+      icon: () => null,
+    });
+    const host = {
+      id: "quick-1",
+      name: "q",
+      ip: "10.0.0.2",
+      quickConnectLogin: { protocol: "rdp", username: "u", password: "p" },
+      pluginSettings: { remote: { enableRdp: true } },
+    } as never;
+    try {
+      expect(toPluginHostRecord(host, "remote").quickConnectLogin).toEqual({
+        protocol: "rdp",
+        username: "u",
+        password: "p",
+      });
+      expect(
+        toPluginHostRecord(host, "other").quickConnectLogin,
+      ).toBeUndefined();
+      expect(toPluginHostRecord(host, null).quickConnectLogin).toBeUndefined();
+    } finally {
+      remove();
+    }
   });
 });

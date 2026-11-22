@@ -131,6 +131,8 @@
     "updateLinkLabel": "Pieejams atjauninājums. Atveriet izlaišanas piezīmes GitHub"
   },
   "common": {
+    "showPassword": "Rādīt paroli",
+    "hidePassword": "Paslēpt paroli",
     "scrollTabsLeft": "Ritināt cilnes pa kreisi",
     "scrollTabsRight": "Ritināt cilnes pa labi",
     "close": "Aizvērt",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Neizdevās ielādēt spraudņu sarakstu. Jūs varat izvēlēties spraudņus vēlāk no cilnes Spraudņi.",
     "securityTitle": "Apsargājiet savu kontu",
     "securityIntro": "Pievienojiet savam kontam pases atslēgu vai autentifikatora lietotni. Jūs varat to izdarīt arī vēlāk Iestatījumos sadaļā Drošība.",
-    "pluginsDocsLink": "Lasiet par katru no tiem"
+    "pluginsDocsLink": "Lasiet par katru no tiem",
+    "layoutTitle": "Izvēlieties izkārtojumu",
+    "layoutIntro": "Izkārtojums nosaka, kā ir sakārtota visa lietotne: izvēlnes, sānjosla un cilnes. Noklikšķiniet, lai to izmantotu. Izmaiņas notiek uzreiz.",
+    "layoutInstalled": "Instalēts",
+    "layoutMore": "Vairāk izkārtojumu",
+    "layoutNoMore": "Pašlaik nav pieejami citi izkārtojumi.",
+    "layoutDefault": "Noklusējums",
+    "layoutInstall": "Instalēt",
+    "layoutTurnOn": "Ieslēgt",
+    "layoutVideo": "Apskatīt video",
+    "layoutChangeLater": "Izkārtojumu varat mainīt jebkurā laikā Iestatījumos sadaļā Izskats. Ja vēlaties instalēt vairāk izkārtojumu, lūdziet administratoru.",
+    "layoutChangeLaterAdmin": "Izkārtojumu varat mainīt jebkurā laikā Iestatījumos sadaļā Izskats. Vēlāk papildu izkārtojumus var instalēt no spraudņu cilnes."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix joprojām darbojas",
+    "noticeBody": "Aizverot logu, Termix turpina darboties sistēmas joslas ikonā. Lai izslēgtu programmu, atveriet sistēmas joslas ikonas izvēlni un izvēlieties Iziet. Šo funkciju var atspējot Iestatījumos."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automātiski",
@@ -499,6 +516,7 @@
     "deleteSelected": "Dzēst",
     "exitSelection": "Iziet no atlases",
     "collapseBtn": "Sakļaut",
+    "importExportBtn": "Importēt / Eksportēt",
     "hostStatusesRefreshed": "Mezglpašnieku statusi atjaunināti",
     "failedToRefreshHosts": "Neizdevās atjaunināt mezglpašniekus",
     "movedHostTo": "Pārvietots {{host}} uz \"{{folder}}\"",
@@ -615,6 +633,7 @@
     "hostClickBehavior": "Klikšķinot uz mezgla",
     "hostClickBehaviorDesc": "Kas notiek, kad noklikšķināt uz mezgla, kuram jau ir atvērta cilne. Ctrl/Cmd klikšķis, vidējā pogas klikšķis vai \"Atvērt jaunā cilnē\" vienmēr atver jaunu.",
     "hostClickNewTab": "Vienmēr atvērt jaunā cilnē",
+    "hostClickHostPage": "Atvērt resursa lapu, ja spraudnis to piedāvā",
     "hostClickFocusExisting": "Pārslēgties uz atvērto cilni",
     "hostClickFocusExistingDoubleNew": "Klikšķiniet, lai pārslēgtos, dubultklikšķis jaunai cilnei",
     "openInNewTab": "Atvērt jaunā cilnē",
@@ -840,7 +859,12 @@
     "editorUpdate": "Atjaunināt hostu",
     "editorAdd": "Pievienot hostu",
     "speedSearch": "Meklēt hostus. Bultiņu taustiņi izvēlei, Enter savienošanai, Esc aizvēršanai",
-    "speedSearchList": "Hostu saraksts. Rakstiet vai nospiediet /, lai meklētu."
+    "speedSearchList": "Hostu saraksts. Rakstiet vai nospiediet /, lai meklētu.",
+    "openFromLink": {
+      "title": "Atvērt {{name}}?",
+      "description": "Saite lūdza Termix izveidot savienojumu ar šo serveri.",
+      "confirm": "Savienoties"
+    }
   },
   "splitScreen": {
     "title": "Sadālīts ekrāns",
@@ -920,6 +944,16 @@
     "empty": "Nav karšu. Izmantojiet Piesvienot zemāk, lai novietotu kartis."
   },
   "auth": {
+    "inviteIntro": "Jūs esat uzaicināts uz šo serveri. Izvēlieties lietotājvārdu un paroli, lai izveidotu savu kontu.",
+    "inviteInvalid": "Šis uzaicinājuma saite ir beigusies vai jau ir izmantota. Lūdziet administratoru izdot jaunu.",
+    "accountDisabled": "Šis konts ir atspējots. Lūdziet administratoru to atkal iespējot.",
+    "accountPending": "Jūsu konts gaida administratora apstiprinājumu.",
+    "stepUp": {
+      "title": "Pārbaudiet, vai tas esat jūs",
+      "description": "Lai turpinātu, pierādiet savu otro autentifikācijas faktoru.",
+      "noFactor": "Jums nav iestatīts otrais autentifikācijas faktors. Pieskaitiet to Iestatījumos un mēģiniet vēlreiz.",
+      "failed": "Tas nestrādāja. Mēģiniet vēlreiz."
+    },
     "tagline": "Pašhostēta, ar spraudņiem balstīta servera pārvaldība.",
     "loginTitle": "Laipni lūgti atpakaļ",
     "registerTitle": "Izveidot kontu",
@@ -946,6 +980,14 @@
     "loginWithExternal": "Pieteikties, izmantojot ārējo pakalpojumu sniedzēju",
     "loginWithExternalDesc": "Pieteikties, izmantojot konfigurēto ārējo identitātes pakalpojumu sniedzēju",
     "loginWithProvider": "Pieteikties ar {{name}}",
+    "pluginLogin": {
+      "signIn": "Pieteikties",
+      "verify": "Apstiprināt",
+      "code": "Kods",
+      "useKey": "Izmantot drošības atslēgu",
+      "keyPrompt": "Lai turpinātu, izmantojiet savu drošības atslēgu vai pases atslēgu.",
+      "keyFailed": "Drošības atslēgas solis nestrādāja. Mēģiniet vēlreiz."
+    },
     "resetPasswordButton": "Atiestatīt paroli",
     "sendResetCode": "Sūtīt atiestatīšanas kodu",
     "resetCodeDesc": "Ievadiet savu lietotājvārdu, lai saņemtu paroles atiestatīšanas kodu. Kods tiks reģistrēts Docker konteinera žurnālos.",
@@ -1023,6 +1065,8 @@
     "registrationSuccess": "Reģistrācija veiksmīga"
   },
   "placeholders": {
+    "username": "Jūsu lietotājvārds",
+    "newUsername": "Izvēlieties lietotājvārdu",
     "keyPassword": "atslēgas parole",
     "pastePrivateKey": "Ielīmējiet savu privāto atslēgu šeit...",
     "enterPassword": "Ievadiet savu paroli"
@@ -1069,7 +1113,8 @@
         "actionNextTab": "Pārslēgties uz nākamo cilni",
         "actionPreviousTab": "Pārslēgties uz iepriekšējo cilni",
         "actionOpenCommandPalette": "Atvērt ātro meklēšanu",
-        "actionReconnectSession": "Atkārtoti savienot pašreizējo sesiju"
+        "actionReconnectSession": "Atkārtoti savienot pašreizējo sesiju",
+        "actionToggleSidebar": "Pārslēgt sānjoslu"
       },
       "userProfile": {
         "preset_simple": "Vienkāršs",
@@ -1211,6 +1256,10 @@
         "title": "Sasniegt internetu",
         "consequence": "Tas var nosūtīt pieprasījumus ārējiem pakalpojumiem."
       },
+      "network:sockets": {
+        "title": "Atvērt savus tīkla savienojumus",
+        "consequence": "Tas var klausīties uz portiem un tieši savienoties ar jebkuru adresi, neļaujot Termix pārbaudīt katru savienojumu."
+      },
       "network:serve": {
         "title": "Pieņemt savienojumus",
         "consequence": "Tas atver portu Termix serverī."
@@ -1231,6 +1280,18 @@
         "title": "Nosūtīt brīdinājumus",
         "consequence": "Jums vai citiem lietotājiem, caur kanāliem, ko tie ir iestatījuši."
       },
+      "operations:provide": {
+        "title": "Piedāvāt darbības",
+        "consequence": "Tās darbības var izpildīt no Automatizācijām, komandrindas rīka, tālruņa lietotnes un citām vietām, personām, kurām ir atļauts tās izmantot."
+      },
+      "operations:invoke": {
+        "title": "Izpildīt citu spraudņu darbības",
+        "consequence": "Rīkojas no pieteiktā lietotāja vārda attiecībā uz darbībām, kas uzskaitītas tā manifestā. Apstiprināšanas noteikumi joprojām ir spēkā."
+      },
+      "operations:approve": {
+        "title": "Noteikt, kam nepieciešams apstiprinājums",
+        "consequence": "Var ļaut darbībām izpildīties bez apstiprinājuma vai bloķēt tās katram lietotājam."
+      },
       "notify:hub": {
         "title": "Saņemt katru brīdinājumu",
         "consequence": "Glabā un piegādā visus brīdinājumus, ko nosūta visi spraudņi, ieskaitot to saturu."
@@ -1241,7 +1302,7 @@
       },
       "network:probe": {
         "title": "Pārbaudīt, vai porti atbild",
-        "consequence": "Var atvērt vienkāršu savienojumu ar jebkuru adresi no servera, lai redzētu, vai tā ir sasniedzama."
+        "consequence": "Var atvērt vienkāršu savienojumu ar jebkuru adresi no servera, lai pārbaudītu, vai tā ir sasniedzama, un meklēt hosta nosaukumus."
       },
       "hosts:status-provide": {
         "title": "Nodrošināt hosta statusu",
@@ -1254,6 +1315,10 @@
       "hosts:lock": {
         "title": "Pārvaldīt resursdatorus kā lasāmus",
         "consequence": "Tos pārvaldītos resursdatorus neviens cits nevar rediģēt, dzēst vai atkārtoti kopīgot."
+      },
+      "hosts:connect-policy": {
+        "title": "Noteikt, kam ir atļauts izveidot savienojumu",
+        "consequence": "Var bloķēt vai atļaut katru SSH un attālinātā darbvirsas savienojumu ar jebkuru resursu."
       },
       "desktop:window": {
         "title": "Atvērt darbvirsmas logus",
@@ -1291,6 +1356,10 @@
         "title": "Glabāt savus noslēpumus",
         "consequence": "Šifrēts ar Termix. Spraudnis nekad nesatur atslēgu."
       },
+      "config:secrets": {
+        "title": "Lasīt servera glabātos noslēpumus",
+        "consequence": "Vides mainīgie un faili uz servera, izņemot Termix paša atslēgas."
+      },
       "settings:read-core": {
         "title": "Lasīt Termix iestatījumus",
         "consequence": "Servera iestatījumi, nevis jūsu hosti vai pieteikšanās dati."
@@ -1311,6 +1380,10 @@
         "title": "Pievienot krāsu tēmas",
         "consequence": "Tikai krāsas un stili. Tēmai nekāds kods netiek palaists."
       }
+    },
+    "webView": {
+      "unavailable": "Šī lapa vairs nav pieejama. Atveriet to atkal no tā spraudņa.",
+      "isolationUnavailable": "Šis pārlūks nevar droši atvērt šo lapu šeit. Izmantojiet jaunu Chrome vai Edge vai darbvirsmas lietotni."
     },
     "runtime": {
       "needsPlugin": "{{name}} nav pieejams",
@@ -1335,7 +1408,7 @@
         "running": "Darbojas",
         "disabled": "Atspējots",
         "failed": "Gaidāms apstājās",
-        "blocked": "Gaida citu spraudni",
+        "blocked": "Nevar palaist",
         "server": "Darbojas jūsu serverī",
         "safeMode": "Izslēgts drošajā režīmā"
       },
@@ -1357,7 +1430,8 @@
         "version": "Versija",
         "status": "Statuss",
         "category": "Kategorija",
-        "downloads": "Lejupielādes"
+        "downloads": "Lejupielādes",
+        "memory": "Atmiņa"
       },
       "risk": {
         "critical": "Kritisks",
@@ -1432,9 +1506,13 @@
         "updatedMany_zero": "0 spraudņi atjaunināti",
         "updatedMany_one": "{{count}} spraudnis atjaunināts",
         "updatedMany_other": "{{count}} spraudņi atjaunināti",
+        "needsReview_zero": "Papildinājumi prasa jaunas atļaujas. Pārskatiet tos, lai atjauninātu.",
+        "needsReview_one": "1 papildinājums prasa jaunas atļaujas. Pārskatiet to, lai atjauninātu.",
+        "needsReview_other": "{{count}} papildinājumi prasa jaunas atļaujas. Pārskatiet katru, lai atjauninātu.",
         "uninstalled": "{{name}} atinstalēts",
         "dataDeleted": "{{name}} dati dzēsti",
-        "failedToStart": "{{name}} neizdevās palaist. Atveriet to, lai redzētu iemeslu."
+        "failedToStart": "{{name}} neizdevās palaist. Atveriet to, lai redzētu iemeslu.",
+        "held": "{{name}} gaida {{minutes}} minūtes, līdz izmaiņas stājas spēkā, lai citi administratori varētu tās redzēt"
       },
       "errors": {
         "generic": "Kaut kas nogāja greizi",
@@ -1491,6 +1569,25 @@
       "pin": "Fiksēt šo versiju",
       "pinHint": "Saglabā {{version}} un izlaiž visus atjauninājumus, līdz šī opcija tiek izslēgta.",
       "pinnedTo": "Fiksēts uz {{version}}",
+      "legacy": {
+        "notice_zero": "0 spraudņi tika izveidoti vecākai Termix versijai un paliek izslēgti, līdz tie tiek atjaunināti: {{names}}.",
+        "notice_one": "1 spraudnis tika izveidots vecākai Termix versijai un paliek izslēgts, līdz tas tiek atjaunināts: {{names}}.",
+        "notice_other": "{{count}} spraudņi tika izveidoti vecākai Termix versijai un paliek izslēgti, līdz tie tiek atjaunināti: {{names}}.",
+        "why": "Tie tika izveidoti spraudņu API 1, kas darbojās servera iekšienē. Tagad Termix palaiž katru spraudni savā procesā, tāpēc katram ir nepieciešama versija, kas izveidota spraudņu API 2. Atjauniniet oficiālos šeit un lūdziet kopienas spraudņa autoram jaunu versiju.",
+        "guide": "Kā spraudņi pāriet uz API 2"
+      },
+      "provenance": {
+        "verified": "Veidošana pārbaudīta",
+        "verifiedHint": "Tā veidošanas izcelsme ir parakstīta ar Termix reģistra izlaišanas darbplūsmu un atbilst šim failam. Atver veidošanu.",
+        "unchecked": "Veidošana nepārbaudīta",
+        "uncheckedHint": "Tā veidošanas izcelsmi nevarēja pārbaudīt lejupielādes laikā. Tā reģistra paraksts bija."
+      },
+      "updateCheck": {
+        "notice_zero": "Termix {{version}} ir pieejams. 0 spraudņi paliks izslēgti, līdz tos atjaunināsit: {{names}}.",
+        "notice_one": "Termix {{version}} ir pieejams. 1 spraudnis paliks izslēgts, līdz to atjaunināsit: {{names}}.",
+        "notice_other": "Termix {{version}} ir pieejams. {{count}} spraudņi paliks izslēgti, līdz tos atjaunināsit: {{names}}.",
+        "needs": "{{name}} (nepieciešama Termix {{range}})"
+      },
       "version": "Versija",
       "versionPickHint": "Uzstādīt vecāku izlaidumu nevis jaunāko. Tas paliks šajā versijā, līdz tā tiks atfiksēta.",
       "versionPickHintInstalled": "Pārslēgties uz citu izlaidumu. Ja tiek izvēlēts nevis jaunākais, tas tiek fiksēts.",
@@ -1565,7 +1662,13 @@
         "unreachable": "Neizdevās to izlasīt: {{error}}",
         "filter": "Reģistrs",
         "allRegistries": "Visi reģistri",
-        "browseHint": "Ieslēdziet kopienas spraudņus vai pievienojiet savu reģistru cilnē „Reģistri”."
+        "browseHint": "Ieslēdziet kopienas spraudņus vai pievienojiet savu reģistru cilnē „Reģistri”.",
+        "looksName": "Kopienas izkārtojumi un temas",
+        "looksHint": "Ļauj izkārtojumiem un temām, kas nav no Termix, darboties ārpus drošības vides, tāpat kā oficiālajiem. Izkārtojums zīmē visu lietotni, tāpēc tam ir piekļuve un iespējas, kas ir arī jums. Instalējiet tikai tos, kam uzticat. Pēc šīs izmaiņas pārlādējiet lapu.",
+        "looksConfirmTitle": "Ļaut kopienas izkārtojumiem darboties ārpus drošības vides?",
+        "looksConfirmBody": "Kopienas izkārtojums vai tēma darbosies lapā ar pilnu piekļuvi Termix kā pašlaik pieteikušajam lietotājam. Tas var būt riskanti. Ieslēdziet šo opciju tikai tad, ja uzticat instalētajiem izkārtojumiem un temām.",
+        "looksConfirm": "Ieslēgt",
+        "looksSaved": "Saglabāts. Pārlādējiet lapu, lai izmaiņas stāsp spēkā."
       },
       "upToDate": "Viss ir jaunākajā versijā.",
       "lastChecked": "Pēdējo reizi pārbaudīts {{time}}",
@@ -1652,8 +1755,29 @@
       "unsupportedHint": "Šī spraudņa izlaidums nestrādā šajā Termix versijā. Atjauniniet Termix, lai to instalētu.",
       "needsTermix": "Nepieciešams Termix {{range}}",
       "showUnsupported": "Rādīt neatbalstītos ({{count}})",
-      "showMore": "Rādīt vēl {{count}} (atlicis {{total}})"
-    }
+      "showMore": "Rādīt vēl {{count}} (atlicis {{total}})",
+      "memory": {
+        "summary": "Atmiņa: {{total}} no {{limit}} | spraudņi {{plugins}} | {{running}} darbojas",
+        "lowTitle": "Šim serverim ir maz atmiņas",
+        "lowBody": "Termix un tā spraudņi izmanto {{total}} no {{limit}}. Piešķiriet serverim vairāk atmiņas vai izslēdziet spraudņus, kurus neizmantojat.",
+        "idle": "Dīkstāvē",
+        "idleHint": "Pašlaik nedarbojas. Tas sākas, kad kaut kas to nepieciešams.",
+        "keptOn": "Paliek darboties: {{reason}}",
+        "stopsWhenIdle": "Apstājas dīkstāves laikā"
+      }
+    },
+    "firstLoad": {
+      "title": "Sagatavo spraudņus",
+      "progress": "{{done}} no {{total}}",
+      "hint": "Papildinājumi tiek palaisti pirmo reizi. Pēc šī procesa Termix atvērsies uzreiz.",
+      "skip": "Turpināt"
+    },
+    "framesBlocked": "Papildinājumi nevar ielādēt savus failus. Iespējams, Termix priekšā esošs pieteikšanās starpniekserveris tos bloķē.",
+    "framesBlockedHelp": "Kā novērst",
+    "framesFailed_zero": "Papildinājumi nevarēja ielādēties, tāpēc to elementi ir paslēpti: {{names}}",
+    "framesFailed_one": "{{names}} nevarēja ielādēties, tāpēc tā elementi ir paslēpti",
+    "framesFailed_other": "{{count}} papildinājumi nevarēja ielādēties, tāpēc to elementi ir paslēpti: {{names}}",
+    "framesFailedReload": "Pārlādēt"
   },
   "settings": {
     "secretSet": "Iestatīts",
@@ -1705,6 +1829,12 @@
       "title": "Kolonnas",
       "auto": "Automātiski",
       "count": "{{count}} kolonnu platums"
+    },
+    "pager": {
+      "previous": "Iepriekšējais",
+      "next": "Nākamais",
+      "page": "{{page}}. lapa",
+      "pageOf": "{{page}}. lapa no {{pages}}"
     }
   },
   "fields": {
@@ -1724,7 +1854,108 @@
   "rbac": {
     "roles": {
       "admin": "Administrators",
-      "user": "Lietotājs"
+      "user": "Lietotājs",
+      "viewer": "Skatītājs",
+      "operator": "Operators",
+      "auditor": "Auditors",
+      "helpdesk": "Palīdzības dienests"
+    }
+  },
+  "tileGrid": {
+    "empty": "Vēl nav flīžu. Pievienojiet dažas no saraksta.",
+    "move": "Velciet, lai pārvietotu",
+    "moveTile": "Pārvietot {{tile}}",
+    "settings": "{{tile}} iestatījumi",
+    "remove": "Noņemt {{tile}}",
+    "width": "Platums",
+    "height": "Augstums",
+    "addTiles": "Pievienot flīzes",
+    "closePicker": "Aizvērt",
+    "search": "Meklēt flīzes",
+    "noMatches": "Nav atrasts nekas.",
+    "kind": {
+      "all": "Visas",
+      "card": "Kartiņas",
+      "chart": "Diagrammas",
+      "signal": "Statuss",
+      "action": "Darbības",
+      "resource": "Saraksti",
+      "session": "Sesijas"
+    },
+    "reset": "Atiestatīt",
+    "done": "Gatavs"
+  },
+  "diagnostics": {
+    "title": "Diagnostika",
+    "makeReport": "Izveidot diagnostikas ziņojumu",
+    "slowBoot": "Ilgi ilgst? Izveidojiet diagnostikas ziņojumu",
+    "troubleSigningIn": "Grūtības pieteikties? Izveidojiet diagnostikas ziņojumu",
+    "reportTab": "Ziņojums",
+    "logsTab": "Servera žurnāli",
+    "intro": "Tiek izveidota viena faila ar informāciju, kas Termix nepieciešama problēmas noteikšanai: kļūdas, žurnāli, spraudņu stāvokļi un pieprasījumu ceļš uz serveri. Atvelciet to un pievienojiet GitHub problēmai vai nosūtiet Discord.",
+    "notAdmin": "Servera žurnāli un servera detaļas prasa administratora tiesības. Ja problēma ir serverī, lūdziet administratoru izveidot ziņojumu arī viņam.",
+    "signedOut": "Jūs neesat pieteicies, tāpēc tiek iekļauta tikai pārlūkprogrammas daļa.",
+    "whatHappened": "Kas notika",
+    "whatHappenedHint": "Neobligāti. Ko jūs darījāt un kas nogāja greizi?",
+    "include": "Iekļaut",
+    "adminOnly": "Nepieciešams administrators",
+    "privacy": "Privātums",
+    "mask": "Slēpt vārdus un adreses",
+    "maskHint": "IP adreses, hosta nosaukumi, lietotājvārdi un e-pasta adreses tiek pārvērstas par host-1, user-1 utt. Paroles, atslēgas un žetoni vienmēr tiek noņemti.",
+    "domText": "Iekļaut lapas tekstu",
+    "domTextHint": "Pievieno ekrānā redzamo tekstu lapas izkārtojumam. Noklusējuma režīmā ir izslēgts, jo tas var atklāt jūsu datus.",
+    "warnOnly": "Tikai brīdinājumi un kļūdas no servera žurnāla",
+    "warnOnlyHint": "Padara failu mazāku.",
+    "focus": "Spraudnis",
+    "focusHint": "Rāda šo spraudni pirmo un reģistrē problēmu tā repozitorijā.",
+    "allPlugins": "Visi spraudņi",
+    "findings": "Konstatēts pārbaudēs",
+    "preview": "Kas tiks nosūtīts",
+    "previewCut": "(Priekšskatījums šeit beidzas. Failā ir viss.)",
+    "cut": "Fails bija lielāks par 5 MB, tāpēc vecākās žurnāla rindas tika nogrieztas.",
+    "footerHint": "Pirms nosūtīšanas pārbaudiet priekšskatījumu.",
+    "copy": "Kopēt",
+    "copied": "Ziņojums nokopēts",
+    "copyFailed": "Neizdevās nokopēt ziņojumu",
+    "download": "Atvērt",
+    "downloaded": "Ziņojums lejupielādēts",
+    "openIssue": "Atvērt GitHub problēmu",
+    "logsSearch": "Meklēt žurnālos",
+    "logsLevel": "Līmenis",
+    "logsAll": "Visi līmeņi",
+    "logsWarn": "Brīdinājumi un kļūdas",
+    "logsError": "Kļūdas",
+    "logsPlugin": "Spraudnis",
+    "logsCount": "{{count}} rindas",
+    "logsFailed": "Neizdevās ielādēt žurnālus",
+    "logsPause": "Pauze",
+    "logsResume": "Turpināt",
+    "logsEmpty": "Vēl nav žurnāla rindu.",
+    "parts": {
+      "server": "Serveris",
+      "plugins": "Spraudņi",
+      "sections": "Spraudņu detaļas",
+      "logs": "Servera žurnāli",
+      "request": "Savienojums",
+      "probes": "Savienojuma pārbaudes",
+      "errors": "Pārlūkprogrammas kļūdas",
+      "console": "Pārlūkprogrammas konsole",
+      "network": "Tīkls",
+      "page": "Pārlūkprogramma un logs",
+      "dom": "Lapas izkārtojums"
+    },
+    "partHints": {
+      "server": "Versija, datubāze, SSL un iestatījumi, kas ir aktivizēti",
+      "plugins": "Versijas un stāvokļi serverī un pārlūkprogrammā",
+      "sections": "Papildinformācija, ko pievieno aktivizētie spraudņi",
+      "logs": "Servera žurnāls kopš palaišanas un jaunākās rindas",
+      "request": "Virsrakstu nosaukumi, kas norāda uz proxy priekšā Termix",
+      "probes": "Pārbaudes, kas nosaka, vai Termix un spraudņu faili ielādējas",
+      "errors": "Neapstrādātas kļūdas un bloķētas ielādes",
+      "console": "Jaunākās konsoles rindas no lapas un spraudņiem",
+      "network": "Jaunākie pieprasījumi un to statusi",
+      "page": "Pārlūkprogramma, ekrāna izmērs un glabāšanas atslēgu nosaukumi",
+      "dom": "Lapas izkārtojums bez teksta"
     }
   }
 }

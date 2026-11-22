@@ -63,6 +63,7 @@ import {
   OPEN_PLUGIN_SETTINGS_EVENT,
 } from "@/plugins/open-plugins";
 import type { OpenTabOptions, RestoreTarget } from "./types";
+import { useTabHistory } from "./use-tab-history";
 
 const PENDING_TARGET_MS = 60_000;
 
@@ -145,6 +146,17 @@ export function useTabs({
   useEffect(() => {
     activeTabIdRef.current = activeTabId;
   }, [activeTabId]);
+  const tabHistory = useTabHistory({
+    activeTabId,
+    isOpen: (id) =>
+      tabsRef.current.some((tab) => tab.id === id && !tab.parentSplitTabId),
+    isTopLevel: useCallback(
+      (id: string) =>
+        tabsRef.current.some((tab) => tab.id === id && !tab.parentSplitTabId),
+      [],
+    ),
+    setActiveTabId,
+  });
 
   const terminalRefs = useRef<Map<string, ReturnType<typeof createRef>>>(
     new Map(),
@@ -508,7 +520,6 @@ export function useTabs({
     const ref = isSessionTabType(type) ? createRef() : undefined;
     if (ref) terminalRefs.current.set(tabId, ref);
 
-    let finalLabel = host.name;
     const savedLabel = restore?.savedLabel;
     // A saved label that doesn't match the bare host name or the auto-numbered pattern is a custom label
     const isCustomLabel =
@@ -516,17 +527,29 @@ export function useTabs({
       savedLabel !== host.name &&
       !/^.+ \(\d+\)$/.test(savedLabel);
 
+    // Worked out here, not in the updater: React may run that later, and
+    // the saved tab below needs the same label.
+    const labelFor = (current: Tab[]) => {
+      if (isCustomLabel && savedLabel) return savedLabel;
+      if (options?.label) return options.label;
+      const count = current.filter(
+        (t) =>
+          t.type === type && t.label.replace(/ \(\d+\)$/, "") === host.name,
+      ).length;
+      return count === 0 ? host.name : `${host.name} (${count + 1})`;
+    };
+    const finalLabel = labelFor(tabsRef.current);
+
     setTabs((prev) => {
       if (isCustomLabel && savedLabel) {
-        finalLabel = savedLabel;
         return [
           ...prev,
           {
             id: tabId,
             instanceId,
             type,
-            label: finalLabel,
-            customLabel: finalLabel,
+            label: savedLabel,
+            customLabel: savedLabel,
             host,
             openedAt,
             terminalRef: ref,
@@ -540,11 +563,7 @@ export function useTabs({
         (t) =>
           t.type === type && t.label.replace(/ \(\d+\)$/, "") === host.name,
       );
-      finalLabel = options?.label
-        ? options.label
-        : same.length === 0
-          ? host.name
-          : `${host.name} (${same.length + 1})`;
+      const label = labelFor(prev);
 
       // Retrofit the first duplicate's label to "(1)" if needed
       const next =
@@ -560,7 +579,7 @@ export function useTabs({
           id: tabId,
           instanceId,
           type,
-          label: finalLabel,
+          label,
           host,
           openedAt,
           terminalRef: ref,
@@ -686,6 +705,7 @@ export function useTabs({
       // label so the two stay in sync.
       const titleKey = getTabType(type)?.titleKey;
       const label =
+        tabLabel ??
         singletonLabels[type] ??
         (titleKey ? t(titleKey) : railItemLabel(type, t));
       setTabs((prev) => {
@@ -802,8 +822,14 @@ export function useTabs({
       const remaining = tabs.filter(
         (tab) => tab.id !== id && !tab.parentSplitTabId,
       );
+      // Go back to the tab used before this one, like closing a browser tab.
+      const previous = tabHistory.recent(id);
       setActiveTabId(
-        remaining.length > 0 ? remaining[remaining.length - 1].id : "dashboard",
+        previous && remaining.some((tab) => tab.id === previous)
+          ? previous
+          : remaining.length > 0
+            ? remaining[remaining.length - 1].id
+            : "dashboard",
       );
     }
     setTabs((prev) => {
@@ -814,8 +840,10 @@ export function useTabs({
     });
   }
 
-  function reconnectAllDisconnected() {
-    const { reconnected, failed } = reconnectDisconnectedTabs(tabsRef.current);
+  async function reconnectAllDisconnected() {
+    const { reconnected, failed } = await reconnectDisconnectedTabs(
+      tabsRef.current,
+    );
     if (reconnected || !failed)
       toast(
         t(
@@ -828,7 +856,7 @@ export function useTabs({
     if (failed)
       toast.error(t("nav.reconnectTerminalsFailed", { count: failed }));
   }
-  const reconnectAllRef = useRef<() => void>(() => {});
+  const reconnectAllRef = useRef<() => Promise<void> | void>(() => {});
   reconnectAllRef.current = reconnectAllDisconnected;
 
   function refreshTab(id: string) {
@@ -846,7 +874,11 @@ export function useTabs({
     if (guard && !(await guard())) return;
     if (!(await canCloseTab(id))) return;
     const confirmEnabled = localStorage.getItem("confirmTabClose") === "true";
-    if (tab && confirmEnabled && isActiveConnectionTab(tab)) {
+    const connected =
+      !!tab &&
+      isSessionTabType(tab.type) &&
+      (await tab.terminalRef?.current?.isConnected?.()) === true;
+    if (tab && confirmEnabled && connected) {
       const ask = confirmRef.current;
       const ok = ask
         ? await ask({
@@ -907,6 +939,7 @@ export function useTabs({
     setTabs,
     activeTabId,
     setActiveTabId,
+    tabHistory,
     tabsReady,
     backgroundTabRecords,
     setBackgroundTabRecords,

@@ -131,6 +131,8 @@
     "updateLinkLabel": "Na voljo je posodobitev. Odprite opombe k izdaji na GitHubu"
   },
   "common": {
+    "showPassword": "Prikaži geslo",
+    "hidePassword": "Skrij geslo",
     "scrollTabsLeft": "Premakni zavihke levo",
     "scrollTabsRight": "Premakni zavihke desno",
     "close": "Zapri",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Seznam vtičnikov ni bilo mogoče naložiti. Vtičnike lahko izberete kasneje na zavihku Vtičniki.",
     "securityTitle": "Varnost vašega računa",
     "securityIntro": "Dodajte geslo za dostop (passkey) ali aplikacijo za preverjanje pristnosti k svojemu računu. To lahko storite tudi kasneje v Nastavitvah pod razdelkom Varnost.",
-    "pluginsDocsLink": "Preberite o vsakem posebej"
+    "pluginsDocsLink": "Preberite o vsakem posebej",
+    "layoutTitle": "Izberite razpored",
+    "layoutIntro": "Razpored določa, kako je celotna aplikacija urejena: meniji, stranska vrstica in zavihki. Kliknite ga za uporabo. Sprememba se pojavi takoj.",
+    "layoutInstalled": "Nameščeno",
+    "layoutMore": "Več razporedov",
+    "layoutNoMore": "Trenutno ni na voljo drugih razporedov.",
+    "layoutDefault": "Privzeto",
+    "layoutInstall": "Namesti",
+    "layoutTurnOn": "Vklopi",
+    "layoutVideo": "Oglejte si video",
+    "layoutChangeLater": "Razpored lahko kadarkoli spremenite v Nastavitvah pod videzom. Če želite namestiti več razporedov, se obrnite na skrbnika.",
+    "layoutChangeLaterAdmin": "Razpored lahko kadarkoli spremenite v Nastavitvah pod videzom. Več razporedov lahko kasneje namestite na zavihku Vtičniki."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix še vedno teče",
+    "noticeBody": "Zapiranje okna Termix pušča v ozadju. Za izhod odprite meni ikone v obvestilnem območju in izberite Izhod. To lahko onemogočite v nastavitvah."
   },
   "desktopUpdates": {
     "modeAutomatic": "Samodejno",
@@ -503,6 +520,7 @@
     "deleteSelected": "Izbriši",
     "exitSelection": "Izhod iz izbire",
     "collapseBtn": "Strni",
+    "importExportBtn": "Uvoz / Izvoz",
     "hostStatusesRefreshed": "Stanja gostiteljev osvežena",
     "failedToRefreshHosts": "Osveževanje gostiteljev ni uspelo",
     "movedHostTo": "Premaknjeno {{host}} v \"{{folder}}\"",
@@ -621,6 +639,7 @@
     "hostClickBehavior": "Klik na gostitelja",
     "hostClickBehaviorDesc": "Kaj se zgodi, ko klikneš na gostitelja, ki že ima odprt zavihek. Ctrl/Cmd klik, sredinski klik ali »Odpri v novem zavihku« vedno odprejo nov zavihek.",
     "hostClickNewTab": "Vedno odpri nov zavihek",
+    "hostClickHostPage": "Odpri stran gostitelja, če vtičnik ponuja takšno",
     "hostClickFocusExisting": "Preklopi na odprt zavihek",
     "hostClickFocusExistingDoubleNew": "Klik za preklop, dvojni klik za nov zavihek",
     "openInNewTab": "Odpri v novem zavihku",
@@ -852,7 +871,12 @@
     "editorUpdate": "Posodobi gostitelja",
     "editorAdd": "Dodaj gostitelja",
     "speedSearch": "Išči gostitelje. Puščice za izbiro, Enter za povezavo, Esc za zapiranje",
-    "speedSearchList": "Seznam gostiteljev. Vnesite besedilo ali pritisnite / za iskanje."
+    "speedSearchList": "Seznam gostiteljev. Vnesite besedilo ali pritisnite / za iskanje.",
+    "openFromLink": {
+      "title": "Odpreti {{name}}?",
+      "description": "Povezava je zahtevala, da se Termix poveže s tem gostiteljem.",
+      "confirm": "Poveži"
+    }
   },
   "splitScreen": {
     "title": "Razdeljen zaslon",
@@ -933,6 +957,16 @@
     "empty": "Ni kartic. Uporabite gumb Dodaj spodaj za dodajanje kartic."
   },
   "auth": {
+    "inviteIntro": "Povabljeni ste na ta strežnik. Izberite uporabniško ime in geslo za ustvaritev računa.",
+    "inviteInvalid": "Ta povezava za vabilo je potekla ali pa je bila že uporabljena. Za novo vprašajte upravitelja.",
+    "accountDisabled": "Ta račun je onemogočen. Za ponovno omogočitev vprašajte upravitelja.",
+    "accountPending": "Vaš račun čaka na odobritev s strani upravitelja.",
+    "stepUp": {
+      "title": "Preverite, da ste res vi",
+      "description": "Za nadaljevanje potrdite svoj drugi dejavnik.",
+      "noFactor": "Nimate nastavljenega drugega dejavnika. Dodajte ga v Nastavitvah in poskusite znova.",
+      "failed": "To ni delovalo. Poskusite znova."
+    },
     "tagline": "Upravljanje strežnikov, ki temelji na vtičnikih in ga gostite sami.",
     "loginTitle": "Dobrodošli nazaj",
     "registerTitle": "Ustvari račun",
@@ -959,6 +993,14 @@
     "loginWithExternal": "Prijava z zunanjim ponudnikom",
     "loginWithExternalDesc": "Prijavite se z uporabo konfiguriranega zunanjega ponudnika identitete",
     "loginWithProvider": "Prijava z {{name}}",
+    "pluginLogin": {
+      "signIn": "Prijava",
+      "verify": "Preveri",
+      "code": "Koda",
+      "useKey": "Uporabi varnostni ključ",
+      "keyPrompt": "Za nadaljevanje uporabite svoj varnostni ključ ali potrdilo.",
+      "keyFailed": "Korak z varnostnim ključem ni deloval. Poskusite znova."
+    },
     "resetPasswordButton": "Ponastavi geslo",
     "sendResetCode": "Pošlji kodo za ponastavitev",
     "resetCodeDesc": "Vnesite uporabniško ime za prejemanje kode za ponastavitev gesla. Koda bo zapisana v dnevnike Docker kontejnerja.",
@@ -1036,6 +1078,8 @@
     "registrationSuccess": "Registracija je bila uspešna"
   },
   "placeholders": {
+    "username": "Vaše uporabniško ime",
+    "newUsername": "Izberite uporabniško ime",
     "keyPassword": "geslo za ključ",
     "pastePrivateKey": "Prilepite svoj zasebni ključ sem...",
     "enterPassword": "Vnesite svoje geslo"
@@ -1086,7 +1130,8 @@
         "actionNextTab": "Preklopi na naslednji zavihek",
         "actionPreviousTab": "Preklopi na prejšnji zavihek",
         "actionOpenCommandPalette": "Odpri hitro iskanje",
-        "actionReconnectSession": "Ponovno poveži trenutno sejo"
+        "actionReconnectSession": "Ponovno poveži trenutno sejo",
+        "actionToggleSidebar": "Preklopi stransko vrstico"
       },
       "userProfile": {
         "preset_simple": "Preprosto",
@@ -1228,6 +1273,10 @@
         "title": "Dostop do interneta",
         "consequence": "Lahko pošilja zahteve zunanjim storitvam."
       },
+      "network:sockets": {
+        "title": "Odpiranje lastnih omrežnih povezav",
+        "consequence": "Lahko posluša na vratih in se neposredno poveže na kateri koli naslov, ne da bi Termix preverjal vsako povezavo."
+      },
       "network:serve": {
         "title": "Sprejemanje povezav",
         "consequence": "Odpre vrat na Termix strežniku."
@@ -1248,6 +1297,18 @@
         "title": "Pošiljanje opozoril",
         "consequence": "Vam ali drugim uporabnikom, prek kanalov, ki so jih nastavili."
       },
+      "operations:provide": {
+        "title": "Ponudi ukaze",
+        "consequence": "Njegove ukaze lahko izvajajo avtomatizacije, ukazna vrstica, mobilna aplikacija in drugi deli programa, in sicer uporabniki, ki imajo za to dovoljenje."
+      },
+      "operations:invoke": {
+        "title": "Izvajaj ukaze drugih vtičnikov",
+        "consequence": "Ureja ukaze, navedene v njegovem manifestu, v imenu prijavljenega uporabnika. Pravila odobritve se še vedno uporabljajo."
+      },
+      "operations:approve": {
+        "title": "Odloči, kaj zahteva odobritev",
+        "consequence": "Lahko omogoči izvajanje ukazov brez odobritve ali jih blokira za vse uporabnike."
+      },
       "notify:hub": {
         "title": "Prejemanje vseh opozoril",
         "consequence": "Shranjuje in dostavlja opozorila, ki jih pošiljajo vsi vtičniki, vključno z njihovo vsebino."
@@ -1258,7 +1319,7 @@
       },
       "network:probe": {
         "title": "Preveri, ali pristanišča odgovarjajo",
-        "consequence": "Lahko odpre navadno povezavo na kateri koli naslov s strežnika, da preveri, ali je dosegljiv."
+        "consequence": "Lahko odpre navadno povezavo na kateri koli naslov s strežnika, da preveri, ali je dosegljiv, in poišče imena gostiteljev."
       },
       "hosts:status-provide": {
         "title": "Zagotovi stanje gostitelja",
@@ -1271,6 +1332,10 @@
       "hosts:lock": {
         "title": "Upravljanje gostiteljev kot samo za branje",
         "consequence": "Gostiteljev, ki jih upravlja, ne morejo urejati, brisati ali ponovno deliti drugi uporabniki."
+      },
+      "hosts:connect-policy": {
+        "title": "Odloči, kdo se lahko poveže",
+        "consequence": "Lahko blokira ali dovoli vsako SSH in daljinsko namizno povezavo do katerega koli gostitelja."
       },
       "desktop:window": {
         "title": "Odpiranje oken namizja",
@@ -1308,6 +1373,10 @@
         "title": "Shranjevanje lastnih skrivnosti",
         "consequence": "Šifrirano s strani Termix. Vtičnik nikoli ne hrani ključa."
       },
+      "config:secrets": {
+        "title": "Branje skrivnosti, ki jih hrani strežnik",
+        "consequence": "Okoljske spremenljivke in datoteke na strežniku, razen lastnih ključev Termixa."
+      },
       "settings:read-core": {
         "title": "Branje nastavitev Termix",
         "consequence": "Nastavitve strežnika, ne vaših gostiteljev ali poverilnic."
@@ -1328,6 +1397,10 @@
         "title": "Dodajanje barvnih tem",
         "consequence": "Samo barve in slogi. Za temo se ne izvaja nobena koda."
       }
+    },
+    "webView": {
+      "unavailable": "Ta stran ni več na voljo. Ponovno jo odprite iz vtičnika.",
+      "isolationUnavailable": "Ta brskalnik te strani ne more varno odpreti tukaj. Uporabite najnovejši Chrome ali Edge ali namizno aplikacijo."
     },
     "runtime": {
       "needsPlugin": "{{name}} ni na voljo",
@@ -1352,7 +1425,7 @@
         "running": "Deluje",
         "disabled": "Onemogočen",
         "failed": "Nepričakovano ustavljen",
-        "blocked": "Čaka na drug vtičnik",
+        "blocked": "Ni mogoče zagnati",
         "server": "Zažene se na vašem strežniku",
         "safeMode": "Izklopljeno v varnem načinu"
       },
@@ -1374,7 +1447,8 @@
         "version": "Različica",
         "status": "Stanje",
         "category": "Kategorija",
-        "downloads": "Prenosi"
+        "downloads": "Prenosi",
+        "memory": "Pomnilnik"
       },
       "risk": {
         "critical": "Kritično",
@@ -1461,9 +1535,14 @@
         "updatedMany_two": "{{count}} vtičnika posodobljena",
         "updatedMany_few": "{{count}} vtičniki posodobljeni",
         "updatedMany_other": "{{count}} vtičnikov posodobljenih",
+        "needsReview_one": "1 vtičnik zahteva nova dovoljenja. Preglejte ga za posodobitev.",
+        "needsReview_two": "{{count}} vtičnika zahtevata novi dovoljenja. Preglejte ju za posodobitev.",
+        "needsReview_few": "{{count}} vtičniki zahtevajo nova dovoljenja. Preglejte jih za posodobitev.",
+        "needsReview_other": "{{count}} vtičnikov zahteva nova dovoljenja. Preglejte jih za posodobitev.",
         "uninstalled": "{{name}} odstranjen",
         "dataDeleted": "Podatki za {{name}} izbrisani",
-        "failedToStart": "{{name}} se ni mogel zagnati. Odprite ga, da vidite razlog."
+        "failedToStart": "{{name}} se ni mogel zagnati. Odprite ga, da vidite razlog.",
+        "held": "{{name}} čaka {{minutes}} minut, preden sprememba stopi v veljavo, da jo lahko vidijo tudi drugi upravitelji"
       },
       "errors": {
         "generic": "Nekaj je šlo narobe",
@@ -1524,6 +1603,27 @@
       "pin": "Ohrani to različico",
       "pinHint": "Ohrani različico {{version}} in preskoči vse posodobitve, dokler tega ne izklopite.",
       "pinnedTo": "Pripeto na različico {{version}}",
+      "legacy": {
+        "notice_one": "1 vtičnik je bil izdelan za starejšo različico Termixa in bo ostal izklopljen, dokler ga ne posodobite: {{names}}.",
+        "notice_two": "2 vtičnika sta bila izdelana za starejšo različico Termixa in bosta ostala izklopljena, dokler ju ne posodobite: {{names}}.",
+        "notice_few": "{{count}} vtičniki so bili izdelani za starejšo različico Termixa in bodo ostali izklopljeni, dokler jih ne posodobite: {{names}}.",
+        "notice_other": "{{count}} vtičnikov je bilo izdelanih za starejšo različico Termixa in bodo ostali izklopljeni, dokler jih ne posodobite: {{names}}.",
+        "why": "Izdelani so bili za vmesnik vtičnikov 1, ki je deloval znotraj strežnika. Termix zdaj vsak vtičnik izvaja v svojem procesu, zato potrebujejo različico za vmesnik vtičnikov 2. Uradne posodobite tukaj, avtorja vtičnika skupnosti pa vprašajte za posodobitev.",
+        "guide": "Kako vtičniki prehajajo na vmesnik 2"
+      },
+      "provenance": {
+        "verified": "Gradnja preverjena",
+        "verifiedHint": "Potek gradnje je bil podpisan s strani delovnega postopka izdaje registra Termixa in se ujema s to datoteko. Odpre gradnjo.",
+        "unchecked": "Gradnja ni preverjena",
+        "uncheckedHint": "Poteka gradnje ni bilo mogoče preveriti ob prenosu. Podpis registra je bil preverjen."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} je na voljo. 1 vtičnik bo ostal izklopljen, dokler ga ne posodobite: {{names}}.",
+        "notice_two": "Termix {{version}} je na voljo. 2 vtičnika bosta ostala izklopljena, dokler ju ne posodobite: {{names}}.",
+        "notice_few": "Termix {{version}} je na voljo. {{count}} vtičniki bodo ostali izklopljeni, dokler jih ne posodobite: {{names}}.",
+        "notice_other": "Termix {{version}} je na voljo. {{count}} vtičnikov bo ostalo izklopljenih, dokler jih ne posodobite: {{names}}.",
+        "needs": "{{name}} (zahteva Termix {{range}})"
+      },
       "version": "Različica",
       "versionPickHint": "Namestite starejšo različico namesto najnovejše. Ostane na tej različici, dokler je ne odpnete.",
       "versionPickHintInstalled": "Preklopite na drugo različico. Izbor katere koli, ki ni najnovejša, jo pripne.",
@@ -1599,7 +1699,13 @@
         "unreachable": "Registr ni bilo mogoče prebrati: {{error}}",
         "filter": "Registr",
         "allRegistries": "Vsi registri",
-        "browseHint": "Vklopite vtičnike skupnosti ali dodajte svoj registr na zavihku Registri."
+        "browseHint": "Vklopite vtičnike skupnosti ali dodajte svoj registr na zavihku Registri.",
+        "looksName": "Skupnostne razporeditve in teme",
+        "looksHint": "Omogoča, da razporeditve in teme, ki niso od Termixa, delujejo zunaj peskovnika, podobno kot uradne. Razporeditev nariše celotno aplikacijo, zato lahko vidi in naredi vse, kar lahko vi. Namestite le tiste, ki jim zaupate. Po spremembi ponovno naložite stran.",
+        "looksConfirmTitle": "Dovoliti skupnostnim razporeditvam delovanje zunaj peskovnika?",
+        "looksConfirmBody": "Skupnostna razporeditev ali tema bo delovala na strani z neposrednim dostopom do Termixa kot prijavljeni uporabnik. To lahko predstavlja tveganje. To možnost vklopite le, če zaupate razporeditvam in temam, ki jih namestite.",
+        "looksConfirm": "Vklopi",
+        "looksSaved": "Shranjeno. Ponovno naložite stran za uporabo sprememb."
       },
       "upToDate": "Vse je posodobljeno.",
       "lastChecked": "Zadnjič preverjeno {{time}}",
@@ -1690,8 +1796,30 @@
       "unsupportedHint": "Na tej različici Termix ne deluje nobena izdaja tega vtičnika. Posodobite Termix, da ga namestite.",
       "needsTermix": "Zahteva Termix {{range}}",
       "showUnsupported": "Prikaži nepodprte ({{count}})",
-      "showMore": "Prikaži še {{count}} (preostalo: {{total}})"
-    }
+      "showMore": "Prikaži še {{count}} (preostalo: {{total}})",
+      "memory": {
+        "summary": "Pomnilnik: {{total}} od {{limit}} | vtičniki {{plugins}} | {{running}} deluje",
+        "lowTitle": "Na tem strežniku je malo pomnilnika",
+        "lowBody": "Termix in njegovi vtičniki uporabljajo {{total}} od {{limit}}. Dajte strežniku več pomnilnika ali izklopite vtičnike, ki jih ne uporabljate.",
+        "idle": "Neaktivno",
+        "idleHint": "Trenutno ne deluje. Zažene se, ko ga nekaj potrebuje.",
+        "keptOn": "Nadalje deluje: {{reason}}",
+        "stopsWhenIdle": "Ustavi se pri neaktivnosti"
+      }
+    },
+    "firstLoad": {
+      "title": "Pripravljanje vtičnikov",
+      "progress": "{{done}} od {{total}}",
+      "hint": "Vtičniki se zaganjajo prvič. Po tem se bo Termix odprl takoj.",
+      "skip": "Nadaljuj"
+    },
+    "framesBlocked": "Vtičniki ne morejo naložiti svojih datotek. Prijava preko proxyja pred Termixom jih verjetno blokira.",
+    "framesBlockedHelp": "Kako popraviti",
+    "framesFailed_one": "{{names}} ni bilo mogoče naložiti, zato so njegovi deli skriti",
+    "framesFailed_two": "{{count}} vtičnika ni bilo mogoče naložiti, zato sta njuna dela skrita: {{names}}",
+    "framesFailed_few": "{{count}} vtičnikov ni bilo mogoče naložiti, zato so njihovi deli skriti: {{names}}",
+    "framesFailed_other": "{{count}} vtičnikov ni bilo mogoče naložiti, zato so njihovi deli skriti: {{names}}",
+    "framesFailedReload": "Ponovno naloži"
   },
   "settings": {
     "secretSet": "Nastavljeno",
@@ -1747,6 +1875,12 @@
       "title": "Stolpci",
       "auto": "Samodejno",
       "count": "{{count}} širok"
+    },
+    "pager": {
+      "previous": "Prejšnja",
+      "next": "Naslednja",
+      "page": "Stran {{page}}",
+      "pageOf": "Stran {{page}} od {{pages}}"
     }
   },
   "fields": {
@@ -1769,7 +1903,108 @@
   "rbac": {
     "roles": {
       "admin": "Upravitelj",
-      "user": "Uporabnik"
+      "user": "Uporabnik",
+      "viewer": "Gledalec",
+      "operator": "Operater",
+      "auditor": "Revizor",
+      "helpdesk": "Podpora"
+    }
+  },
+  "tileGrid": {
+    "empty": "Še ni ploščic. Dodajte jih s seznama.",
+    "move": "Povlecite za premik",
+    "moveTile": "Premakni {{tile}}",
+    "settings": "Nastavitve za {{tile}}",
+    "remove": "Odstrani {{tile}}",
+    "width": "Širina",
+    "height": "Višina",
+    "addTiles": "Dodaj ploščice",
+    "closePicker": "Zapri",
+    "search": "Išči ploščice",
+    "noMatches": "Ni ujemajočih se rezultatov.",
+    "kind": {
+      "all": "Vse",
+      "card": "Kartice",
+      "chart": "Grafikon",
+      "signal": "Stanje",
+      "action": "Ukazi",
+      "resource": "Seznami",
+      "session": "Seje"
+    },
+    "reset": "Ponastavi",
+    "done": "Končano"
+  },
+  "diagnostics": {
+    "title": "Diagnostika",
+    "makeReport": "Ustvari diagnostično poročilo",
+    "slowBoot": "Traja preveč časa? Ustvari diagnostično poročilo",
+    "troubleSigningIn": "Težave pri prijavi? Ustvari diagnostično poročilo",
+    "reportTab": "Poročilo",
+    "logsTab": "Dnevnik strežnika",
+    "intro": "To ustvari eno datoteko z vsem, kar Termix potrebuje za iskanje težave: napake, dnevnike, stanja vtičnikov in kako zahteve dosežejo strežnik. Prenesite jo in priložite k težavi na GitHubu ali jo pošljite prek Discorda.",
+    "notAdmin": "Dnevnik strežnika in podrobnosti strežnika zahtevajo skrbnika. Če je težava na strežniku, prosite skrbnika, da prav tako ustvari poročilo.",
+    "signedOut": "Niste prijavljeni, zato je vključena le delitev brskalnika.",
+    "whatHappened": "Kaj se je zgodilo",
+    "whatHappenedHint": "Neobvezno. Kaj ste naredili in kaj je šlo narobe?",
+    "include": "Vključi",
+    "adminOnly": "Zahteva skrbnika",
+    "privacy": "Zasebnost",
+    "mask": "Skrij imena in naslove",
+    "maskHint": "IP naslovi, imena gostiteljev, uporabniška imena in e-poštni naslovi postanejo host-1, user-1 itd. Gesla, ključi in žetoni so vedno odstranjeni.",
+    "domText": "Vključi besedilo strani",
+    "domTextHint": "Besedilo na zaslonu doda k razporedu strani. Privzeto je izklopljeno, saj lahko razkrije vaše podatke.",
+    "warnOnly": "Samo opozorila in napake iz dnevnika strežnika",
+    "warnOnlyHint": "Zmanjša velikost datoteke.",
+    "focus": "Vtičnik",
+    "focusHint": "Prikaže ta vtičnik kot prvega in odda težavo na njegovem repozitoriju.",
+    "allPlugins": "Vsi vtičniki",
+    "findings": "Ugotovitve preverjanj",
+    "preview": "Kaj bo poslano",
+    "previewCut": "(Predogled se konča tukaj. Datoteka vsebuje vse.)",
+    "cut": "Datoteka je bila večja od 5 MB, zato so bile najstarejše vrstice dnevnika izpuščene.",
+    "footerHint": "Pred pošiljanjem preverite predogled.",
+    "copy": "Kopiraj",
+    "copied": "Poročilo kopirano",
+    "copyFailed": "Poročila ni bilo mogoče kopirati",
+    "download": "Prenesi",
+    "downloaded": "Poročilo preneseno",
+    "openIssue": "Odpri težavo na GitHubu",
+    "logsSearch": "Išči v dnevnikih",
+    "logsLevel": "Raven",
+    "logsAll": "Vse ravni",
+    "logsWarn": "Opozorila in napake",
+    "logsError": "Napake",
+    "logsPlugin": "Vtičnik",
+    "logsCount": "{{count}} vrstic",
+    "logsFailed": "Dnevniki niso bili naloženi",
+    "logsPause": "Premor",
+    "logsResume": "Nadaljuj",
+    "logsEmpty": "Še ni vnosov v dnevniku.",
+    "parts": {
+      "server": "Strežnik",
+      "plugins": "Vtičniki",
+      "sections": "Podrobnosti vtičnika",
+      "logs": "Dnevnik strežnika",
+      "request": "Povezava",
+      "probes": "Preverjanja povezave",
+      "errors": "Napake brskalnika",
+      "console": "Konzola brskalnika",
+      "network": "Omrežje",
+      "page": "Brskalnik in okno",
+      "dom": "Postavitev strani"
+    },
+    "partHints": {
+      "server": "Različica, zbirka podatkov, SSL in katere nastavitve so nastavljene",
+      "plugins": "Različice in stanja na strežniku ter v brskalniku",
+      "sections": "Dodatne podrobnosti, ki jih dodajo aktivni vtičniki",
+      "logs": "Dnevnik strežnika od zagona in nedavne vrstice",
+      "request": "Imena glavic, ki kažejo na proxy pred Termixom",
+      "probes": "Preizkusi, ki preverjajo nalaganje Termixa in datotek vtičnikov",
+      "errors": "Neobdelane napake in blokirana nalaganja",
+      "console": "Nedavne vrstice konzole s strani in vtičnikov",
+      "network": "Nedavni zahtevki in njihov status",
+      "page": "Brskalnik, velikost zaslona in imena ključev shrambe",
+      "dom": "Postavitev strani, brez besedila"
     }
   }
 }

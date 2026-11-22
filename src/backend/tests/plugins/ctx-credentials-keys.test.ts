@@ -4,7 +4,7 @@
  */
 
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import ssh2 from "ssh2";
+import { generateSshKeyPair } from "../../../../packages/plugin-sdk/src/ssh-keys.js";
 
 const grants = new Map<string, string[]>();
 const auditEntries: Array<Record<string, unknown>> = [];
@@ -12,6 +12,7 @@ const state = vi.hoisted(() => ({
   permissions: new Set<string>(["credentials.view"]),
   credential: null as Record<string, unknown> | null,
   resolve: vi.fn(),
+  usable: vi.fn(),
 }));
 
 vi.mock("../../database/repositories/factory.js", () => ({
@@ -42,6 +43,9 @@ vi.mock("../../utils/permission-manager.js", () => ({
 vi.mock("../../hosts/stored-ssh-key.js", () => ({
   resolveKeyReferences: state.resolve,
 }));
+vi.mock("../../hosts/usable-credential.js", () => ({
+  findUsableCredential: state.usable,
+}));
 
 import { createPluginContext, createPluginHandle } from "../../plugins/ctx.js";
 import { invalidatePluginPermissionCache } from "../../plugins/permissions.js";
@@ -68,7 +72,8 @@ function contextFor(capabilities: string[]) {
 
 const asUser = <T>(fn: () => Promise<T>) => runAsActor("user-1", "request", fn);
 
-const pair = ssh2.utils.generateKeyPairSync("ed25519");
+// ssh2's own generator makes about 1 in 256 ed25519 keys nothing can read.
+const pair = generateSshKeyPair("ssh-ed25519");
 
 beforeEach(() => {
   grants.clear();
@@ -77,6 +82,37 @@ beforeEach(() => {
   state.permissions = new Set(["credentials.view"]);
   state.credential = null;
   state.resolve.mockReset();
+  state.usable.mockReset();
+});
+
+describe("ctx.credentials.resolveLogin", () => {
+  it("needs credentials:read", async () => {
+    grants.set("demo", ["credentials:use"]);
+    const ctx = contextFor(["credentials:use"]);
+    await expect(asUser(() => ctx.credentials.resolveLogin(4))).rejects.toThrow(
+      /credentials:read/,
+    );
+  });
+
+  it("gives the login of a usable credential, and null for others", async () => {
+    grants.set("demo", ["credentials:read"]);
+    const ctx = contextFor(["credentials:read"]);
+    state.usable.mockResolvedValueOnce({
+      username: "admin",
+      password: "pw",
+      privateKey: "never",
+    });
+    expect(await asUser(() => ctx.credentials.resolveLogin(4))).toEqual({
+      username: "admin",
+      password: "pw",
+    });
+    expect(state.usable).toHaveBeenCalledWith(4, "user-1");
+    state.usable.mockResolvedValueOnce(null);
+    expect(await asUser(() => ctx.credentials.resolveLogin(5))).toBeNull();
+    await expect(asUser(() => ctx.credentials.resolveLogin(0))).rejects.toThrow(
+      /id/,
+    );
+  });
 });
 
 describe("ctx.credentials.publicKey", () => {
@@ -122,7 +158,7 @@ describe("ctx.credentials.publicKey", () => {
   it("derives it from the private key behind a reference", async () => {
     grants.set("demo", ["credentials:use"]);
     state.credential = { id: 1, authType: "key", key: "op://vault/key" };
-    state.resolve.mockResolvedValue({ key: pair.private });
+    state.resolve.mockResolvedValue({ key: pair.privateKey });
     const ctx = contextFor(["credentials:use"]);
     const result = await asUser(() => ctx.credentials.publicKey(1));
     expect(result).toMatch(/^ssh-ed25519 /);

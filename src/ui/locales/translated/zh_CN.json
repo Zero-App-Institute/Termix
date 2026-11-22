@@ -131,6 +131,8 @@
     "updateLinkLabel": "有可用更新。在 GitHub 上查看发行说明"
   },
   "common": {
+    "showPassword": "显示密码",
+    "hidePassword": "隐藏密码",
     "scrollTabsLeft": "向左滚动标签页",
     "scrollTabsRight": "向右滚动标签页",
     "close": "关闭",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "无法加载插件列表。您可以稍后从“插件”选项卡选择插件。",
     "securityTitle": "保护您的账户安全",
     "securityIntro": "为您的账户添加通行密钥或身份验证器应用。您也可以稍后在“设置”中的“安全”下执行此操作。",
-    "pluginsDocsLink": "阅读每个插件的说明"
+    "pluginsDocsLink": "阅读每个插件的说明",
+    "layoutTitle": "选择布局",
+    "layoutIntro": "布局决定了整个应用的排列方式：菜单、侧边栏和标签页。点击即可使用，更改会立即生效。",
+    "layoutInstalled": "已安装",
+    "layoutMore": "更多布局",
+    "layoutNoMore": "目前没有其他可用的布局。",
+    "layoutDefault": "默认",
+    "layoutInstall": "安装",
+    "layoutTurnOn": "启用",
+    "layoutVideo": "观看视频",
+    "layoutChangeLater": "您可以随时在“设置”的“外观”中更改布局。如需安装更多布局，请联系管理员。",
+    "layoutChangeLaterAdmin": "您可以随时在“设置”的“外观”中更改布局。以后可以从“插件”标签页安装更多布局。"
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix 仍在运行",
+    "noticeBody": "关闭窗口后，Termix 将继续在系统托盘中运行。若要退出，请打开托盘图标菜单并选择“退出”。您可以在设置中关闭此功能。"
   },
   "desktopUpdates": {
     "modeAutomatic": "自动",
@@ -491,6 +508,7 @@
     "deleteSelected": "删除",
     "exitSelection": "退出选择",
     "collapseBtn": "折叠",
+    "importExportBtn": "导入 / 导出",
     "hostStatusesRefreshed": "主机状态已刷新",
     "failedToRefreshHosts": "刷新主机失败",
     "movedHostTo": "已将 {{host}} 移动到“{{folder}}”",
@@ -603,6 +621,7 @@
     "hostClickBehavior": "点击主机",
     "hostClickBehaviorDesc": "点击已打开标签页的主机时的行为。Ctrl/Cmd 点击、中键点击或“在新标签页中打开”始终会打开新标签页。",
     "hostClickNewTab": "始终打开新标签页",
+    "hostClickHostPage": "当插件提供时，打开主机页面",
     "hostClickFocusExisting": "切换到已打开的标签页",
     "hostClickFocusExistingDoubleNew": "单击切换，双击打开新标签页",
     "openInNewTab": "在新标签页中打开",
@@ -816,7 +835,12 @@
     "editorUpdate": "更新主机",
     "editorAdd": "添加主机",
     "speedSearch": "搜索主机。方向键选择，Enter 连接，Esc 关闭",
-    "speedSearchList": "主机列表。输入或按 / 搜索。"
+    "speedSearchList": "主机列表。输入或按 / 搜索。",
+    "openFromLink": {
+      "title": "打开 {{name}}？",
+      "description": "某个链接请求 Termix 连接到此主机。",
+      "confirm": "连接"
+    }
   },
   "splitScreen": {
     "title": "分屏",
@@ -894,6 +918,16 @@
     "empty": "暂无卡片。使用下方的添加按钮放置卡片。"
   },
   "auth": {
+    "inviteIntro": "您受邀加入此服务器。请选择用户名和密码以创建您的账户。",
+    "inviteInvalid": "此邀请链接已过期或已被使用。请联系管理员获取新的链接。",
+    "accountDisabled": "此账户已被禁用。请联系管理员重新启用。",
+    "accountPending": "您的账户正在等待管理员批准。",
+    "stepUp": {
+      "title": "验证身份",
+      "description": "请验证您的第二因素以继续。",
+      "noFactor": "您尚未设置第二因素。请在设置中添加一个，然后重试。",
+      "failed": "验证失败。请重试。"
+    },
     "tagline": "自托管、基于插件的服务器管理。",
     "loginTitle": "欢迎回来",
     "registerTitle": "创建账户",
@@ -920,6 +954,14 @@
     "loginWithExternal": "使用外部提供商登录",
     "loginWithExternalDesc": "使用您配置的外部身份提供商登录",
     "loginWithProvider": "使用 {{name}} 登录",
+    "pluginLogin": {
+      "signIn": "登录",
+      "verify": "验证",
+      "code": "验证码",
+      "useKey": "使用安全密钥",
+      "keyPrompt": "请使用您的安全密钥或通行密钥继续。",
+      "keyFailed": "安全密钥验证失败。请重试。"
+    },
     "resetPasswordButton": "重置密码",
     "sendResetCode": "发送重置码",
     "resetCodeDesc": "输入您的用户名以接收密码重置码。该代码将记录在 Docker 容器日志中。",
@@ -997,6 +1039,8 @@
     "registrationSuccess": "注册成功"
   },
   "placeholders": {
+    "username": "您的用户名",
+    "newUsername": "选择一个用户名",
     "keyPassword": "密钥密码",
     "pastePrivateKey": "在此粘贴您的私钥...",
     "enterPassword": "输入您的密码"
@@ -1035,7 +1079,8 @@
         "actionNextTab": "切换到下一个标签页",
         "actionPreviousTab": "切换到上一个标签页",
         "actionOpenCommandPalette": "打开快速搜索",
-        "actionReconnectSession": "重新连接当前会话"
+        "actionReconnectSession": "重新连接当前会话",
+        "actionToggleSidebar": "切换侧边栏"
       },
       "userProfile": {
         "preset_simple": "简洁",
@@ -1177,6 +1222,10 @@
         "title": "访问互联网",
         "consequence": "它可以向外部服务发送请求。"
       },
+      "network:sockets": {
+        "title": "打开自己的网络连接",
+        "consequence": "它可以监听端口并直接连接到任何地址，无需 Termix 检查每个连接。"
+      },
       "network:serve": {
         "title": "接受连接",
         "consequence": "它在 Termix 服务器上打开一个端口。"
@@ -1197,6 +1246,18 @@
         "title": "发送警报",
         "consequence": "发送给您或其他用户，并通过他们设置的渠道发送。"
       },
+      "operations:provide": {
+        "title": "提供操作",
+        "consequence": "其操作可由自动化、CLI、手机应用及其他位置中获授权的用户执行。"
+      },
+      "operations:invoke": {
+        "title": "运行其他插件的操作",
+        "consequence": "代表已登录用户执行其清单中列出的操作。审批规则仍然适用。"
+      },
+      "operations:approve": {
+        "title": "决定哪些操作需要审批",
+        "consequence": "可为所有用户允许操作无需审批直接运行，或阻止它们。"
+      },
       "notify:hub": {
         "title": "接收所有警报",
         "consequence": "存储并分发所有插件发送的警报，包括其内容。"
@@ -1207,7 +1268,7 @@
       },
       "network:probe": {
         "title": "检查端口是否响应",
-        "consequence": "可以从服务器向任意地址建立普通连接，以检查其是否可达。"
+        "consequence": "可以从服务器打开到任何地址的明文连接，以查看其是否可达，并查找主机名。"
       },
       "hosts:status-provide": {
         "title": "提供主机状态",
@@ -1220,6 +1281,10 @@
       "hosts:lock": {
         "title": "以只读方式管理主机",
         "consequence": "由其管理的主机无法被其他人编辑、删除或重新共享。"
+      },
+      "hosts:connect-policy": {
+        "title": "决定谁可以连接",
+        "consequence": "可阻止或允许对任何主机的所有 SSH 和远程桌面连接。"
       },
       "desktop:window": {
         "title": "打开桌面窗口",
@@ -1257,6 +1322,10 @@
         "title": "存储其自身的密钥",
         "consequence": "由 Termix 加密。插件本身不持有密钥。"
       },
+      "config:secrets": {
+        "title": "读取服务器持有的密钥",
+        "consequence": "服务器上的环境变量和文件，但不包括 Termix 自己的密钥。"
+      },
       "settings:read-core": {
         "title": "读取 Termix 设置",
         "consequence": "服务器设置，而非您的主机或凭据。"
@@ -1277,6 +1346,10 @@
         "title": "添加颜色主题",
         "consequence": "仅包含颜色和样式。主题不会运行任何代码。"
       }
+    },
+    "webView": {
+      "unavailable": "此页面已不可用。请从其插件中重新打开。",
+      "isolationUnavailable": "此浏览器无法在此处安全地打开页面。请使用最新的 Chrome 或 Edge，或使用桌面应用。"
     },
     "runtime": {
       "needsPlugin": "{{name}} 不可用",
@@ -1301,7 +1374,7 @@
         "running": "正在运行",
         "disabled": "已禁用",
         "failed": "意外停止",
-        "blocked": "等待其他插件",
+        "blocked": "无法启动",
         "server": "在您的服务器上运行",
         "safeMode": "安全模式下已关闭"
       },
@@ -1323,7 +1396,8 @@
         "version": "版本",
         "status": "状态",
         "category": "类别",
-        "downloads": "下载量"
+        "downloads": "下载量",
+        "memory": "内存"
       },
       "risk": {
         "critical": "严重",
@@ -1374,9 +1448,11 @@
         "installedNotRunning": "{{name}} 已安装但无法启动。打开它以查看原因。",
         "updated": "{{name}} 已更新至 {{version}}",
         "updatedMany_other": "{{count}} 个插件已更新",
+        "needsReview_other": "{{count}} 个插件请求新权限。请审核以更新。",
         "uninstalled": "{{name}} 已卸载",
         "dataDeleted": "{{name}} 的数据已删除",
-        "failedToStart": "{{name}} 无法启动。打开它以查看原因。"
+        "failedToStart": "{{name}} 无法启动。打开它以查看原因。",
+        "held": "{{name}} 将在 {{minutes}} 分钟后应用更改，以便其他管理员可以看到"
       },
       "errors": {
         "generic": "出了点问题",
@@ -1425,6 +1501,21 @@
       "pin": "锁定此版本",
       "pinHint": "保留 {{version}} 版本，并在您关闭此功能前跳过所有更新。",
       "pinnedTo": "已锁定至 {{version}}",
+      "legacy": {
+        "notice_other": "{{count}} 个插件是为旧版 Termix 制作的，在更新之前将保持关闭状态：{{names}}。",
+        "why": "它们是为插件 API 1 制作的，该 API 在服务器内部运行。Termix 现在在每个插件自己的进程中运行每个插件，因此每个插件都需要一个为插件 API 2 制作的版本。在此处更新官方插件，并向社区插件的作者请求一个。",
+        "guide": "插件如何迁移到 API 2"
+      },
+      "provenance": {
+        "verified": "构建已验证",
+        "verifiedHint": "其构建来源已由 Termix 注册表发布工作流签名，并与此文件匹配。打开构建。",
+        "unchecked": "构建未验证",
+        "uncheckedHint": "下载时无法检查其构建来源。但其注册表签名已验证。"
+      },
+      "updateCheck": {
+        "notice_other": "Termix {{version}} 已发布。在您更新之前，{{count}} 个插件将在此版本上保持关闭状态：{{names}}。",
+        "needs": "{{name}}（需要 Termix {{range}}）"
+      },
       "version": "版本",
       "versionPickHint": "安装旧版本而非最新版本。除非您取消锁定，否则将保持在该版本。",
       "versionPickHintInstalled": "切换到其他版本。选择非最新版本将自动锁定该版本。",
@@ -1497,7 +1588,13 @@
         "unreachable": "无法读取：{{error}}",
         "filter": "注册表",
         "allRegistries": "所有注册表",
-        "browseHint": "在“注册表”选项卡中启用社区插件或添加您自己的注册表。"
+        "browseHint": "在“注册表”选项卡中启用社区插件或添加您自己的注册表。",
+        "looksName": "社区布局和主题",
+        "looksHint": "允许非 Termix 官方的布局和主题在沙箱外运行，与官方插件一样。布局会绘制整个应用界面，因此它可以查看并执行您能做的任何操作。仅安装您信任的插件。更改后请重新加载页面。",
+        "looksConfirmTitle": "允许社区布局在沙箱外运行？",
+        "looksConfirmBody": "社区布局或主题将在页面中以当前登录用户的身份运行，并拥有对 Termix 的完全访问权限。这可能存在风险。仅当您信任所安装的布局和主题时，才开启此选项。",
+        "looksConfirm": "开启",
+        "looksSaved": "已保存。请重新加载页面以应用更改。"
       },
       "upToDate": "所有内容均为最新。",
       "lastChecked": "上次检查于 {{time}}",
@@ -1576,8 +1673,27 @@
       "unsupportedHint": "此插件尚无适用于此版本 Termix 的发布版。请更新 Termix 以安装它。",
       "needsTermix": "需要 Termix {{range}}",
       "showUnsupported": "显示不兼容的插件 ({{count}})",
-      "showMore": "显示更多 {{count}} 项（剩余 {{total}} 项）"
-    }
+      "showMore": "显示更多 {{count}} 项（剩余 {{total}} 项）",
+      "memory": {
+        "summary": "内存：{{total}} / {{limit}} | 插件 {{plugins}} | {{running}} 正在运行",
+        "lowTitle": "此服务器内存不足",
+        "lowBody": "Termix 及其插件使用了 {{total}} / {{limit}}。请为服务器增加内存或关闭您不使用的插件。",
+        "idle": "空闲",
+        "idleHint": "当前未运行。当有需求时它将启动。",
+        "keptOn": "保持运行：{{reason}}",
+        "stopsWhenIdle": "空闲时停止"
+      }
+    },
+    "firstLoad": {
+      "title": "正在准备插件",
+      "progress": "{{done}} / {{total}}",
+      "hint": "插件正在首次启动。完成后，Termix 将立即打开。",
+      "skip": "继续"
+    },
+    "framesBlocked": "插件无法加载其文件。Termix 前面的登录代理可能正在阻止它们。",
+    "framesBlockedHelp": "如何修复",
+    "framesFailed_other": "{{count}} 个插件无法加载，因此其组件已隐藏：{{names}}",
+    "framesFailedReload": "重新加载"
   },
   "settings": {
     "secretSet": "已设置",
@@ -1621,6 +1737,12 @@
       "title": "列数",
       "auto": "自动",
       "count": "{{count}} 列宽"
+    },
+    "pager": {
+      "previous": "上一页",
+      "next": "下一页",
+      "page": "第 {{page}} 页",
+      "pageOf": "第 {{page}} 页，共 {{pages}} 页"
     }
   },
   "fields": {
@@ -1634,7 +1756,108 @@
   "rbac": {
     "roles": {
       "admin": "管理员",
-      "user": "用户"
+      "user": "用户",
+      "viewer": "查看者",
+      "operator": "操作员",
+      "auditor": "审计员",
+      "helpdesk": "帮助台"
+    }
+  },
+  "tileGrid": {
+    "empty": "暂无卡片。从列表中添加一些。",
+    "move": "拖拽移动",
+    "moveTile": "移动 {{tile}}",
+    "settings": "{{tile}} 设置",
+    "remove": "移除 {{tile}}",
+    "width": "宽度",
+    "height": "高度",
+    "addTiles": "添加卡片",
+    "closePicker": "关闭",
+    "search": "搜索卡片",
+    "noMatches": "无匹配结果。",
+    "kind": {
+      "all": "全部",
+      "card": "卡片",
+      "chart": "图表",
+      "signal": "状态",
+      "action": "操作",
+      "resource": "列表",
+      "session": "会话"
+    },
+    "reset": "重置",
+    "done": "完成"
+  },
+  "diagnostics": {
+    "title": "诊断",
+    "makeReport": "生成诊断报告",
+    "slowBoot": "启动较慢？生成诊断报告",
+    "troubleSigningIn": "登录遇到问题？生成诊断报告",
+    "reportTab": "报告",
+    "logsTab": "服务器日志",
+    "intro": "这将生成一个文件，包含 Termix 排查问题所需的信息：错误、日志、插件状态以及请求到达服务器的情况。下载该文件并将其附加到 GitHub 问题中，或通过 Discord 发送。",
+    "notAdmin": "查看服务器日志和服务器详细信息需要管理员权限。如果问题出在服务器上，请让管理员也生成一份报告。",
+    "signedOut": "您未登录，因此仅包含浏览器部分的信息。",
+    "whatHappened": "问题描述",
+    "whatHappenedHint": "选填。您做了什么，出现了什么错误？",
+    "include": "包含",
+    "adminOnly": "需要管理员权限",
+    "privacy": "隐私",
+    "mask": "隐藏名称和地址",
+    "maskHint": "IP 地址、主机名、用户名和电子邮件将变为 host-1、user-1 等。密码、密钥和令牌始终会被移除。",
+    "domText": "包含页面文本",
+    "domTextHint": "将屏幕上的文本添加到页面布局中。默认关闭，因为它可能会显示您的数据。",
+    "warnOnly": "仅包含服务器日志中的警告和错误",
+    "warnOnlyHint": "减小文件大小。",
+    "focus": "插件",
+    "focusHint": "优先显示此插件，并在其仓库中提交问题。",
+    "allPlugins": "所有插件",
+    "findings": "检查结果",
+    "preview": "发送内容预览",
+    "previewCut": "（预览到此为止。文件包含所有内容。）",
+    "cut": "文件超过 5 MB，因此截断了最早的日志行。",
+    "footerHint": "发送前请检查预览。",
+    "copy": "复制",
+    "copied": "报告已复制",
+    "copyFailed": "无法复制报告",
+    "download": "下载",
+    "downloaded": "报告已下载",
+    "openIssue": "打开 GitHub 问题",
+    "logsSearch": "搜索日志",
+    "logsLevel": "级别",
+    "logsAll": "所有级别",
+    "logsWarn": "警告和错误",
+    "logsError": "错误",
+    "logsPlugin": "插件",
+    "logsCount": "{{count}} 行",
+    "logsFailed": "无法加载日志",
+    "logsPause": "暂停",
+    "logsResume": "恢复",
+    "logsEmpty": "暂无日志行。",
+    "parts": {
+      "server": "服务器",
+      "plugins": "插件",
+      "sections": "插件详情",
+      "logs": "服务器日志",
+      "request": "连接",
+      "probes": "连接检查",
+      "errors": "浏览器错误",
+      "console": "浏览器控制台",
+      "network": "网络",
+      "page": "浏览器与窗口",
+      "dom": "页面布局"
+    },
+    "partHints": {
+      "server": "版本、数据库、SSL 以及已设置的配置项",
+      "plugins": "服务器与浏览器中的版本和状态",
+      "sections": "运行中的插件添加的额外详情",
+      "logs": "启动以来的服务器日志及最近几行",
+      "request": "显示 Termix 前方存在代理的请求头名称",
+      "probes": "测试 Termix 和插件文件是否加载成功",
+      "errors": "未捕获的错误和被阻止的加载",
+      "console": "来自页面和插件的最近控制台日志",
+      "network": "最近的请求及其状态",
+      "page": "浏览器、屏幕尺寸和存储键名",
+      "dom": "页面的布局结构，不含文本内容"
     }
   }
 }

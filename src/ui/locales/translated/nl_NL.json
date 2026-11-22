@@ -131,6 +131,8 @@
     "updateLinkLabel": "Update beschikbaar. Open de release notes op GitHub"
   },
   "common": {
+    "showPassword": "Toon wachtwoord",
+    "hidePassword": "Verberg wachtwoord",
     "scrollTabsLeft": "Tabbladen naar links scrollen",
     "scrollTabsRight": "Tabbladen naar rechts scrollen",
     "close": "Sluiten",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "De pluginlijst kon niet worden geladen. Je kunt later plugins kiezen via het tabblad Plugins.",
     "securityTitle": "Beveilig je account",
     "securityIntro": "Voeg een passkey of een authenticator-app toe aan je account. Je kunt dit ook later doen in Instellingen, onder Beveiliging.",
-    "pluginsDocsLink": "Lees meer over elk plugin"
+    "pluginsDocsLink": "Lees meer over elk plugin",
+    "layoutTitle": "Kies een lay-out",
+    "layoutIntro": "De lay-out bepaalt hoe de hele app is ingericht: de menu's, de zijbalk en de tabbladen. Klik erop om hem te gebruiken. De wijziging wordt direct toegepast.",
+    "layoutInstalled": "Geïnstalleerd",
+    "layoutMore": "Meer lay-outs",
+    "layoutNoMore": "Er zijn momenteel geen andere lay-outs beschikbaar.",
+    "layoutDefault": "Standaard",
+    "layoutInstall": "Installeren",
+    "layoutTurnOn": "Inschakelen",
+    "layoutVideo": "Video bekijken",
+    "layoutChangeLater": "Je kunt je lay-out op elk moment wijzigen in Instellingen, onder Uiterlijk. Vraag een beheerder om meer lay-outs te installeren.",
+    "layoutChangeLaterAdmin": "Je kunt je lay-out op elk moment wijzigen in Instellingen, onder Uiterlijk. Meer lay-outs kunnen later worden geïnstalleerd via het tabblad Plugins."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix draait nog",
+    "noticeBody": "Als je het venster sluit, blijft Termix actief in de systeemvak. Om af te sluiten, open je het menu van het systeemvakpictogram en kies je Afsluiten. Je kunt dit uitschakelen in Instellingen."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automatisch",
@@ -495,6 +512,7 @@
     "deleteSelected": "Verwijderen",
     "exitSelection": "Selectie afsluiten",
     "collapseBtn": "Samenvouwen",
+    "importExportBtn": "Importeren / Exporteren",
     "hostStatusesRefreshed": "Hoststatussen vernieuwd",
     "failedToRefreshHosts": "Hosts vernieuwen mislukt",
     "movedHostTo": "{{host}} verplaatst naar \"{{folder}}\"",
@@ -609,6 +627,7 @@
     "hostClickBehavior": "Klik op een host",
     "hostClickBehaviorDesc": "Wat er gebeurt als je op een host klikt die al een geopend tabblad heeft. Ctrl/Cmd-klik, middelklik of \"Openen in nieuw tabblad\" starten altijd een nieuw tabblad.",
     "hostClickNewTab": "Altijd een nieuw tabblad openen",
+    "hostClickHostPage": "Open de hostpagina, als een plugin die aanbiedt",
     "hostClickFocusExisting": "Schakel naar het geopende tabblad",
     "hostClickFocusExistingDoubleNew": "Klik om te schakelen, dubbelklik voor een nieuw tabblad",
     "openInNewTab": "Openen in nieuw tabblad",
@@ -828,7 +847,12 @@
     "editorUpdate": "Host bijwerken",
     "editorAdd": "Host toevoegen",
     "speedSearch": "Zoek hosts. Pijltjestoetsen om te selecteren, Enter om te verbinden, Esc om te sluiten",
-    "speedSearchList": "Hostlijst. Typ of druk op / om te zoeken."
+    "speedSearchList": "Hostlijst. Typ of druk op / om te zoeken.",
+    "openFromLink": {
+      "title": "Open {{name}}?",
+      "description": "Een link vroeg Termix om verbinding te maken met deze host.",
+      "confirm": "Verbinden"
+    }
   },
   "splitScreen": {
     "title": "Gesplitst scherm",
@@ -907,6 +931,16 @@
     "empty": "Geen kaarten. Gebruik hieronder Toevoegen om kaarten te plaatsen."
   },
   "auth": {
+    "inviteIntro": "Je bent uitgenodigd voor deze server. Kies een gebruikersnaam en wachtwoord om je account aan te maken.",
+    "inviteInvalid": "Deze uitnodigingslink is verlopen of al gebruikt. Vraag een administrator om een nieuwe link.",
+    "accountDisabled": "Dit account is uitgeschakeld. Vraag een administrator om het weer in te schakelen.",
+    "accountPending": "Je account wacht op goedkeuring door een administrator.",
+    "stepUp": {
+      "title": "Verifieer dat jij het bent",
+      "description": "Bevestig je tweede factor om door te gaan.",
+      "noFactor": "Je hebt geen tweede factor ingesteld. Voeg er een toe in Instellingen en probeer het opnieuw.",
+      "failed": "Dat is niet gelukt. Probeer het opnieuw."
+    },
     "tagline": "Zelfgehost serverbeheer op basis van plugins.",
     "loginTitle": "Welkom terug",
     "registerTitle": "Account aanmaken",
@@ -933,6 +967,14 @@
     "loginWithExternal": "Inloggen met externe provider",
     "loginWithExternalDesc": "Log in met je geconfigureerde externe identiteitsprovider",
     "loginWithProvider": "Inloggen met {{name}}",
+    "pluginLogin": {
+      "signIn": "Inloggen",
+      "verify": "Verifiëren",
+      "code": "Code",
+      "useKey": "Veiligheidssleutel gebruiken",
+      "keyPrompt": "Gebruik je veiligheidssleutel of passkey om door te gaan.",
+      "keyFailed": "De stap met de veiligheidssleutel is niet gelukt. Probeer het opnieuw."
+    },
     "resetPasswordButton": "Wachtwoord resetten",
     "sendResetCode": "Resetcode versturen",
     "resetCodeDesc": "Voer je gebruikersnaam in om een wachtwoordresetcode te ontvangen. De code wordt gelogd in de Docker-containerlogs.",
@@ -1010,6 +1052,8 @@
     "registrationSuccess": "Registratie gelukt"
   },
   "placeholders": {
+    "username": "Uw gebruikersnaam",
+    "newUsername": "Kies een gebruikersnaam",
     "keyPassword": "sleutelwachtwoord",
     "pastePrivateKey": "Plak uw privésleutel hier...",
     "enterPassword": "Voer uw wachtwoord in"
@@ -1052,7 +1096,8 @@
         "actionNextTab": "Naar volgende tabblad",
         "actionPreviousTab": "Naar vorige tabblad",
         "actionOpenCommandPalette": "Snelle zoekopdracht openen",
-        "actionReconnectSession": "Huidige sessie opnieuw verbinden"
+        "actionReconnectSession": "Huidige sessie opnieuw verbinden",
+        "actionToggleSidebar": "Zijbalk in-/uitschakelen"
       },
       "userProfile": {
         "preset_simple": "Eenvoudig",
@@ -1194,6 +1239,10 @@
         "title": "Bereik het internet",
         "consequence": "Het kan verzoeken sturen naar externe diensten."
       },
+      "network:sockets": {
+        "title": "Eigen netwerkverbindingen openen",
+        "consequence": "Het kan luisteren op poorten en rechtstreeks verbinding maken met elk adres, zonder dat Termix elke verbinding controleert."
+      },
       "network:serve": {
         "title": "Accepteer verbindingen",
         "consequence": "Het opent een poort op de Termix-server."
@@ -1214,6 +1263,18 @@
         "title": "Verstuur meldingen",
         "consequence": "Naar jou of andere gebruikers, via de kanalen die zij hebben ingesteld."
       },
+      "operations:provide": {
+        "title": "Acties aanbieden",
+        "consequence": "De acties kunnen worden uitgevoerd vanuit Automatiseringen, de CLI, de mobiele app en andere plaatsen, door gebruikers die daar toestemming voor hebben."
+      },
+      "operations:invoke": {
+        "title": "Acties van andere plugins uitvoeren",
+        "consequence": "Handelt namens de ingelogde gebruiker voor de acties die in het manifest staan vermeld. Goedkeuringsregels blijven van toepassing."
+      },
+      "operations:approve": {
+        "title": "Bepalen wat goedkeuring vereist",
+        "consequence": "Kan acties zonder goedkeuring laten uitvoeren of blokkeren, voor elke gebruiker."
+      },
       "notify:hub": {
         "title": "Ontvang elke melding",
         "consequence": "Bewaart en levert de meldingen die alle plugins versturen, inclusief de inhoud."
@@ -1224,7 +1285,7 @@
       },
       "network:probe": {
         "title": "Controleren of poorten reageren",
-        "consequence": "Kan een eenvoudige verbinding openen naar elk adres vanaf de server, om te zien of het bereikbaar is."
+        "consequence": "Kan een onversleutelde verbinding openen naar elk adres vanaf de server om te controleren of het bereikbaar is, en hostnamen opzoeken."
       },
       "hosts:status-provide": {
         "title": "Hoststatus verstrekken",
@@ -1237,6 +1298,10 @@
       "hosts:lock": {
         "title": "Hosts als alleen-lezen beheren",
         "consequence": "Hosts die hierdoor worden beheerd, kunnen door niemand anders worden bewerkt, verwijderd of opnieuw gedeeld."
+      },
+      "hosts:connect-policy": {
+        "title": "Bepalen wie kan verbinden",
+        "consequence": "Kan elke SSH- en remote desktopverbinding met elke host blokkeren of toestaan."
       },
       "desktop:window": {
         "title": "Open desktopvensters",
@@ -1274,6 +1339,10 @@
         "title": "Eigen geheimen opslaan",
         "consequence": "Versleuteld door Termix. De plugin heeft nooit toegang tot de sleutel."
       },
+      "config:secrets": {
+        "title": "Geheimen lezen die de server bewaart",
+        "consequence": "Omgevingsvariabelen en bestanden op de server, behalve de eigen sleutels van Termix."
+      },
       "settings:read-core": {
         "title": "Termix-instellingen lezen",
         "consequence": "Serverinstellingen, niet je hosts of referenties."
@@ -1294,6 +1363,10 @@
         "title": "Kleurthema's toevoegen",
         "consequence": "Alleen kleuren en stijlen. Er wordt geen code uitgevoerd voor een thema."
       }
+    },
+    "webView": {
+      "unavailable": "Deze pagina is niet langer beschikbaar. Open hem opnieuw vanuit de plugin.",
+      "isolationUnavailable": "Deze browser kan de pagina hier niet veilig openen. Gebruik een recente versie van Chrome of Edge, of de desktop-app."
     },
     "runtime": {
       "needsPlugin": "{{name}} is niet beschikbaar",
@@ -1318,7 +1391,7 @@
         "running": "Actief",
         "disabled": "Uitgeschakeld",
         "failed": "Onverwacht gestopt",
-        "blocked": "Wachten op een andere plugin",
+        "blocked": "Kan niet starten",
         "server": "Wordt uitgevoerd op je server",
         "safeMode": "Uitgeschakeld in veilige modus"
       },
@@ -1340,7 +1413,8 @@
         "version": "Versie",
         "status": "Status",
         "category": "Categorie",
-        "downloads": "Downloads"
+        "downloads": "Downloads",
+        "memory": "Geheugen"
       },
       "risk": {
         "critical": "Kritiek",
@@ -1403,9 +1477,12 @@
         "updated": "{{name}} bijgewerkt naar {{version}}",
         "updatedMany_one": "{{count}} plugin bijgewerkt",
         "updatedMany_other": "{{count}} plugins bijgewerkt",
+        "needsReview_one": "1 plugin vraagt om nieuwe machtigingen. Beoordeel deze om te updaten.",
+        "needsReview_other": "{{count}} plugins vragen om nieuwe machtigingen. Beoordeel ze allemaal om te updaten.",
         "uninstalled": "{{name}} verwijderd",
         "dataDeleted": "Gegevens voor {{name}} verwijderd",
-        "failedToStart": "{{name}} kon niet starten. Open het om te zien waarom."
+        "failedToStart": "{{name}} kon niet starten. Open het om te zien waarom.",
+        "held": "{{name}} wacht {{minutes}} minuten voordat de wijziging wordt toegepast, zodat andere administrators het kunnen zien"
       },
       "errors": {
         "generic": "Er is iets misgegaan",
@@ -1458,6 +1535,23 @@
       "pin": "Op deze versie blijven",
       "pinHint": "Houdt {{version}} vast en slaat alle updates over tot je dit uitschakelt.",
       "pinnedTo": "Vastgezet op {{version}}",
+      "legacy": {
+        "notice_one": "1 plugin is gemaakt voor een oudere versie van Termix en blijft uitgeschakeld tot deze wordt bijgewerkt: {{names}}.",
+        "notice_other": "{{count}} plugins zijn gemaakt voor een oudere versie van Termix en blijven uitgeschakeld tot ze worden bijgewerkt: {{names}}.",
+        "why": "Ze zijn gemaakt voor plugin API 1, die binnen de server draaide. Termix draait nu elke plugin in een eigen proces, dus elke plugin heeft een versie nodig die is gemaakt voor plugin API 2. Werk officiële plugins hier bij en vraag de auteur van een community-plugin om een bijgewerkte versie.",
+        "guide": "Hoe plugins migreren naar API 2"
+      },
+      "provenance": {
+        "verified": "Build geverifieerd",
+        "verifiedHint": "De build-provenance is ondertekend door de release-workflow van het Termix-register en komt overeen met dit bestand. Opent de build.",
+        "unchecked": "Build niet geverifieerd",
+        "uncheckedHint": "De build-provenance kon niet worden geverifieerd bij het downloaden. De registerondertekening wel."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} is beschikbaar. 1 plugin blijft uitgeschakeld tot je deze bijwerkt: {{names}}.",
+        "notice_other": "Termix {{version}} is beschikbaar. {{count}} plugins blijven uitgeschakeld tot je ze bijwerkt: {{names}}.",
+        "needs": "{{name}} (vereist Termix {{range}})"
+      },
       "version": "Versie",
       "versionPickHint": "Installeer een oudere release in plaats van de nieuwste. Het blijft op die versie tot je het vastzetten opheft.",
       "versionPickHintInstalled": "Schakel over naar een andere release. Als je een kiest die niet de nieuwste is, wordt deze vastgezet.",
@@ -1531,7 +1625,13 @@
         "unreachable": "Kon het niet lezen: {{error}}",
         "filter": "Register",
         "allRegistries": "Alle registers",
-        "browseHint": "Schakel community-plugins in of voeg je eigen register toe op het tabblad Registers."
+        "browseHint": "Schakel community-plugins in of voeg je eigen register toe op het tabblad Registers.",
+        "looksName": "Community-indelingen en thema's",
+        "looksHint": "Laat indelingen en thema's die niet van Termix zijn, buiten de sandbox draaien, net als de officiële. Een indeling tekent de hele app, dus het kan alles zien en doen wat jij kunt. Installeer alleen die je vertrouwt. Herlaad de pagina na het wijzigen hiervan.",
+        "looksConfirmTitle": "Community-indelingen buiten de sandbox laten draaien?",
+        "looksConfirmBody": "Een community-indeling of thema zal in de pagina draaien met volledige toegang tot Termix als de ingelogde gebruiker. Dit kan riskant zijn. Zet dit alleen aan als je de geïnstalleerde indelingen en thema's vertrouwt.",
+        "looksConfirm": "Inschakelen",
+        "looksSaved": "Opgeslagen. Herlaad de pagina om dit toe te passen."
       },
       "upToDate": "Alles is bijgewerkt.",
       "lastChecked": "Laatst gecontroleerd {{time}}",
@@ -1614,8 +1714,28 @@
       "unsupportedHint": "Er is geen release van deze plugin die op deze versie van Termix werkt. Werk Termix bij om deze te installeren.",
       "needsTermix": "Vereist Termix {{range}}",
       "showUnsupported": "Ongestuurde weergeven ({{count}})",
-      "showMore": "{{count}} meer weergeven ({{total}} over)"
-    }
+      "showMore": "{{count}} meer weergeven ({{total}} over)",
+      "memory": {
+        "summary": "Geheugen: {{total}} van {{limit}} | plugins {{plugins}} | {{running}} actief",
+        "lowTitle": "Deze server heeft weinig geheugen",
+        "lowBody": "Termix en de plugins gebruiken {{total}} van {{limit}}. Geef de server meer geheugen of schakel plugins uit die je niet gebruikt.",
+        "idle": "Inactief",
+        "idleHint": "Niet nu actief. Start wanneer er iets naar vraagt.",
+        "keptOn": "Blijft actief: {{reason}}",
+        "stopsWhenIdle": "Stopt bij inactiviteit"
+      }
+    },
+    "firstLoad": {
+      "title": "Plugins voorbereiden",
+      "progress": "{{done}} van {{total}}",
+      "hint": "Plugins starten voor de eerste keer. Daarna opent Termix direct.",
+      "skip": "Doorgaan"
+    },
+    "framesBlocked": "Plugins kunnen hun bestanden niet laden. Een login-proxy voor Termix blokkeert ze waarschijnlijk.",
+    "framesBlockedHelp": "Hoe op te lossen",
+    "framesFailed_one": "{{names}} kon niet worden geladen, dus zijn onderdelen zijn verborgen",
+    "framesFailed_other": "{{count}} plugins konden niet worden geladen, dus hun onderdelen zijn verborgen: {{names}}",
+    "framesFailedReload": "Herladen"
   },
   "settings": {
     "secretSet": "Ingesteld",
@@ -1663,6 +1783,12 @@
       "title": "Kolommen",
       "auto": "Automatisch",
       "count": "{{count}} kolommen breed"
+    },
+    "pager": {
+      "previous": "Vorige",
+      "next": "Volgende",
+      "page": "Pagina {{page}}",
+      "pageOf": "Pagina {{page}} van {{pages}}"
     }
   },
   "fields": {
@@ -1679,7 +1805,108 @@
   "rbac": {
     "roles": {
       "admin": "Beheerder",
-      "user": "Gebruiker"
+      "user": "Gebruiker",
+      "viewer": "Kijker",
+      "operator": "Operator",
+      "auditor": "Auditor",
+      "helpdesk": "Helpdesk"
+    }
+  },
+  "tileGrid": {
+    "empty": "Nog geen tegels. Voeg er een paar toe uit de lijst.",
+    "move": "Slepen om te verplaatsen",
+    "moveTile": "Verplaats {{tile}}",
+    "settings": "Instellingen voor {{tile}}",
+    "remove": "Verwijder {{tile}}",
+    "width": "Breedte",
+    "height": "Hoogte",
+    "addTiles": "Tegels toevoegen",
+    "closePicker": "Sluiten",
+    "search": "Zoek tegels",
+    "noMatches": "Geen resultaten gevonden.",
+    "kind": {
+      "all": "Alles",
+      "card": "Kaarten",
+      "chart": "Grafieken",
+      "signal": "Status",
+      "action": "Acties",
+      "resource": "Lijsten",
+      "session": "Sessies"
+    },
+    "reset": "Resetten",
+    "done": "Klaar"
+  },
+  "diagnostics": {
+    "title": "Diagnose",
+    "makeReport": "Diagnoserapport maken",
+    "slowBoot": "Duurt het even? Maak een diagnoserapport",
+    "troubleSigningIn": "Problemen met inloggen? Maak een diagnoserapport",
+    "reportTab": "Rapport",
+    "logsTab": "Serverlogs",
+    "intro": "Hiermee wordt één bestand aangemaakt met wat Termix nodig heeft om een probleem te vinden: fouten, logs, pluginstatussen en hoe verzoeken de server bereiken. Download het en voeg het toe aan een GitHub-issue of stuur het via Discord.",
+    "notAdmin": "Voor serverlogs en servergegevens is een beheerder nodig. Vraag je beheerder ook om een rapport te maken als het probleem op de server ligt.",
+    "signedOut": "Je bent niet ingelogd, dus alleen het browsergedeelte is opgenomen.",
+    "whatHappened": "Wat er gebeurde",
+    "whatHappenedHint": "Optioneel. Wat heb je gedaan en wat ging er mis?",
+    "include": "Insluiten",
+    "adminOnly": "Vereist een beheerder",
+    "privacy": "Privacy",
+    "mask": "Namen en adressen verbergen",
+    "maskHint": "IP-adressen, hostnamen, gebruikersnamen en e-mailadressen worden host-1, user-1, enzovoort. Wachtwoorden, sleutels en tokens worden altijd verwijderd.",
+    "domText": "Paginatext opnemen",
+    "domTextHint": "Voegt de tekst op het scherm toe aan de paginalay-out. Standaard uitgeschakeld omdat het je gegevens kan tonen.",
+    "warnOnly": "Alleen waarschuwingen en fouten uit de serverlog",
+    "warnOnlyHint": "Maakt het bestand kleiner.",
+    "focus": "Plugin",
+    "focusHint": "Toont deze plugin als eerste en maakt het issue aan in de bijbehorende repository.",
+    "allPlugins": "Alle plugins",
+    "findings": "Gevonden door de controles",
+    "preview": "Wat er wordt verzonden",
+    "previewCut": "(De voorbeeldweergave stopt hier. Het bestand bevat alles.)",
+    "cut": "Het bestand was groter dan 5 MB, dus de oudste logregels zijn verwijderd.",
+    "footerHint": "Controleer de voorbeeldweergave voordat je het verzendt.",
+    "copy": "Kopiëren",
+    "copied": "Rapport gekopieerd",
+    "copyFailed": "Kon het rapport niet kopiëren",
+    "download": "Downloaden",
+    "downloaded": "Rapport gedownload",
+    "openIssue": "GitHub-issue openen",
+    "logsSearch": "Logs doorzoeken",
+    "logsLevel": "Niveau",
+    "logsAll": "Alle niveaus",
+    "logsWarn": "Waarschuwingen en fouten",
+    "logsError": "Fouten",
+    "logsPlugin": "Plugin",
+    "logsCount": "{{count}} regels",
+    "logsFailed": "Kon de logs niet laden",
+    "logsPause": "Pauzeren",
+    "logsResume": "Hervatten",
+    "logsEmpty": "Nog geen logregels.",
+    "parts": {
+      "server": "Server",
+      "plugins": "Plugins",
+      "sections": "Plugindetails",
+      "logs": "Serverlogs",
+      "request": "Verbinding",
+      "probes": "Verbindingscontroles",
+      "errors": "Browserfouten",
+      "console": "Browserconsole",
+      "network": "Netwerk",
+      "page": "Browser en venster",
+      "dom": "Paginalayout"
+    },
+    "partHints": {
+      "server": "Versie, database, SSL en welke instellingen zijn ingesteld",
+      "plugins": "Versies en statussen op de server en in de browser",
+      "sections": "Extra details die actieve plugins toevoegen",
+      "logs": "Serverlogboek sinds opstarten en recente regels",
+      "request": "Kopnamen die een proxy voor Termix aangeven",
+      "probes": "Tests of Termix- en pluginbestanden worden geladen",
+      "errors": "Ongevangen fouten en geblokkeerde laadacties",
+      "console": "Recente consoleregels van de pagina en plugins",
+      "network": "Recente verzoeken en hun status",
+      "page": "Browser, schermgrootte en opslag-sleutelnamen",
+      "dom": "De layout van de pagina, zonder tekst"
     }
   }
 }

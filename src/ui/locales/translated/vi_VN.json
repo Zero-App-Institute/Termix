@@ -131,6 +131,8 @@
     "updateLinkLabel": "Có bản cập nhật mới. Xem ghi chú phát hành trên GitHub"
   },
   "common": {
+    "showPassword": "Hiển thị mật khẩu",
+    "hidePassword": "Ẩn mật khẩu",
     "scrollTabsLeft": "Cuộn tab sang trái",
     "scrollTabsRight": "Cuộn tab sang phải",
     "close": "Đóng",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Không thể tải danh sách plugin. Bạn có thể chọn plugin sau từ tab Plugin.",
     "securityTitle": "Bảo mật tài khoản",
     "securityIntro": "Thêm passkey hoặc ứng dụng xác thực vào tài khoản của bạn. Bạn cũng có thể làm điều này sau trong Cài đặt, mục Bảo mật.",
-    "pluginsDocsLink": "Đọc về từng plugin"
+    "pluginsDocsLink": "Đọc về từng plugin",
+    "layoutTitle": "Chọn bố cục",
+    "layoutIntro": "Bố cục quyết định cách sắp xếp toàn bộ ứng dụng: các menu, thanh bên và các tab. Nhấp vào một bố cục để sử dụng. Thay đổi sẽ có hiệu lực ngay lập tức.",
+    "layoutInstalled": "Đã cài đặt",
+    "layoutMore": "Thêm bố cục",
+    "layoutNoMore": "Hiện không có bố cục nào khác khả dụng.",
+    "layoutDefault": "Mặc định",
+    "layoutInstall": "Cài đặt",
+    "layoutTurnOn": "Bật",
+    "layoutVideo": "Xem video",
+    "layoutChangeLater": "Bạn có thể thay đổi bố cục bất cứ lúc nào trong Cài đặt, mục Giao diện. Hãy yêu cầu quản trị viên nếu bạn muốn cài đặt thêm bố cục.",
+    "layoutChangeLaterAdmin": "Bạn có thể thay đổi bố cục bất cứ lúc nào trong Cài đặt, mục Giao diện. Các bố cục khác có thể được cài đặt sau từ tab Plugin."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix vẫn đang chạy",
+    "noticeBody": "Đóng cửa sổ sẽ giữ Termix chạy trong khay hệ thống. Để thoát, hãy mở menu biểu tượng khay và chọn Thoát. Bạn có thể tắt tính năng này trong Cài đặt."
   },
   "desktopUpdates": {
     "modeAutomatic": "Tự động",
@@ -491,6 +508,7 @@
     "deleteSelected": "Xóa",
     "exitSelection": "Hủy chọn",
     "collapseBtn": "Thu gọn",
+    "importExportBtn": "Nhập / Xuất",
     "hostStatusesRefreshed": "Đã làm mới trạng thái máy chủ",
     "failedToRefreshHosts": "Không thể làm mới máy chủ",
     "movedHostTo": "Đã di chuyển {{host}} vào \"{{folder}}\"",
@@ -603,6 +621,7 @@
     "hostClickBehavior": "Khi nhấp vào host",
     "hostClickBehaviorDesc": "Điều xảy ra khi bạn nhấp vào một host đã có tab đang mở. Nhấp Ctrl/Cmd, nhấp chuột giữa hoặc \"Mở trong tab mới\" luôn luôn mở một tab mới.",
     "hostClickNewTab": "Luôn mở tab mới",
+    "hostClickHostPage": "Mở trang chủ cơ, nếu plugin cung cấp",
     "hostClickFocusExisting": "Chuyển sang tab đang mở",
     "hostClickFocusExistingDoubleNew": "Nhấp để chuyển, nhấp đúp để mở tab mới",
     "openInNewTab": "Mở trong tab mới",
@@ -816,7 +835,12 @@
     "editorUpdate": "Cập nhật máy chủ",
     "editorAdd": "Thêm máy chủ",
     "speedSearch": "Tìm kiếm máy chủ. Phím mũi tên để chọn, Enter để kết nối, Esc để đóng",
-    "speedSearchList": "Danh sách máy chủ. Nhập hoặc nhấn / để tìm kiếm."
+    "speedSearchList": "Danh sách máy chủ. Nhập hoặc nhấn / để tìm kiếm.",
+    "openFromLink": {
+      "title": "Mở {{name}}?",
+      "description": "Một liên kết yêu cầu Termix kết nối đến máy chủ này.",
+      "confirm": "Kết nối"
+    }
   },
   "splitScreen": {
     "title": "Chia màn hình",
@@ -894,6 +918,16 @@
     "empty": "Không có thẻ nào. Sử dụng Thêm bên dưới để đặt thẻ."
   },
   "auth": {
+    "inviteIntro": "Bạn được mời tham gia máy chủ này. Chọn tên người dùng và mật khẩu để tạo tài khoản.",
+    "inviteInvalid": "Liên kết mời này đã hết hạn hoặc đã được sử dụng. Hãy yêu cầu quản trị viên cấp liên kết mới.",
+    "accountDisabled": "Tài khoản này đã bị vô hiệu hóa. Hãy yêu cầu quản trị viên kích hoạt lại.",
+    "accountPending": "Tài khoản của bạn đang chờ quản trị viên phê duyệt.",
+    "stepUp": {
+      "title": "Xác minh danh tính",
+      "description": "Xác thực yếu tố thứ hai để tiếp tục.",
+      "noFactor": "Bạn chưa thiết lập yếu tố xác thực thứ hai. Hãy thêm trong Cài đặt rồi thử lại.",
+      "failed": "Thao tác không thành công. Hãy thử lại."
+    },
     "tagline": "Quản lý máy chủ tự lưu trữ, dựa trên plugin.",
     "loginTitle": "Chào mừng trở lại",
     "registerTitle": "Tạo Tài khoản",
@@ -920,6 +954,14 @@
     "loginWithExternal": "Đăng nhập bằng nhà cung cấp bên ngoài",
     "loginWithExternalDesc": "Đăng nhập bằng nhà cung cấp danh tính bên ngoài đã cấu hình",
     "loginWithProvider": "Đăng nhập bằng {{name}}",
+    "pluginLogin": {
+      "signIn": "Đăng nhập",
+      "verify": "Xác minh",
+      "code": "Mã",
+      "useKey": "Sử dụng khóa bảo mật",
+      "keyPrompt": "Sử dụng khóa bảo mật hoặc passkey để tiếp tục.",
+      "keyFailed": "Bước xác thực bằng khóa bảo mật không thành công. Hãy thử lại."
+    },
     "resetPasswordButton": "Đặt lại mật khẩu",
     "sendResetCode": "Gửi mã đặt lại",
     "resetCodeDesc": "Nhập tên người dùng để nhận mã đặt lại mật khẩu. Mã sẽ được ghi trong nhật ký của container Docker.",
@@ -997,6 +1039,8 @@
     "registrationSuccess": "Đăng ký thành công"
   },
   "placeholders": {
+    "username": "Tên người dùng của bạn",
+    "newUsername": "Chọn tên người dùng",
     "keyPassword": "mật khẩu khóa",
     "pastePrivateKey": "Dán khóa riêng của bạn vào đây...",
     "enterPassword": "Nhập mật khẩu của bạn"
@@ -1035,7 +1079,8 @@
         "actionNextTab": "Chuyển sang tab tiếp theo",
         "actionPreviousTab": "Chuyển sang tab trước",
         "actionOpenCommandPalette": "Mở tìm kiếm nhanh",
-        "actionReconnectSession": "Kết nối lại phiên hiện tại"
+        "actionReconnectSession": "Kết nối lại phiên hiện tại",
+        "actionToggleSidebar": "Bật/tắt thanh bên"
       },
       "userProfile": {
         "preset_simple": "Đơn giản",
@@ -1177,6 +1222,10 @@
         "title": "Truy cập internet",
         "consequence": "Nó có thể gửi yêu cầu đến các dịch vụ bên ngoài."
       },
+      "network:sockets": {
+        "title": "Tạo kết nối mạng riêng",
+        "consequence": "Có thể lắng nghe trên các cổng và kết nối trực tiếp đến bất kỳ địa chỉ nào, mà không cần Termix kiểm tra từng kết nối."
+      },
       "network:serve": {
         "title": "Chấp nhận kết nối",
         "consequence": "Nó mở một cổng trên máy chủ Termix."
@@ -1197,6 +1246,18 @@
         "title": "Gửi cảnh báo",
         "consequence": "Đến bạn hoặc người dùng khác, và qua các kênh họ đã thiết lập."
       },
+      "operations:provide": {
+        "title": "Cung cấp thao tác",
+        "consequence": "Các thao tác của nó có thể được chạy từ Tự động hóa, CLI, ứng dụng điện thoại và các nơi khác, bởi những người được phép sử dụng."
+      },
+      "operations:invoke": {
+        "title": "Chạy thao tác của plugin khác",
+        "consequence": "Thay mặt người dùng đang đăng nhập thực hiện các thao tác được liệt kê trong manifest của plugin. Quy tắc phê duyệt vẫn được áp dụng."
+      },
+      "operations:approve": {
+        "title": "Quyết định thao tác nào cần phê duyệt",
+        "consequence": "Có thể cho phép thao tác chạy mà không cần phê duyệt, hoặc chặn chúng, đối với mọi người dùng."
+      },
       "notify:hub": {
         "title": "Nhận mọi cảnh báo",
         "consequence": "Lưu trữ và phân phối các cảnh báo mà tất cả plugin gửi, bao gồm cả nội dung của chúng."
@@ -1207,7 +1268,7 @@
       },
       "network:probe": {
         "title": "Kiểm tra xem các cổng có phản hồi không",
-        "consequence": "Có thể mở kết nối thông thường đến bất kỳ địa chỉ nào từ máy chủ, để xem nó có thể truy cập được hay không."
+        "consequence": "Có thể mở kết nối không mã hóa đến bất kỳ địa chỉ nào từ máy chủ để kiểm tra khả năng truy cập và tra cứu tên máy chủ."
       },
       "hosts:status-provide": {
         "title": "Cung cấp trạng thái máy chủ",
@@ -1220,6 +1281,10 @@
       "hosts:lock": {
         "title": "Quản lý máy chủ ở chế độ chỉ đọc",
         "consequence": "Các máy chủ do nó quản lý không thể bị chỉnh sửa, xóa hoặc chia sẻ lại bởi bất kỳ ai khác."
+      },
+      "hosts:connect-policy": {
+        "title": "Quyết định ai có thể kết nối",
+        "consequence": "Có thể chặn hoặc cho phép mọi kết nối SSH và máy tính từ xa đến bất kỳ host nào."
       },
       "desktop:window": {
         "title": "Mở cửa sổ máy tính để bàn",
@@ -1257,6 +1322,10 @@
         "title": "Lưu trữ bí mật riêng",
         "consequence": "Được Termix mã hóa. Plugin không bao giờ nắm giữ khóa."
       },
+      "config:secrets": {
+        "title": "Đọc các bí mật do máy chủ lưu trữ",
+        "consequence": "Các biến môi trường và tệp trên máy chủ, ngoại trừ các khóa riêng của Termix."
+      },
       "settings:read-core": {
         "title": "Đọc cài đặt Termix",
         "consequence": "Cài đặt máy chủ, không phải máy chủ hoặc thông tin đăng nhập của bạn."
@@ -1277,6 +1346,10 @@
         "title": "Thêm giao diện màu sắc",
         "consequence": "Chỉ bao gồm màu sắc và kiểu dáng. Không có mã nào được thực thi cho một giao diện màu sắc."
       }
+    },
+    "webView": {
+      "unavailable": "Trang này không còn khả dụng. Hãy mở lại từ plugin tương ứng.",
+      "isolationUnavailable": "Trình duyệt này không thể mở trang một cách an toàn tại đây. Hãy sử dụng Chrome hoặc Edge phiên bản mới, hoặc ứng dụng desktop."
     },
     "runtime": {
       "needsPlugin": "{{name}} không khả dụng",
@@ -1301,7 +1374,7 @@
         "running": "Đang chạy",
         "disabled": "Đã tắt",
         "failed": "Dừng bất ngờ",
-        "blocked": "Đang chờ plugin khác",
+        "blocked": "Không thể khởi động",
         "server": "Chạy trên máy chủ của bạn",
         "safeMode": "Tắt trong chế độ an toàn"
       },
@@ -1323,7 +1396,8 @@
         "version": "Phiên bản",
         "status": "Trạng thái",
         "category": "Danh mục",
-        "downloads": "Lượt tải"
+        "downloads": "Lượt tải",
+        "memory": "Bộ nhớ"
       },
       "risk": {
         "critical": "Quan trọng",
@@ -1374,9 +1448,11 @@
         "installedNotRunning": "{{name}} đã được cài đặt nhưng không thể khởi động. Mở nó để xem lý do.",
         "updated": "{{name}} đã được cập nhật lên {{version}}",
         "updatedMany_other": "{{count}} plugin đã được cập nhật",
+        "needsReview_other": "{{count}} plugin yêu cầu quyền mới. Hãy xem xét để cập nhật.",
         "uninstalled": "{{name}} đã được gỡ cài đặt",
         "dataDeleted": "Dữ liệu của {{name}} đã được xóa",
-        "failedToStart": "{{name}} không thể khởi động. Mở nó để xem lý do."
+        "failedToStart": "{{name}} không thể khởi động. Mở nó để xem lý do.",
+        "held": "{{name}} chờ {{minutes}} phút trước khi thay đổi có hiệu lực, để các quản trị viên khác có thể xem"
       },
       "errors": {
         "generic": "Đã xảy ra lỗi",
@@ -1425,6 +1501,21 @@
       "pin": "Giữ nguyên phiên bản này",
       "pinHint": "Giữ lại {{version}} và bỏ qua mọi bản cập nhật cho đến khi bạn tắt tính năng này.",
       "pinnedTo": "Đã ghim vào {{version}}",
+      "legacy": {
+        "notice_other": "{{count}} plugin được tạo cho phiên bản Termix cũ và sẽ tắt cho đến khi được cập nhật: {{names}}.",
+        "why": "Chúng được tạo cho Plugin API 1, chạy bên trong máy chủ. Termix hiện chạy mỗi plugin trong tiến trình riêng, vì vậy mỗi plugin cần phiên bản tương thích với Plugin API 2. Cập nhật các plugin chính thức tại đây và yêu cầu tác giả của plugin cộng đồng cung cấp phiên bản mới.",
+        "guide": "Cách di chuyển plugin sang API 2"
+      },
+      "provenance": {
+        "verified": "Đã kiểm tra bản dựng",
+        "verifiedHint": "Nguồn gốc bản dựng đã được ký bởi quy trình phát hành của registry Termix và khớp với tệp này. Mở bản dựng.",
+        "unchecked": "Chưa kiểm tra bản dựng",
+        "uncheckedHint": "Không thể kiểm tra nguồn gốc bản dựng khi tải xuống. Chữ ký registry đã được kiểm tra."
+      },
+      "updateCheck": {
+        "notice_other": "Termix {{version}} đã ra mắt. {{count}} plugin sẽ tắt trên phiên bản này cho đến khi bạn cập nhật: {{names}}.",
+        "needs": "{{name}} (cần Termix {{range}})"
+      },
       "version": "Phiên bản",
       "versionPickHint": "Cài đặt một bản phát hành cũ thay vì bản mới nhất. Nó sẽ giữ nguyên phiên bản đó cho đến khi bạn bỏ ghim.",
       "versionPickHintInstalled": "Chuyển sang một bản phát hành khác. Chọn một phiên bản không phải là mới nhất sẽ tự động ghim nó.",
@@ -1497,7 +1588,13 @@
         "unreachable": "Không thể đọc: {{error}}",
         "filter": "Registry",
         "allRegistries": "Tất cả registry",
-        "browseHint": "Bật plugin cộng đồng hoặc thêm registry của riêng bạn trong tab Registries."
+        "browseHint": "Bật plugin cộng đồng hoặc thêm registry của riêng bạn trong tab Registries.",
+        "looksName": "Bố cục và chủ đề từ cộng đồng",
+        "looksHint": "Cho phép các bố cục và chủ đề không phải của Termix chạy ngoài môi trường cách ly, giống như các bản chính thức. Bố cục vẽ toàn bộ ứng dụng, nên nó có thể xem và thực hiện mọi thứ bạn có thể. Chỉ cài đặt những thứ bạn tin tưởng. Tải lại trang sau khi thay đổi cài đặt này.",
+        "looksConfirmTitle": "Cho phép bố cục từ cộng đồng chạy ngoài môi trường cách ly?",
+        "looksConfirmBody": "Bố cục hoặc chủ đề từ cộng đồng sẽ chạy trên trang với quyền truy cập đầy đủ vào Termix dưới danh nghĩa người dùng đang đăng nhập. Điều này có thể gây rủi ro. Chỉ bật tính năng này nếu bạn tin tưởng các bố cục và chủ đề mình cài đặt.",
+        "looksConfirm": "Bật",
+        "looksSaved": "Đã lưu. Tải lại trang để áp dụng."
       },
       "upToDate": "Mọi thứ đều đã cập nhật.",
       "lastChecked": "Lần kiểm tra cuối cùng {{time}}",
@@ -1576,8 +1673,27 @@
       "unsupportedHint": "Không có bản phát hành nào của plugin này chạy trên phiên bản Termix hiện tại. Hãy cập nhật Termix để cài đặt nó.",
       "needsTermix": "Yêu cầu Termix {{range}}",
       "showUnsupported": "Hiển thị không hỗ trợ ({{count}})",
-      "showMore": "Hiển thị thêm {{count}} (còn {{total}})"
-    }
+      "showMore": "Hiển thị thêm {{count}} (còn {{total}})",
+      "memory": {
+        "summary": "Bộ nhớ: {{total}} trên {{limit}} | plugin {{plugins}} | {{running}} đang chạy",
+        "lowTitle": "Máy chủ này đang thiếu bộ nhớ",
+        "lowBody": "Termix và các plugin sử dụng {{total}} trên {{limit}}. Hãy cấp thêm bộ nhớ cho máy chủ hoặc tắt các plugin không sử dụng.",
+        "idle": "Chờ rảnh",
+        "idleHint": "Không chạy hiện tại. Sẽ khởi động khi có yêu cầu.",
+        "keptOn": "Luôn chạy: {{reason}}",
+        "stopsWhenIdle": "Dừng khi chờ rảnh"
+      }
+    },
+    "firstLoad": {
+      "title": "Đang chuẩn bị plugin",
+      "progress": "{{done}} trên {{total}}",
+      "hint": "Các plugin đang khởi động lần đầu. Sau đó, Termix sẽ mở ngay lập tức.",
+      "skip": "Tiếp tục"
+    },
+    "framesBlocked": "Plugin không thể tải tệp của chúng. Một proxy đăng nhập đặt trước Termix có thể đang chặn chúng.",
+    "framesBlockedHelp": "Cách khắc phục",
+    "framesFailed_other": "{{count}} plugin không thể tải, nên các phần của chúng bị ẩn: {{names}}",
+    "framesFailedReload": "Tải lại"
   },
   "settings": {
     "secretSet": "Đã đặt",
@@ -1621,6 +1737,12 @@
       "title": "Cột",
       "auto": "Tự động",
       "count": "Rộng {{count}}"
+    },
+    "pager": {
+      "previous": "Trước",
+      "next": "Tiếp",
+      "page": "Trang {{page}}",
+      "pageOf": "Trang {{page}} trong tổng số {{pages}}"
     }
   },
   "fields": {
@@ -1634,7 +1756,108 @@
   "rbac": {
     "roles": {
       "admin": "Quản trị viên",
-      "user": "Người dùng"
+      "user": "Người dùng",
+      "viewer": "Người xem",
+      "operator": "Người vận hành",
+      "auditor": "Kiểm toán viên",
+      "helpdesk": "Hỗ trợ kỹ thuật"
+    }
+  },
+  "tileGrid": {
+    "empty": "Chưa có ô nào. Thêm một số từ danh sách.",
+    "move": "Kéo để di chuyển",
+    "moveTile": "Di chuyển {{tile}}",
+    "settings": "Cài đặt {{tile}}",
+    "remove": "Xóa {{tile}}",
+    "width": "Chiều rộng",
+    "height": "Chiều cao",
+    "addTiles": "Thêm ô",
+    "closePicker": "Đóng",
+    "search": "Tìm kiếm ô",
+    "noMatches": "Không có kết quả phù hợp.",
+    "kind": {
+      "all": "Tất cả",
+      "card": "Thẻ",
+      "chart": "Biểu đồ",
+      "signal": "Trạng thái",
+      "action": "Thao tác",
+      "resource": "Danh sách",
+      "session": "Phiên làm việc"
+    },
+    "reset": "Đặt lại",
+    "done": "Xong"
+  },
+  "diagnostics": {
+    "title": "Chẩn đoán",
+    "makeReport": "Tạo báo cáo chẩn đoán",
+    "slowBoot": "Mất quá lâu? Tạo báo cáo chẩn đoán",
+    "troubleSigningIn": "Gặp khó khăn khi đăng nhập? Tạo báo cáo chẩn đoán",
+    "reportTab": "Báo cáo",
+    "logsTab": "Nhật ký máy chủ",
+    "intro": "Hành động này tạo một tệp chứa những gì Termix cần để tìm ra vấn đề: lỗi, nhật ký, trạng thái plugin và cách các yêu cầu đến máy chủ. Tải xuống tệp này và đính kèm vào một vấn đề trên GitHub hoặc gửi qua Discord.",
+    "notAdmin": "Nhật ký máy chủ và chi tiết máy chủ cần quyền quản trị viên. Hãy yêu cầu quản trị viên của bạn cũng tạo báo cáo nếu vấn đề nằm ở máy chủ.",
+    "signedOut": "Bạn chưa đăng nhập, nên chỉ phần trình duyệt được bao gồm.",
+    "whatHappened": "Điều gì đã xảy ra",
+    "whatHappenedHint": "Tùy chọn. Bạn đã làm gì và điều gì đã sai?",
+    "include": "Bao gồm",
+    "adminOnly": "Cần quyền quản trị viên",
+    "privacy": "Quyền riêng tư",
+    "mask": "Ẩn tên và địa chỉ",
+    "maskHint": "IP, tên máy chủ, tên người dùng và email sẽ trở thành host-1, user-1, v.v. Mật khẩu, khóa và mã thông báo luôn bị loại bỏ.",
+    "domText": "Bao gồm văn bản trang",
+    "domTextHint": "Thêm văn bản trên màn hình vào bố cục trang. Tắt theo mặc định vì nó có thể hiển thị dữ liệu của bạn.",
+    "warnOnly": "Chỉ cảnh báo và lỗi từ nhật ký máy chủ",
+    "warnOnlyHint": "Giúp tệp nhỏ hơn.",
+    "focus": "Plugin",
+    "focusHint": "Hiển thị plugin này trước và gửi vấn đề vào kho lưu trữ của nó.",
+    "allPlugins": "Tất cả plugin",
+    "findings": "Được tìm thấy bởi các kiểm tra",
+    "preview": "Những gì sẽ được gửi",
+    "previewCut": "(Bản xem trước dừng ở đây. Tệp có đầy đủ nội dung.)",
+    "cut": "Tệp lớn hơn 5 MB, nên các dòng nhật ký cũ nhất đã bị cắt.",
+    "footerHint": "Kiểm tra bản xem trước trước khi gửi.",
+    "copy": "Sao chép",
+    "copied": "Đã sao chép báo cáo",
+    "copyFailed": "Không thể sao chép báo cáo",
+    "download": "Tải xuống",
+    "downloaded": "Đã tải xuống báo cáo",
+    "openIssue": "Mở vấn đề trên GitHub",
+    "logsSearch": "Tìm kiếm nhật ký",
+    "logsLevel": "Mức độ",
+    "logsAll": "Tất cả mức độ",
+    "logsWarn": "Cảnh báo và lỗi",
+    "logsError": "Lỗi",
+    "logsPlugin": "Plugin",
+    "logsCount": "{{count}} dòng",
+    "logsFailed": "Không thể tải nhật ký",
+    "logsPause": "Tạm dừng",
+    "logsResume": "Tiếp tục",
+    "logsEmpty": "Chưa có dòng nhật ký nào.",
+    "parts": {
+      "server": "Máy chủ",
+      "plugins": "Plugin",
+      "sections": "Chi tiết plugin",
+      "logs": "Nhật ký máy chủ",
+      "request": "Kết nối",
+      "probes": "Kiểm tra kết nối",
+      "errors": "Lỗi trình duyệt",
+      "console": "Console trình duyệt",
+      "network": "Mạng",
+      "page": "Trình duyệt và cửa sổ",
+      "dom": "Bố cục trang"
+    },
+    "partHints": {
+      "server": "Phiên bản, cơ sở dữ liệu, SSL và các cài đặt đang được bật",
+      "plugins": "Phiên bản và trạng thái trên máy chủ cũng như trong trình duyệt",
+      "sections": "Chi tiết bổ sung do các plugin đang chạy thêm vào",
+      "logs": "Nhật ký máy chủ từ khi khởi động và các dòng gần đây",
+      "request": "Tên tiêu đề cho thấy có proxy đứng trước Termix",
+      "probes": "Các bài kiểm tra xác nhận Termix và các tệp plugin được tải thành công",
+      "errors": "Lỗi không được bắt và các yêu cầu tải bị chặn",
+      "console": "Các dòng console gần đây từ trang và các plugin",
+      "network": "Các yêu cầu gần đây và trạng thái của chúng",
+      "page": "Trình duyệt, kích thước màn hình và tên khóa lưu trữ",
+      "dom": "Bố cục của trang, không bao gồm văn bản"
     }
   }
 }

@@ -131,6 +131,8 @@
     "updateLinkLabel": "Güncelleme mevcut. GitHub'da sürüm notlarını açın"
   },
   "common": {
+    "showPassword": "Şifreyi göster",
+    "hidePassword": "Şifreyi gizle",
     "scrollTabsLeft": "Sekmeleri sola kaydır",
     "scrollTabsRight": "Sekmeleri sağa kaydır",
     "close": "Kapat",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Eklenti listesi yüklenemedi. Eklentileri daha sonra Eklentiler sekmesinden seçebilirsiniz.",
     "securityTitle": "Hesabınızı güvence altına alın",
     "securityIntro": "Hesabınıza bir geçit anahtarı veya doğrulayıcı uygulama ekleyin. Bunu daha sonra Ayarlar'da Güvenlik altında da yapabilirsiniz.",
-    "pluginsDocsLink": "Her biri hakkında bilgi edinin"
+    "pluginsDocsLink": "Her biri hakkında bilgi edinin",
+    "layoutTitle": "Bir düzen seçin",
+    "layoutIntro": "Düzen, uygulamanın menüler, kenar çubuğu ve sekmeler dahil tüm yerleşimini belirler. Kullanmak için birine tıklayın. Değişiklik hemen uygulanır.",
+    "layoutInstalled": "Yüklü",
+    "layoutMore": "Daha fazla düzen",
+    "layoutNoMore": "Şu anda başka düzen bulunmuyor.",
+    "layoutDefault": "Varsayılan",
+    "layoutInstall": "Yükle",
+    "layoutTurnOn": "Etkinleştir",
+    "layoutVideo": "Videoyu izle",
+    "layoutChangeLater": "Düzeninizi Ayarlar > Görünüm bölümünden istediğiniz zaman değiştirebilirsiniz. Daha fazla düzen yüklenmesini istiyorsanız bir yöneticiden yardım isteyin.",
+    "layoutChangeLaterAdmin": "Düzeninizi Ayarlar > Görünüm bölümünden istediğiniz zaman değiştirebilirsiniz. Daha fazla düzen daha sonra Eklentiler sekmesinden yüklenebilir."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix hala çalışıyor",
+    "noticeBody": "Pencereyi kapatmak, Termix'in tepside çalışmaya devam etmesini sağlar. Çıkmak için tepsideki simge menüsünü açın ve Çıkış'ı seçin. Bu özelliği Ayarlar'dan kapatabilirsiniz."
   },
   "desktopUpdates": {
     "modeAutomatic": "Otomatik",
@@ -495,6 +512,7 @@
     "deleteSelected": "Sil",
     "exitSelection": "Seçimi kapat",
     "collapseBtn": "Daralt",
+    "importExportBtn": "İçe Aktar / Dışa Aktar",
     "hostStatusesRefreshed": "Ana bilgisayar durumları yenilendi",
     "failedToRefreshHosts": "Ana bilgisayarlar yenilenemedi",
     "movedHostTo": "{{host}}, \"{{folder}}\" klasörüne taşındı",
@@ -609,6 +627,7 @@
     "hostClickBehavior": "Ana bilgisayara tıklama",
     "hostClickBehaviorDesc": "Zaten açık bir sekmesi olan bir ana bilgisayara tıkladığınızda ne olacağını belirler. Ctrl/Cmd + tıklama, orta tıklama veya \"Yeni sekmede aç\" her zaman yeni bir sekme başlatır.",
     "hostClickNewTab": "Her zaman yeni bir sekme aç",
+    "hostClickHostPage": "Bir eklenti sunuyorsa ana bilgisayar sayfasını aç",
     "hostClickFocusExisting": "Açık sekmeye geç",
     "hostClickFocusExistingDoubleNew": "Geçmek için tıkla, yeni sekme için çift tıkla",
     "openInNewTab": "Yeni sekmede aç",
@@ -828,7 +847,12 @@
     "editorUpdate": "Ana Bilgisayarı Güncelle",
     "editorAdd": "Ana Bilgisayar Ekle",
     "speedSearch": "Ana bilgisayarları ara. Seçmek için ok tuşları, bağlanmak için Enter, kapatmak için Esc",
-    "speedSearchList": "Ana bilgisayar listesi. Aramak için yazın veya / tuşuna basın."
+    "speedSearchList": "Ana bilgisayar listesi. Aramak için yazın veya / tuşuna basın.",
+    "openFromLink": {
+      "title": "{{name}} açsın mı?",
+      "description": "Bir bağlantı, Termix'in bu sunucuya bağlanmasını istedi.",
+      "confirm": "Bağlan"
+    }
   },
   "splitScreen": {
     "title": "Bölünmüş ekran",
@@ -907,6 +931,16 @@
     "empty": "Kart yok. Kart eklemek için aşağıdaki Ekle'yi kullanın."
   },
   "auth": {
+    "inviteIntro": "Bu sunucuya davet edildiniz. Hesabınızı oluşturmak için bir kullanıcı adı ve şifre seçin.",
+    "inviteInvalid": "Bu davet bağlantısı süresi dolmuş veya zaten kullanılmış. Yeni bir tane için yöneticiden isteyin.",
+    "accountDisabled": "Bu hesap devre dışı bırakılmış. Tekrar aktif hale getirmesi için yöneticiden isteyin.",
+    "accountPending": "Hesabınızın yönetici tarafından onaylanması bekleniyor.",
+    "stepUp": {
+      "title": "Kimliğinizi doğrulayın",
+      "description": "Devam etmek için ikinci güvenlik adımınızı doğrulayın.",
+      "noFactor": "İkinci güvenlik adımınız ayarlanmamış. Ayarlar'dan ekleyin ve tekrar deneyin.",
+      "failed": "Bu işlem başarısız oldu. Tekrar deneyin."
+    },
     "tagline": "Kendi kendine barındırılan, eklenti tabanlı sunucu yönetimi.",
     "loginTitle": "Tekrar hoş geldiniz",
     "registerTitle": "Hesap Oluştur",
@@ -933,6 +967,14 @@
     "loginWithExternal": "Harici Sağlayıcı ile Giriş Yap",
     "loginWithExternalDesc": "Yapılandırılmış harici kimlik sağlayıcınızı kullanarak giriş yapın",
     "loginWithProvider": "{{name}} ile Giriş Yap",
+    "pluginLogin": {
+      "signIn": "Oturum aç",
+      "verify": "Doğrula",
+      "code": "Kod",
+      "useKey": "Güvenlik anahtarı kullan",
+      "keyPrompt": "Devam etmek için güvenlik anahtarınızı veya geçit anahtarınızı kullanın.",
+      "keyFailed": "Güvenlik anahtarı adımı başarısız oldu. Tekrar deneyin."
+    },
     "resetPasswordButton": "Şifreyi Sıfırla",
     "sendResetCode": "Sıfırlama Kodu Gönder",
     "resetCodeDesc": "Şifre sıfırlama kodu almak için kullanıcı adınızı girin. Kod, Docker kapsayıcı günlüklerinde kaydedilecektir.",
@@ -1010,6 +1052,8 @@
     "registrationSuccess": "Kayıt başarılı"
   },
   "placeholders": {
+    "username": "Kullanıcı adınız",
+    "newUsername": "Bir kullanıcı adı seçin",
     "keyPassword": "anahtar şifresi",
     "pastePrivateKey": "Özel anahtarınızı buraya yapıştırın...",
     "enterPassword": "Şifrenizi girin"
@@ -1052,7 +1096,8 @@
         "actionNextTab": "Sonraki sekmeye geç",
         "actionPreviousTab": "Önceki sekmeye geç",
         "actionOpenCommandPalette": "Hızlı aramayı aç",
-        "actionReconnectSession": "Mevcut oturumu yeniden bağla"
+        "actionReconnectSession": "Mevcut oturumu yeniden bağla",
+        "actionToggleSidebar": "Kenar çubuğunu aç/kapat"
       },
       "userProfile": {
         "preset_simple": "Basit",
@@ -1194,6 +1239,10 @@
         "title": "İnternete erişebilir",
         "consequence": "Dış hizmetlere istekler gönderebilir."
       },
+      "network:sockets": {
+        "title": "Kendi ağ bağlantılarını açabilir",
+        "consequence": "Termix'in her bağlantıyı kontrol etmesine gerek kalmadan, doğrudan bağlantı noktalarını dinleyebilir ve herhangi bir adrese bağlanabilir."
+      },
       "network:serve": {
         "title": "Bağlantıları kabul edebilir",
         "consequence": "Termix sunucusunda bir bağlantı noktası açar."
@@ -1214,6 +1263,18 @@
         "title": "Uyarılar gönderebilir",
         "consequence": "Size veya diğer kullanıcılara ve ayarladıkları kanallar üzerinden."
       },
+      "operations:provide": {
+        "title": "İşlem sunma",
+        "consequence": "İzin verilen kişiler tarafından Otomasyonlar, CLI, telefon uygulaması ve diğer yerlerden çalıştırılabilir."
+      },
+      "operations:invoke": {
+        "title": "Diğer eklentilerin işlemlerini çalıştır",
+        "consequence": "Manifestosunda listelenen işlemlerde oturum açmış kullanıcı adına hareket eder. Onay kuralları hâlâ geçerlidir."
+      },
+      "operations:approve": {
+        "title": "Onaya neyin ihtiyacı olduğunu belirle",
+        "consequence": "Her kullanıcı için işlemlerin onaysız çalışmasına izin verebilir veya engelleyebilir."
+      },
       "notify:hub": {
         "title": "Tüm uyarıları alabilir",
         "consequence": "Tüm eklentilerin gönderdiği uyarıları, içerikleri dahil olmak üzere depolar ve iletir."
@@ -1224,7 +1285,7 @@
       },
       "network:probe": {
         "title": "Portların yanıt verip vermediğini kontrol et",
-        "consequence": "Sunucudan herhangi bir adrese düz bağlantı açabilir, erişilebilir olup olmadığını görebilir."
+        "consequence": "Sunucudan herhangi bir adrese düz bağlantı açabilir, erişilebilir olup olmadığını kontrol edebilir ve ana bilgisayar adlarını sorgulayabilir."
       },
       "hosts:status-provide": {
         "title": "Ana bilgisayar durumunu sağla",
@@ -1237,6 +1298,10 @@
       "hosts:lock": {
         "title": "Ana bilgisayarları salt okunur olarak yönet",
         "consequence": "Yönettiği ana bilgisayarlar başka kimse tarafından düzenlenemez, silinemez veya yeniden paylaşılamaz."
+      },
+      "hosts:connect-policy": {
+        "title": "Bağlanabilen kişileri belirle",
+        "consequence": "Herhangi bir ana bilgisayara yapılan her SSH ve uzaktan masaüstü bağlantısını engelleyebilir veya izin verebilir."
       },
       "desktop:window": {
         "title": "Masaüstü pencereleri açabilir",
@@ -1274,6 +1339,10 @@
         "title": "Kendi gizli bilgilerini sakla",
         "consequence": "Termix tarafından şifrelenir. Eklenti asla anahtarı tutmaz."
       },
+      "config:secrets": {
+        "title": "Sunucunun tuttuğu gizli bilgileri okuyabilir",
+        "consequence": "Termix'in kendi anahtarları hariç, sunucudaki ortam değişkenleri ve dosyalar."
+      },
       "settings:read-core": {
         "title": "Termix ayarlarını oku",
         "consequence": "Sunucu ayarları, ana bilgisayarlarınız veya kimlik bilgileriniz değil."
@@ -1294,6 +1363,10 @@
         "title": "Renk temaları ekle",
         "consequence": "Sadece renkler ve stiller. Bir tema için hiçbir kod çalışmaz."
       }
+    },
+    "webView": {
+      "unavailable": "Bu sayfa artık mevcut değil. Eklentisinden tekrar açın.",
+      "isolationUnavailable": "Bu tarayıcı sayfayı burada güvenli bir şekilde açamıyor. Güncel bir Chrome veya Edge kullanın veya masaüstü uygulamasını kullanın."
     },
     "runtime": {
       "needsPlugin": "{{name}} kullanılamıyor",
@@ -1318,7 +1391,7 @@
         "running": "Çalışıyor",
         "disabled": "Devre dışı",
         "failed": "Beklenmedik şekilde durdu",
-        "blocked": "Başka bir eklentiyi bekliyor",
+        "blocked": "Başlatılamıyor",
         "server": "Sunucunuzda çalışır",
         "safeMode": "Güvenli modda kapalı"
       },
@@ -1340,7 +1413,8 @@
         "version": "Sürüm",
         "status": "Durum",
         "category": "Kategori",
-        "downloads": "İndirmeler"
+        "downloads": "İndirmeler",
+        "memory": "Bellek"
       },
       "risk": {
         "critical": "Kritik",
@@ -1403,9 +1477,12 @@
         "updated": "{{name}} {{version}} sürümüne güncellendi",
         "updatedMany_one": "{{count}} eklenti güncellendi",
         "updatedMany_other": "{{count}} eklenti güncellendi",
+        "needsReview_one": "1 eklenti yeni izinler istiyor. Güncellemek için gözden geçir.",
+        "needsReview_other": "{{count}} eklenti yeni izinler istiyor. Güncellemek için her birini gözden geçir.",
         "uninstalled": "{{name}} kaldırıldı",
         "dataDeleted": "{{name}} için veriler silindi",
-        "failedToStart": "{{name}} başlatılamadı. Nedenini görmek için açın."
+        "failedToStart": "{{name}} başlatılamadı. Nedenini görmek için açın.",
+        "held": "{{name}}, diğer yöneticilerin değişikliği görmesi için uygulanmadan önce {{minutes}} dakika bekliyor"
       },
       "errors": {
         "generic": "Bir şeyler yanlış gitti",
@@ -1458,6 +1535,23 @@
       "pin": "Bu sürümde kal",
       "pinHint": "{{version}} sürümünü korur ve bunu kapatana kadar tüm güncellemeleri atlar.",
       "pinnedTo": "{{version}} sürümüne sabitlendi",
+      "legacy": {
+        "notice_one": "1 eklenti eski bir Termix sürümü için yapıldı ve güncellenene kadar kapalı kalacak: {{names}}.",
+        "notice_other": "{{count}} eklenti eski bir Termix sürümü için yapıldı ve güncellenene kadar kapalı kalacak: {{names}}.",
+        "why": "Bu eklentiler, sunucu içinde çalışan eklenti API 1 için yapıldı. Termix artık her eklentiyi kendi işleminde çalıştırıyor, bu yüzden her birinin eklenti API 2 için yapılmış bir sürümüne ihtiyacı var. Resmi olanları buradan güncelleyin ve topluluk eklentileri için yazarından bir sürüm isteyin.",
+        "guide": "Eklentiler nasıl API 2'ye geçer"
+      },
+      "provenance": {
+        "verified": "Derleme doğrulandı",
+        "verifiedHint": "Derleme kaynağı Termix kayıt defteri yayınlama iş akışı tarafından imzalandı ve bu dosya ile eşleşiyor. Derlemeyi açar.",
+        "unchecked": "Derleme doğrulanmadı",
+        "uncheckedHint": "İndirildiğinde derleme kaynağı doğrulanamadı. Kayıt defteri imzası doğrulandı."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} yayınlandı. 1 eklenti güncellenene kadar kapalı kalacak: {{names}}.",
+        "notice_other": "Termix {{version}} yayınlandı. {{count}} eklenti güncellenene kadar kapalı kalacak: {{names}}.",
+        "needs": "{{name}} (Termix {{range}} gerektirir)"
+      },
       "version": "Sürüm",
       "versionPickHint": "En yeni sürüm yerine daha eski bir sürümü yükle. Sabitlemeyi kaldırana kadar bu sürümde kalır.",
       "versionPickHintInstalled": "Başka bir sürüme geç. En yeni olmayan bir sürüm seçmek onu sabitler.",
@@ -1531,7 +1625,13 @@
         "unreachable": "Okunamadı: {{error}}",
         "filter": "Kayıt defteri",
         "allRegistries": "Tüm kayıt defterleri",
-        "browseHint": "Topluluk eklentilerini açın veya Kayıt Defterleri sekmesinden kendi kayıt defterinizi ekleyin."
+        "browseHint": "Topluluk eklentilerini açın veya Kayıt Defterleri sekmesinden kendi kayıt defterinizi ekleyin.",
+        "looksName": "Topluluk düzenleri ve temaları",
+        "looksHint": "Termix'ten olmayan düzen ve temaların, resmi olanlar gibi kum havuzunun dışında çalışmasına izin verir. Bir düzen tüm uygulamayı çizer, bu nedenle sizin görebileceğiniz ve yapabileceğiniz her şeyi görebilir ve yapabilir. Yalnızca güvendiğinizleri yükleyin. Bu ayarı değiştirdikten sonra sayfayı yeniden yükleyin.",
+        "looksConfirmTitle": "Topluluk düzenlerinin kum havuzunun dışında çalışmasına izin verilsin mi?",
+        "looksConfirmBody": "Bir topluluk düzeni veya teması, giriş yapan kullanıcı olarak Termix'e tam erişimle sayfada çalışacaktır. Bu riskli olabilir. Bu özelliği yalnızca yüklediğiniz düzen ve temalara güveniyorsanız açın.",
+        "looksConfirm": "Aç",
+        "looksSaved": "Kaydedildi. Uygulamak için sayfayı yeniden yükleyin."
       },
       "upToDate": "Her şey güncel.",
       "lastChecked": "Son kontrol {{time}}",
@@ -1614,8 +1714,28 @@
       "unsupportedHint": "Bu eklentinin bu Termix sürümünde çalışan bir sürümü yok. Yüklemek için Termix'i güncelleyin.",
       "needsTermix": "Termix {{range}} gerekiyor",
       "showUnsupported": "Desteklenmeyenleri göster ({{count}})",
-      "showMore": "{{count}} tane daha göster ({{total}} kaldı)"
-    }
+      "showMore": "{{count}} tane daha göster ({{total}} kaldı)",
+      "memory": {
+        "summary": "Bellek: {{limit}}'den {{total}} | eklentiler {{plugins}} | {{running}} çalışıyor",
+        "lowTitle": "Bu sunucuda bellek yetersiz",
+        "lowBody": "Termix ve eklentileri {{limit}}'den {{total}} kullanıyor. Sunucuya daha fazla bellek verin veya kullanmadığınız eklentileri kapatın.",
+        "idle": "Boşta",
+        "idleHint": "Şu anda çalışmıyor. Bir şey ona ihtiyaç duyduğunda başlar.",
+        "keptOn": "Çalışmaya devam ediyor: {{reason}}",
+        "stopsWhenIdle": "Boşta kaldığında durur"
+      }
+    },
+    "firstLoad": {
+      "title": "Eklentiler hazırlanıyor",
+      "progress": "{{total}}'den {{done}}",
+      "hint": "Eklentiler ilk kez başlatılıyor. Bundan sonra Termix hemen açılacak.",
+      "skip": "Devam et"
+    },
+    "framesBlocked": "Eklentiler dosyalarını yükleyemiyor. Termix'in önündeki bir giriş vekil sunucusu (proxy) büyük olasılıkla bunları engelliyor.",
+    "framesBlockedHelp": "Nasıl düzeltilir",
+    "framesFailed_one": "{{names}} yüklenemediğinden bileşenleri gizlendi",
+    "framesFailed_other": "{{count}} eklenti yüklenemediğinden bileşenleri gizlendi: {{names}}",
+    "framesFailedReload": "Yenile"
   },
   "settings": {
     "secretSet": "Ayarlandı",
@@ -1663,6 +1783,12 @@
       "title": "Sütunlar",
       "auto": "Otomatik",
       "count": "{{count}} geniş"
+    },
+    "pager": {
+      "previous": "Önceki",
+      "next": "Sonraki",
+      "page": "{{page}}. sayfa",
+      "pageOf": "{{pages}} sayfadaki {{page}}. sayfa"
     }
   },
   "fields": {
@@ -1679,7 +1805,108 @@
   "rbac": {
     "roles": {
       "admin": "Yönetici",
-      "user": "Kullanıcı"
+      "user": "Kullanıcı",
+      "viewer": "İzleyici",
+      "operator": "Operatör",
+      "auditor": "Denetçi",
+      "helpdesk": "Müşteri Destek"
+    }
+  },
+  "tileGrid": {
+    "empty": "Henüz karo yok. Listeden bazıları ekleyin.",
+    "move": "Taşımak için sürükleyin",
+    "moveTile": "{{tile}} taşı",
+    "settings": "{{tile}} ayarları",
+    "remove": "{{tile}} kaldır",
+    "width": "Genişlik",
+    "height": "Yükseklik",
+    "addTiles": "Karo ekle",
+    "closePicker": "Kapat",
+    "search": "Karoları ara",
+    "noMatches": "Hiçbir şey eşleşmiyor.",
+    "kind": {
+      "all": "Tümü",
+      "card": "Kartlar",
+      "chart": "Grafikler",
+      "signal": "Durum",
+      "action": "İşlemler",
+      "resource": "Listeler",
+      "session": "Oturumlar"
+    },
+    "reset": "Sıfırla",
+    "done": "Tamam"
+  },
+  "diagnostics": {
+    "title": "Teşhis",
+    "makeReport": "Teşhis raporu oluştur",
+    "slowBoot": "Uzun sürüyor mu? Teşhis raporu oluşturun",
+    "troubleSigningIn": "Giriş yaparken sorun mu yaşıyorsunuz? Teşhis raporu oluşturun",
+    "reportTab": "Rapor",
+    "logsTab": "Sunucu günlükleri",
+    "intro": "Bu işlem, Termix'in bir sorunu bulması için gereken hataları, günlükleri, eklenti durumlarını ve isteklerin sunucuya nasıl ulaştığını içeren tek bir dosya oluşturur. Dosyayı indirip bir GitHub sorununa ekleyin veya Discord üzerinden gönderin.",
+    "notAdmin": "Sunucu günlükleri ve sunucu ayrıntıları için yönetici yetkisi gerekir. Sorun sunucuda kaynaklanıyorsa yöneticinizden de bir rapor oluşturmasını isteyin.",
+    "signedOut": "Giriş yapmadığınız için yalnızca tarayıcı kısmı dahil ediliyor.",
+    "whatHappened": "Ne oldu",
+    "whatHappenedHint": "İsteğe bağlı. Ne yaptınız ve ne yanlış gitti?",
+    "include": "Dahil et",
+    "adminOnly": "Yönetici gerekiyor",
+    "privacy": "Gizlilik",
+    "mask": "İsimleri ve adresleri gizle",
+    "maskHint": "IP'ler, ana bilgisayar adları, kullanıcı adları ve e-postalar host-1, user-1 gibi hale gelir. Şifreler, anahtarlar ve belirteçler her zaman kaldırılır.",
+    "domText": "Sayfa metnini dahil et",
+    "domTextHint": "Ekrandaki metni sayfa düzenine ekler. Verilerinizi gösterebileceği için varsayılan olarak kapalıdır.",
+    "warnOnly": "Yalnızca sunucu günlüğündeki uyarılar ve hatalar",
+    "warnOnlyHint": "Dosya boyutunu küçültür.",
+    "focus": "Eklenti",
+    "focusHint": "Bu eklentiyi önce gösterir ve sorunu ilgili deposuna kaydeder.",
+    "allPlugins": "Tüm eklentiler",
+    "findings": "Kontroller tarafından bulunanlar",
+    "preview": "Gönderilecek olan",
+    "previewCut": "(Önizleme burada sona eriyor. Dosya her şeyi içeriyor.)",
+    "cut": "Dosya 5 MB'ı aştığı için en eski günlük satırları kesildi.",
+    "footerHint": "Göndermeden önce önizlemeyi kontrol edin.",
+    "copy": "Kopyala",
+    "copied": "Rapor kopyalandı",
+    "copyFailed": "Rapor kopyalanamadı",
+    "download": "İndir",
+    "downloaded": "Rapor indirildi",
+    "openIssue": "GitHub sorunu aç",
+    "logsSearch": "Günlüklerde ara",
+    "logsLevel": "Seviye",
+    "logsAll": "Tüm seviyeler",
+    "logsWarn": "Uyarılar ve hatalar",
+    "logsError": "Hatalar",
+    "logsPlugin": "Eklenti",
+    "logsCount": "{{count}} satır",
+    "logsFailed": "Günlükler yüklenemedi",
+    "logsPause": "Duraklat",
+    "logsResume": "Devam et",
+    "logsEmpty": "Henüz günlük satırı yok.",
+    "parts": {
+      "server": "Sunucu",
+      "plugins": "Eklentiler",
+      "sections": "Eklenti ayrıntıları",
+      "logs": "Sunucu günlükleri",
+      "request": "Bağlantı",
+      "probes": "Bağlantı kontrolleri",
+      "errors": "Tarayıcı hataları",
+      "console": "Tarayıcı konsolu",
+      "network": "Ağ",
+      "page": "Tarayıcı ve pencere",
+      "dom": "Sayfa düzeni"
+    },
+    "partHints": {
+      "server": "Sürüm, veritabanı, SSL ve hangi ayarların yapılandırıldığı",
+      "plugins": "Sunucuda ve tarayıcıdaki sürümler ve durumlar",
+      "sections": "Ek eklentilerin eklediği ayrıntılar",
+      "logs": "Başlangıçtan bu yana sunucu günlüğü ve son satırlar",
+      "request": "Termix'in önünde bir proxy olduğunu gösteren başlık adları",
+      "probes": "Termix ve eklenti dosyalarının yüklenip yüklenmediğini test eden kontroller",
+      "errors": "Yakalanmamış hatalar ve engellenen yüklemeler",
+      "console": "Sayfa ve eklentilerden gelen son konsol satırları",
+      "network": "Son istekler ve durumları",
+      "page": "Tarayıcı, ekran boyutu ve depolama anahtar adları",
+      "dom": "Metin içermeyen sayfa düzeni"
     }
   }
 }

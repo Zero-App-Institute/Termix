@@ -131,6 +131,8 @@
     "updateLinkLabel": "Atualização disponível. Abrir notas de lançamento no GitHub"
   },
   "common": {
+    "showPassword": "Mostrar palavra-passe",
+    "hidePassword": "Ocultar palavra-passe",
     "scrollTabsLeft": "Deslizar separadores para a esquerda",
     "scrollTabsRight": "Deslizar separadores para a direita",
     "close": "Fechar",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "A lista de plugins não pôde ser carregada. Pode escolher plugins mais tarde na aba Plugins.",
     "securityTitle": "Segure a sua conta",
     "securityIntro": "Adicione uma passkey ou uma aplicação de autenticação à sua conta. Também pode fazer isto mais tarde em Definições, sob Segurança.",
-    "pluginsDocsLink": "Leia sobre cada um"
+    "pluginsDocsLink": "Leia sobre cada um",
+    "layoutTitle": "Escolha um layout",
+    "layoutIntro": "O layout define a disposição geral da aplicação: os menus, a barra lateral e as separadores. Clique num para o utilizar. A alteração é imediata.",
+    "layoutInstalled": "Instalado",
+    "layoutMore": "Mais layouts",
+    "layoutNoMore": "Não há outros layouts disponíveis de momento.",
+    "layoutDefault": "Predefinição",
+    "layoutInstall": "Instalar",
+    "layoutTurnOn": "Ativar",
+    "layoutVideo": "Ver vídeo",
+    "layoutChangeLater": "Pode alterar o layout a qualquer momento em Definições, na secção Aparência. Peça a um administrador para instalar mais layouts, se necessário.",
+    "layoutChangeLaterAdmin": "Pode alterar o layout a qualquer momento em Definições, na secção Aparência. Mais layouts podem ser instalados mais tarde na separador Plugins."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix está ainda em execução",
+    "noticeBody": "Fechar a janela mantém o Termix em execução na bandeja. Para sair, abra o menu do ícone da bandeja e selecione Sair. Pode desativar esta opção nas Definições."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automático",
@@ -499,6 +516,7 @@
     "deleteSelected": "Eliminar",
     "exitSelection": "Sair da seleção",
     "collapseBtn": "Recolher",
+    "importExportBtn": "Importar / Exportar",
     "hostStatusesRefreshed": "Estados dos hosts atualizados",
     "failedToRefreshHosts": "Falha ao atualizar hosts",
     "movedHostTo": "Movido {{host}} para \"{{folder}}\"",
@@ -615,6 +633,7 @@
     "hostClickBehavior": "Ao clicar num host",
     "hostClickBehaviorDesc": "O que acontece ao clicar num host que já tem uma aba aberta. Ctrl/Cmd + clique, clique do meio ou \"Abrir em nova aba\" iniciam sempre uma nova.",
     "hostClickNewTab": "Abrir sempre uma nova aba",
+    "hostClickHostPage": "Abrir a página do host, quando um plugin a disponibilizar",
     "hostClickFocusExisting": "Mudar para a aba aberta",
     "hostClickFocusExistingDoubleNew": "Clique para mudar, duplo clique para nova aba",
     "openInNewTab": "Abrir em nova aba",
@@ -840,7 +859,12 @@
     "editorUpdate": "Atualizar Host",
     "editorAdd": "Adicionar Host",
     "speedSearch": "Pesquisar hosts. Teclas de seta para selecionar, Enter para ligar, Esc para fechar",
-    "speedSearchList": "Lista de hosts. Escreva ou prima / para pesquisar."
+    "speedSearchList": "Lista de hosts. Escreva ou prima / para pesquisar.",
+    "openFromLink": {
+      "title": "Abrir {{name}}?",
+      "description": "Um link pediu ao Termix para se ligar a este host.",
+      "confirm": "Ligar"
+    }
   },
   "splitScreen": {
     "title": "Ecrã dividido",
@@ -920,6 +944,16 @@
     "empty": "Sem cartões. Use Adicionar abaixo para colocar cartões."
   },
   "auth": {
+    "inviteIntro": "Foste convidado para este servidor. Escolhe um nome de utilizador e uma palavra-passe para criar a tua conta.",
+    "inviteInvalid": "Este link de convite expirou ou já foi utilizado. Pede um novo a um administrador.",
+    "accountDisabled": "Esta conta está desativada. Pede a um administrador que a reative.",
+    "accountPending": "A tua conta está à espera de aprovação por parte de um administrador.",
+    "stepUp": {
+      "title": "Verifica que és tu",
+      "description": "Confirma o teu segundo fator para continuar.",
+      "noFactor": "Não tens nenhum segundo fator configurado. Adiciona um nas Definições e tenta novamente.",
+      "failed": "Isso não funcionou. Tenta novamente."
+    },
     "tagline": "Gestão de servidores auto-hospedada e baseada em plugins.",
     "loginTitle": "Bem-vindo de volta",
     "registerTitle": "Criar Conta",
@@ -946,6 +980,14 @@
     "loginWithExternal": "Iniciar sessão com fornecedor externo",
     "loginWithExternalDesc": "Iniciar sessão utilizando o seu fornecedor de identidade externo configurado",
     "loginWithProvider": "Iniciar sessão com {{name}}",
+    "pluginLogin": {
+      "signIn": "Iniciar sessão",
+      "verify": "Verificar",
+      "code": "Código",
+      "useKey": "Usar chave de segurança",
+      "keyPrompt": "Usa a tua chave de segurança ou passkey para continuar.",
+      "keyFailed": "O passo da chave de segurança não funcionou. Tenta novamente."
+    },
     "resetPasswordButton": "Redefinir palavra-passe",
     "sendResetCode": "Enviar código de redefinição",
     "resetCodeDesc": "Introduza o seu nome de utilizador para receber um código de redefinição de palavra-passe. O código será registado nos logs do contentor Docker.",
@@ -1023,6 +1065,8 @@
     "registrationSuccess": "Registo bem-sucedido"
   },
   "placeholders": {
+    "username": "O seu nome de utilizador",
+    "newUsername": "Escolha um nome de utilizador",
     "keyPassword": "palavra-passe da chave",
     "pastePrivateKey": "Cole a sua chave privada aqui...",
     "enterPassword": "Introduza a sua palavra-passe"
@@ -1069,7 +1113,8 @@
         "actionNextTab": "Mudar para a próxima separador",
         "actionPreviousTab": "Mudar para o separador anterior",
         "actionOpenCommandPalette": "Abrir pesquisa rápida",
-        "actionReconnectSession": "Reconectar sessão atual"
+        "actionReconnectSession": "Reconectar sessão atual",
+        "actionToggleSidebar": "Alternar barra lateral"
       },
       "userProfile": {
         "preset_simple": "Simples",
@@ -1211,6 +1256,10 @@
         "title": "Aceder à internet",
         "consequence": "Pode enviar pedidos para serviços externos."
       },
+      "network:sockets": {
+        "title": "Abrir as suas próprias ligações de rede",
+        "consequence": "Pode ouvir em portas e ligar-se a qualquer endereço diretamente, sem que o Termix verifique cada ligação."
+      },
       "network:serve": {
         "title": "Aceitar ligações",
         "consequence": "Abre uma porta no servidor Termix."
@@ -1231,6 +1280,18 @@
         "title": "Enviar alertas",
         "consequence": "Para si ou para outros utilizadores, e através dos canais que configuraram."
       },
+      "operations:provide": {
+        "title": "Oferecer ações",
+        "consequence": "As suas ações podem ser executadas a partir de Automações, da CLI, da aplicação móvel e noutros locais, por pessoas autorizadas a utilizá-las."
+      },
+      "operations:invoke": {
+        "title": "Executar ações de outros plugins",
+        "consequence": "Atua em nome do utilizador autenticado nas ações listadas no seu manifesto. As regras de aprovação continuam a aplicar-se."
+      },
+      "operations:approve": {
+        "title": "Decidir o que necessita de aprovação",
+        "consequence": "Pode permitir que ações sejam executadas sem aprovação ou bloqueá-las, para todos os utilizadores."
+      },
       "notify:hub": {
         "title": "Receber todos os alertas",
         "consequence": "Armazena e entrega os alertas enviados por todos os plugins, incluindo o seu conteúdo."
@@ -1241,7 +1302,7 @@
       },
       "network:probe": {
         "title": "Verificar se as portas respondem",
-        "consequence": "Pode abrir uma ligação simples para qualquer endereço a partir do servidor, para ver se é acessível."
+        "consequence": "Pode abrir uma ligação simples para qualquer endereço a partir do servidor, para verificar se é acessível, e procurar nomes de hosts."
       },
       "hosts:status-provide": {
         "title": "Fornecer estado do host",
@@ -1254,6 +1315,10 @@
       "hosts:lock": {
         "title": "Gerir hosts como apenas leitura",
         "consequence": "Os hosts que gere não podem ser editados, eliminados ou partilhados novamente por ninguém."
+      },
+      "hosts:connect-policy": {
+        "title": "Decidir quem pode ligar",
+        "consequence": "Pode bloquear ou permitir todas as ligações SSH e de ambiente de trabalho remoto a qualquer host."
       },
       "desktop:window": {
         "title": "Abrir janelas de ambiente de trabalho",
@@ -1291,6 +1356,10 @@
         "title": "Armazenar os seus próprios segredos",
         "consequence": "Criptografado pelo Termix. O plugin nunca detém a chave."
       },
+      "config:secrets": {
+        "title": "Ler segredos guardados no servidor",
+        "consequence": "Variáveis de ambiente e ficheiros no servidor, exceto as chaves próprias do Termix."
+      },
       "settings:read-core": {
         "title": "Ler definições do Termix",
         "consequence": "Definições do servidor, não os seus hosts ou credenciais."
@@ -1311,6 +1380,10 @@
         "title": "Adicionar temas de cores",
         "consequence": "Apenas cores e estilos. Nenhum código é executado para um tema."
       }
+    },
+    "webView": {
+      "unavailable": "Esta página já não está disponível. Abre-a novamente a partir do respetivo plugin.",
+      "isolationUnavailable": "Este navegador não consegue abrir a página com segurança aqui. Usa uma versão recente do Chrome ou Edge, ou a aplicação de desktop."
     },
     "runtime": {
       "needsPlugin": "{{name}} não está disponível",
@@ -1335,7 +1408,7 @@
         "running": "Em execução",
         "disabled": "Desativado",
         "failed": "Parado inesperadamente",
-        "blocked": "À espera de outro plugin",
+        "blocked": "Não é possível iniciar",
         "server": "Executa no seu servidor",
         "safeMode": "Desativado no modo seguro"
       },
@@ -1357,7 +1430,8 @@
         "version": "Versão",
         "status": "Estado",
         "category": "Categoria",
-        "downloads": "Transferências"
+        "downloads": "Transferências",
+        "memory": "Memória"
       },
       "risk": {
         "critical": "Crítico",
@@ -1432,9 +1506,13 @@
         "updatedMany_one": "{{count}} plugin atualizado",
         "updatedMany_many": "{{count}} plugins atualizados",
         "updatedMany_other": "{{count}} plugins atualizados",
+        "needsReview_one": "1 plugin pede novas permissões. Revise-o para atualizar.",
+        "needsReview_many": "{{count}} plugins pedem novas permissões. Revise cada um para atualizar.",
+        "needsReview_other": "{{count}} plugins pedem novas permissões. Revise cada um para atualizar.",
         "uninstalled": "{{name}} desinstalado",
         "dataDeleted": "Dados de {{name}} eliminados",
-        "failedToStart": "{{name}} não conseguiu iniciar. Abra-o para ver o motivo."
+        "failedToStart": "{{name}} não conseguiu iniciar. Abra-o para ver o motivo.",
+        "held": "{{name}} espera {{minutes}} minutos antes que a alteração seja aplicada, para que os outros administradores a possam ver"
       },
       "errors": {
         "generic": "Algo correu mal",
@@ -1491,6 +1569,25 @@
       "pin": "Manter esta versão",
       "pinHint": "Mantém a versão {{version}} e ignora todas as atualizações até desativar esta opção.",
       "pinnedTo": "Fixado na versão {{version}}",
+      "legacy": {
+        "notice_one": "1 plugin foi criado para uma versão anterior do Termix e permanece desativado até ser atualizado: {{names}}.",
+        "notice_many": "{{count}} plugins foram criados para uma versão anterior do Termix e permanecem desativados até serem atualizados: {{names}}.",
+        "notice_other": "{{count}} plugins foram criados para uma versão anterior do Termix e permanecem desativados até serem atualizados: {{names}}.",
+        "why": "Foram criados para a API de plugins 1, que rodava dentro do servidor. O Termix agora executa cada plugin no seu próprio processo, pelo que cada um precisa de uma versão feita para a API de plugins 2. Atualiza os oficiais aqui e pede ao autor de um plugin da comunidade uma versão atualizada.",
+        "guide": "Como os plugins migram para a API 2"
+      },
+      "provenance": {
+        "verified": "Compilação verificada",
+        "verifiedHint": "A sua proveniência de compilação foi assinada pelo fluxo de lançamento do registo do Termix e corresponde a este ficheiro. Abre a compilação.",
+        "unchecked": "Compilação não verificada",
+        "uncheckedHint": "A sua proveniência de compilação não pôde ser verificada quando foi descarregada. A sua assinatura de registo foi."
+      },
+      "updateCheck": {
+        "notice_one": "O Termix {{version}} está disponível. 1 plugin permanecerá desativado nele até o atualizares: {{names}}.",
+        "notice_many": "O Termix {{version}} está disponível. {{count}} plugins permanecerão desativados nele até os atualizares: {{names}}.",
+        "notice_other": "O Termix {{version}} está disponível. {{count}} plugins permanecerão desativados nele até os atualizares: {{names}}.",
+        "needs": "{{name}} (requer Termix {{range}})"
+      },
       "version": "Versão",
       "versionPickHint": "Instalar uma versão anterior em vez da mais recente. Mantém-se nessa versão até desbloqueá-la.",
       "versionPickHintInstalled": "Mudar para outra versão. Escolher uma que não seja a mais recente fixa-a.",
@@ -1565,7 +1662,13 @@
         "unreachable": "Não foi possível ler: {{error}}",
         "filter": "Registo",
         "allRegistries": "Todos os registos",
-        "browseHint": "Ative os plugins da comunidade ou adicione o seu próprio registo na separação Registos."
+        "browseHint": "Ative os plugins da comunidade ou adicione o seu próprio registo na separação Registos.",
+        "looksName": "Layouts e temas da comunidade",
+        "looksHint": "Permite que layouts e temas que não são do Termix funcionem fora do sandbox, como os oficiais. Um layout desenha toda a aplicação, por isso pode ver e fazer tudo o que você pode. Instale apenas os que confia. Recarregue a página após alterar isto.",
+        "looksConfirmTitle": "Permitir que layouts da comunidade funcionem fora do sandbox?",
+        "looksConfirmBody": "Um layout ou tema da comunidade irá funcionar na página com acesso total ao Termix como quem está autenticado. Isto pode ser arriscado. Ative apenas se confiar nos layouts e temas que instala.",
+        "looksConfirm": "Ativar",
+        "looksSaved": "Guardado. Recarregue a página para aplicar."
       },
       "upToDate": "Tudo está atualizado.",
       "lastChecked": "Última verificação {{time}}",
@@ -1652,8 +1755,29 @@
       "unsupportedHint": "Nenhuma versão deste plugin está disponível para esta versão do Termix. Atualize o Termix para o instalar.",
       "needsTermix": "Requer Termix {{range}}",
       "showUnsupported": "Mostrar incompatíveis ({{count}})",
-      "showMore": "Mostrar mais {{count}} ({{total}} restantes)"
-    }
+      "showMore": "Mostrar mais {{count}} ({{total}} restantes)",
+      "memory": {
+        "summary": "Memória: {{total}} de {{limit}} | plugins {{plugins}} | {{running}} em execução",
+        "lowTitle": "Este servidor tem pouca memória",
+        "lowBody": "O Termix e os seus plugins usam {{total}} de {{limit}}. Dá mais memória ao servidor ou desativa os plugins que não usas.",
+        "idle": "Inativo",
+        "idleHint": "Não está em execução agora. Inicia quando algo o necessita.",
+        "keptOn": "Mantém-se em execução: {{reason}}",
+        "stopsWhenIdle": "Para quando inativo"
+      }
+    },
+    "firstLoad": {
+      "title": "A preparar os plugins",
+      "progress": "{{done}} de {{total}}",
+      "hint": "Os plugins estão a iniciar pela primeira vez. Depois disto, o Termix abre imediatamente.",
+      "skip": "Continuar"
+    },
+    "framesBlocked": "Os plugins não conseguem carregar os seus ficheiros. Um proxy de login à frente do Termix provavelmente está a bloqueá-los.",
+    "framesBlockedHelp": "Como corrigir",
+    "framesFailed_one": "{{names}} não conseguiu carregar, por isso as suas partes estão ocultas",
+    "framesFailed_many": "{{count}} plugins não conseguiram carregar, por isso as suas partes estão ocultas: {{names}}",
+    "framesFailed_other": "{{count}} plugins não conseguiram carregar, por isso as suas partes estão ocultas: {{names}}",
+    "framesFailedReload": "Recarregar"
   },
   "settings": {
     "secretSet": "Definido",
@@ -1705,6 +1829,12 @@
       "title": "Colunas",
       "auto": "Automático",
       "count": "{{count}} de largura"
+    },
+    "pager": {
+      "previous": "Anterior",
+      "next": "Seguinte",
+      "page": "Página {{page}}",
+      "pageOf": "Página {{page}} de {{pages}}"
     }
   },
   "fields": {
@@ -1724,7 +1854,108 @@
   "rbac": {
     "roles": {
       "admin": "Administrador",
-      "user": "Utilizador"
+      "user": "Utilizador",
+      "viewer": "Visualizador",
+      "operator": "Operador",
+      "auditor": "Auditor",
+      "helpdesk": "Suporte"
+    }
+  },
+  "tileGrid": {
+    "empty": "Ainda não há widgets. Adicione alguns a partir da lista.",
+    "move": "Arrastar para mover",
+    "moveTile": "Mover {{tile}}",
+    "settings": "Definições de {{tile}}",
+    "remove": "Remover {{tile}}",
+    "width": "Largura",
+    "height": "Altura",
+    "addTiles": "Adicionar widgets",
+    "closePicker": "Fechar",
+    "search": "Pesquisar widgets",
+    "noMatches": "Nenhum resultado.",
+    "kind": {
+      "all": "Todos",
+      "card": "Cartões",
+      "chart": "Gráficos",
+      "signal": "Estado",
+      "action": "Ações",
+      "resource": "Listas",
+      "session": "Sessões"
+    },
+    "reset": "Repor",
+    "done": "Concluído"
+  },
+  "diagnostics": {
+    "title": "Diagnósticos",
+    "makeReport": "Criar um relatório de diagnóstico",
+    "slowBoot": "A demorar muito? Crie um relatório de diagnóstico",
+    "troubleSigningIn": "Problemas ao iniciar sessão? Crie um relatório de diagnóstico",
+    "reportTab": "Relatório",
+    "logsTab": "Registos do servidor",
+    "intro": "Isto cria um ficheiro com tudo o que o Termix precisa para identificar um problema: erros, registos, estados dos plugins e como os pedidos chegam ao servidor. Transfira-o e anexe-o a um problema no GitHub ou envie-o no Discord.",
+    "notAdmin": "Os registos do servidor e os detalhes do servidor requerem um administrador. Peça ao seu administrador para criar também um relatório se o problema estiver no servidor.",
+    "signedOut": "Não está autenticado, pelo que apenas a parte do navegador está incluída.",
+    "whatHappened": "O que aconteceu",
+    "whatHappenedHint": "Opcional. O que fez e o que correu mal?",
+    "include": "Incluir",
+    "adminOnly": "Requer um administrador",
+    "privacy": "Privacidade",
+    "mask": "Ocultar nomes e endereços",
+    "maskHint": "Os IPs, nomes de host, nomes de utilizador e e-mails tornam-se host-1, user-1, etc. As palavras-passe, chaves e tokens são sempre removidos.",
+    "domText": "Incluir texto da página",
+    "domTextHint": "Adiciona o texto ecrã ao layout da página. Desativado por predefinição, pois pode mostrar os seus dados.",
+    "warnOnly": "Apenas avisos e erros do registo do servidor",
+    "warnOnlyHint": "Torna o ficheiro mais pequeno.",
+    "focus": "Plugin",
+    "focusHint": "Mostra este plugin em primeiro lugar e regista o problema no respetivo repositório.",
+    "allPlugins": "Todos os plugins",
+    "findings": "Detetado pelas verificações",
+    "preview": "O que será enviado",
+    "previewCut": "(A pré-visualização termina aqui. O ficheiro contém tudo.)",
+    "cut": "O ficheiro excedia 5 MB, pelo que as linhas de registo mais antigas foram cortadas.",
+    "footerHint": "Verifique a pré-visualização antes de enviar.",
+    "copy": "Copiar",
+    "copied": "Relatório copiado",
+    "copyFailed": "Não foi possível copiar o relatório",
+    "download": "Transferir",
+    "downloaded": "Relatório transferido",
+    "openIssue": "Abrir problema no GitHub",
+    "logsSearch": "Pesquisar registos",
+    "logsLevel": "Nível",
+    "logsAll": "Todos os níveis",
+    "logsWarn": "Avisos e erros",
+    "logsError": "Erros",
+    "logsPlugin": "Plugin",
+    "logsCount": "{{count}} linhas",
+    "logsFailed": "Não foi possível carregar os registos",
+    "logsPause": "Pausar",
+    "logsResume": "Retomar",
+    "logsEmpty": "Ainda não há linhas de registo.",
+    "parts": {
+      "server": "Servidor",
+      "plugins": "Plugins",
+      "sections": "Detalhes do plugin",
+      "logs": "Registos do servidor",
+      "request": "Conexão",
+      "probes": "Verificações de conexão",
+      "errors": "Erros do navegador",
+      "console": "Consola do navegador",
+      "network": "Rede",
+      "page": "Navegador e janela",
+      "dom": "Layout da página"
+    },
+    "partHints": {
+      "server": "Versão, base de dados, SSL e definições ativadas",
+      "plugins": "Versões e estados no servidor e no navegador",
+      "sections": "Detalhes adicionais adicionados por plugins em execução",
+      "logs": "Registo do servidor desde o início e linhas recentes",
+      "request": "Nomes de cabeçalhos que indicam um proxy à frente do Termix",
+      "probes": "Testes de carregamento do Termix e ficheiros de plugins",
+      "errors": "Erros não capturados e carregamentos bloqueados",
+      "console": "Linhas recentes da consola da página e dos plugins",
+      "network": "Pedidos recentes e respetivo estado",
+      "page": "Navegador, tamanho do ecrã e nomes de chaves de armazenamento",
+      "dom": "Layout da página, sem texto"
     }
   }
 }

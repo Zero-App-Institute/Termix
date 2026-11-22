@@ -127,6 +127,26 @@ export {
   type GridLayout,
   type GridSlot,
 } from "@/components/card-grid/types";
+export {
+  SeamlessTileContext,
+  TileEditBar,
+  TileFrame,
+  TileGrid,
+  TilePicker,
+  TileColumn,
+  TileStack,
+  TileWall,
+  useInSeamlessTile,
+  appendTile,
+  flowTiles,
+  removeTile,
+  sanitizeTiles,
+  TILE_COLUMNS,
+  type TileGridProps,
+  type TileKind,
+  type TilePickerEntry,
+  type TileSlot,
+} from "@/components/tile-grid";
 export { ConnectionScreen } from "@/components/connection/ConnectionScreen";
 export { type ConnectionStatus } from "@/components/connection/connection-status";
 export {
@@ -152,6 +172,24 @@ export { useTabs, useTabsSafe } from "@/shell/TabContext";
 
 // Slots: a plugin can offer places for other plugins to fill.
 export { ActionSlot, ComponentSlot } from "@/shell/ActionSlot";
+export {
+  ForeignSlot,
+  ForeignInteractive,
+  ForeignOccluder,
+  useForeignOccluder,
+  type ForeignSlotProps,
+} from "@/components/foreign/ForeignSlot";
+// Data slots: plain values from plugins, drawn the same everywhere.
+export { DataSlot, HostDataItems } from "@/components/data-view/DataSlot";
+export { DataValues, type DataLayout } from "@/components/data-view/DataValues";
+export {
+  parseDataValue,
+  type DataBar,
+  type DataShape,
+  type DataStat,
+  type DataTone,
+  type DataValue,
+} from "@/components/data-view/data-value";
 // For layouts: where tabs show, and the confirm a tab close asks with.
 export { TabStage } from "@/shell/stage/TabStage";
 export { ShellConfirmCapture } from "@/shell/controller/ShellControllerProvider";
@@ -203,6 +241,19 @@ export { WidgetTitle } from "@/lib/widget-title";
 export { runVisibleInterval } from "@/lib/visible-interval";
 export { useIsMobile } from "@/hooks/use-mobile";
 export { EmptyState } from "@/components/empty-state";
+export { NoticePanel } from "@/components/notice-panel";
+export { LoadingState } from "@/components/loading-state";
+export {
+  StatusBadge,
+  StatusDot,
+  statusTone,
+  type StatusTone,
+} from "@/components/status";
+export { StatTile } from "@/components/stat-tile";
+export { InfoGrid, type InfoItem } from "@/components/info-grid";
+export { Pager, pageOf, usePaged } from "@/components/pager";
+export { DataTable, DataTableRow } from "@/components/data-table";
+export { SideNav, SideNavItem, type SideNavEntry } from "@/components/side-nav";
 export { PassphraseDialog } from "@/ssh/dialogs/PassphraseDialog";
 export { HostKeyVerificationDialog } from "@/ssh/dialogs/HostKeyVerificationDialog";
 
@@ -285,9 +336,15 @@ export {
   Facts,
   GroupHeading,
   PANEL,
+  PanelFrame,
   PanelSearch,
   PanelShell,
+  PanelToolbar,
+  RefreshButton,
   Segmented,
+  TOOLBAR_FIT,
+  ToolbarBand,
+  ToolbarSelect,
   ViewToggle,
   type GridSize,
   type PanelDensity,
@@ -439,6 +496,9 @@ export {
   getUserSecondFactors,
   resetUserSecondFactors,
   type UserSecondFactorSummary,
+  challengeStepUp,
+  listStepUpFactors,
+  verifyStepUp,
 } from "@/api/auth-methods-api";
 export { getCredentials } from "@/api/credentials-api";
 export {
@@ -616,6 +676,18 @@ export {
   adminUpdateUserCredential,
   adminUpdateUserHost,
   type ApiKey,
+  getMyApiKeys,
+  revokeMyApiKey,
+  revokeAllMyApiKeys,
+  revokeEveryoneSessions,
+  isAdminHoldTicket,
+  getAdminHoldSettings,
+  setAdminHoldMinutes,
+  getAdminHolds,
+  cancelAdminHold,
+  type AdminHoldTicket,
+  type AdminHoldSettings,
+  type AdminHold,
   assignRoleToUser,
   bulkUpdateSSHHosts,
   changePassword,
@@ -642,7 +714,12 @@ export {
   getHostAuthOverride,
   getFolderAuthOverride,
   getHostPassword,
+  getFolderDeviceAuth,
+  getHostDeviceAuth,
   getHostPolicy,
+  setFolderDeviceAuth,
+  setHostDeviceAuth,
+  type DeviceLogin,
   type HostPolicy,
   getHostSidebarPreferences,
   getHttpsSettings,
@@ -652,6 +729,8 @@ export {
   getPasswordResetAllowed,
   getPermissionsCatalog,
   getRegistrationAllowed,
+  getCredentialStorage,
+  getHostKeyPolicy,
   getSecondFactorAfterExternalLogin,
   getSessions,
   getSessionTimeout,
@@ -660,6 +739,31 @@ export {
   getStatusCheckSettings,
   getUserInfo,
   getUserList,
+  disableUser,
+  enableUser,
+  updateMyProfile,
+  adminUpdateUserProfile,
+  getAdminHostBypass,
+  updateAdminHostBypass,
+  getExternalSignupApproval,
+  updateExternalSignupApproval,
+  listUserInvites,
+  createUserInvite,
+  revokeUserInvite,
+  checkUserInvite,
+  acceptUserInvite,
+  inviteLink,
+  getAccessReview,
+  downloadAccessReviewCsv,
+  type UserStatusFilter,
+  type UserProfile,
+  type UserProfileUpdate,
+  type UserInvite,
+  type NewUserInvite,
+  type CreatedUserInvite,
+  type AccessKind,
+  type AccessReviewRow,
+  type AccessReviewFilter,
   getUserRoles,
   type LinkedAccountInfo,
   linkExternalToPasswordAccount,
@@ -698,6 +802,8 @@ export {
   updatePasswordResetAllowed,
   updateRegistrationAllowed,
   updateRole,
+  updateCredentialStorage,
+  updateHostKeyPolicy,
   updateSecondFactorAfterExternalLogin,
   updateSessionTimeout,
   updateSSHHost,
@@ -799,6 +905,7 @@ export {
   useHostEditorToolbarItems,
   useHostStatusIndicators,
 } from "@/sidebar/host-contributions";
+export { HostDotGroup } from "@/sidebar/HostDotGroup";
 export { useEditorDefaultKeys } from "@/sidebar/host-defaults/catalog";
 export {
   enabledHostProtocols,
@@ -823,3 +930,22 @@ export {
   rightDockableIds,
   useRailItems,
 } from "@/sidebar/rail-items";
+export {
+  hostSectionsFor,
+  type HostSectionDef,
+  listHostSections,
+  useHostSections,
+} from "@/shell/host-sections";
+export { HostTabEmbed } from "@/shell/HostTabEmbed";
+export {
+  HostTreeChildren,
+  type HostTreeChild,
+  type HostTreeChildrenGroup,
+  type HostTreeChildrenResult,
+  hostTreeChildrenFor,
+  useHostTreeChildrenProviders,
+} from "@/shell/host-tree-children";
+import { createOperationsApi } from "@/lib/plugin-transport";
+/** Core's /operations routes, with the user's own session. */
+export const operationsApi = createOperationsApi();
+export { useSecondFactors } from "@/plugin-host/auth-registry";

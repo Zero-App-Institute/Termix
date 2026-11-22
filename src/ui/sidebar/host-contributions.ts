@@ -1,7 +1,9 @@
-import type { ComponentType } from "react";
+import { useEffect, type ComponentType } from "react";
 import type { Host } from "@/types/ui-types";
 import { byOrderThenId, createRegistry } from "@/lib/registry";
 import type { TabShellCallbacks } from "@/shell/tab-registry";
+import type { DataReporter } from "@/components/data-view/data-reporter";
+import { getForeignRuntime } from "@/components/foreign/foreign-runtime";
 
 type Icon = ComponentType<{ className?: string; size?: number | string }>;
 
@@ -37,11 +39,28 @@ export interface HostActionDef {
   }[];
 }
 
+/** A problem a plugin wants shown as the host row's one status dot. */
+export interface HostDot {
+  tone: "bad" | "warn";
+  label: string;
+}
+
+/** Calls a plugin's dot hook and passes the answer up to the dot group. */
+export type HostDotReporter = ComponentType<{
+  host: Host;
+  report: (dot: HostDot | null) => void;
+}>;
+
 export interface HostBadgeDef {
   id: string;
   pluginId?: string;
   when: (host: Host) => boolean;
-  component: ComponentType<{ host: Host }>;
+  /** Drawn as is. Leave out when the badge is only a dot. */
+  component?: ComponentType<{ host: Host }>;
+  /** Merged with every other dot into one dot on the row. */
+  dot?: HostDotReporter;
+  /** Plain values drawn by the shell (badge, dot, text). Context { host }. */
+  value?: DataReporter;
   order?: number;
 }
 
@@ -69,7 +88,15 @@ const editorToolbarItems =
 const menuItems = createRegistry<HostContextMenuItemDef>(byOrderThenId);
 
 export const registerHostAction = actions.register;
-export const useHostActions = actions.useList;
+/**
+ * Every host action. In a plugin frame the shell has the list, so it comes
+ * from there; the runtime is set before anything renders and never changes.
+ */
+export function useHostActions(): HostActionDef[] {
+  const fromShell = getForeignRuntime()?.useHostActions;
+  if (fromShell) return fromShell() as HostActionDef[];
+  return actions.useList();
+}
 
 /** Plugin actions sort by order; connect actions default to the end. */
 export function actionOrder(action: HostActionDef): number {
@@ -78,10 +105,13 @@ export function actionOrder(action: HostActionDef): number {
 export const listHostActions = actions.list;
 export const registerHostBadge = badges.register;
 export const useHostBadges = badges.useList;
+export const listHostBadges = badges.list;
 export const registerHostStatusIndicator = statusIndicators.register;
 export const useHostStatusIndicators = statusIndicators.useList;
+export const listHostStatusIndicators = statusIndicators.list;
 export const registerHostEditorToolbarItem = editorToolbarItems.register;
 export const useHostEditorToolbarItems = editorToolbarItems.useList;
+export const listHostEditorToolbarItems = editorToolbarItems.list;
 export const registerHostContextMenuItem = menuItems.register;
 export const useHostContextMenuItems = menuItems.useList;
 
@@ -112,6 +142,22 @@ export function defaultConnectAction(
   return hostActionsFor(all, host, "connect").sort(
     (a, b) => (b.priority ?? 0) - (a.priority ?? 0),
   )[0];
+}
+
+/** Turns a plugin's dot hook into a component the dot group can mount. */
+export function hostDotReporter(
+  useDot: (host: Host) => HostDot | null,
+): HostDotReporter {
+  return function HostDotReport({ host, report }) {
+    const dot = useDot(host);
+    const tone = dot?.tone;
+    const label = dot?.label ?? "";
+    useEffect(() => {
+      report(tone ? { tone, label } : null);
+    }, [tone, label, report]);
+    useEffect(() => () => report(null), [report]);
+    return null;
+  };
 }
 
 export function hostBadgesFor(all: HostBadgeDef[], host: Host): HostBadgeDef[] {

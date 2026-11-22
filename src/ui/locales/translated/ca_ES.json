@@ -131,6 +131,8 @@
     "updateLinkLabel": "Hi ha una actualització disponible. Obre les notes de la versió a GitHub"
   },
   "common": {
+    "showPassword": "Mostra la contrasenya",
+    "hidePassword": "Amaga la contrasenya",
     "scrollTabsLeft": "Desplaça les pestanes a l'esquerra",
     "scrollTabsRight": "Desplaça les pestanes a la dreta",
     "close": "Tanca",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "No s'ha pogut carregar la llista de complements. Pots triar complements més tard des de la pestanya de complements.",
     "securityTitle": "Seguretat del teu compte",
     "securityIntro": "Afegeix una clau de pas o una aplicació d'autenticació al teu compte. També pots fer-ho més tard a Configuració, sota Seguretat.",
-    "pluginsDocsLink": "Llegeix sobre cadascun"
+    "pluginsDocsLink": "Llegeix sobre cadascun",
+    "layoutTitle": "Tria un disseny",
+    "layoutIntro": "El disseny determina com s'organitza tota l'aplicació: els menús, la barra lateral i les pestanyes. Fes clic en un per utilitzar-lo. El canvi s'aplica immediatament.",
+    "layoutInstalled": "Instal·lat",
+    "layoutMore": "Més dissenys",
+    "layoutNoMore": "Actualment no hi ha altres dissenys disponibles.",
+    "layoutDefault": "Predeterminat",
+    "layoutInstall": "Instal·la",
+    "layoutTurnOn": "Activa",
+    "layoutVideo": "Veure vídeo",
+    "layoutChangeLater": "Pots canviar el disseny en qualsevol moment a Configuració, sota Aparència. Demana a un administrador que instal·li més dissenys si en necessites.",
+    "layoutChangeLaterAdmin": "Pots canviar el disseny en qualsevol moment a Configuració, sota Aparència. Més dissenys es poden instal·lar més tard des de la pestanya Plugins."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix encara s'està executant",
+    "noticeBody": "Tancar la finestra manté Termix en execució a la safata. Per sortir, obriu el menú de la icona de la safata i seleccioneu Sortir. Podeu desactivar aquesta opció a Configuració."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automàtic",
@@ -499,6 +516,7 @@
     "deleteSelected": "Suprimeix",
     "exitSelection": "Sorteix de la selecció",
     "collapseBtn": "Replega",
+    "importExportBtn": "Importa / Exporta",
     "hostStatusesRefreshed": "Estat dels hosts actualitzat",
     "failedToRefreshHosts": "No s'han pogut actualitzar els hosts",
     "movedHostTo": "S'ha mogut {{host}} a «{{folder}}»",
@@ -615,6 +633,7 @@
     "hostClickBehavior": "En fer clic en un host",
     "hostClickBehaviorDesc": "Què passa quan fas clic en un host que ja té una pestanya oberta. Ctrl/Cmd + clic, clic central o «Obre en una pestanya nova» sempre en inicien una de nova.",
     "hostClickNewTab": "Obre sempre una pestanya nova",
+    "hostClickHostPage": "Obre la pàgina de l'amfitrió, si un complement en proporciona una",
     "hostClickFocusExisting": "Canvia a la pestanya oberta",
     "hostClickFocusExistingDoubleNew": "Clic per canviar, doble clic per a una pestanya nova",
     "openInNewTab": "Obre en una pestanya nova",
@@ -840,7 +859,12 @@
     "editorUpdate": "Actualitzar host",
     "editorAdd": "Afegir host",
     "speedSearch": "Cercar hosts. Fletxes per seleccionar, Retorn per connectar, Esc per tancar",
-    "speedSearchList": "Llista d'hosts. Escriviu o premeu / per cercar."
+    "speedSearchList": "Llista d'hosts. Escriviu o premeu / per cercar.",
+    "openFromLink": {
+      "title": "Obrir {{name}}?",
+      "description": "Un enllaç ha demanat a Termix que es connecti a aquest host.",
+      "confirm": "Connectar"
+    }
   },
   "splitScreen": {
     "title": "Pantalla dividida",
@@ -920,6 +944,16 @@
     "empty": "No hi ha targetes. Utilitza Afegeix a continuació per col·locar-ne."
   },
   "auth": {
+    "inviteIntro": "Us han convidat a aquest servidor. Tria un nom d'usuari i una contrasenya per crear el teu compte.",
+    "inviteInvalid": "Aquest enllaç d'invitació ha caducat o ja s'ha fet servir. Demana'n un de nou a un administrador.",
+    "accountDisabled": "Aquest compte està desactivat. Demana a un administrador que el torni a activar.",
+    "accountPending": "El teu compte està pendent que un administrador l'aprovi.",
+    "stepUp": {
+      "title": "Verifica que ets tu",
+      "description": "Demostre el teu segon factor per continuar.",
+      "noFactor": "No tens cap segon factor configurat. Afegeix-ne un a Configuració i torna-ho a provar.",
+      "failed": "No ha funcionat. Torna-ho a provar."
+    },
     "tagline": "Gestió de servidors autoallotjada basada en plugins.",
     "loginTitle": "Benvingut de nou",
     "registerTitle": "Crea un compte",
@@ -946,6 +980,14 @@
     "loginWithExternal": "Inicia sessió amb un proveïdor extern",
     "loginWithExternalDesc": "Inicia sessió utilitzant el teu proveïdor d'identitat extern configurat",
     "loginWithProvider": "Inicia sessió amb {{name}}",
+    "pluginLogin": {
+      "signIn": "Inicia sessió",
+      "verify": "Verifica",
+      "code": "Codi",
+      "useKey": "Fes servir una clau de seguretat",
+      "keyPrompt": "Fes servir la teva clau de seguretat o passkey per continuar.",
+      "keyFailed": "El pas de la clau de seguretat no ha funcionat. Torna-ho a provar."
+    },
     "resetPasswordButton": "Restableix la contrasenya",
     "sendResetCode": "Envia el codi de restabliment",
     "resetCodeDesc": "Introduïu el vostre nom d'usuari per rebre un codi de restabliment de contrasenya. El codi es registrarà als registres del contenidor Docker.",
@@ -1023,6 +1065,8 @@
     "registrationSuccess": "Registre correcte"
   },
   "placeholders": {
+    "username": "El teu nom d'usuari",
+    "newUsername": "Tria un nom d'usuari",
     "keyPassword": "contrasenya de la clau",
     "pastePrivateKey": "Enganxa la teva clau privada aquí...",
     "enterPassword": "Introdueix la teva contrasenya"
@@ -1069,7 +1113,8 @@
         "actionNextTab": "Canvia a la pestanya següent",
         "actionPreviousTab": "Canvia a la pestanya anterior",
         "actionOpenCommandPalette": "Obre la cerca ràpida",
-        "actionReconnectSession": "Torna a connectar la sessió actual"
+        "actionReconnectSession": "Torna a connectar la sessió actual",
+        "actionToggleSidebar": "Alterna la barra lateral"
       },
       "userProfile": {
         "preset_simple": "Senzill",
@@ -1211,6 +1256,10 @@
         "title": "Accedir a Internet",
         "consequence": "Pot enviar sol·licituds a serveis externs."
       },
+      "network:sockets": {
+        "title": "Obre les seves pròpies connexions de xarxa",
+        "consequence": "Pot escoltar ports i connectar-se directament a qualsevol adreça, sense que Termix comprovi cada connexió."
+      },
       "network:serve": {
         "title": "Acceptar connexions",
         "consequence": "Obre un port al servidor de Termix."
@@ -1231,6 +1280,18 @@
         "title": "Enviar alertes",
         "consequence": "A vosaltres o a altres usuaris, i a través dels canals que hagin configurat."
       },
+      "operations:provide": {
+        "title": "Ofereix accions",
+        "consequence": "Les seves accions es poden executar des d'Automatitzacions, la CLI, l'aplicació mòbil i altres llocs, per part de les persones autoritzades a utilitzar-les."
+      },
+      "operations:invoke": {
+        "title": "Executa accions d'altres complements",
+        "consequence": "Actua en nom de l'usuari autenticat sobre les accions que llista el seu manifest. Les regles d'aprovació continuen sent d'aplicació."
+      },
+      "operations:approve": {
+        "title": "Decideix què necessita aprovació",
+        "consequence": "Pot permetre que les accions s'executin sense aprovació o bloquejar-les, per a cada usuari."
+      },
       "notify:hub": {
         "title": "Rebre totes les alertes",
         "consequence": "Emmagatzema i distribueix les alertes que envien tots els plugins, inclosos els seus continguts."
@@ -1241,7 +1302,7 @@
       },
       "network:probe": {
         "title": "Comprova si els ports responen",
-        "consequence": "Pot obrir una connexió senzilla a qualsevol adreça des del servidor, per veure si és accessible."
+        "consequence": "Pot obrir una connexió senzilla a qualsevol adreça des del servidor per veure si és accessible i consultar noms d'amfitrió."
       },
       "hosts:status-provide": {
         "title": "Proporciona l'estat de l'host",
@@ -1254,6 +1315,10 @@
       "hosts:lock": {
         "title": "Gestionar els amfitrions com a només lectura",
         "consequence": "Els amfitrions que gestiona no es poden editar, suprimir ni tornar a compartir per ningú més."
+      },
+      "hosts:connect-policy": {
+        "title": "Decideix qui pot connectar-se",
+        "consequence": "Pot bloquejar o permetre totes les connexions SSH i d'escriptori remot a qualsevol amfitrió."
       },
       "desktop:window": {
         "title": "Obrir finestres d'escriptori",
@@ -1291,6 +1356,10 @@
         "title": "Emmagatzemar els seus propis secrets",
         "consequence": "Xifrat per Termix. El plugin mai no té la clau."
       },
+      "config:secrets": {
+        "title": "Llegeix els secrets que guarda el servidor",
+        "consequence": "Variables d'entorn i fitxers al servidor, excepte les pròpies claus de Termix."
+      },
       "settings:read-core": {
         "title": "Llegir la configuració de Termix",
         "consequence": "Configuració del servidor, no els teus hosts ni credencials."
@@ -1311,6 +1380,10 @@
         "title": "Afegir temes de colors",
         "consequence": "Només colors i estils. No s'executa cap codi per a un tema."
       }
+    },
+    "webView": {
+      "unavailable": "Aquesta pàgina ja no està disponible. Obre-la de nou des del seu connector.",
+      "isolationUnavailable": "Aquest navegador no pot obrir la pàgina de manera segura aquí. Fes servir una versió recent de Chrome o Edge, o l'aplicació d'escriptori."
     },
     "runtime": {
       "needsPlugin": "{{name}} no està disponible",
@@ -1335,7 +1408,7 @@
         "running": "En execució",
         "disabled": "Desactivat",
         "failed": "Aturat inesperadament",
-        "blocked": "Esperant un altre plugin",
+        "blocked": "No es pot iniciar",
         "server": "S'executa al teu servidor",
         "safeMode": "Desactivat en mode segur"
       },
@@ -1357,7 +1430,8 @@
         "version": "Versió",
         "status": "Estat",
         "category": "Categoria",
-        "downloads": "Descarregues"
+        "downloads": "Descarregues",
+        "memory": "Memòria"
       },
       "risk": {
         "critical": "Crític",
@@ -1432,9 +1506,13 @@
         "updatedMany_one": "{{count}} complement actualitzat",
         "updatedMany_many": "{{count}} complements actualitzats",
         "updatedMany_other": "{{count}} complements actualitzats",
+        "needsReview_one": "1 complement demana nous permisos. Revisa'l per actualitzar-lo.",
+        "needsReview_many": "{{count}} complements demanen nous permisos. Revisa'ls un per un per actualitzar-los.",
+        "needsReview_other": "{{count}} complements demanen nous permisos. Revisa'ls un per un per actualitzar-los.",
         "uninstalled": "{{name}} desinstal·lat",
         "dataDeleted": "Dades de {{name}} eliminades",
-        "failedToStart": "{{name}} no s'ha pogut iniciar. Obre'l per veure per què."
+        "failedToStart": "{{name}} no s'ha pogut iniciar. Obre'l per veure per què.",
+        "held": "{{name}} espera {{minutes}} minuts abans que s'apliqui el canvi, perquè els altres administradors el puguin veure"
       },
       "errors": {
         "generic": "Alguna cosa ha anat malament",
@@ -1491,6 +1569,25 @@
       "pin": "Mantenir aquesta versió",
       "pinHint": "Manté la versió {{version}} i ignora totes les actualitzacions fins que desactivis aquesta opció.",
       "pinnedTo": "Fixat a la versió {{version}}",
+      "legacy": {
+        "notice_one": "1 connector es va fer per a una versió anterior de Termix i romandrà desactivat fins que s'actualitzi: {{names}}.",
+        "notice_many": "{{count}} connectors es van fer per a una versió anterior de Termix i romandran desactivats fins que s'actualitzin: {{names}}.",
+        "notice_other": "{{count}} connectors es van fer per a una versió anterior de Termix i romandran desactivats fins que s'actualitzin: {{names}}.",
+        "why": "Es van fer per a l'API de connectors 1, que s'executava dins del servidor. Ara Termix executa cada connector en el seu propi procés, per la qual cosa cal una versió feta per a l'API de connectors 2. Actualitza els oficials aquí i demana a l'autor d'un connector de la comunitat que en faciliti una.",
+        "guide": "Com moure els connectors a l'API 2"
+      },
+      "provenance": {
+        "verified": "Compilació verificada",
+        "verifiedHint": "La seva procedència de compilació va ser signada pel flux de treball de publicació del registre de Termix i coincideix amb aquest fitxer. Obre la compilació.",
+        "unchecked": "Compilació no verificada",
+        "uncheckedHint": "No es va poder verificar la seva procedència de compilació quan es va descarregar. Sí que es va verificar la seva signatura del registre."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} ja està disponible. 1 connector romandrà desactivat fins que l'actualitzis: {{names}}.",
+        "notice_many": "Termix {{version}} ja està disponible. {{count}} connectors romandran desactivats fins que els actualitzis: {{names}}.",
+        "notice_other": "Termix {{version}} ja està disponible. {{count}} connectors romandran desactivats fins que els actualitzis: {{names}}.",
+        "needs": "{{name}} (requereix Termix {{range}})"
+      },
       "version": "Versió",
       "versionPickHint": "Instal·la una versió anterior en lloc de la més recent. Es mantindrà en aquesta versió fins que la desfixis.",
       "versionPickHintInstalled": "Canvia a una altra versió. Si en triïs una que no sigui la més recent, es fixarà automàticament.",
@@ -1565,7 +1662,13 @@
         "unreachable": "No s'ha pogut llegir: {{error}}",
         "filter": "Registre",
         "allRegistries": "Tots els registres",
-        "browseHint": "Activa els connectors de la comunitat o afegeix el teu propi registre a la pestanya Registres."
+        "browseHint": "Activa els connectors de la comunitat o afegeix el teu propi registre a la pestanya Registres.",
+        "looksName": "Disseny i temes de la comunitat",
+        "looksHint": "Permet que els dissenys i temes que no són de Termix s'executin fora del sandbox, com els oficials. Un disseny dibuixa tota l'aplicació, per la qual cosa pot veure i fer tot el que puguis fer tu. Instal·la només els que confiïs. Recarrega la pàgina després de canviar això.",
+        "looksConfirmTitle": "Permetre que els dissenys de la comunitat s'executin fora del sandbox?",
+        "looksConfirmBody": "Un disseny o tema de la comunitat s'executarà a la pàgina amb accés complet a Termix com a l'usuari que ha iniciat sessió. Això pot ser arriscat. Activa-ho només si confiïs en els dissenys i temes que instal·lis.",
+        "looksConfirm": "Activar",
+        "looksSaved": "Desat. Recarrega la pàgina per aplicar-ho."
       },
       "upToDate": "Tot està actualitzat.",
       "lastChecked": "Última comprovació: {{time}}",
@@ -1652,8 +1755,29 @@
       "unsupportedHint": "Cap versió d'aquest complement s'executa en aquesta versió de Termix. Actualitza Termix per instal·lar-lo.",
       "needsTermix": "Cal Termix {{range}}",
       "showUnsupported": "Mostrar els no compatibles ({{count}})",
-      "showMore": "Mostrar {{count}} més ({{total}} restants)"
-    }
+      "showMore": "Mostrar {{count}} més ({{total}} restants)",
+      "memory": {
+        "summary": "Memòria: {{total}} de {{limit}} | connectors {{plugins}} | {{running}} en execució",
+        "lowTitle": "Aquest servidor té poca memòria",
+        "lowBody": "Termix i els seus connectors utilitzen {{total}} de {{limit}}. Afegeix més memòria al servidor o desactiva els connectors que no facis servir.",
+        "idle": "Inactiu",
+        "idleHint": "No s'està executant ara. S'inicia quan alguna cosa el necessita.",
+        "keptOn": "Romàn en execució: {{reason}}",
+        "stopsWhenIdle": "S'atura quan està inactiu"
+      }
+    },
+    "firstLoad": {
+      "title": "Preparant els connectors",
+      "progress": "{{done}} de {{total}}",
+      "hint": "Els complements s'estan iniciant per primera vegada. Després d'això, Termix s'obrirà immediatament.",
+      "skip": "Continua"
+    },
+    "framesBlocked": "Els complements no poden carregar els seus fitxers. És probable que un proxy d'inici de sessió davant de Termix els estigui bloquejant.",
+    "framesBlockedHelp": "Com solucionar-ho",
+    "framesFailed_one": "{{names}} no s'ha pogut carregar, per la qual cosa les seves parts estan ocultes",
+    "framesFailed_many": "{{count}} complements no s'han pogut carregar, per la qual cosa les seves parts estan ocultes: {{names}}",
+    "framesFailed_other": "{{count}} complements no s'han pogut carregar, per la qual cosa les seves parts estan ocultes: {{names}}",
+    "framesFailedReload": "Recarregar"
   },
   "settings": {
     "secretSet": "Establert",
@@ -1705,6 +1829,12 @@
       "title": "Columnes",
       "auto": "Automàtic",
       "count": "{{count}} d'ample"
+    },
+    "pager": {
+      "previous": "Anterior",
+      "next": "Següent",
+      "page": "Pàgina {{page}}",
+      "pageOf": "Pàgina {{page}} de {{pages}}"
     }
   },
   "fields": {
@@ -1724,7 +1854,108 @@
   "rbac": {
     "roles": {
       "admin": "Administrador",
-      "user": "Usuari"
+      "user": "Usuari",
+      "viewer": "Visualitzador",
+      "operator": "Operador",
+      "auditor": "Auditor",
+      "helpdesk": "Assistència tècnica"
+    }
+  },
+  "tileGrid": {
+    "empty": "Encara no hi ha cap mosaic. Afegeix-ne alguns de la llista.",
+    "move": "Arrossega per moure",
+    "moveTile": "Mou {{tile}}",
+    "settings": "Configuració de {{tile}}",
+    "remove": "Elimina {{tile}}",
+    "width": "Amplada",
+    "height": "Alçada",
+    "addTiles": "Afegeix mosaics",
+    "closePicker": "Tanca",
+    "search": "Cerca mosaics",
+    "noMatches": "Cap resultat coincideix.",
+    "kind": {
+      "all": "Tots",
+      "card": "Targetes",
+      "chart": "Gràfics",
+      "signal": "Estat",
+      "action": "Accions",
+      "resource": "Llistes",
+      "session": "Sessions"
+    },
+    "reset": "Restableix",
+    "done": "Fet"
+  },
+  "diagnostics": {
+    "title": "Diagnòstic",
+    "makeReport": "Genera un informe de diagnòstic",
+    "slowBoot": "Triga massa? Genera un informe de diagnòstic",
+    "troubleSigningIn": "Problemes per iniciar sessió? Genera un informe de diagnòstic",
+    "reportTab": "Informe",
+    "logsTab": "Registres del servidor",
+    "intro": "Això genera un sol fitxer amb tot el que Termix necessita per trobar un problema: errors, registres, estats dels plugins i com arriben les sol·licituds al servidor. Descarrega'l i adjunta'l a un problema de GitHub o envia'l per Discord.",
+    "notAdmin": "Els registres del servidor i els detalls del servidor requereixen un administrador. Demana al teu administrador que generi també un informe si el problema és al servidor.",
+    "signedOut": "No has iniciat sessió, per tant, només s'inclou la part del navegador.",
+    "whatHappened": "Què ha passat",
+    "whatHappenedHint": "Opcional. Què has fet i què ha anat malament?",
+    "include": "Inclou",
+    "adminOnly": "Requereix un administrador",
+    "privacy": "Privadesa",
+    "mask": "Amaga noms i adreces",
+    "maskHint": "Les adreces IP, els noms d'amfitrió, els noms d'usuari i els correus electrònics es converteixen en host-1, user-1, etc. Les contrasenyes, les claus i els tokens sempre s'eliminen.",
+    "domText": "Inclou el text de la pàgina",
+    "domTextHint": "Afegeix el text de la pantalla al disseny de la pàgina. Desactivat per defecte ja que pot mostrar les teves dades.",
+    "warnOnly": "Només avisos i errors del registre del servidor",
+    "warnOnlyHint": "Redueix la mida del fitxer.",
+    "focus": "Plugin",
+    "focusHint": "Mostra aquest plugin primer i registra el problema al seu repositori.",
+    "allPlugins": "Tots els plugins",
+    "findings": "Trobat pels controls",
+    "preview": "Què s'enviarà",
+    "previewCut": "(La vista prèvia s'atura aquí. El fitxer ho té tot.)",
+    "cut": "El fitxer superava els 5 MB, per tant, s'han eliminat les línies de registre més antigues.",
+    "footerHint": "Comprova la vista prèvia abans d'enviar-la.",
+    "copy": "Copia",
+    "copied": "Informe copiat",
+    "copyFailed": "No s'ha pogut copiar l'informe",
+    "download": "Descarrega",
+    "downloaded": "Informe descarregat",
+    "openIssue": "Obre un problema a GitHub",
+    "logsSearch": "Cerca registres",
+    "logsLevel": "Nivell",
+    "logsAll": "Tots els nivells",
+    "logsWarn": "Avisos i errors",
+    "logsError": "Errors",
+    "logsPlugin": "Plugin",
+    "logsCount": "{{count}} línies",
+    "logsFailed": "No s'han pogut carregar els registres",
+    "logsPause": "Pausa",
+    "logsResume": "Reprèn",
+    "logsEmpty": "Encara no hi ha línies de registre.",
+    "parts": {
+      "server": "Servidor",
+      "plugins": "Plugins",
+      "sections": "Detalls del plugin",
+      "logs": "Registres del servidor",
+      "request": "Connexió",
+      "probes": "Comprovacions de connexió",
+      "errors": "Errors del navegador",
+      "console": "Consola del navegador",
+      "network": "Xarxa",
+      "page": "Navegador i finestra",
+      "dom": "Disposició de la pàgina"
+    },
+    "partHints": {
+      "server": "Versió, base de dades, SSL i quines configuracions estan establertes",
+      "plugins": "Versions i estats al servidor i al navegador",
+      "sections": "Detalls addicionals que afegeixen els connectors en execució",
+      "logs": "Registre del servidor des de l'inici i les línies recents",
+      "request": "Noms de capçaleres que mostren un proxy davant de Termix",
+      "probes": "Proves que Termix i els fitxers dels connectors es carreguen",
+      "errors": "Errors no capturats i càrregues bloquejades",
+      "console": "Línies recents de la consola de la pàgina i dels connectors",
+      "network": "Sol·licituds recents i el seu estat",
+      "page": "Navegador, mida de la pantalla i noms de claus d'emmagatzematge",
+      "dom": "La disposició de la pàgina, sense text"
     }
   }
 }

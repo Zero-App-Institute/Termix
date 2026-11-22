@@ -131,6 +131,8 @@
     "updateLinkLabel": "Actualizare disponibilă. Deschideți notele de lansare pe GitHub"
   },
   "common": {
+    "showPassword": "Afișează parola",
+    "hidePassword": "Ascunde parola",
     "scrollTabsLeft": "Derulați filele la stânga",
     "scrollTabsRight": "Derulați filele la dreapta",
     "close": "Închide",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Lista de plugin-uri nu a putut fi încărcată. Poți alege plugin-uri mai târziu din fila Plugin-uri.",
     "securityTitle": "Securizează-ți contul",
     "securityIntro": "Adaugă o cheie de acces sau o aplicație de autentificare la contul tău. Poți face acest lucru și mai târziu în Setări, la secțiunea Securitate.",
-    "pluginsDocsLink": "Citește despre fiecare"
+    "pluginsDocsLink": "Citește despre fiecare",
+    "layoutTitle": "Alege o structură",
+    "layoutIntro": "Structura decide cum este organizată întreaga aplicație: meniurile, bara laterală și filele. Dă click pe una pentru a o folosi. Se schimbă imediat.",
+    "layoutInstalled": "Instalată",
+    "layoutMore": "Mai multe structuri",
+    "layoutNoMore": "Nu sunt disponibile alte structuri în acest moment.",
+    "layoutDefault": "Implicită",
+    "layoutInstall": "Instalează",
+    "layoutTurnOn": "Activează",
+    "layoutVideo": "Vizionează videoclipul",
+    "layoutChangeLater": "Poți schimba structura oricând în Setări, sub Aspect. Cere unui administrator să instaleze mai multe structuri dacă dorești.",
+    "layoutChangeLaterAdmin": "Poți schimba structura oricând în Setări, sub Aspect. Mai multe structuri pot fi instalate ulterior din fila Plugin-uri."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix rulează încă",
+    "noticeBody": "Închiderea ferestrei păstrează Termix activ în zona de notificări. Pentru a ieși, deschideți meniul din pictograma din zona de notificări și selectați Ieșire. Puteți dezactiva această opțiune în Setări."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automat",
@@ -499,6 +516,7 @@
     "deleteSelected": "Șterge",
     "exitSelection": "Ieși din selecție",
     "collapseBtn": "Restrânge",
+    "importExportBtn": "Importă / Exportă",
     "hostStatusesRefreshed": "Stările gazdelor au fost reîmprospătate",
     "failedToRefreshHosts": "Reîmprospătarea gazdelor a eșuat",
     "movedHostTo": "{{host}} mutat în \"{{folder}}\"",
@@ -615,6 +633,7 @@
     "hostClickBehavior": "Click pe o gazdă",
     "hostClickBehaviorDesc": "Ce se întâmplă când dai click pe o gazdă care are deja un tab deschis. Ctrl/Cmd click, click cu butonul din mijloc sau „Deschide într-un tab nou” pornesc întotdeauna unul nou.",
     "hostClickNewTab": "Deschide întotdeauna un tab nou",
+    "hostClickHostPage": "Deschide pagina gazdei, dacă un plugin oferă una",
     "hostClickFocusExisting": "Comută la tab-ul deschis",
     "hostClickFocusExistingDoubleNew": "Click pentru a comuta, dublu click pentru un tab nou",
     "openInNewTab": "Deschide într-un tab nou",
@@ -840,7 +859,12 @@
     "editorUpdate": "Actualizează gazda",
     "editorAdd": "Adaugă gazdă",
     "speedSearch": "Caută gazde. Tastele săgeată pentru selectare, Enter pentru conectare, Esc pentru închidere",
-    "speedSearchList": "Lista de gazde. Tastează sau apasă / pentru căutare."
+    "speedSearchList": "Lista de gazde. Tastează sau apasă / pentru căutare.",
+    "openFromLink": {
+      "title": "Deschid {{name}}?",
+      "description": "Un link a cerut Termix să se conecteze la acest gazdă.",
+      "confirm": "Conectare"
+    }
   },
   "splitScreen": {
     "title": "Ecran divizat",
@@ -920,6 +944,16 @@
     "empty": "Nicio card. Folosește Adaugă de mai jos pentru a plasa carduri."
   },
   "auth": {
+    "inviteIntro": "Ai fost invitat pe acest server. Alege un nume de utilizator și o parolă pentru a-ți crea contul.",
+    "inviteInvalid": "Acest link de invitație a expirat sau a fost deja folosit. Cere un administrator să îți trimită unul nou.",
+    "accountDisabled": "Acest cont este dezactivat. Cere unui administrator să îl reactiveze.",
+    "accountPending": "Contul tău așteaptă aprobarea unui administrator.",
+    "stepUp": {
+      "title": "Verifică că ești tu",
+      "description": "Furnizează al doilea factor de autentificare pentru a continua.",
+      "noFactor": "Nu ai configurat un al doilea factor de autentificare. Adaugă unul în Setări, apoi încearcă din nou.",
+      "failed": "Nu a funcționat. Încearcă din nou."
+    },
     "tagline": "Gestionare servere auto-găzduită, bazată pe plugin-uri.",
     "loginTitle": "Bine ai revenit",
     "registerTitle": "Creează cont",
@@ -946,6 +980,14 @@
     "loginWithExternal": "Autentificare cu furnizor extern",
     "loginWithExternalDesc": "Autentificați-vă folosind furnizorul extern de identitate configurat",
     "loginWithProvider": "Autentificare cu {{name}}",
+    "pluginLogin": {
+      "signIn": "Autentificare",
+      "verify": "Verificare",
+      "code": "Cod",
+      "useKey": "Folosește cheia de securitate",
+      "keyPrompt": "Folosește cheia de securitate sau passkey pentru a continua.",
+      "keyFailed": "Pasul cu cheia de securitate nu a funcționat. Încearcă din nou."
+    },
     "resetPasswordButton": "Resetare parolă",
     "sendResetCode": "Trimite cod de resetare",
     "resetCodeDesc": "Introduceți numele de utilizator pentru a primi un cod de resetare a parolei. Codul va fi înregistrat în jurnalele containerului Docker.",
@@ -1023,6 +1065,8 @@
     "registrationSuccess": "Înregistrare reușită"
   },
   "placeholders": {
+    "username": "Numele tău de utilizator",
+    "newUsername": "Alege un nume de utilizator",
     "keyPassword": "parola cheii",
     "pastePrivateKey": "Lipiți cheia privată aici...",
     "enterPassword": "Introduceți parola"
@@ -1069,7 +1113,8 @@
         "actionNextTab": "Comută la fila următoare",
         "actionPreviousTab": "Comută la fila anterioară",
         "actionOpenCommandPalette": "Deschide căutarea rapidă",
-        "actionReconnectSession": "Reconectează sesiunea curentă"
+        "actionReconnectSession": "Reconectează sesiunea curentă",
+        "actionToggleSidebar": "Comută bara laterală"
       },
       "userProfile": {
         "preset_simple": "Simplă",
@@ -1211,6 +1256,10 @@
         "title": "Accesează internetul",
         "consequence": "Poate trimite cereri către servicii externe."
       },
+      "network:sockets": {
+        "title": "Deschide conexiuni de rețea proprii",
+        "consequence": "Poate asculta pe porturi și se poate conecta direct la orice adresă, fără ca Termix să verifice fiecare conexiune."
+      },
       "network:serve": {
         "title": "Acceptă conexiuni",
         "consequence": "Deschide un port pe serverul Termix."
@@ -1231,6 +1280,18 @@
         "title": "Trimite alerte",
         "consequence": "Către tine sau către alți utilizatori, prin canalele configurate de aceștia."
       },
+      "operations:provide": {
+        "title": "Oferă acțiuni",
+        "consequence": "Acțiunile sale pot fi executate din Automatizări, linia de comandă, aplicația mobilă și alte locații, de către persoanele autorizate să le folosească."
+      },
+      "operations:invoke": {
+        "title": "Execută acțiuni ale altor plugin-uri",
+        "consequence": "Acționează în numele utilizatorului autentificat pentru acțiunile listate în manifestul său. Regulile de aprobare se aplică în continuare."
+      },
+      "operations:approve": {
+        "title": "Stabilește ce necesită aprobare",
+        "consequence": "Poate permite ca acțiunile să se execute fără aprobare sau le poate bloca, pentru fiecare utilizator."
+      },
       "notify:hub": {
         "title": "Primește fiecare alertă",
         "consequence": "Stochează și livrează alertele trimise de toate plugin-urile, inclusiv conținutul acestora."
@@ -1241,7 +1302,7 @@
       },
       "network:probe": {
         "title": "Verifică dacă porturile răspund",
-        "consequence": "Poate deschide o conexiune simplă către orice adresă de pe server, pentru a vedea dacă este accesibilă."
+        "consequence": "Poate deschide o conexiune simplă către orice adresă de pe server, pentru a verifica dacă este accesibilă, și poate rezolva numele de gazdă."
       },
       "hosts:status-provide": {
         "title": "Furnizează starea gazdei",
@@ -1254,6 +1315,10 @@
       "hosts:lock": {
         "title": "Gestionează gazdele ca doar pentru citire",
         "consequence": "Gazdele pe care le gestionează nu pot fi editate, șterse sau redistribuite de nimeni altcineva."
+      },
+      "hosts:connect-policy": {
+        "title": "Stabilește cine se poate conecta",
+        "consequence": "Poate bloca sau permite fiecare conexiune SSH și desktop la distanță către orice gazdă."
       },
       "desktop:window": {
         "title": "Deschide ferestre desktop",
@@ -1291,6 +1356,10 @@
         "title": "Să își stocheze propriile secrete",
         "consequence": "Criptate de Termix. Pluginul nu deține niciodată cheia."
       },
+      "config:secrets": {
+        "title": "Citește secretele deținute de server",
+        "consequence": "Variabile de mediu și fișiere de pe server, cu excepția cheilor proprii ale Termix."
+      },
       "settings:read-core": {
         "title": "Să citească setările Termix",
         "consequence": "Setări ale serverului, nu ale gazdelor sau a acreditărilor tale."
@@ -1311,6 +1380,10 @@
         "title": "Adaugă teme de culori",
         "consequence": "Doar culori și stiluri. Nu se execută niciun cod pentru o temă."
       }
+    },
+    "webView": {
+      "unavailable": "Această pagină nu mai este disponibilă. Deschide-o din nou din pluginul său.",
+      "isolationUnavailable": "Acest browser nu poate deschide pagina în siguranță aici. Folosește o versiune recentă de Chrome sau Edge, sau aplicația desktop."
     },
     "runtime": {
       "needsPlugin": "{{name}} nu este disponibil",
@@ -1335,7 +1408,7 @@
         "running": "În execuție",
         "disabled": "Dezactivat",
         "failed": "Oprit neașteptat",
-        "blocked": "Așteaptă un alt plugin",
+        "blocked": "Nu se poate porni",
         "server": "Rulează pe serverul tău",
         "safeMode": "Oprit în modul sigur"
       },
@@ -1357,7 +1430,8 @@
         "version": "Versiune",
         "status": "Stare",
         "category": "Categorie",
-        "downloads": "Descărcări"
+        "downloads": "Descărcări",
+        "memory": "Memorie"
       },
       "risk": {
         "critical": "Critic",
@@ -1432,9 +1506,13 @@
         "updatedMany_one": "{{count}} plugin actualizat",
         "updatedMany_few": "{{count}} plugin-uri actualizate",
         "updatedMany_other": "{{count}} plugin-uri actualizate",
+        "needsReview_one": "1 plugin solicită permisiuni noi. Revizuiește-l pentru a actualiza.",
+        "needsReview_few": "{{count}} plugin-uri solicită permisiuni noi. Revizuiește fiecare pentru a actualiza.",
+        "needsReview_other": "{{count}} plugin-uri solicită permisiuni noi. Revizuiește fiecare pentru a actualiza.",
         "uninstalled": "{{name}} dezinstalat",
         "dataDeleted": "Datele pentru {{name}} au fost șterse",
-        "failedToStart": "{{name}} nu a putut porni. Deschide-l pentru a vedea de ce."
+        "failedToStart": "{{name}} nu a putut porni. Deschide-l pentru a vedea de ce.",
+        "held": "{{name}} așteaptă {{minutes}} minute înainte ca modificarea să se aplice, astfel încât ceilalți administratori să o poată vedea"
       },
       "errors": {
         "generic": "Ceva nu a mers bine",
@@ -1491,6 +1569,25 @@
       "pin": "Rămâi la această versiune",
       "pinHint": "Păstrează {{version}} și ignoră toate actualizările până dezactivezi această opțiune.",
       "pinnedTo": "Fixat la {{version}}",
+      "legacy": {
+        "notice_one": "1 plugin a fost creat pentru o versiune mai veche de Termix și rămâne oprit până este actualizat: {{names}}.",
+        "notice_few": "{{count}} pluginuri au fost create pentru o versiune mai veche de Termix și rămân oprite până sunt actualizate: {{names}}.",
+        "notice_other": "{{count}} pluginuri au fost create pentru o versiune mai veche de Termix și rămân oprite până sunt actualizate: {{names}}.",
+        "why": "Au fost create pentru API-ul de pluginuri v1, care rula în interiorul serverului. Termix rulează acum fiecare plugin într-un proces separat, așa că fiecare are nevoie de o versiune creată pentru API-ul de pluginuri v2. Actualizează cele oficiale aici și cere autorului unui plugin comunitar o versiune compatibilă.",
+        "guide": "Cum se migrează pluginurile la API v2"
+      },
+      "provenance": {
+        "verified": "Construcție verificată",
+        "verifiedHint": "Proveniența construcției a fost semnată de fluxul de lansare al registrului Termix și se potrivește cu acest fișier. Deschide construcția.",
+        "unchecked": "Construcție neverificată",
+        "uncheckedHint": "Proveniența construcției nu a putut fi verificată la descărcare. Semnătura din registru a fost verificată."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} este disponibil. 1 plugin va rămâne oprit până îl actualizezi: {{names}}.",
+        "notice_few": "Termix {{version}} este disponibil. {{count}} pluginuri vor rămâne oprite până le actualizezi: {{names}}.",
+        "notice_other": "Termix {{version}} este disponibil. {{count}} pluginuri vor rămâne oprite până le actualizezi: {{names}}.",
+        "needs": "{{name}} (necesită Termix {{range}})"
+      },
       "version": "Versiune",
       "versionPickHint": "Instalează o versiune anterioară în loc de cea mai recentă. Va rămâne la această versiune până o deblochezi.",
       "versionPickHintInstalled": "Comută la o altă versiune. Alegerea uneia care nu este cea mai recentă o fixează.",
@@ -1565,7 +1662,13 @@
         "unreachable": "Nu s-a putut citi: {{error}}",
         "filter": "Registrul",
         "allRegistries": "Toate registrele",
-        "browseHint": "Activează plugin-urile comunitare sau adaugă propriul registru în fila Registries."
+        "browseHint": "Activează plugin-urile comunitare sau adaugă propriul registru în fila Registries.",
+        "looksName": "Aspecte și teme comunitare",
+        "looksHint": "Permite aspectelor și temelor care nu sunt de la Termix să ruleze în afara sandbox-ului, ca cele oficiale. Un aspect desenează întreaga aplicație, așa că poate vedea și face orice poți face tu. Instalează doar cele în care ai încredere. Reîncarcă pagina după ce modifici această setare.",
+        "looksConfirmTitle": "Permiți aspectelor comunitare să ruleze în afara sandbox-ului?",
+        "looksConfirmBody": "Un aspect sau temă comunitară va rula în pagină cu acces complet la Termix ca persoana conectată. Acest lucru poate fi riscant. Activează această opțiune doar dacă ai încredere în aspectele și temele pe care le instalezi.",
+        "looksConfirm": "Activează",
+        "looksSaved": "Salvat. Reîncarcă pagina pentru a aplica modificările."
       },
       "upToDate": "Totul este la zi.",
       "lastChecked": "Ultima verificare {{time}}",
@@ -1652,8 +1755,29 @@
       "unsupportedHint": "Nicio versiune a acestui plugin nu rulează pe această versiune de Termix. Actualizează Termix pentru a-l instala.",
       "needsTermix": "Necesită Termix {{range}}",
       "showUnsupported": "Afișează nesuportate ({{count}})",
-      "showMore": "Afișează încă {{count}} (mai rămân {{total}})"
-    }
+      "showMore": "Afișează încă {{count}} (mai rămân {{total}})",
+      "memory": {
+        "summary": "Memorie: {{total}} din {{limit}} | pluginuri {{plugins}} | {{running}} active",
+        "lowTitle": "Acest server are memorie insuficientă",
+        "lowBody": "Termix și pluginurile sale folosesc {{total}} din {{limit}}. Adaugă mai multă memorie serverului sau dezactivează pluginurile pe care nu le folosești.",
+        "idle": "Inactiv",
+        "idleHint": "Nu rulează acum. Se pornește când este necesar.",
+        "keptOn": "Rămâne activ: {{reason}}",
+        "stopsWhenIdle": "Se oprește când este inactiv"
+      }
+    },
+    "firstLoad": {
+      "title": "Pregătirea pluginurilor",
+      "progress": "{{done}} din {{total}}",
+      "hint": "Plugin-urile se pornesc pentru prima dată. După aceasta, Termix se deschide imediat.",
+      "skip": "Continuă"
+    },
+    "framesBlocked": "Plugin-urile nu își pot încărca fișierele. Un proxy de autentificare în fața Termix probabil le blochează.",
+    "framesBlockedHelp": "Cum se rezolvă",
+    "framesFailed_one": "{{names}} nu a putut fi încărcat, așa că componentele sale sunt ascunse",
+    "framesFailed_few": "{{count}} plugin-uri nu au putut fi încărcate, așa că componentele lor sunt ascunse: {{names}}",
+    "framesFailed_other": "{{count}} plugin-uri nu au putut fi încărcate, așa că componentele lor sunt ascunse: {{names}}",
+    "framesFailedReload": "Reîncarcă"
   },
   "settings": {
     "secretSet": "Setat",
@@ -1705,6 +1829,12 @@
       "title": "Coloane",
       "auto": "Automat",
       "count": "{{count}} coloane"
+    },
+    "pager": {
+      "previous": "Anterior",
+      "next": "Următor",
+      "page": "Pagina {{page}}",
+      "pageOf": "Pagina {{page}} din {{pages}}"
     }
   },
   "fields": {
@@ -1724,7 +1854,108 @@
   "rbac": {
     "roles": {
       "admin": "Administrator",
-      "user": "Utilizator"
+      "user": "Utilizator",
+      "viewer": "Vizualizator",
+      "operator": "Operator",
+      "auditor": "Auditor",
+      "helpdesk": "Helpdesk"
+    }
+  },
+  "tileGrid": {
+    "empty": "Încă nu există plăcuțe. Adaugă unele din listă.",
+    "move": "Trage pentru a muta",
+    "moveTile": "Mută {{tile}}",
+    "settings": "Setări {{tile}}",
+    "remove": "Elimină {{tile}}",
+    "width": "Lățime",
+    "height": "Înălțime",
+    "addTiles": "Adaugă plăcuțe",
+    "closePicker": "Închide",
+    "search": "Caută plăcuțe",
+    "noMatches": "Niciun rezultat.",
+    "kind": {
+      "all": "Toate",
+      "card": "Carduri",
+      "chart": "Grafice",
+      "signal": "Stare",
+      "action": "Acțiuni",
+      "resource": "Liste",
+      "session": "Sesiuni"
+    },
+    "reset": "Resetează",
+    "done": "Gata"
+  },
+  "diagnostics": {
+    "title": "Diagnosticare",
+    "makeReport": "Generează un raport de diagnosticare",
+    "slowBoot": "Dură prea mult? Generează un raport de diagnosticare",
+    "troubleSigningIn": "Probleme la autentificare? Generează un raport de diagnosticare",
+    "reportTab": "Raport",
+    "logsTab": "Jurnale server",
+    "intro": "Aceasta creează un fișier cu informațiile de care Termix are nevoie pentru a identifica o problemă: erori, jurnale, stări plugin-uri și modul în care cererile ajung la server. Descarcă-l și atașează-l la o problemă GitHub sau trimite-l pe Discord.",
+    "notAdmin": "Jurnalele serverului și detaliile serverului necesită un administrator. Cere administratorului tău să genereze și el un raport dacă problema este pe server.",
+    "signedOut": "Nu ești autentificat, așa că doar partea din browser este inclusă.",
+    "whatHappened": "Ce s-a întâmplat",
+    "whatHappenedHint": "Opțional. Ce ai făcut și ce a mers greșit?",
+    "include": "Include",
+    "adminOnly": "Necesită un administrator",
+    "privacy": "Confidențialitate",
+    "mask": "Ascunde numele și adresele",
+    "maskHint": "IP-urile, numele de gazdă, numele de utilizator și emailurile devin host-1, user-1 și așa mai departe. Parolele, cheile și token-urile sunt întotdeauna eliminate.",
+    "domText": "Include textul paginii",
+    "domTextHint": "Adaugă textul de pe ecran la structura paginii. Dezactivat implicit deoarece poate afișa datele tale.",
+    "warnOnly": "Doar avertismente și erori din jurnalul serverului",
+    "warnOnlyHint": "Reduce dimensiunea fișierului.",
+    "focus": "Plugin",
+    "focusHint": "Afișează acest plugin primul și înregistrează problema în repository-ul său.",
+    "allPlugins": "Toate plugin-urile",
+    "findings": "Descoperit de verificări",
+    "preview": "Ce va fi trimis",
+    "previewCut": "(Previzualizarea se oprește aici. Fișierul conține totul.)",
+    "cut": "Fișierul a fost mai mare de 5 MB, așa că cele mai vechi linii din jurnal au fost tăiate.",
+    "footerHint": "Verifică previzualizarea înainte de a trimite.",
+    "copy": "Copiază",
+    "copied": "Raport copiat",
+    "copyFailed": "Nu s-a putut copia raportul",
+    "download": "Descarcă",
+    "downloaded": "Raport descărcat",
+    "openIssue": "Deschide o problemă GitHub",
+    "logsSearch": "Caută în jurnale",
+    "logsLevel": "Nivel",
+    "logsAll": "Toate nivelurile",
+    "logsWarn": "Avertismente și erori",
+    "logsError": "Erori",
+    "logsPlugin": "Plugin",
+    "logsCount": "{{count}} linii",
+    "logsFailed": "Nu s-au putut încărca jurnalele",
+    "logsPause": "Pauză",
+    "logsResume": "Reia",
+    "logsEmpty": "Încă nu există linii în jurnal.",
+    "parts": {
+      "server": "Server",
+      "plugins": "Plugin-uri",
+      "sections": "Detalii plugin",
+      "logs": "Jurnale server",
+      "request": "Conexiune",
+      "probes": "Verificări conexiune",
+      "errors": "Erori browser",
+      "console": "Consolă browser",
+      "network": "Rețea",
+      "page": "Browser și fereastră",
+      "dom": "Aspect pagină"
+    },
+    "partHints": {
+      "server": "Versiune, bază de date, SSL și care setări sunt configurate",
+      "plugins": "Versiuni și stări pe server și în browser",
+      "sections": "Detalii suplimentare adăugate de pluginurile active",
+      "logs": "Jurnal server de la pornire și linii recente",
+      "request": "Numele antetelor care indică un proxy în fața Termix",
+      "probes": "Teste pentru încărcarea Termix și a fișierelor pluginurilor",
+      "errors": "Erori neprinite și încărcări blocate",
+      "console": "Linii recente din consolă de la pagină și pluginuri",
+      "network": "Solicitări recente și starea lor",
+      "page": "Browser, dimensiunea ecranului și numele cheilor de stocare",
+      "dom": "Aspectul paginii, fără text"
     }
   }
 }

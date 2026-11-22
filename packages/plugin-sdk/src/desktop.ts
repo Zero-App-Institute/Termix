@@ -35,6 +35,10 @@ export interface ElectronAPI {
   getAppVersion: () => Promise<string>;
   setZoomFactor?: (factor: number) => void;
   getPlatform: () => Promise<string>;
+  /** termix:// links: the callback gets new ones, the promise earlier ones. */
+  onDeepLink?: (
+    callback: (link: { url: string; source: string }) => void,
+  ) => Promise<Array<{ url: string; source: string }>>;
   /** Whether the app-drawn title bar shows in this window. */
   getTitleBarVisible?: () => Promise<boolean>;
   /** Calls back when the title bar shows or hides; returns an unsubscribe. */
@@ -111,6 +115,9 @@ export interface ElectronAPI {
     success: boolean;
     error?: string;
   }>;
+
+  /** Start a native drag of temp files. Call it synchronously in dragstart. */
+  startDragFiles?: (tempIds: string[]) => void;
 
   cleanupTempFile: (tempId: string) => Promise<{
     success: boolean;

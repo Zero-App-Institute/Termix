@@ -15,9 +15,12 @@ import { emitInternalEvent } from "../hosts/internal-events.js";
 import {
   createCurrentSettingsRepository,
   createCurrentUserAuthRepository,
+  createCurrentUserRepository,
 } from "../database/repositories/factory.js";
 import type { UserRecord } from "../database/repositories/user-repository.js";
 import type { ExternalSessionRef } from "./types.js";
+import { setAuthCookie } from "./session-cookie.js";
+import { appChallengeOf, createAppHandoff } from "./app-handoff.js";
 
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
@@ -103,6 +106,18 @@ export async function issueSession(
     idleTimeoutSeconds: options.idleTimeoutSeconds ?? null,
   });
 
+  try {
+    await createCurrentUserRepository().update(user.id, {
+      lastLoginAt: new Date().toISOString(),
+    });
+  } catch (error) {
+    authLogger.warn("Failed to record the last login time", {
+      operation: "last_login_update",
+      userId: user.id,
+      error,
+    });
+  }
+
   if (options.rateLimitUsername) {
     const clientIp = req.ip || req.socket?.remoteAddress || "unknown";
     loginRateLimiter.resetAttempts(clientIp, options.rateLimitUsername);
@@ -122,6 +137,11 @@ export async function issueSession(
   emitInternalEvent("user_login", user.id, undefined, {
     username: user.username,
     ipAddress,
+    userAgent,
+    methodId: options.methodId,
+    deviceType: deviceInfo.type,
+    deviceInfo: deviceInfo.deviceInfo,
+    restricted: Boolean(options.restriction),
   });
 
   authLogger.success("User login successful", {
@@ -140,6 +160,8 @@ export async function issueSession(
     maxAge = Math.min(maxAge, options.maxAgeSeconds * 1000);
   }
 
+  const appChallenge = appChallengeOf(req);
+
   return {
     token,
     maxAge,
@@ -155,6 +177,9 @@ export async function issueSession(
       ),
       ...(options.restriction ? { restriction: options.restriction } : {}),
       ...(isNativeAppRequest(req) ? { token } : {}),
+      ...(appChallenge
+        ? { app_code: createAppHandoff(token, appChallenge) }
+        : {}),
     },
   };
 }
@@ -166,11 +191,11 @@ export function sendSession(
   session: IssuedSession,
 ): Response {
   const authManager = AuthManager.getInstance();
-  return res
-    .cookie(
-      "jwt",
-      session.token,
-      authManager.getSecureCookieOptions(req, session.maxAge),
-    )
-    .json(session.body);
+  return setAuthCookie(
+    req,
+    res,
+    "jwt",
+    session.token,
+    authManager.getSecureCookieOptions(req, session.maxAge),
+  ).json(session.body);
 }

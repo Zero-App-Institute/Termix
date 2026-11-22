@@ -131,6 +131,8 @@
     "updateLinkLabel": "アップデートが利用可能です。GitHub でリリースノートを開く"
   },
   "common": {
+    "showPassword": "パスワードを表示",
+    "hidePassword": "パスワードを非表示",
     "scrollTabsLeft": "タブを左にスクロール",
     "scrollTabsRight": "タブを右にスクロール",
     "close": "閉じる",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "プラグインリストを読み込めませんでした。後でプラグインタブからプラグインを選択できます。",
     "securityTitle": "アカウントを保護",
     "securityIntro": "アカウントにパスキーまたは認証アプリを追加してください。これは後で「設定」の「セキュリティ」から行うこともできます。",
-    "pluginsDocsLink": "各プラグインについて読む"
+    "pluginsDocsLink": "各プラグインについて読む",
+    "layoutTitle": "レイアウトを選択",
+    "layoutIntro": "レイアウトは、メニュー、サイドバー、タブを含むアプリ全体の配置を決定します。クリックして使用します。変更はすぐに反映されます。",
+    "layoutInstalled": "インストール済み",
+    "layoutMore": "他のレイアウト",
+    "layoutNoMore": "現在、他のレイアウトは利用できません。",
+    "layoutDefault": "デフォルト",
+    "layoutInstall": "インストール",
+    "layoutTurnOn": "有効化",
+    "layoutVideo": "動画を見る",
+    "layoutChangeLater": "レイアウトは、設定の「外観」でいつでも変更できます。さらにレイアウトをインストールしたい場合は、管理者に相談してください。",
+    "layoutChangeLaterAdmin": "レイアウトは、設定の「外観」でいつでも変更できます。プラグインタブから後でさらにレイアウトをインストールできます。"
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix は実行中です",
+    "noticeBody": "ウィンドウを閉じても、Termix はトレイで実行され続けます。終了するには、トレイアイコンのメニューを開き、「終了」を選択してください。この動作は設定で無効にできます。"
   },
   "desktopUpdates": {
     "modeAutomatic": "自動",
@@ -491,6 +508,7 @@
     "deleteSelected": "削除",
     "exitSelection": "選択を解除",
     "collapseBtn": "折りたたむ",
+    "importExportBtn": "インポート / エクスポート",
     "hostStatusesRefreshed": "ホストのステータスを更新しました",
     "failedToRefreshHosts": "ホストの更新に失敗しました",
     "movedHostTo": "{{host}} を「{{folder}}」に移動しました",
@@ -603,6 +621,7 @@
     "hostClickBehavior": "ホストをクリックしたとき",
     "hostClickBehaviorDesc": "既にタブが開いているホストをクリックしたときの動作を指定します。Ctrl/Cmd + クリック、中央クリック、または「新しいタブで開く」は常に新しいタブを開きます。",
     "hostClickNewTab": "常に新しいタブで開く",
+    "hostClickHostPage": "プラグインが提供している場合、ホストページを開きます",
     "hostClickFocusExisting": "開いているタブに切り替える",
     "hostClickFocusExistingDoubleNew": "クリックで切り替え、ダブルクリックで新しいタブ",
     "openInNewTab": "新しいタブで開く",
@@ -816,7 +835,12 @@
     "editorUpdate": "ホストを更新",
     "editorAdd": "ホストを追加",
     "speedSearch": "ホストを検索。矢印キーで選択、Enter で接続、Esc で閉じる",
-    "speedSearchList": "ホスト一覧。入力するか / を押して検索"
+    "speedSearchList": "ホスト一覧。入力するか / を押して検索",
+    "openFromLink": {
+      "title": "「{{name}}」を開きますか？",
+      "description": "リンクから、このホストへの接続を Termix に要求しました。",
+      "confirm": "接続"
+    }
   },
   "splitScreen": {
     "title": "分割画面",
@@ -894,6 +918,16 @@
     "empty": "カードがありません。下の「追加」を使用してカードを配置してください。"
   },
   "auth": {
+    "inviteIntro": "このサーバーへの招待を受けました。ユーザー名とパスワードを設定してアカウントを作成してください。",
+    "inviteInvalid": "この招待リンクは期限切れか、すでに使用されています。管理者に新しいリンクを依頼してください。",
+    "accountDisabled": "このアカウントは無効化されています。管理者に有効化を依頼してください。",
+    "accountPending": "あなたのアカウントは、管理者による承認を待っています。",
+    "stepUp": {
+      "title": "本人確認",
+      "description": "続行するには、2段階認証の証明を行ってください。",
+      "noFactor": "2段階認証が設定されていません。設定で追加してから、もう一度お試しください。",
+      "failed": "操作が失敗しました。もう一度お試しください。"
+    },
     "tagline": "セルフホスト型、プラグインベースのサーバー管理。",
     "loginTitle": "おかえりなさい",
     "registerTitle": "アカウントを作成",
@@ -920,6 +954,14 @@
     "loginWithExternal": "外部プロバイダーでログイン",
     "loginWithExternalDesc": "設定済みの外部アイデンティティプロバイダーを使用してログインします",
     "loginWithProvider": "{{name}} でログイン",
+    "pluginLogin": {
+      "signIn": "サインイン",
+      "verify": "確認",
+      "code": "コード",
+      "useKey": "セキュリティキーを使用",
+      "keyPrompt": "続行するには、セキュリティキーまたはパスキーを使用してください。",
+      "keyFailed": "セキュリティキーの確認に失敗しました。もう一度お試しください。"
+    },
     "resetPasswordButton": "パスワードをリセット",
     "sendResetCode": "リセットコードを送信",
     "resetCodeDesc": "パスワードリセットコードを受け取るにはユーザー名を入力してください。コードは Docker コンテナのログに記録されます。",
@@ -997,6 +1039,8 @@
     "registrationSuccess": "登録に成功しました"
   },
   "placeholders": {
+    "username": "ユーザー名",
+    "newUsername": "ユーザー名を入力",
     "keyPassword": "キーのパスワード",
     "pastePrivateKey": "ここに秘密鍵を貼り付けてください...",
     "enterPassword": "パスワードを入力してください"
@@ -1035,7 +1079,8 @@
         "actionNextTab": "次のタブに切り替え",
         "actionPreviousTab": "前のタブに切り替え",
         "actionOpenCommandPalette": "クイック検索を開く",
-        "actionReconnectSession": "現在のセッションを再接続"
+        "actionReconnectSession": "現在のセッションを再接続",
+        "actionToggleSidebar": "サイドバーの表示/非表示を切り替え"
       },
       "userProfile": {
         "preset_simple": "シンプル",
@@ -1177,6 +1222,10 @@
         "title": "インターネットへのアクセス",
         "consequence": "外部サービスへのリクエストを送信できます。"
       },
+      "network:sockets": {
+        "title": "独自のネットワーク接続を開く",
+        "consequence": "Termixが各接続を確認することなく、ポートをリッスンし、任意のアドレスに直接接続できます。"
+      },
       "network:serve": {
         "title": "接続の受け入れ",
         "consequence": "Termix サーバーでポートを開きます。"
@@ -1197,6 +1246,18 @@
         "title": "アラートの送信",
         "consequence": "あなたや他のユーザーへ、設定されたチャネルを通じて送信します。"
       },
+      "operations:provide": {
+        "title": "アクションを提供する",
+        "consequence": "そのアクションは、自動化、CLI、モバイルアプリ、その他の場所から、使用が許可されたユーザーによって実行できます。"
+      },
+      "operations:invoke": {
+        "title": "他のプラグインのアクションを実行する",
+        "consequence": "マニフェストにリストされたアクションに対して、サインインしているユーザーに代わって動作します。承認ルールは依然として適用されます。"
+      },
+      "operations:approve": {
+        "title": "承認が必要なものを決定する",
+        "consequence": "すべてのユーザーに対して、アクションを承認なしで実行できるようにするか、ブロックするかを制御できます。"
+      },
       "notify:hub": {
         "title": "すべてのアラートを受信",
         "consequence": "すべてのプラグインが送信するアラート（内容を含む）を保存・配信します。"
@@ -1207,7 +1268,7 @@
       },
       "network:probe": {
         "title": "ポートの応答を確認",
-        "consequence": "サーバーから任意のアドレスへ平文接続を開き、到達可能かどうかを確認できます。"
+        "consequence": "サーバーから任意のアドレスへのプレーン接続を開き、到達可能かどうかを確認し、ホスト名を検索できます。"
       },
       "hosts:status-provide": {
         "title": "ホストのステータスを提供",
@@ -1220,6 +1281,10 @@
       "hosts:lock": {
         "title": "ホストを読み取り専用として管理",
         "consequence": "管理対象のホストは、他のユーザーによって編集、削除、再共有できません。"
+      },
+      "hosts:connect-policy": {
+        "title": "接続を許可するユーザーを決定する",
+        "consequence": "任意のホストへのすべてのSSHおよびリモートデスクトップ接続をブロックまたは許可できます。"
       },
       "desktop:window": {
         "title": "デスクトップウィンドウを開く",
@@ -1257,6 +1322,10 @@
         "title": "独自のシークレットを保存",
         "consequence": "Termix によって暗号化されます。プラグインは鍵を保持しません。"
       },
+      "config:secrets": {
+        "title": "サーバーが保持するシークレットを読み取る",
+        "consequence": "Termix自身のキーを除く、サーバー上の環境変数とファイル。"
+      },
       "settings:read-core": {
         "title": "Termix の設定を読み取る",
         "consequence": "サーバーの設定です。ホストや認証情報は含まれません。"
@@ -1277,6 +1346,10 @@
         "title": "カラーテーマを追加",
         "consequence": "色とスタイルのみです。テーマにはコードは実行されません。"
       }
+    },
+    "webView": {
+      "unavailable": "このページは利用できなくなりました。プラグインから再度開いてください。",
+      "isolationUnavailable": "このブラウザでは、このページを安全に開くことができません。最新のChromeまたはEdge、またはデスクトップアプリを使用してください。"
     },
     "runtime": {
       "needsPlugin": "{{name}} は利用できません",
@@ -1301,7 +1374,7 @@
         "running": "実行中",
         "disabled": "無効",
         "failed": "予期せず停止",
-        "blocked": "他のプラグインを待機中",
+        "blocked": "起動できません",
         "server": "サーバー上で実行",
         "safeMode": "セーフモードで無効"
       },
@@ -1323,7 +1396,8 @@
         "version": "バージョン",
         "status": "ステータス",
         "category": "カテゴリ",
-        "downloads": "ダウンロード数"
+        "downloads": "ダウンロード数",
+        "memory": "メモリ"
       },
       "risk": {
         "critical": "重大",
@@ -1374,9 +1448,11 @@
         "installedNotRunning": "{{name}} がインストールされましたが、起動できませんでした。理由を確認するには開いてください。",
         "updated": "{{name}} が {{version}} に更新されました",
         "updatedMany_other": "{{count}} 個のプラグインが更新されました",
+        "needsReview_other": "{{count}}個のプラグインが新しい権限を要求しています。更新するには確認してください。",
         "uninstalled": "{{name}} がアンインストールされました",
         "dataDeleted": "{{name}} のデータが削除されました",
-        "failedToStart": "{{name}} が起動できませんでした。理由を確認するには開いてください。"
+        "failedToStart": "{{name}} が起動できませんでした。理由を確認するには開いてください。",
+        "held": "{{name}}は、他の管理者が変更を確認できるように、適用まで{{minutes}}分待機します"
       },
       "errors": {
         "generic": "エラーが発生しました",
@@ -1425,6 +1501,21 @@
       "pin": "このバージョンを固定する",
       "pinHint": "{{version}} を維持し、この設定をオフにするまですべての更新をスキップします。",
       "pinnedTo": "{{version}} に固定",
+      "legacy": {
+        "notice_other": "{{count}}個のプラグインは古いTermix向けに作成されており、更新されるまで無効のままです: {{names}}。",
+        "why": "これらは、サーバー内で実行されるプラグインAPI 1向けに作成されました。Termixは現在、各プラグインを独自のプロセスで実行するため、プラグインAPI 2向けのバージョンが必要です。公式プラグインはここで更新し、コミュニティプラグインについては作者に新しいバージョンを依頼してください。",
+        "guide": "プラグインをAPI 2に移行する方法"
+      },
+      "provenance": {
+        "verified": "ビルド検証済み",
+        "verifiedHint": "そのビルドの出所は、Termixレジストリのリリースワークフローによって署名され、このファイルと一致しています。ビルドを開きます。",
+        "unchecked": "ビルド未検証",
+        "uncheckedHint": "ダウンロード時にそのビルドの出所を検証できませんでした。レジストリの署名は検証済みです。"
+      },
+      "updateCheck": {
+        "notice_other": "Termix {{version}}がリリースされました。{{count}}個のプラグインは、更新されるまで無効のままです: {{names}}。",
+        "needs": "{{name}}（Termix {{range}}が必要）"
+      },
       "version": "バージョン",
       "versionPickHint": "最新ではなく、以前のリリースをインストールします。固定を解除するまで、そのバージョンが維持されます。",
       "versionPickHintInstalled": "別のリリースに切り替えます。最新以外のバージョンを選択すると、それが固定されます。",
@@ -1497,7 +1588,13 @@
         "unreachable": "読み取れませんでした: {{error}}",
         "filter": "レジストリ",
         "allRegistries": "すべてのレジストリ",
-        "browseHint": "コミュニティプラグインを有効にするか、レジストリタブで独自のレジストリを追加してください。"
+        "browseHint": "コミュニティプラグインを有効にするか、レジストリタブで独自のレジストリを追加してください。",
+        "looksName": "コミュニティのレイアウトとテーマ",
+        "looksHint": "Termix 公式以外のレイアウトやテーマを、公式と同じくサンドボックス外で実行できるようにします。レイアウトはアプリ全体を描画するため、ユーザーが行える操作をすべて実行・閲覧できます。信頼できるもののみインストールしてください。変更後はページを再読み込みしてください。",
+        "looksConfirmTitle": "コミュニティのレイアウトをサンドボックス外で実行しますか？",
+        "looksConfirmBody": "コミュニティのレイアウトやテーマは、ログイン中のユーザーとして Termix に完全なアクセス権を持ってページ内で実行されます。リスクを伴う可能性があります。インストールするレイアウトやテーマを信頼している場合のみ、この機能を有効にしてください。",
+        "looksConfirm": "有効にする",
+        "looksSaved": "保存しました。適用するにはページを再読み込みしてください。"
       },
       "upToDate": "すべて最新です。",
       "lastChecked": "最終確認: {{time}}",
@@ -1576,8 +1673,27 @@
       "unsupportedHint": "このプラグインのリリースは、このバージョンの Termix では実行されません。インストールするには Termix をアップデートしてください。",
       "needsTermix": "Termix {{range}} が必要です",
       "showUnsupported": "サポートされていないものを表示 ({{count}})",
-      "showMore": "さらに {{count}} 件を表示 (残り {{total}} 件)"
-    }
+      "showMore": "さらに {{count}} 件を表示 (残り {{total}} 件)",
+      "memory": {
+        "summary": "メモリ: {{total}} / {{limit}} | プラグイン {{plugins}} | {{running}} 実行中",
+        "lowTitle": "このサーバーのメモリが不足しています",
+        "lowBody": "Termixとそのプラグインは、{{limit}}のうち{{total}}を使用しています。サーバーにメモリを追加するか、使用していないプラグインを無効にしてください。",
+        "idle": "アイドル",
+        "idleHint": "現在実行されていません。必要なものが発生すると起動します。",
+        "keptOn": "実行を維持: {{reason}}",
+        "stopsWhenIdle": "アイドル時に停止"
+      }
+    },
+    "firstLoad": {
+      "title": "プラグインの準備中",
+      "progress": "{{done}} / {{total}}",
+      "hint": "プラグインが初めて起動しています。次回以降、Termix はすぐに起動します。",
+      "skip": "続行"
+    },
+    "framesBlocked": "プラグインがファイルをロードできません。Termix の前にあるログインプロキシがブロックしている可能性があります。",
+    "framesBlockedHelp": "修正方法",
+    "framesFailed_other": "{{count}}個のプラグインがロードできなかったため、その要素は非表示になっています：{{names}}",
+    "framesFailedReload": "再読み込み"
   },
   "settings": {
     "secretSet": "設定済み",
@@ -1621,6 +1737,12 @@
       "title": "カラム",
       "auto": "自動",
       "count": "{{count}} カラム"
+    },
+    "pager": {
+      "previous": "前へ",
+      "next": "次へ",
+      "page": "{{page}}ページ目",
+      "pageOf": "{{pages}}ページ中{{page}}ページ目"
     }
   },
   "fields": {
@@ -1634,7 +1756,108 @@
   "rbac": {
     "roles": {
       "admin": "管理者",
-      "user": "ユーザー"
+      "user": "ユーザー",
+      "viewer": "閲覧者",
+      "operator": "オペレーター",
+      "auditor": "監査者",
+      "helpdesk": "ヘルプデスク"
+    }
+  },
+  "tileGrid": {
+    "empty": "まだタイルがありません。リストからいくつか追加してください。",
+    "move": "ドラッグして移動",
+    "moveTile": "{{tile}}を移動",
+    "settings": "{{tile}}の設定",
+    "remove": "{{tile}}を削除",
+    "width": "幅",
+    "height": "高さ",
+    "addTiles": "タイルを追加",
+    "closePicker": "閉じる",
+    "search": "タイルを検索",
+    "noMatches": "一致するものはありません。",
+    "kind": {
+      "all": "すべて",
+      "card": "カード",
+      "chart": "チャート",
+      "signal": "ステータス",
+      "action": "アクション",
+      "resource": "リスト",
+      "session": "セッション"
+    },
+    "reset": "リセット",
+    "done": "完了"
+  },
+  "diagnostics": {
+    "title": "診断",
+    "makeReport": "診断レポートを作成",
+    "slowBoot": "時間がかかりますか？ 診断レポートを作成してください",
+    "troubleSigningIn": "サインインに問題がありますか？ 診断レポートを作成してください",
+    "reportTab": "レポート",
+    "logsTab": "サーバーログ",
+    "intro": "Termix が問題を特定するために必要な情報（エラー、ログ、プラグインの状態、リクエストがサーバーに到達するまでの経路など）を1つのファイルにまとめます。ダウンロードして、GitHub のイシューに添付するか、Discord で送信してください。",
+    "notAdmin": "サーバーログとサーバー詳細には管理者権限が必要です。問題がサーバー側にある場合は、管理者にもレポートを作成してもらってください。",
+    "signedOut": "サインインしていないため、ブラウザ部分のみが含まれます。",
+    "whatHappened": "発生した問題",
+    "whatHappenedHint": "任意。何を行い、何がうまくいかなかったか？",
+    "include": "含める",
+    "adminOnly": "管理者が必要",
+    "privacy": "プライバシー",
+    "mask": "名前とアドレスを隠す",
+    "maskHint": "IP アドレス、ホスト名、ユーザー名、メールアドレスは host-1、user-1 などに置き換えられます。パスワード、キー、トークンは常に削除されます。",
+    "domText": "ページテキストを含める",
+    "domTextHint": "画面のテキストをページレイアウトに追加します。データが表示される可能性があるため、デフォルトではオフです。",
+    "warnOnly": "サーバーログの警告とエラーのみ",
+    "warnOnlyHint": "ファイルサイズを小さくします。",
+    "focus": "プラグイン",
+    "focusHint": "このプラグインを最初に示し、そのリポジトリにイシューを作成します。",
+    "allPlugins": "すべてのプラグイン",
+    "findings": "チェックで見つかったもの",
+    "preview": "送信される内容",
+    "previewCut": "（プレビューはここで終了します。ファイルにはすべてが含まれています。）",
+    "cut": "ファイルが 5 MB を超えたため、最も古いログ行が切り捨てられました。",
+    "footerHint": "送信前にプレビューを確認してください。",
+    "copy": "コピー",
+    "copied": "レポートをコピーしました",
+    "copyFailed": "レポートをコピーできませんでした",
+    "download": "ダウンロード",
+    "downloaded": "レポートをダウンロードしました",
+    "openIssue": "GitHub イシューを開く",
+    "logsSearch": "ログを検索",
+    "logsLevel": "レベル",
+    "logsAll": "すべてのレベル",
+    "logsWarn": "警告とエラー",
+    "logsError": "エラー",
+    "logsPlugin": "プラグイン",
+    "logsCount": "{{count}} 行",
+    "logsFailed": "ログを読み込めませんでした",
+    "logsPause": "一時停止",
+    "logsResume": "再開",
+    "logsEmpty": "まだログ行がありません。",
+    "parts": {
+      "server": "サーバー",
+      "plugins": "プラグイン",
+      "sections": "プラグイン詳細",
+      "logs": "サーバーログ",
+      "request": "接続",
+      "probes": "接続チェック",
+      "errors": "ブラウザのエラー",
+      "console": "ブラウザコンソール",
+      "network": "ネットワーク",
+      "page": "ブラウザとウィンドウ",
+      "dom": "ページのレイアウト"
+    },
+    "partHints": {
+      "server": "バージョン、データベース、SSL、および設定済みのオプション",
+      "plugins": "サーバーとブラウザ上のバージョンと状態",
+      "sections": "実行中のプラグインが追加する詳細情報",
+      "logs": "起動以降のサーバーログと最近の行",
+      "request": "Termix の前にプロキシがあることを示すヘッダー名",
+      "probes": "Termix とプラグインファイルの読み込みテスト",
+      "errors": "キャッチされていないエラーとブロックされた読み込み",
+      "console": "ページとプラグインからの最近のコンソール出力",
+      "network": "最近のリクエストとそのステータス",
+      "page": "ブラウザ、画面サイズ、ストレージキー名",
+      "dom": "テキストを除いたページのレイアウト"
     }
   }
 }

@@ -131,6 +131,8 @@
     "updateLinkLabel": "Update available. Open the release notes on GitHub"
   },
   "common": {
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
     "scrollTabsLeft": "Scroll tabs left",
     "scrollTabsRight": "Scroll tabs right",
     "close": "Close",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "The plugin list could not be loaded. You can choose plugins later from the Plugins tab.",
     "securityTitle": "Secure your account",
     "securityIntro": "Add a passkey or an authenticator app to your account. You can also do this later in Settings, under Security.",
-    "pluginsDocsLink": "Read about each one"
+    "pluginsDocsLink": "Read about each one",
+    "layoutTitle": "Pick a layout",
+    "layoutIntro": "The layout decides how the whole app is set out: the menus, the sidebar and the tabs. Click one to use it. It changes right away.",
+    "layoutInstalled": "Installed",
+    "layoutMore": "More layouts",
+    "layoutNoMore": "No other layouts are available right now.",
+    "layoutDefault": "Default",
+    "layoutInstall": "Install",
+    "layoutTurnOn": "Turn on",
+    "layoutVideo": "Watch video",
+    "layoutChangeLater": "You can change your layout any time in Settings, under Appearance. Ask an admin if you want more layouts installed.",
+    "layoutChangeLaterAdmin": "You can change your layout any time in Settings, under Appearance. More layouts can be installed later from the Plugins tab."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix is still running",
+    "noticeBody": "Closing the window keeps Termix running in the tray. To quit, open the tray icon menu and pick Quit. You can turn this off in Settings."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automatic",
@@ -495,6 +512,7 @@
     "deleteSelected": "Delete",
     "exitSelection": "Exit selection",
     "collapseBtn": "Collapse",
+    "importExportBtn": "Import / Export",
     "hostStatusesRefreshed": "Host statuses refreshed",
     "failedToRefreshHosts": "Failed to refresh hosts",
     "movedHostTo": "Moved {{host}} to \"{{folder}}\"",
@@ -609,6 +627,7 @@
     "hostClickBehavior": "Clicking a host",
     "hostClickBehaviorDesc": "What happens when you click a host that already has an open tab. Ctrl/Cmd click, middle click, or \"Open in new tab\" always start a new one.",
     "hostClickNewTab": "Always open a new tab",
+    "hostClickHostPage": "Open the host page, when a plugin offers one",
     "hostClickFocusExisting": "Switch to the open tab",
     "hostClickFocusExistingDoubleNew": "Click to switch, double click for a new tab",
     "openInNewTab": "Open in new tab",
@@ -828,7 +847,12 @@
     "editorUpdate": "Update Host",
     "editorAdd": "Add Host",
     "speedSearch": "Search hosts. Arrow keys to select, Enter to connect, Esc to close",
-    "speedSearchList": "Host list. Type or press / to search."
+    "speedSearchList": "Host list. Type or press / to search.",
+    "openFromLink": {
+      "title": "Open {{name}}?",
+      "description": "A link asked Termix to connect to this host.",
+      "confirm": "Connect"
+    }
   },
   "splitScreen": {
     "title": "Split screen",
@@ -907,6 +931,16 @@
     "empty": "No cards. Use Add below to place cards."
   },
   "auth": {
+    "inviteIntro": "You were invited to this server. Pick a username and password to make your account.",
+    "inviteInvalid": "This invite link has expired or was already used. Ask an admin for a new one.",
+    "accountDisabled": "This account is turned off. Ask an admin to turn it back on.",
+    "accountPending": "Your account is waiting for an admin to approve it.",
+    "stepUp": {
+      "title": "Verify it's you",
+      "description": "Prove your second factor to go on.",
+      "noFactor": "You have no second factor set up. Add one in Settings, then try again.",
+      "failed": "That did not work. Try again."
+    },
     "tagline": "Self-hosted, plugin-based server management.",
     "loginTitle": "Welcome back",
     "registerTitle": "Create Account",
@@ -933,6 +967,14 @@
     "loginWithExternal": "Login with External Provider",
     "loginWithExternalDesc": "Login using your configured external identity provider",
     "loginWithProvider": "Login with {{name}}",
+    "pluginLogin": {
+      "signIn": "Sign in",
+      "verify": "Verify",
+      "code": "Code",
+      "useKey": "Use security key",
+      "keyPrompt": "Use your security key or passkey to continue.",
+      "keyFailed": "The security key step did not work. Try again."
+    },
     "resetPasswordButton": "Reset Password",
     "sendResetCode": "Send Reset Code",
     "resetCodeDesc": "Enter your username to receive a password reset code. The code will be logged in the docker container logs.",
@@ -1010,6 +1052,8 @@
     "registrationSuccess": "Registration successful"
   },
   "placeholders": {
+    "username": "Your username",
+    "newUsername": "Choose a username",
     "keyPassword": "key password",
     "pastePrivateKey": "Paste your private key here...",
     "enterPassword": "Enter your password"
@@ -1052,7 +1096,8 @@
         "actionNextTab": "Switch to next tab",
         "actionPreviousTab": "Switch to previous tab",
         "actionOpenCommandPalette": "Open quick search",
-        "actionReconnectSession": "Reconnect current session"
+        "actionReconnectSession": "Reconnect current session",
+        "actionToggleSidebar": "Toggle sidebar"
       },
       "userProfile": {
         "preset_simple": "Simple",
@@ -1194,6 +1239,10 @@
         "title": "Reach the internet",
         "consequence": "It can send requests to outside services."
       },
+      "network:sockets": {
+        "title": "Open its own network connections",
+        "consequence": "It can listen on ports and connect to any address directly, without Termix checking each connection."
+      },
       "network:serve": {
         "title": "Accept connections",
         "consequence": "It opens a port on the Termix server."
@@ -1214,6 +1263,18 @@
         "title": "Send alerts",
         "consequence": "To you or other users, and through the channels they set up."
       },
+      "operations:provide": {
+        "title": "Offer actions",
+        "consequence": "Its actions can be run from Automations, the CLI, the phone app and other places, by people allowed to use them."
+      },
+      "operations:invoke": {
+        "title": "Run other plugins' actions",
+        "consequence": "Acts for the signed-in user on the actions its manifest lists. Approval rules still apply."
+      },
+      "operations:approve": {
+        "title": "Decide what needs approval",
+        "consequence": "Can let actions run with no approval, or block them, for every user."
+      },
       "notify:hub": {
         "title": "Receive every alert",
         "consequence": "Stores and delivers the alerts all plugins send, including their contents."
@@ -1224,7 +1285,7 @@
       },
       "network:probe": {
         "title": "Check if ports answer",
-        "consequence": "Can open a plain connection to any address from the server, to see if it is reachable."
+        "consequence": "Can open a plain connection to any address from the server, to see if it is reachable, and look up host names."
       },
       "hosts:status-provide": {
         "title": "Provide host status",
@@ -1237,6 +1298,10 @@
       "hosts:lock": {
         "title": "Manage hosts as read only",
         "consequence": "Hosts it manages can't be edited, deleted or reshared by anyone else."
+      },
+      "hosts:connect-policy": {
+        "title": "Decide who can connect",
+        "consequence": "Can block or allow every SSH and remote desktop connection to any host."
       },
       "desktop:window": {
         "title": "Open desktop windows",
@@ -1274,6 +1339,10 @@
         "title": "Store its own secrets",
         "consequence": "Encrypted by Termix. The plugin never holds the key."
       },
+      "config:secrets": {
+        "title": "Read secrets the server holds",
+        "consequence": "Environment variables and files on the server, except Termix's own keys."
+      },
       "settings:read-core": {
         "title": "Read Termix settings",
         "consequence": "Server settings, not your hosts or credentials."
@@ -1294,6 +1363,10 @@
         "title": "Add color themes",
         "consequence": "Only colors and styles. No code runs for a theme."
       }
+    },
+    "webView": {
+      "unavailable": "This page is no longer available. Open it again from its plugin.",
+      "isolationUnavailable": "This browser can't open the page safely here. Use a recent Chrome or Edge, or the desktop app."
     },
     "runtime": {
       "needsPlugin": "{{name}} is not available",
@@ -1318,7 +1391,7 @@
         "running": "Running",
         "disabled": "Disabled",
         "failed": "Stopped unexpectedly",
-        "blocked": "Waiting on another plugin",
+        "blocked": "Can't start",
         "server": "Runs on your server",
         "safeMode": "Off in safe mode"
       },
@@ -1340,7 +1413,8 @@
         "version": "Version",
         "status": "Status",
         "category": "Category",
-        "downloads": "Downloads"
+        "downloads": "Downloads",
+        "memory": "Memory"
       },
       "risk": {
         "critical": "Critical",
@@ -1403,9 +1477,12 @@
         "updated": "{{name}} updated to {{version}}",
         "updatedMany_one": "{{count}} plugin updated",
         "updatedMany_other": "{{count}} plugins updated",
+        "needsReview_one": "1 plugin asks for new permissions. Review it to update.",
+        "needsReview_other": "{{count}} plugins ask for new permissions. Review each one to update.",
         "uninstalled": "{{name}} uninstalled",
         "dataDeleted": "Data for {{name}} deleted",
-        "failedToStart": "{{name}} could not start. Open it to see why."
+        "failedToStart": "{{name}} could not start. Open it to see why.",
+        "held": "{{name}} waits {{minutes}} minutes before the change applies, so the other admins can see it"
       },
       "errors": {
         "generic": "Something went wrong",
@@ -1458,6 +1535,23 @@
       "pin": "Stay on this version",
       "pinHint": "Keeps {{version}} and skips every update until you turn this off.",
       "pinnedTo": "Pinned to {{version}}",
+      "legacy": {
+        "notice_one": "1 plugin was made for an older Termix and stays off until it is updated: {{names}}.",
+        "notice_other": "{{count}} plugins were made for an older Termix and stay off until they are updated: {{names}}.",
+        "why": "They were made for plugin API 1, which ran inside the server. Termix now runs every plugin in its own process, so each needs a version made for plugin API 2. Update official ones here, and ask the author of a community plugin for one.",
+        "guide": "How plugins move to API 2"
+      },
+      "provenance": {
+        "verified": "Build checked",
+        "verifiedHint": "Its build provenance was signed by the Termix registry release workflow and matches this file. Opens the build.",
+        "unchecked": "Build not checked",
+        "uncheckedHint": "Its build provenance could not be checked when it was downloaded. Its registry signature was."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} is out. 1 plugin will stay off on it until you update it: {{names}}.",
+        "notice_other": "Termix {{version}} is out. {{count}} plugins will stay off on it until you update them: {{names}}.",
+        "needs": "{{name}} (needs Termix {{range}})"
+      },
       "version": "Version",
       "versionPickHint": "Install an older release instead of the newest. It stays on that version until you unpin it.",
       "versionPickHintInstalled": "Switch to another release. Picking one that is not the newest pins it.",
@@ -1531,7 +1625,13 @@
         "unreachable": "Could not read it: {{error}}",
         "filter": "Registry",
         "allRegistries": "All registries",
-        "browseHint": "Turn on community plugins or add your own registry in the Registries tab."
+        "browseHint": "Turn on community plugins or add your own registry in the Registries tab.",
+        "looksName": "Community layouts and themes",
+        "looksHint": "Lets layouts and themes that are not from Termix run outside the sandbox, like the official ones. A layout draws the whole app, so it can see and do anything you can. Only install ones you trust. Reload the page after changing this.",
+        "looksConfirmTitle": "Let community layouts run outside the sandbox?",
+        "looksConfirmBody": "A community layout or theme will run in the page with full access to Termix as whoever is signed in. This can be risky. Only turn this on if you trust the layouts and themes you install.",
+        "looksConfirm": "Turn on",
+        "looksSaved": "Saved. Reload the page to apply it."
       },
       "upToDate": "Everything is up to date.",
       "lastChecked": "Last checked {{time}}",
@@ -1614,8 +1714,28 @@
       "unsupportedHint": "No release of this plugin runs on this version of Termix. Update Termix to install it.",
       "needsTermix": "Needs Termix {{range}}",
       "showUnsupported": "Show unsupported ({{count}})",
-      "showMore": "Show {{count}} more ({{total}} left)"
-    }
+      "showMore": "Show {{count}} more ({{total}} left)",
+      "memory": {
+        "summary": "Memory: {{total}} of {{limit}} | plugins {{plugins}} | {{running}} running",
+        "lowTitle": "This server is low on memory",
+        "lowBody": "Termix and its plugins use {{total}} of {{limit}}. Give the server more memory or turn off plugins you do not use.",
+        "idle": "Idle",
+        "idleHint": "Not running now. It starts when something needs it.",
+        "keptOn": "Stays running: {{reason}}",
+        "stopsWhenIdle": "Stops when idle"
+      }
+    },
+    "firstLoad": {
+      "title": "Getting plugins ready",
+      "progress": "{{done}} of {{total}}",
+      "hint": "Plugins are starting for the first time. After this, Termix opens right away.",
+      "skip": "Continue"
+    },
+    "framesBlocked": "Plugins can't load their files. A login proxy in front of Termix is likely blocking them.",
+    "framesBlockedHelp": "How to fix",
+    "framesFailed_one": "{{names}} couldn't load, so its parts are hidden",
+    "framesFailed_other": "{{count}} plugins couldn't load, so their parts are hidden: {{names}}",
+    "framesFailedReload": "Reload"
   },
   "settings": {
     "secretSet": "Set",
@@ -1663,6 +1783,12 @@
       "title": "Columns",
       "auto": "Auto",
       "count": "{{count}} wide"
+    },
+    "pager": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {{page}}",
+      "pageOf": "Page {{page}} of {{pages}}"
     }
   },
   "fields": {
@@ -1679,7 +1805,108 @@
   "rbac": {
     "roles": {
       "admin": "Admin",
-      "user": "User"
+      "user": "User",
+      "viewer": "Viewer",
+      "operator": "Operator",
+      "auditor": "Auditor",
+      "helpdesk": "Helpdesk"
+    }
+  },
+  "tileGrid": {
+    "empty": "No tiles yet. Add some from the list.",
+    "move": "Drag to move",
+    "moveTile": "Move {{tile}}",
+    "settings": "{{tile}} settings",
+    "remove": "Remove {{tile}}",
+    "width": "Width",
+    "height": "Height",
+    "addTiles": "Add tiles",
+    "closePicker": "Close",
+    "search": "Search tiles",
+    "noMatches": "Nothing matches.",
+    "kind": {
+      "all": "All",
+      "card": "Cards",
+      "chart": "Charts",
+      "signal": "Status",
+      "action": "Actions",
+      "resource": "Lists",
+      "session": "Sessions"
+    },
+    "reset": "Reset",
+    "done": "Done"
+  },
+  "diagnostics": {
+    "title": "Diagnostics",
+    "makeReport": "Make a diagnostics report",
+    "slowBoot": "Taking a while? Make a diagnostics report",
+    "troubleSigningIn": "Trouble signing in? Make a diagnostics report",
+    "reportTab": "Report",
+    "logsTab": "Server logs",
+    "intro": "This makes one file with what Termix needs to find a problem: errors, logs, plugin states and how requests reach the server. Download it and attach it to a GitHub issue or send it in Discord.",
+    "notAdmin": "Server logs and server details need an admin. Ask your admin to make a report too if the problem is on the server.",
+    "signedOut": "You are not signed in, so only the browser part is included.",
+    "whatHappened": "What happened",
+    "whatHappenedHint": "Optional. What did you do and what went wrong?",
+    "include": "Include",
+    "adminOnly": "Needs an admin",
+    "privacy": "Privacy",
+    "mask": "Hide names and addresses",
+    "maskHint": "IPs, host names, usernames and emails become host-1, user-1 and so on. Passwords, keys and tokens are always removed.",
+    "domText": "Include page text",
+    "domTextHint": "Adds the text on screen to the page layout. Off by default since it can show your data.",
+    "warnOnly": "Only warnings and errors from the server log",
+    "warnOnlyHint": "Makes the file smaller.",
+    "focus": "Plugin",
+    "focusHint": "Shows this plugin first and files the issue on its repo.",
+    "allPlugins": "All plugins",
+    "findings": "Found by the checks",
+    "preview": "What will be sent",
+    "previewCut": "(The preview stops here. The file has everything.)",
+    "cut": "The file was over 5 MB, so the oldest log lines were cut.",
+    "footerHint": "Check the preview before you send it.",
+    "copy": "Copy",
+    "copied": "Report copied",
+    "copyFailed": "Could not copy the report",
+    "download": "Download",
+    "downloaded": "Report downloaded",
+    "openIssue": "Open GitHub issue",
+    "logsSearch": "Search logs",
+    "logsLevel": "Level",
+    "logsAll": "All levels",
+    "logsWarn": "Warnings and errors",
+    "logsError": "Errors",
+    "logsPlugin": "Plugin",
+    "logsCount": "{{count}} lines",
+    "logsFailed": "Could not load logs",
+    "logsPause": "Pause",
+    "logsResume": "Resume",
+    "logsEmpty": "No log lines yet.",
+    "parts": {
+      "server": "Server",
+      "plugins": "Plugins",
+      "sections": "Plugin details",
+      "logs": "Server logs",
+      "request": "Connection",
+      "probes": "Connection checks",
+      "errors": "Browser errors",
+      "console": "Browser console",
+      "network": "Network",
+      "page": "Browser and window",
+      "dom": "Page layout"
+    },
+    "partHints": {
+      "server": "Version, database, SSL and which settings are set",
+      "plugins": "Versions and states on the server and in the browser",
+      "sections": "Extra details running plugins add",
+      "logs": "Server log since start and recent lines",
+      "request": "Header names that show a proxy in front of Termix",
+      "probes": "Tests that Termix and plugin files load",
+      "errors": "Uncaught errors and blocked loads",
+      "console": "Recent console lines from the page and plugins",
+      "network": "Recent requests and their status",
+      "page": "Browser, screen size and storage key names",
+      "dom": "The layout of the page, without text"
     }
   }
 }

@@ -131,6 +131,8 @@
     "updateLinkLabel": "Uppdatering tillgänglig. Öppna versionsinformationen på GitHub"
   },
   "common": {
+    "showPassword": "Visa lösenord",
+    "hidePassword": "Dölj lösenord",
     "scrollTabsLeft": "Rulla flikarna åt vänster",
     "scrollTabsRight": "Rulla flikarna åt höger",
     "close": "Stäng",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Plugin-listan kunde inte laddas. Du kan välja plugins senare från fliken Plugins.",
     "securityTitle": "Säkra ditt konto",
     "securityIntro": "Lägg till en passkey eller en autentiseringsapp till ditt konto. Du kan också göra detta senare i Inställningar, under Säkerhet.",
-    "pluginsDocsLink": "Läs om varje plugin"
+    "pluginsDocsLink": "Läs om varje plugin",
+    "layoutTitle": "Välj en layout",
+    "layoutIntro": "Layouten bestämmer hur hela appen är uppbyggd: menyer, sidofält och flikar. Klicka på en för att använda den. Ändringen sker omedelbart.",
+    "layoutInstalled": "Installerad",
+    "layoutMore": "Fler layouter",
+    "layoutNoMore": "Det finns inga andra layouter tillgängliga just nu.",
+    "layoutDefault": "Standard",
+    "layoutInstall": "Installera",
+    "layoutTurnOn": "Aktivera",
+    "layoutVideo": "Se video",
+    "layoutChangeLater": "Du kan ändra layouten när som helst under Utseende i Inställningar. Be en administratör installera fler layouter om du vill ha det.",
+    "layoutChangeLaterAdmin": "Du kan ändra layouten när som helst under Utseende i Inställningar. Fler layouter kan installeras senare från fliken Plugins."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix körs fortfarande",
+    "noticeBody": "Om du stänger fönstret fortsätter Termix att köras i aktivitetsfältet. För att avsluta, öppna menyn för aktivitetsfältsikonen och välj Avsluta. Du kan stänga av detta i Inställningar."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automatisk",
@@ -495,6 +512,7 @@
     "deleteSelected": "Ta bort",
     "exitSelection": "Avsluta markering",
     "collapseBtn": "Komprimera",
+    "importExportBtn": "Importera / Exportera",
     "hostStatusesRefreshed": "Värdstatus har uppdaterats",
     "failedToRefreshHosts": "Misslyckades med att uppdatera värdar",
     "movedHostTo": "Flyttade {{host}} till \"{{folder}}\"",
@@ -609,6 +627,7 @@
     "hostClickBehavior": "När du klickar på en värd",
     "hostClickBehaviorDesc": "Vad som händer när du klickar på en värd som redan har en öppen flik. Ctrl/Cmd-klick, mellanklick eller \"Öppna i ny flik\" startar alltid en ny.",
     "hostClickNewTab": "Öppna alltid en ny flik",
+    "hostClickHostPage": "Öppna värdens sida, om ett tillägg erbjuder en",
     "hostClickFocusExisting": "Byt till den öppna fliken",
     "hostClickFocusExistingDoubleNew": "Klicka för att byta, dubbelklicka för ny flik",
     "openInNewTab": "Öppna i ny flik",
@@ -828,7 +847,12 @@
     "editorUpdate": "Uppdatera värd",
     "editorAdd": "Lägg till värd",
     "speedSearch": "Sök bland värdar. Piltangenter för att välja, Retur för att ansluta, Esc för att stänga",
-    "speedSearchList": "Värdlista. Skriv eller tryck / för att söka."
+    "speedSearchList": "Värdlista. Skriv eller tryck / för att söka.",
+    "openFromLink": {
+      "title": "Öppna {{name}}?",
+      "description": "En länk bad Termix att ansluta till denna värd.",
+      "confirm": "Anslut"
+    }
   },
   "splitScreen": {
     "title": "Delad skärm",
@@ -907,6 +931,16 @@
     "empty": "Inga kort. Använd Lägg till nedan för att placera kort."
   },
   "auth": {
+    "inviteIntro": "Du har blivit inbjuden till denna server. Välj ett användarnamn och ett lösenord för att skapa ditt konto.",
+    "inviteInvalid": "Denna inbjudningslänk har löpt ut eller har redan använts. Be en administratör skicka en ny.",
+    "accountDisabled": "Detta konto är inaktiverat. Be en administratör aktivera det igen.",
+    "accountPending": "Ditt konto väntar på att en administratör ska godkänna det.",
+    "stepUp": {
+      "title": "Verifiera att det är du",
+      "description": "Verifiera din andra faktor för att fortsätta.",
+      "noFactor": "Du har ingen andra faktor konfigurerad. Lägg till en i Inställningar och försök igen.",
+      "failed": "Det fungerade inte. Försök igen."
+    },
     "tagline": "Självhostad serverhantering med plugins.",
     "loginTitle": "Välkommen tillbaka",
     "registerTitle": "Skapa konto",
@@ -933,6 +967,14 @@
     "loginWithExternal": "Logga in med extern leverantör",
     "loginWithExternalDesc": "Logga in med din konfigurerade externa identitetsleverantör",
     "loginWithProvider": "Logga in med {{name}}",
+    "pluginLogin": {
+      "signIn": "Logga in",
+      "verify": "Verifiera",
+      "code": "Kod",
+      "useKey": "Använd säkerhetsnyckel",
+      "keyPrompt": "Använd din säkerhetsnyckel eller passkey för att fortsätta.",
+      "keyFailed": "Stegen med säkerhetsnyckeln misslyckades. Försök igen."
+    },
     "resetPasswordButton": "Återställ lösenord",
     "sendResetCode": "Skicka återställningskod",
     "resetCodeDesc": "Ange ditt användarnamn för att ta emot en återställningskod. Koden loggas i Docker-behållarnas loggar.",
@@ -1010,6 +1052,8 @@
     "registrationSuccess": "Registreringen lyckades"
   },
   "placeholders": {
+    "username": "Ditt användarnamn",
+    "newUsername": "Välj ett användarnamn",
     "keyPassword": "nyckellösenord",
     "pastePrivateKey": "Klistra in din privata nyckel här...",
     "enterPassword": "Ange ditt lösenord"
@@ -1052,7 +1096,8 @@
         "actionNextTab": "Byt till nästa flik",
         "actionPreviousTab": "Byt till föregående flik",
         "actionOpenCommandPalette": "Öppna snabb sökning",
-        "actionReconnectSession": "Återanslut nuvarande session"
+        "actionReconnectSession": "Återanslut nuvarande session",
+        "actionToggleSidebar": "Visa/dölj sidofält"
       },
       "userProfile": {
         "preset_simple": "Enkel",
@@ -1194,6 +1239,10 @@
         "title": "Nå internet",
         "consequence": "Den kan skicka förfrågningar till externa tjänster."
       },
+      "network:sockets": {
+        "title": "Öppna egna nätverksanslutningar",
+        "consequence": "Den kan lyssna på portar och ansluta direkt till vilken adress som helst, utan att Termix kontrollerar varje anslutning."
+      },
       "network:serve": {
         "title": "Acceptera anslutningar",
         "consequence": "Den öppnar en port på Termix-servern."
@@ -1214,6 +1263,18 @@
         "title": "Skicka aviseringar",
         "consequence": "Till dig eller andra användare, och via de kanaler de har konfigurerat."
       },
+      "operations:provide": {
+        "title": "Erbjud åtgärder",
+        "consequence": "Dess åtgärder kan köras från automatiseringar, kommandoraden, mobilappen och andra platser, av personer som har tillstånd att använda dem."
+      },
+      "operations:invoke": {
+        "title": "Kör andra tilläggs åtgärder",
+        "consequence": "Utför åtgärder för den inloggade användaren enligt dess manifest. Godkännanderegler gäller fortfarande."
+      },
+      "operations:approve": {
+        "title": "Bestäm vad som kräver godkännande",
+        "consequence": "Kan låta åtgärder köras utan godkännande eller blockera dem, för varje användare."
+      },
       "notify:hub": {
         "title": "Ta emot alla aviseringar",
         "consequence": "Lagrar och levererar de aviseringar alla plugins skickar, inklusive deras innehåll."
@@ -1224,7 +1285,7 @@
       },
       "network:probe": {
         "title": "Kontrollera om portar svarar",
-        "consequence": "Kan öppna en vanlig anslutning till vilken adress som helst från servern, för att se om den är nåbar."
+        "consequence": "Kan öppna en vanlig anslutning till vilken adress som helst från servern för att se om den är nåbar, och slå upp värdnamn."
       },
       "hosts:status-provide": {
         "title": "Tillhandahåll värdstatus",
@@ -1237,6 +1298,10 @@
       "hosts:lock": {
         "title": "Hantera värdar som skrivskyddade",
         "consequence": "Värdar som den hanterar kan inte redigeras, raderas eller delas om av någon annan."
+      },
+      "hosts:connect-policy": {
+        "title": "Bestäm vem som kan ansluta",
+        "consequence": "Kan blockera eller tillåta varje SSH- och fjärrskrivbordsanslutning till vilken värd som helst."
       },
       "desktop:window": {
         "title": "Öppna skrivbordsfönster",
@@ -1274,6 +1339,10 @@
         "title": "Lagra egna hemligheter",
         "consequence": "Krypterat av Termix. Pluginet har aldrig nyckeln."
       },
+      "config:secrets": {
+        "title": "Läs hemligheter som servern förvarar",
+        "consequence": "Miljövariabler och filer på servern, förutom Termix egna nycklar."
+      },
       "settings:read-core": {
         "title": "Läs Termix-inställningar",
         "consequence": "Serverinställningar, inte dina värdar eller inloggningsuppgifter."
@@ -1294,6 +1363,10 @@
         "title": "Lägg till färgteman",
         "consequence": "Endast färger och stilar. Ingen kod körs för ett tema."
       }
+    },
+    "webView": {
+      "unavailable": "Denna sida finns inte längre. Öppna den igen från dess plugin.",
+      "isolationUnavailable": "Den här webbläsaren kan inte öppna sidan säkert här. Använd en nyare version av Chrome eller Edge, eller skrivbordsappen."
     },
     "runtime": {
       "needsPlugin": "{{name}} är inte tillgängligt",
@@ -1318,7 +1391,7 @@
         "running": "Körs",
         "disabled": "Inaktiverad",
         "failed": "Stoppades oväntat",
-        "blocked": "Väntar på ett annat plugin",
+        "blocked": "Kan inte starta",
         "server": "Kör på din server",
         "safeMode": "Avstängd i säkert läge"
       },
@@ -1340,7 +1413,8 @@
         "version": "Version",
         "status": "Status",
         "category": "Kategori",
-        "downloads": "Nedladdningar"
+        "downloads": "Nedladdningar",
+        "memory": "Minne"
       },
       "risk": {
         "critical": "Kritisk",
@@ -1403,9 +1477,12 @@
         "updated": "{{name}} uppdaterad till {{version}}",
         "updatedMany_one": "{{count}} plugin uppdaterat",
         "updatedMany_other": "{{count}} plugins uppdaterade",
+        "needsReview_one": "1 plugin begär nya behörigheter. Granska det för att uppdatera.",
+        "needsReview_other": "{{count}} plugins begär nya behörigheter. Granska varje plugin för att uppdatera.",
         "uninstalled": "{{name}} avinstallerad",
         "dataDeleted": "Data för {{name}} raderad",
-        "failedToStart": "{{name}} kunde inte starta. Öppna den för att se varför."
+        "failedToStart": "{{name}} kunde inte starta. Öppna den för att se varför.",
+        "held": "{{name}} väntar {{minutes}} minuter innan ändringen träder i kraft, så att andra administratörer kan se den"
       },
       "errors": {
         "generic": "Något gick fel",
@@ -1458,6 +1535,23 @@
       "pin": "Stanna på denna version",
       "pinHint": "Behåller {{version}} och hoppar över alla uppdateringar tills du stänger av detta.",
       "pinnedTo": "Fäst vid {{version}}",
+      "legacy": {
+        "notice_one": "1 plugin är skapat för en äldre version av Termix och förblir inaktiverat tills det uppdateras: {{names}}.",
+        "notice_other": "{{count}} plugins är skapade för en äldre version av Termix och förblir inaktiverade tills de uppdateras: {{names}}.",
+        "why": "De är skapade för plugin-API 1, som kördes inuti servern. Termix kör nu varje plugin i sin egen process, så varje plugin behöver en version skapad för plugin-API 2. Uppdatera officiella plugins här, och be författaren till ett community-plugin om en ny version.",
+        "guide": "Hur plugins migrerar till API 2"
+      },
+      "provenance": {
+        "verified": "Bygg verifierat",
+        "verifiedHint": "Dess byggproveniens har signerats av Termix registrets release-workflow och matchar denna fil. Öppnar bygget.",
+        "unchecked": "Bygg inte verifierat",
+        "uncheckedHint": "Dess byggproveniens kunde inte verifieras vid nedladdning. Dess registernamn var det dock."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} är utgiven. 1 plugin kommer att förbli inaktiverat tills du uppdaterar det: {{names}}.",
+        "notice_other": "Termix {{version}} är utgiven. {{count}} plugins kommer att förbli inaktiverade tills du uppdaterar dem: {{names}}.",
+        "needs": "{{name}} (kräver Termix {{range}})"
+      },
       "version": "Version",
       "versionPickHint": "Installera en äldre version istället för den senaste. Den stannar på den versionen tills du löser fästet.",
       "versionPickHintInstalled": "Byt till en annan version. Om du väljer en som inte är den senaste fästs den.",
@@ -1531,7 +1625,13 @@
         "unreachable": "Kunde inte läsa det: {{error}}",
         "filter": "Register",
         "allRegistries": "Alla register",
-        "browseHint": "Aktivera community-plugins eller lägg till ditt eget register på fliken Register."
+        "browseHint": "Aktivera community-plugins eller lägg till ditt eget register på fliken Register.",
+        "looksName": "Community-layouts och teman",
+        "looksHint": "Tillåter att layouts och teman som inte kommer från Termix körs utanför sandlådan, precis som de officiella. En layout ritar hela appen, så den kan se och göra allt du kan. Installera bara sådana du litar på. Ladda om sidan efter att du ändrat detta.",
+        "looksConfirmTitle": "Tillåt att community-layouts körs utanför sandlådan?",
+        "looksConfirmBody": "En community-layout eller ett tema kommer att köras på sidan med full åtkomst till Termix som den inloggade användaren. Detta kan vara riskfyllt. Aktivera detta endast om du litar på de layouts och teman du installerar.",
+        "looksConfirm": "Aktivera",
+        "looksSaved": "Sparat. Ladda om sidan för att tillämpa ändringen."
       },
       "upToDate": "Allt är uppdaterat.",
       "lastChecked": "Senast kontrollerad {{time}}",
@@ -1614,8 +1714,28 @@
       "unsupportedHint": "Ingen version av detta tillägg fungerar på denna version av Termix. Uppdatera Termix för att installera det.",
       "needsTermix": "Kräver Termix {{range}}",
       "showUnsupported": "Visa ej stödda ({{count}})",
-      "showMore": "Visa {{count}} till ({{total}} kvar)"
-    }
+      "showMore": "Visa {{count}} till ({{total}} kvar)",
+      "memory": {
+        "summary": "Minne: {{total}} av {{limit}} | plugins {{plugins}} | {{running}} körs",
+        "lowTitle": "Servern har lite minne kvar",
+        "lowBody": "Termix och dess plugins använder {{total}} av {{limit}}. Ge servern mer minne eller stäng av plugins du inte använder.",
+        "idle": "Inaktiv",
+        "idleHint": "Kör inte just nu. Den startar när något behöver den.",
+        "keptOn": "Fortsätter att köras: {{reason}}",
+        "stopsWhenIdle": "Stannar när den är inaktiv"
+      }
+    },
+    "firstLoad": {
+      "title": "Förbereder plugins",
+      "progress": "{{done}} av {{total}}",
+      "hint": "Plugins startar för första gången. Efter detta öppnas Termix direkt.",
+      "skip": "Fortsätt"
+    },
+    "framesBlocked": "Plugins kan inte ladda sina filer. En inloggningsproxy framför Termix blockerar troligen dem.",
+    "framesBlockedHelp": "Så här fixar du det",
+    "framesFailed_one": "{{names}} kunde inte laddas, så dess delar är dolda",
+    "framesFailed_other": "{{count}} plugins kunde inte laddas, så deras delar är dolda: {{names}}",
+    "framesFailedReload": "Ladda om"
   },
   "settings": {
     "secretSet": "Angiven",
@@ -1663,6 +1783,12 @@
       "title": "Kolumner",
       "auto": "Automatiskt",
       "count": "{{count}} bred"
+    },
+    "pager": {
+      "previous": "Föregående",
+      "next": "Nästa",
+      "page": "Sida {{page}}",
+      "pageOf": "Sida {{page}} av {{pages}}"
     }
   },
   "fields": {
@@ -1679,7 +1805,107 @@
   "rbac": {
     "roles": {
       "admin": "Administratör",
-      "user": "Användare"
+      "user": "Användare",
+      "viewer": "Åskådare",
+      "operator": "Operatör",
+      "auditor": "Revisör",
+      "helpdesk": "Helpdesk"
+    }
+  },
+  "tileGrid": {
+    "empty": "Inga kakel ännu. Lägg till några från listan.",
+    "move": "Dra för att flytta",
+    "moveTile": "Flytta {{tile}}",
+    "settings": "Inställningar för {{tile}}",
+    "remove": "Ta bort {{tile}}",
+    "width": "Bredd",
+    "height": "Höjd",
+    "addTiles": "Lägg till kakel",
+    "closePicker": "Stäng",
+    "search": "Sök bland kakel",
+    "noMatches": "Inga träffar.",
+    "kind": {
+      "all": "Alla",
+      "card": "Kort",
+      "chart": "Diagram",
+      "signal": "Status",
+      "action": "Åtgärder",
+      "resource": "Listor",
+      "session": "Sessioner"
+    },
+    "reset": "Återställ",
+    "done": "Klar"
+  },
+  "diagnostics": {
+    "title": "Diagnostik",
+    "makeReport": "Skapa en diagnostisk rapport",
+    "slowBoot": "Tar det lång tid? Skapa en diagnostisk rapport",
+    "troubleSigningIn": "Problem med inloggningen? Skapa en diagnostisk rapport",
+    "reportTab": "Rapport",
+    "logsTab": "Serverloggar",
+    "intro": "Detta skapar en fil med det Termix behöver för att hitta ett problem: fel, loggar, pluginstatus och hur förfrågningar når servern. Ladda ner den och bifoga den till ett GitHub-issue eller skicka den i Discord.",
+    "notAdmin": "Serverloggar och serverdetaljer kräver en administratör. Be din administratör skapa en rapport också om problemet ligger på servern.",
+    "signedOut": "Du är inte inloggad, så endast webbläsardelen ingår.",
+    "whatHappened": "Vad hände",
+    "whatHappenedHint": "Valfritt. Vad gjorde du och vad gick fel?",
+    "include": "Inkludera",
+    "adminOnly": "Kräver administratör",
+    "privacy": "Integritet",
+    "mask": "Dölj namn och adresser",
+    "maskHint": "IP-adresser, värdnamn, användarnamn och e-postadresser blir host-1, user-1 osv. Lösenord, nycklar och tokens tas alltid bort.",
+    "domText": "Inkludera sidtext",
+    "domTextHint": "Lägger till texten på skärmen i sidlayouten. Avstängd som standard eftersom den kan visa dina data.",
+    "warnOnly": "Endast varningar och fel från serverloggen",
+    "warnOnlyHint": "Gör filen mindre.",
+    "focus": "Plugin",
+    "focusHint": "Visar detta plugin först och rapporterar felet till dess repo.",
+    "allPlugins": "Alla plugins",
+    "findings": "Hittat av kontrollerna",
+    "preview": "Vad som kommer att skickas",
+    "previewCut": "(Förhandsgranskningen slutar här. Filen innehåller allt.)",
+    "cut": "Filen var över 5 MB, så de äldsta loggarna togs bort.",
+    "footerHint": "Kontrollera förhandsgranskningen innan du skickar den.",
+    "copy": "Kopiera",
+    "copied": "Rapporten har kopierats",
+    "copyFailed": "Kunde inte kopiera rapporten",
+    "download": "Ladda ner",
+    "downloaded": "Rapporten har laddats ner",
+    "openIssue": "Skapa GitHub-issue",
+    "logsSearch": "Sök i loggar",
+    "logsLevel": "Nivå",
+    "logsAll": "Alla nivåer",
+    "logsWarn": "Varningar och fel",
+    "logsError": "Fel",
+    "logsPlugin": "Plugin",
+    "logsFailed": "Kunde inte ladda loggar",
+    "logsPause": "Pausa",
+    "logsResume": "Återuppta",
+    "logsEmpty": "Inga loggposter ännu.",
+    "parts": {
+      "server": "Server",
+      "plugins": "Plugins",
+      "sections": "Plugindetaljer",
+      "logs": "Serverloggar",
+      "request": "Anslutning",
+      "probes": "Anslutningstester",
+      "errors": "Webbläsarfel",
+      "console": "Webbläsarkonsol",
+      "network": "Nätverk",
+      "page": "Webbläsare och fönster",
+      "dom": "Sidlayout"
+    },
+    "partHints": {
+      "server": "Version, databas, SSL och vilka inställningar som är aktiverade",
+      "plugins": "Versioner och status på servern och i webbläsaren",
+      "sections": "Extra detaljer som aktiva plugins lägger till",
+      "logs": "Serverlogg sedan start och senaste raderna",
+      "request": "Rubriknamn som visar att en proxy finns framför Termix",
+      "probes": "Tester som kontrollerar att Termix och plugin-filer laddas",
+      "errors": "Ofångade fel och blockerade laddningar",
+      "console": "Senaste konsolraderna från sidan och plugins",
+      "network": "Senaste förfrågningar och deras status",
+      "page": "Webbläsare, skärmstorlek och lagringsnycklar",
+      "dom": "Sidans layout, utan text"
     }
   }
 }

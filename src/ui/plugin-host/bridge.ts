@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { isElectron } from "@/lib/electron";
 import { readStatusColorScheme } from "@/hooks/use-status-color-scheme";
-import { enabledHostProtocols } from "@/sidebar/host-protocols";
+import {
+  enabledHostProtocols,
+  listHostProtocols,
+} from "@/sidebar/host-protocols";
 import { useHostActions } from "@/sidebar/host-contributions";
 import { tabTypeForActivity, useTabTypes } from "@/shell/tab-registry";
 import { useCompanionDefs } from "@/shell/companions";
@@ -55,6 +58,7 @@ import {
   getLiveHostStatus,
   useOptionalHostStatusEntry,
 } from "@/lib/ServerStatusContext";
+import { getForeignRuntime } from "@/components/foreign/foreign-runtime";
 
 /**
  * Core permission groups, mirroring RESERVED_PERMISSION_PREFIXES in the SDK
@@ -182,6 +186,8 @@ export function toHostRecord(host: ShellHost): PluginHostRecord {
     authType: host.authType,
     credentialId: host.credentialId,
     overrideCredentialUsername: host.overrideCredentialUsername,
+    hasPassword: host.hasPassword,
+    hasSudoPassword: host.hasSudoPassword,
     connectionType: host.connectionType,
     connectionOrigin: host.connectionOrigin,
     enableSsh: host.enableSsh,
@@ -215,7 +221,46 @@ export function toPluginHostRecord(
   const record = toHostRecord(host);
   const own = pluginId ? host.pluginSettings?.[pluginId] : undefined;
   record.pluginSettings = own && pluginId ? { [pluginId]: own } : {};
+  // A quick connect login is only for the plugin whose protocol it opens.
+  const login = record.quickConnectLogin as { protocol?: unknown } | undefined;
+  if (login) {
+    const owner = listHostProtocols().find(
+      (entry) => entry.id === login.protocol,
+    )?.pluginId;
+    if (!pluginId || owner !== pluginId) delete record.quickConnectLogin;
+  }
   return record;
+}
+
+/**
+ * A single plugin page (the mobile web view) also shows other plugins'
+ * parts, which the embedder draws over it. The runtime is set before
+ * anything renders, so the source never switches.
+ */
+function usePageExtensions(pointId: string) {
+  const useSource = getForeignRuntime()?.withOwn
+    ? useOwnAndForeignExtensions
+    : useExtensions;
+  return useSource(pointId);
+}
+
+function useOwnAndForeignExtensions(pointId: string) {
+  const own = useExtensions(pointId);
+  const foreign = getForeignRuntime()!.useExtensions(pointId);
+  return useMemo(() => [...own, ...foreign], [own, foreign]);
+}
+
+function usePageComponent(id: string) {
+  const useSource = getForeignRuntime()?.withOwn
+    ? useOwnOrForeignComponent
+    : usePluginComponent;
+  return useSource(id);
+}
+
+function useOwnOrForeignComponent(id: string) {
+  const own = usePluginComponent(id);
+  const foreign = getForeignRuntime()!.useComponent(id);
+  return own ?? foreign;
 }
 
 export const pluginHostBridge: PluginHostBridge = {
@@ -252,10 +297,12 @@ export const pluginHostBridge: PluginHostBridge = {
   useSettings(pluginId, scope, hostId) {
     const numericHostId =
       hostId === undefined ? undefined : Number.parseInt(String(hostId), 10);
+    const key = `${pluginId}|${scope}|${numericHostId ?? ""}`;
     const [state, setState] = useState<{
+      key: string;
       values: Record<string, unknown>;
       loaded: boolean;
-    }>({ values: {}, loaded: false });
+    }>({ key, values: {}, loaded: false });
 
     useEffect(() => {
       let cancelled = false;
@@ -263,10 +310,15 @@ export const pluginHostBridge: PluginHostBridge = {
       const read = () =>
         SETTINGS_READERS[scope](pluginId, numericHostId)
           .then((values) => {
-            if (!cancelled) setState({ values, loaded: true });
+            if (!cancelled) setState({ key, values, loaded: true });
           })
           .catch(() => {
-            if (!cancelled) setState((prev) => ({ ...prev, loaded: true }));
+            if (!cancelled)
+              setState((prev) =>
+                prev.key === key
+                  ? { ...prev, loaded: true }
+                  : { key, values: {}, loaded: true },
+              );
           });
       void read();
       // Saved from the settings page, which keeps its own copy of the form.
@@ -281,7 +333,7 @@ export const pluginHostBridge: PluginHostBridge = {
         cancelled = true;
         window.removeEventListener(PLUGIN_SETTINGS_CHANGED_EVENT, onChanged);
       };
-    }, [pluginId, scope, numericHostId]);
+    }, [pluginId, scope, numericHostId, key]);
 
     const save = useCallback(
       async (values: Record<string, unknown>) => {
@@ -290,12 +342,21 @@ export const pluginHostBridge: PluginHostBridge = {
           values,
           numericHostId,
         );
-        setState({ values: saved, loaded: true });
+        setState({ key, values: saved, loaded: true });
       },
-      [pluginId, scope, numericHostId],
+      [pluginId, scope, numericHostId, key],
     );
 
-    return useMemo<SettingsState>(() => ({ ...state, save }), [state, save]);
+    // Values read for another host or scope are never shown for this one.
+    const current = state.key === key;
+    return useMemo<SettingsState>(
+      () => ({
+        values: current ? state.values : {},
+        loaded: current && state.loaded,
+        save,
+      }),
+      [current, state, save],
+    );
   },
 
   useHost(hostId) {
@@ -394,7 +455,7 @@ export const pluginHostBridge: PluginHostBridge = {
     ).map((protocol) => protocol.id),
   ],
 
-  usePluginComponent: (id) => usePluginComponent(id),
+  usePluginComponent: (id) => usePageComponent(id),
 
   useHostStatus: (hostId) => {
     return useOptionalHostStatusEntry(hostId);
@@ -428,9 +489,12 @@ export const pluginHostBridge: PluginHostBridge = {
     return { icon: def.icon, tab: def.id, titleKey: def.titleKey };
   },
 
-  useExtensions: (pointId) => useExtensions(pointId) as ExtensionContribution[],
+  useExtensions: (pointId) =>
+    usePageExtensions(pointId) as ExtensionContribution[],
   getExtension: (pointId, id) =>
-    getExtension(pointId, id) as ExtensionContribution | undefined,
+    (getExtension(pointId, id) ??
+      getForeignRuntime()?.getExtension(pointId, id)) as
+      ExtensionContribution | undefined,
 
   usePluginUiPreferences: (pluginId) => {
     const ctx = useUiPreferencesContext();

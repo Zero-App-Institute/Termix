@@ -131,6 +131,8 @@
     "updateLinkLabel": "Kemas kini tersedia. Buka nota keluaran di GitHub"
   },
   "common": {
+    "showPassword": "Paparkan kata laluan",
+    "hidePassword": "Sembunyikan kata laluan",
     "scrollTabsLeft": "Skrol tab ke kiri",
     "scrollTabsRight": "Skrol tab ke kanan",
     "close": "Tutup",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Senarai plugin tidak dapat dimuatkan. Anda boleh memilih plugin kemudian dari tab Plugin.",
     "securityTitle": "Lindungi akaun anda",
     "securityIntro": "Tambahkan passkey atau aplikasi pengesah pada akaun anda. Anda juga boleh melakukan ini kemudian dalam Tetapan, di bawah Keselamatan.",
-    "pluginsDocsLink": "Baca tentang setiap satu"
+    "pluginsDocsLink": "Baca tentang setiap satu",
+    "layoutTitle": "Pilih susun atur",
+    "layoutIntro": "Susun atur menentukan bagaimana keseluruhan aplikasi diatur: menu, bar sisi dan tab. Klik salah satu untuk menggunakannya. Ia berubah serta-merta.",
+    "layoutInstalled": "Dipasang",
+    "layoutMore": "Lebih banyak susun atur",
+    "layoutNoMore": "Tiada susun atur lain tersedia buat masa ini.",
+    "layoutDefault": "Lalai",
+    "layoutInstall": "Pasang",
+    "layoutTurnOn": "Hidupkan",
+    "layoutVideo": "Tonton video",
+    "layoutChangeLater": "Anda boleh menukar susun atur anda bila-bila masa dalam Tetapan, di bawah Rupa. Minta pentadbir jika anda ingin lebih banyak susun atur dipasang.",
+    "layoutChangeLaterAdmin": "Anda boleh menukar susun atur anda bila-bila masa dalam Tetapan, di bawah Rupa. Lebih banyak susun atur boleh dipasang kemudian dari tab Plugin."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix masih berjalan",
+    "noticeBody": "Menutup tingkap mengekalkan Termix berjalan di trey. Untuk keluar, buka menu ikon trey dan pilih Quit. Anda boleh mematikan ini dalam Tetapan."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automatik",
@@ -491,6 +508,7 @@
     "deleteSelected": "Padam",
     "exitSelection": "Keluar daripada pemilihan",
     "collapseBtn": "Runtuhkan",
+    "importExportBtn": "Import / Eksport",
     "hostStatusesRefreshed": "Status hos dikemas kini",
     "failedToRefreshHosts": "Gagal mengemas kini hos",
     "movedHostTo": "Memindahkan {{host}} ke \"{{folder}}\"",
@@ -603,6 +621,7 @@
     "hostClickBehavior": "Mengklik hos",
     "hostClickBehaviorDesc": "Apa yang berlaku apabila anda mengklik hos yang sudah mempunyai tab terbuka. Klik Ctrl/Cmd, klik tengah, atau \"Buka dalam tab baru\" sentiasa memulakan yang baru.",
     "hostClickNewTab": "Sentiasa buka tab baru",
+    "hostClickHostPage": "Buka halaman hos, jika plugin menawarkan satu",
     "hostClickFocusExisting": "Tukar ke tab yang terbuka",
     "hostClickFocusExistingDoubleNew": "Klik untuk tukar, klik dua kali untuk tab baru",
     "openInNewTab": "Buka dalam tab baru",
@@ -816,7 +835,12 @@
     "editorUpdate": "Kemas Kini Hos",
     "editorAdd": "Tambah Hos",
     "speedSearch": "Cari hos. Kek panah untuk memilih, Enter untuk menyambung, Esc untuk menutup",
-    "speedSearchList": "Senarai hos. Taip atau tekan / untuk mencari."
+    "speedSearchList": "Senarai hos. Taip atau tekan / untuk mencari.",
+    "openFromLink": {
+      "title": "Buka {{name}}?",
+      "description": "Pautan meminta Termix untuk menyambung ke hos ini.",
+      "confirm": "Sambung"
+    }
   },
   "splitScreen": {
     "title": "Skrin terbahagi",
@@ -894,6 +918,16 @@
     "empty": "Tiada kad. Gunakan Tambah di bawah untuk meletakkan kad."
   },
   "auth": {
+    "inviteIntro": "Anda dijemput ke pelayan ini. Pilih nama pengguna dan kata laluan untuk membuat akaun anda.",
+    "inviteInvalid": "Pautan jemputan ini telah tamat tempoh atau sudah digunakan. Minta admin untuk yang baru.",
+    "accountDisabled": "Akaun ini telah dimatikan. Minta admin untuk menghidupkannya semula.",
+    "accountPending": "Akaun anda sedang menunggu kelulusan daripada admin.",
+    "stepUp": {
+      "title": "Sahkan identiti anda",
+      "description": "Sahkan faktor kedua anda untuk meneruskan.",
+      "noFactor": "Anda belum menetapkan faktor kedua. Tambah satu dalam Tetapan, kemudian cuba lagi.",
+      "failed": "Itu tidak berjaya. Cuba lagi."
+    },
     "tagline": "Pengurusan pelayan berasaskan plugin dan hos sendiri.",
     "loginTitle": "Selamat kembali",
     "registerTitle": "Cipta Akaun",
@@ -920,6 +954,14 @@
     "loginWithExternal": "Log Masuk dengan Penyedia Luaran",
     "loginWithExternalDesc": "Log masuk menggunakan penyedia identiti luaran yang dikonfigurasi",
     "loginWithProvider": "Log masuk dengan {{name}}",
+    "pluginLogin": {
+      "signIn": "Log masuk",
+      "verify": "Sahkan",
+      "code": "Kod",
+      "useKey": "Gunakan kunci keselamatan",
+      "keyPrompt": "Gunakan kunci keselamatan atau passkey anda untuk meneruskan.",
+      "keyFailed": "Langkah kunci keselamatan tidak berjaya. Cuba lagi."
+    },
     "resetPasswordButton": "Tetap Semula Kata Laluan",
     "sendResetCode": "Hantar Kod Tetapan Semula",
     "resetCodeDesc": "Masukkan nama pengguna anda untuk menerima kod tetapan semula kata laluan. Kod ini akan dicatatkan dalam log bekas Docker.",
@@ -997,6 +1039,8 @@
     "registrationSuccess": "Pendaftaran berjaya"
   },
   "placeholders": {
+    "username": "Nama pengguna anda",
+    "newUsername": "Pilih nama pengguna",
     "keyPassword": "kata laluan kunci",
     "pastePrivateKey": "Tampal kunci peribadi anda di sini...",
     "enterPassword": "Masukkan kata laluan anda"
@@ -1035,7 +1079,8 @@
         "actionNextTab": "Tukar ke tab seterusnya",
         "actionPreviousTab": "Tukar ke tab sebelumnya",
         "actionOpenCommandPalette": "Buka carian pantas",
-        "actionReconnectSession": "Sambung semula sesi semasa"
+        "actionReconnectSession": "Sambung semula sesi semasa",
+        "actionToggleSidebar": "Togol bar sisi"
       },
       "userProfile": {
         "preset_simple": "Ringkas",
@@ -1177,6 +1222,10 @@
         "title": "Capai internet",
         "consequence": "Ia boleh menghantar permintaan ke perkhidmatan luar."
       },
+      "network:sockets": {
+        "title": "Buka sambungan rangkaian sendiri",
+        "consequence": "Ia boleh mendengar pada port dan menyambung ke mana-mana alamat secara langsung, tanpa Termix menyemak setiap sambungan."
+      },
       "network:serve": {
         "title": "Terima sambungan",
         "consequence": "Ia membuka port pada pelayan Termix."
@@ -1197,6 +1246,18 @@
         "title": "Hantar amaran",
         "consequence": "Kepada anda atau pengguna lain, dan melalui saluran yang mereka tetapkan."
       },
+      "operations:provide": {
+        "title": "Tawar tindakan",
+        "consequence": "Tindakannya boleh dijalankan dari Automasi, CLI, aplikasi telefon dan tempat lain, oleh orang yang dibenarkan menggunakannya."
+      },
+      "operations:invoke": {
+        "title": "Jalankan tindakan plugin lain",
+        "consequence": "Bertindak bagi pengguna yang log masuk pada tindakan yang disenaraikan dalam manifestnya. Peraturan kelulusan masih terpakai."
+      },
+      "operations:approve": {
+        "title": "Tentukan apa yang memerlukan kelulusan",
+        "consequence": "Boleh membiarkan tindakan berjalan tanpa kelulusan, atau menyekatnya, untuk setiap pengguna."
+      },
       "notify:hub": {
         "title": "Terima setiap amaran",
         "consequence": "Menyimpan dan menghantar semua amaran yang dihantar oleh plugin, termasuk kandungannya."
@@ -1207,7 +1268,7 @@
       },
       "network:probe": {
         "title": "Semak jika port bertindak balas",
-        "consequence": "Boleh membuka sambungan biasa ke mana-mana alamat dari pelayan, untuk melihat jika ia boleh dicapai."
+        "consequence": "Boleh membuka sambungan biasa ke mana-mana alamat dari pelayan, untuk melihat jika ia boleh dicapai, dan mencari nama hos."
       },
       "hosts:status-provide": {
         "title": "Sediakan status hos",
@@ -1220,6 +1281,10 @@
       "hosts:lock": {
         "title": "Urus hos sebagai baca sahaja",
         "consequence": "Hos yang diuruskan tidak boleh diedit, dipadam atau dikongsi semula oleh sesiapa pun."
+      },
+      "hosts:connect-policy": {
+        "title": "Tentukan siapa yang boleh menyambung",
+        "consequence": "Boleh menyekat atau membenarkan setiap sambungan SSH dan desktop jauh ke mana-mana hos."
       },
       "desktop:window": {
         "title": "Buka tetingkap desktop",
@@ -1257,6 +1322,10 @@
         "title": "Simpan rahsia miliknya sendiri",
         "consequence": "Disulitan oleh Termix. Plugin tidak pernah memegang kunci."
       },
+      "config:secrets": {
+        "title": "Baca rahsia yang disimpan oleh pelayan",
+        "consequence": "Pembolehubah persekitaran dan fail pada pelayan, kecuali kunci Termix sendiri."
+      },
       "settings:read-core": {
         "title": "Baca tetapan Termix",
         "consequence": "Tetapan pelayan, bukan hos atau kelayakan anda."
@@ -1277,6 +1346,10 @@
         "title": "Tambah tema warna",
         "consequence": "Hanya warna dan gaya. Tiada kod yang dijalankan untuk tema."
       }
+    },
+    "webView": {
+      "unavailable": "Halaman ini tidak lagi tersedia. Buka semula dari pluginnya.",
+      "isolationUnavailable": "Pelayar ini tidak boleh membuka halaman dengan selamat di sini. Gunakan Chrome atau Edge terkini, atau aplikasi desktop."
     },
     "runtime": {
       "needsPlugin": "{{name}} tidak tersedia",
@@ -1301,7 +1374,7 @@
         "running": "Berjalan",
         "disabled": "Dilumpuhkan",
         "failed": "Berhenti secara tidak dijangka",
-        "blocked": "Menunggu plugin lain",
+        "blocked": "Tidak dapat mula",
         "server": "Berjalan pada pelayan anda",
         "safeMode": "Mati dalam modus selamat"
       },
@@ -1323,7 +1396,8 @@
         "version": "Versi",
         "status": "Status",
         "category": "Kategori",
-        "downloads": "Muat turun"
+        "downloads": "Muat turun",
+        "memory": "Memori"
       },
       "risk": {
         "critical": "Kritikal",
@@ -1374,9 +1448,11 @@
         "installedNotRunning": "{{name}} dipasang tetapi tidak dapat bermula. Buka untuk melihat sebabnya.",
         "updated": "{{name}} dikemas kini ke {{version}}",
         "updatedMany_other": "{{count}} plugin dikemas kini",
+        "needsReview_other": "{{count}} plugin meminta kebenaran baharu. Semak setiap satu untuk mengemas kini.",
         "uninstalled": "{{name}} dinyahpasang",
         "dataDeleted": "Data untuk {{name}} dipadam",
-        "failedToStart": "{{name}} tidak dapat bermula. Buka untuk melihat sebabnya."
+        "failedToStart": "{{name}} tidak dapat bermula. Buka untuk melihat sebabnya.",
+        "held": "{{name}} menunggu {{minutes}} minit sebelum perubahan berkuat kuasa, supaya admin lain boleh melihatnya"
       },
       "errors": {
         "generic": "Ada yang salah",
@@ -1425,6 +1501,21 @@
       "pin": "Kekalkan versi ini",
       "pinHint": "Mengekalkan {{version}} dan melangkau semua kemas kini sehingga anda mematikan ini.",
       "pinnedTo": "Dipin pada {{version}}",
+      "legacy": {
+        "notice_other": "{{count}} plugin dibuat untuk Termix yang lebih lama dan kekal dimatikan sehingga ia dikemas kini: {{names}}.",
+        "why": "Mereka dibuat untuk API plugin 1, yang berjalan di dalam pelayan. Termix kini menjalankan setiap plugin dalam prosesnya sendiri, jadi setiap satu memerlukan versi yang dibuat untuk API plugin 2. Kemas kini yang rasmi di sini, dan minta pengarang plugin komuniti untuk satu.",
+        "guide": "Bagaimana plugin berpindah ke API 2"
+      },
+      "provenance": {
+        "verified": "Binaan disahkan",
+        "verifiedHint": "Asal binaannya telah ditandatangani oleh aliran kerja pelepasan daftar Termix dan sepadan dengan fail ini. Membuka binaan.",
+        "unchecked": "Binaan tidak disahkan",
+        "uncheckedHint": "Asal binaannya tidak dapat disahkan semasa ia dimuat turun. Tandatangan daftarnya telah disahkan."
+      },
+      "updateCheck": {
+        "notice_other": "Termix {{version}} telah keluar. {{count}} plugin akan kekal dimatikan sehingga anda mengemas kini mereka: {{names}}.",
+        "needs": "{{name}} (memerlukan Termix {{range}})"
+      },
       "version": "Versi",
       "versionPickHint": "Pasang keluaran lama berbanding yang terkini. Ia kekal pada versi tersebut sehingga anda membuka pinnya.",
       "versionPickHintInstalled": "Tukar kepada keluaran lain. Memilih yang bukan terkini akan mempinnya.",
@@ -1497,7 +1588,13 @@
         "unreachable": "Tidak dapat membacanya: {{error}}",
         "filter": "Daftar",
         "allRegistries": "Semua daftar",
-        "browseHint": "Hidupkan plugin komuniti atau tambah daftar anda sendiri dalam tab Daftar."
+        "browseHint": "Hidupkan plugin komuniti atau tambah daftar anda sendiri dalam tab Daftar.",
+        "looksName": "Susun atur dan tema komuniti",
+        "looksHint": "Membolehkan susun atur dan tema yang bukan dari Termix berjalan di luar kotak pasir, seperti rasmi. Susun atur melukis keseluruhan aplikasi, jadi ia boleh melihat dan melakukan apa sahaja yang boleh anda lakukan. Hanya pasang yang anda percayai. Muat semula halaman selepas mengubah ini.",
+        "looksConfirmTitle": "Benarkan susun atur komuniti berjalan di luar kotak pasir?",
+        "looksConfirmBody": "Susun atur atau tema komuniti akan berjalan di halaman dengan akses penuh ke Termix sebagai sesiapa sahaja yang log masuk. Ini boleh berisiko. Hanya hidupkan ini jika anda mempercayai susun atur dan tema yang anda pasang.",
+        "looksConfirm": "Hidupkan",
+        "looksSaved": "Disimpan. Muat semula halaman untuk menggunakannya."
       },
       "upToDate": "Semuanya terkini.",
       "lastChecked": "Pemeriksaan terakhir {{time}}",
@@ -1576,8 +1673,27 @@
       "unsupportedHint": "Tiada pelepasan plugin ini berjalan pada versi Termix ini. Kemas kini Termix untuk memasangnya.",
       "needsTermix": "Memerlukan Termix {{range}}",
       "showUnsupported": "Papar yang tidak disokong ({{count}})",
-      "showMore": "Papar {{count}} lagi ({{total}} baki)"
-    }
+      "showMore": "Papar {{count}} lagi ({{total}} baki)",
+      "memory": {
+        "summary": "Memori: {{total}} daripada {{limit}} | plugin {{plugins}} | {{running}} berjalan",
+        "lowTitle": "Pelayan ini kekurangan memori",
+        "lowBody": "Termix dan pluginnya menggunakan {{total}} daripada {{limit}}. Berikan pelayan lebih memori atau matikan plugin yang tidak anda gunakan.",
+        "idle": "Rehat",
+        "idleHint": "Tidak berjalan sekarang. Ia bermula apabila sesuatu memerlukannya.",
+        "keptOn": "Kekal berjalan: {{reason}}",
+        "stopsWhenIdle": "Berhenti apabila rehat"
+      }
+    },
+    "firstLoad": {
+      "title": "Menyiapkan plugin",
+      "progress": "{{done}} daripada {{total}}",
+      "hint": "Plugin sedang mula untuk kali pertama. Selepas ini, Termix akan terus dibuka.",
+      "skip": "Teruskan"
+    },
+    "framesBlocked": "Plugin tidak dapat memuat failnya. Proksi log masuk di hadapan Termix kemungkinan besar menghalangnya.",
+    "framesBlockedHelp": "Cara membetulkan",
+    "framesFailed_other": "{{count}} plugin tidak dapat dimuat, jadi bahagiannya disembunyikan: {{names}}",
+    "framesFailedReload": "Muat semula"
   },
   "settings": {
     "secretSet": "Tetapkan",
@@ -1621,6 +1737,12 @@
       "title": "Lajur",
       "auto": "Auto",
       "count": "Lebar {{count}}"
+    },
+    "pager": {
+      "previous": "Sebelumnya",
+      "next": "Seterusnya",
+      "page": "Halaman {{page}}",
+      "pageOf": "Halaman {{page}} daripada {{pages}}"
     }
   },
   "fields": {
@@ -1634,7 +1756,108 @@
   "rbac": {
     "roles": {
       "admin": "Admin",
-      "user": "Pengguna"
+      "user": "Pengguna",
+      "viewer": "Penonton",
+      "operator": "Operator",
+      "auditor": "Pemeriksa",
+      "helpdesk": "Balai Bantuan"
+    }
+  },
+  "tileGrid": {
+    "empty": "Tiada jubin lagi. Tambah beberapa daripada senarai.",
+    "move": "Seret untuk bergerak",
+    "moveTile": "Pindah {{tile}}",
+    "settings": "Tetapan {{tile}}",
+    "remove": "Buang {{tile}}",
+    "width": "Lebar",
+    "height": "Tinggi",
+    "addTiles": "Tambah jubin",
+    "closePicker": "Tutup",
+    "search": "Cari jubin",
+    "noMatches": "Tiada padanan.",
+    "kind": {
+      "all": "Semua",
+      "card": "Kad",
+      "chart": "Carta",
+      "signal": "Status",
+      "action": "Tindakan",
+      "resource": "Senarai",
+      "session": "Sesi"
+    },
+    "reset": "Set semula",
+    "done": "Selesai"
+  },
+  "diagnostics": {
+    "title": "Diagnostik",
+    "makeReport": "Buat laporan diagnostik",
+    "slowBoot": "Lama sedikit? Buat laporan diagnostik",
+    "troubleSigningIn": "Masalah semasa log masuk? Buat laporan diagnostik",
+    "reportTab": "Laporan",
+    "logsTab": "Log pelayan",
+    "intro": "Ini menghasilkan satu fail dengan apa yang Termix perlukan untuk mencari masalah: ralat, log, keadaan plugin dan bagaimana permintaan mencapai pelayan. Muat turunnya dan lampirkannya ke isu GitHub atau hantarnya di Discord.",
+    "notAdmin": "Log pelayan dan butiran pelayan memerlukan pentadbir. Minta pentadbir anda membuat laporan juga jika masalahnya berada di pelayan.",
+    "signedOut": "Anda tidak log masuk, jadi hanya bahagian pelayar disertakan.",
+    "whatHappened": "Apa yang berlaku",
+    "whatHappenedHint": "Pilihan. Apa yang anda lakukan dan apa yang salah?",
+    "include": "Sertakan",
+    "adminOnly": "Memerlukan pentadbir",
+    "privacy": "Privasi",
+    "mask": "Sembunyikan nama dan alamat",
+    "maskHint": "IP, nama hos, nama pengguna dan e-mel menjadi host-1, user-1 dan sebagainya. Kata laluan, kunci dan token sentiasa dibuang.",
+    "domText": "Sertakan teks halaman",
+    "domTextHint": "Menambah teks pada skrin ke susun atur halaman. Dimatikan secara lalai kerana ia boleh menunjukkan data anda.",
+    "warnOnly": "Hanya amaran dan ralat dari log pelayan",
+    "warnOnlyHint": "Membuat fail lebih kecil.",
+    "focus": "Plugin",
+    "focusHint": "Menunjukkan plugin ini dahulu dan mengemukakan isu pada repo-nya.",
+    "allPlugins": "Semua plugin",
+    "findings": "Ditemui oleh pemeriksaan",
+    "preview": "Apa yang akan dihantar",
+    "previewCut": "(Pratonton berhenti di sini. Fail mempunyai semuanya.)",
+    "cut": "Fail melebihi 5 MB, jadi baris log tertua dipotong.",
+    "footerHint": "Semak pratonton sebelum menghantarnya.",
+    "copy": "Salin",
+    "copied": "Laporan disalin",
+    "copyFailed": "Tidak dapat menyalin laporan",
+    "download": "Muat turun",
+    "downloaded": "Laporan dimuat turun",
+    "openIssue": "Buka isu GitHub",
+    "logsSearch": "Cari log",
+    "logsLevel": "Tahap",
+    "logsAll": "Semua tahap",
+    "logsWarn": "Amaran dan ralat",
+    "logsError": "Ralat",
+    "logsPlugin": "Plugin",
+    "logsCount": "{{count}} baris",
+    "logsFailed": "Tidak dapat memuat log",
+    "logsPause": "Jeda",
+    "logsResume": "Sambung",
+    "logsEmpty": "Tiada baris log lagi.",
+    "parts": {
+      "server": "Pelayan",
+      "plugins": "Plugin",
+      "sections": "Butiran plugin",
+      "logs": "Log pelayan",
+      "request": "Sambungan",
+      "probes": "Semakan sambungan",
+      "errors": "Ralat pelayar",
+      "console": "Pelayar konsol",
+      "network": "Rangkaian",
+      "page": "Pelayar dan tetingkap",
+      "dom": "Susun atur halaman"
+    },
+    "partHints": {
+      "server": "Versi, pangkalan data, SSL dan tetapan yang ditetapkan",
+      "plugins": "Versi dan keadaan pada pelayan dan dalam pelayar",
+      "sections": "Butiran tambahan yang ditambah oleh plugin yang berjalan",
+      "logs": "Log pelayan sejak mula dan baris terkini",
+      "request": "Nama header yang menunjukkan proksi di hadapan Termix",
+      "probes": "Ujian yang memuatkan fail Termix dan plugin",
+      "errors": "Ralat yang tidak ditangkap dan muatan yang disekat",
+      "console": "Baris konsol terkini dari halaman dan plugin",
+      "network": "Permintaan terkini dan statusnya",
+      "page": "Pelayar, saiz skrin dan nama kunci storan",
+      "dom": "Susun atur halaman, tanpa teks"
     }
   }
 }

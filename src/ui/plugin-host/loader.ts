@@ -4,6 +4,7 @@ import type {
   PluginManifest,
 } from "@termix-ssh/plugin-sdk/frontend";
 import i18n, { setPluginLocaleResolver } from "@/i18n/i18n";
+import { setGuestRuntime } from "./guest-runtime";
 import { getPlugins, type PluginSummary } from "@/api/plugins-api";
 import { getBackendUrl } from "@/main-axios";
 import { createPluginApp, type PluginAppHandle } from "./app";
@@ -23,6 +24,9 @@ import {
 } from "@/look/look-store";
 import { BUILTIN_THEMES, setPluginThemes } from "@/look/theme-registry";
 import { setPluginLayouts } from "@/look/layout-registry";
+import { startFramedPlugin } from "./frames/frame-plugins";
+import { reportFrameFailure } from "./frames/frame-failures";
+import { dropFrameToken } from "./frames/frame-token";
 
 /**
  * Loads plugin frontends into the running shell.
@@ -64,6 +68,8 @@ let started = false;
 let guestMode = false;
 /** Signed in with the full runtime: only the chosen layout's code loads. */
 let gateLayouts = false;
+/** Background frames still starting; boot waits on these. */
+const booting = new Set<Promise<void>>();
 
 function assetUrlWithVersion(
   pluginId: string,
@@ -230,6 +236,11 @@ async function deactivate(pluginId: string): Promise<void> {
 }
 
 const ACTIVATE_TIMEOUT_MS = 15_000;
+/**
+ * A framed plugin may wait for a boot slot first; its frame has its own
+ * start limit once it gets one.
+ */
+const FRAMED_ACTIVATE_TIMEOUT_MS = 3 * 60_000;
 
 function withTimeout<T>(
   promise: Promise<T>,
@@ -249,6 +260,10 @@ async function activate(summary: PluginSummary): Promise<void> {
 
   let cssLink: HTMLLinkElement | null = null;
   let handle: PluginAppHandle | null = null;
+  if (summary.frontendIsolation === "frame") {
+    await activateFramed(summary);
+    return;
+  }
   try {
     const module = await loader.importFrontend(summary);
     if (typeof module?.activate !== "function") {
@@ -286,6 +301,54 @@ async function activate(summary: PluginSummary): Promise<void> {
     console.error(`[plugins] ${summary.id} failed to start`, error);
     failedVersions.set(summary.id, summary.assetVersion ?? null);
     setFrontendState(summary.id, "failed", message);
+  }
+}
+
+/**
+ * A plugin whose UI runs in sandboxed frames: nothing is imported into the
+ * page. Its background frame runs activate and reports what it registered.
+ */
+async function activateFramed(summary: PluginSummary): Promise<void> {
+  // Frames need a session. Before sign-in the login screen draws auth
+  // plugins from what their backends describe, and only their strings load.
+  if (preLoginMode) return;
+  try {
+    const framed = await withTimeout(
+      startFramedPlugin(summary),
+      FRAMED_ACTIVATE_TIMEOUT_MS,
+      `activate() did not finish within ${FRAMED_ACTIVATE_TIMEOUT_MS / 1000}s`,
+    );
+    active.set(summary.id, {
+      id: summary.id,
+      assetVersion: summary.assetVersion ?? null,
+      handle: { app: framed.handle.app, dispose: framed.dispose },
+      module: { activate: () => {} },
+      cssLink: null,
+    });
+    failedVersions.delete(summary.id);
+    setFrontendState(summary.id, "active");
+    const boot = framed.ready.then(
+      () => {},
+      () => {},
+    );
+    booting.add(boot);
+    void boot.then(() => booting.delete(boot));
+    // A frame still booting does not hold activation; if it fails, say so.
+    framed.ready.catch((error: unknown) => {
+      if (active.get(summary.id)?.handle.dispose !== framed.dispose) return;
+      active.delete(summary.id);
+      const message = error instanceof Error ? error.message : String(error);
+      console.error(`[plugins] ${summary.id} failed to start`, error);
+      failedVersions.set(summary.id, summary.assetVersion ?? null);
+      setFrontendState(summary.id, "failed", message);
+      reportFrameFailure(summary.name || summary.id, message);
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`[plugins] ${summary.id} failed to start`, error);
+    failedVersions.set(summary.id, summary.assetVersion ?? null);
+    setFrontendState(summary.id, "failed", message);
+    reportFrameFailure(summary.name || summary.id, message);
   }
 }
 
@@ -427,10 +490,36 @@ async function reconcile(summaries: PluginSummary[]): Promise<void> {
     if (!wanted.has(id)) failedVersions.delete(id);
   }
 
-  await activateConcurrently(order);
+  // The server serves no assets of a plugin it is still starting, so wait for
+  // it, and for anything that depends on it, and look again shortly.
+  const waiting = new Set<string>();
+  for (const summary of order) {
+    const deps = Object.keys(summary.dependencies ?? {});
+    if (isStarting(summary) || deps.some((id) => waiting.has(id))) {
+      waiting.add(summary.id);
+      if (!active.has(summary.id)) setFrontendState(summary.id, "loading");
+    }
+  }
+  await activateConcurrently(order.filter((s) => !waiting.has(s.id)));
+  scheduleStartingRetry(waiting.size > 0);
   // After activation, so a plugin that registered its own host editor
   // section is not given a second, generated one.
   syncHostFeatureTabs(summaries);
+}
+
+function isStarting(summary: PluginSummary): boolean {
+  return summary.state === "loaded" || summary.state === "activating";
+}
+
+const STARTING_RETRY_MS = 3_000;
+let startingRetry: ReturnType<typeof setTimeout> | null = null;
+
+function scheduleStartingRetry(needed: boolean): void {
+  if (!needed || startingRetry || guestMode) return;
+  startingRetry = setTimeout(() => {
+    startingRetry = null;
+    void syncPlugins();
+  }, STARTING_RETRY_MS);
 }
 
 /**
@@ -502,9 +591,27 @@ export function syncPlugins(summaries?: PluginSummary[]): Promise<void> {
         return;
       }
     }
+    // A full sync means someone is signed in, so frames may start now.
+    preLoginMode = false;
     await reconcile(list);
     markPluginsSettled();
   });
+}
+
+/**
+ * Resolves once every background frame has started and no plugin is still
+ * waiting for the server to start it, so the shell opens complete.
+ */
+export async function pluginsBooted(): Promise<void> {
+  for (;;) {
+    await queue;
+    if (booting.size > 0) {
+      await Promise.all([...booting]);
+      continue;
+    }
+    if (!startingRetry) return;
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
 }
 
 /** Tries a plugin's frontend again even though this bundle failed before. */
@@ -570,6 +677,8 @@ export function fetchGuestViews(): Promise<string[]> {
   return guestViewsRequest;
 }
 
+let preLoginMode = false;
+
 async function fetchPreLoginPlugins(): Promise<PluginSummary[]> {
   const response = await fetch(getBackendUrl("/plugins/public-manifest"));
   if (!response.ok) return [];
@@ -599,6 +708,7 @@ export async function startPreLoginPlugins(
     // subset would unload everything else. Auth remounts during the
     // post-login fade, so this runs after sign-in every time.
     if (started) return;
+    preLoginMode = true;
     if (options.retryFailed) {
       for (const plugin of list) failedVersions.delete(plugin.id);
     }
@@ -619,6 +729,7 @@ export function startPluginRuntime(
   installLocaleResolver();
   if (options.guest) {
     guestMode = true;
+    setGuestRuntime(true);
     if (!deps) configurePluginLoader({ fetchPlugins: fetchGuestPlugins });
     return syncPlugins();
   }
@@ -636,6 +747,8 @@ export function startPluginRuntime(
 /** Deactivates every plugin, on logout. */
 export function stopPluginRuntime(): Promise<void> {
   gateLayouts = false;
+  if (startingRetry) clearTimeout(startingRetry);
+  startingRetry = null;
   if (started && typeof window !== "undefined") {
     started = false;
     window.removeEventListener(PLUGINS_CHANGED_EVENT, onPluginsChanged);
@@ -643,6 +756,7 @@ export function stopPluginRuntime(): Promise<void> {
   }
   return enqueue(async () => {
     for (const id of [...active.keys()].reverse()) await deactivate(id);
+    dropFrameToken();
   });
 }
 
@@ -655,6 +769,8 @@ export async function resetPluginLoader(): Promise<void> {
   await stopPluginRuntime();
   deps = null;
   guestMode = false;
+  setGuestRuntime(false);
   queue = Promise.resolve();
   failedVersions.clear();
+  booting.clear();
 }

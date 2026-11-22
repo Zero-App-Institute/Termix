@@ -131,6 +131,8 @@
     "updateLinkLabel": "Je k dispozícii aktualizácia. Otvoriť poznámky k vydaniu na GitHub"
   },
   "common": {
+    "showPassword": "Zobraziť heslo",
+    "hidePassword": "Skryť heslo",
     "scrollTabsLeft": "Posunúť karty doľava",
     "scrollTabsRight": "Posunúť karty doprava",
     "close": "Zavrieť",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Zoznam doplnkov sa nepodarilo načítať. Doplnky môžete vybrať neskôr na karte Doplnky.",
     "securityTitle": "Zabezpečte svoj účet",
     "securityIntro": "Pridajte k svojmu účtu passkey alebo aplikáciu na overovanie. Toto môžete urobiť aj neskôr v Nastaveniach pod položkou Bezpečnosť.",
-    "pluginsDocsLink": "Prečítajte si o každom z nich"
+    "pluginsDocsLink": "Prečítajte si o každom z nich",
+    "layoutTitle": "Vyberte rozloženie",
+    "layoutIntro": "Rozloženie určuje, ako je celá aplikácia usporiadaná: ponuky, bočný panel a karty. Kliknutím naň ho aktivujete. Zmena sa prejaví okamžite.",
+    "layoutInstalled": "Nainštalované",
+    "layoutMore": "Ďalšie rozloženia",
+    "layoutNoMore": "Momentálne nie sú k dispozícii žiadne ďalšie rozloženia.",
+    "layoutDefault": "Predvolené",
+    "layoutInstall": "Nainštalovať",
+    "layoutTurnOn": "Povoliť",
+    "layoutVideo": "Pozrieť video",
+    "layoutChangeLater": "Rozloženie môžete kedykoľvek zmeniť v Nastaveniach v sekcii Vzhľad. Ak chcete nainštalovať ďalšie rozloženia, požiadajte správcu.",
+    "layoutChangeLaterAdmin": "Rozloženie môžete kedykoľvek zmeniť v Nastaveniach v sekcii Vzhľad. Ďalšie rozloženia môžete neskôr nainštalovať na karte Pluginy."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix stále beží",
+    "noticeBody": "Zavretie okna ponechá Termix bežať v lište. Na ukončenie otvorte menu ikony v lište a vyberte Ukončiť. Túto funkciu môžete vypnúť v Nastaveniach."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automaticky",
@@ -503,6 +520,7 @@
     "deleteSelected": "Odstrániť",
     "exitSelection": "Ukončiť výber",
     "collapseBtn": "Zbaliť",
+    "importExportBtn": "Import / Export",
     "hostStatusesRefreshed": "Stavy hostiteľov boli obnovené",
     "failedToRefreshHosts": "Nepodarilo sa obnoviť hostiteľov",
     "movedHostTo": "Presunutý {{host}} do \"{{folder}}\"",
@@ -621,6 +639,7 @@
     "hostClickBehavior": "Kliknutie na hostiteľa",
     "hostClickBehaviorDesc": "Čo sa stane, keď kliknete na hostiteľa, ktorý už má otvorený panel. Kliknutie s Ctrl/Cmd, stredným tlačidlom alebo možnosť „Otvoriť v novom paneli“ vždy spustí nový.",
     "hostClickNewTab": "Vždy otvoriť nový panel",
+    "hostClickHostPage": "Otvoriť stránku hostiteľa, ak ju plugin ponúka",
     "hostClickFocusExisting": "Prepnúť na otvorený panel",
     "hostClickFocusExistingDoubleNew": "Kliknutím prepnúť, dvojklikom otvoriť nový panel",
     "openInNewTab": "Otvoriť v novom paneli",
@@ -852,7 +871,12 @@
     "editorUpdate": "Aktualizovať hostiteľa",
     "editorAdd": "Pridať hostiteľa",
     "speedSearch": "Hľadať hostiteľov. Šípky na výber, Enter na pripojenie, Esc na zatvorenie",
-    "speedSearchList": "Zoznam hostiteľov. Píšte alebo stlačte / na vyhľadávanie."
+    "speedSearchList": "Zoznam hostiteľov. Píšte alebo stlačte / na vyhľadávanie.",
+    "openFromLink": {
+      "title": "Otvoriť {{name}}?",
+      "description": "Odkaz požiadal Termix o pripojenie k tomuto hostiteľovi.",
+      "confirm": "Pripojiť"
+    }
   },
   "splitScreen": {
     "title": "Rozdelená obrazovka",
@@ -933,6 +957,16 @@
     "empty": "Žiadne karty. Použite Pridať nižšie na umiestnenie kariet."
   },
   "auth": {
+    "inviteIntro": "Boli ste pozvaní na tento server. Zvoľte používateľské meno a heslo pre vytvorenie účtu.",
+    "inviteInvalid": "Tento pozvádkový odkaz vypršal alebo bol už použitý. Požiadajte administrátora o nový.",
+    "accountDisabled": "Tento účet je vypnutý. Požiadajte administrátora, aby ho znova zapol.",
+    "accountPending": "Váš účet čaká na schválenie administrátorom.",
+    "stepUp": {
+      "title": "Overte, že ste vy",
+      "description": "Potvrďte svoj druhý faktor pre pokračovanie.",
+      "noFactor": "Nemáte nastavený žiadny druhý faktor. Pridajte ho v Nastaveniach a skúste to znova.",
+      "failed": "To nefungovalo. Skúste to znova."
+    },
     "tagline": "Serverové riadenie so základom pluginov a self-hosted.",
     "loginTitle": "Vitajte späť",
     "registerTitle": "Vytvoriť účet",
@@ -959,6 +993,14 @@
     "loginWithExternal": "Prihlásiť sa cez externého poskytovateľa",
     "loginWithExternalDesc": "Prihláste sa pomocou nakonfigurovaného externého poskytovateľa identity",
     "loginWithProvider": "Prihlásiť sa cez {{name}}",
+    "pluginLogin": {
+      "signIn": "Prihlásiť sa",
+      "verify": "Overiť",
+      "code": "Kód",
+      "useKey": "Použiť bezpečnostný kľúč",
+      "keyPrompt": "Použite svoj bezpečnostný kľúč alebo passkey na pokračovanie.",
+      "keyFailed": "Krok s bezpečnostným kľúčom nefungoval. Skúste to znova."
+    },
     "resetPasswordButton": "Obnoviť heslo",
     "sendResetCode": "Poslať kód na obnovenie",
     "resetCodeDesc": "Zadajte svoje používateľské meno na prijatie kódu na obnovenie hesla. Kód bude zaznamenaný v logoch kontajnera Docker.",
@@ -1036,6 +1078,8 @@
     "registrationSuccess": "Registrácia bola úspešná"
   },
   "placeholders": {
+    "username": "Vaše používateľské meno",
+    "newUsername": "Zvoľte si používateľské meno",
     "keyPassword": "heslo k kľúču",
     "pastePrivateKey": "Sem vložte svoj súkromný kľúč...",
     "enterPassword": "Zadajte svoje heslo"
@@ -1086,7 +1130,8 @@
         "actionNextTab": "Prepnúť na ďalšiu kartu",
         "actionPreviousTab": "Prepnúť na predchádzajúcu kartu",
         "actionOpenCommandPalette": "Otvoriť rýchle vyhľadávanie",
-        "actionReconnectSession": "Znova pripojiť aktuálnu reláciu"
+        "actionReconnectSession": "Znova pripojiť aktuálnu reláciu",
+        "actionToggleSidebar": "Prepnúť bočný panel"
       },
       "userProfile": {
         "preset_simple": "Jednoduché",
@@ -1228,6 +1273,10 @@
         "title": "Dostať sa na internet",
         "consequence": "Môže posielať požiadavky na externé služby."
       },
+      "network:sockets": {
+        "title": "Otvárať vlastné sieťové pripojenia",
+        "consequence": "Môže počúvať na portoch a pripájať sa k ľubovoľnej adrese priamo, bez toho, aby Termix overoval každé pripojenie."
+      },
       "network:serve": {
         "title": "Prijať pripojenia",
         "consequence": "Otvára port na serveri Termix."
@@ -1248,6 +1297,18 @@
         "title": "Posielať upozornenia",
         "consequence": "Vám alebo iným používateľom a cez kanály, ktoré si nastavili."
       },
+      "operations:provide": {
+        "title": "Ponúkať akcie",
+        "consequence": "Jeho akcie môžu spúšťať automatizácie, príkazový riadok, mobilná aplikácia a ďalšie miesta, a to používateľmi, ktorí majú povolenie na ich použitie."
+      },
+      "operations:invoke": {
+        "title": "Spúšťať akcie iných pluginov",
+        "consequence": "Koná v mene prihláseného používateľa pri akciách uvedených v jeho manifeste. Stále sa uplatňujú pravidlá schvaľovania."
+      },
+      "operations:approve": {
+        "title": "Rozhodnúť, čo vyžaduje schválenie",
+        "consequence": "Môže povoliť spúšťanie akcií bez schválenia alebo ich blokovať pre každého používateľa."
+      },
       "notify:hub": {
         "title": "Prijať každé upozornenie",
         "consequence": "Ukladá a doručuje upozornenia, ktoré posielajú všetky pluginy, vrátane ich obsahu."
@@ -1258,7 +1319,7 @@
       },
       "network:probe": {
         "title": "Skontrolovať, či porty odpovedajú",
-        "consequence": "Môže otvoriť obyčajné pripojenie k ľubovoľnej adrese zo servera, aby zistil, či je dostupná."
+        "consequence": "Môže otvoriť obyčajné pripojenie k ľubovoľnej adrese zo servera, aby zistil, či je dostupná, a vyhľadávať názvy hostiteľov."
       },
       "hosts:status-provide": {
         "title": "Poskytovať stav hostiteľa",
@@ -1271,6 +1332,10 @@
       "hosts:lock": {
         "title": "Spravovať hostov ako len na čítanie",
         "consequence": "Hostov, ktoré spravuje, nemôže nikto iný upravovať, mazať ani zdieľať."
+      },
+      "hosts:connect-policy": {
+        "title": "Rozhodnúť, kto sa môže pripojiť",
+        "consequence": "Môže blokovať alebo povoliť každé SSH pripojenie a pripojenie na vzdialenú plochu k akémukoľvek hostiteľovi."
       },
       "desktop:window": {
         "title": "Otvoriť okná plochy",
@@ -1308,6 +1373,10 @@
         "title": "Ukladanie vlastných tajomstiev",
         "consequence": "Šifrované Termixom. Plugin nikdy neobsahuje kľúč."
       },
+      "config:secrets": {
+        "title": "Čítať tajomstvá, ktoré server obsahuje",
+        "consequence": "Premenné prostredia a súbory na serveri, okrem vlastných kľúčov Termixu."
+      },
       "settings:read-core": {
         "title": "Čítanie nastavení Termixu",
         "consequence": "Nastavenia servera, nie vaše hostitelia ani poverenia."
@@ -1328,6 +1397,10 @@
         "title": "Pridať farebné témy",
         "consequence": "Iba farby a štýly. Pre tému sa nevykonáva žiadny kód."
       }
+    },
+    "webView": {
+      "unavailable": "Táto stránka už nie je dostupná. Otvorte ju znova z jej pluginu.",
+      "isolationUnavailable": "Tento prehliadač nemôže túto stránku bezpečne otvoriť tu. Použite najnovší Chrome alebo Edge, alebo desktopovú aplikáciu."
     },
     "runtime": {
       "needsPlugin": "{{name}} nie je k dispozícii",
@@ -1352,7 +1425,7 @@
         "running": "Beží",
         "disabled": "Zakázané",
         "failed": "Neočakávane zastavené",
-        "blocked": "Čaká na iný plugin",
+        "blocked": "Nemožno spustiť",
         "server": "Beží na vašom serveri",
         "safeMode": "Vypnuté v režime bezpečnosti"
       },
@@ -1374,7 +1447,8 @@
         "version": "Verzia",
         "status": "Stav",
         "category": "Kategória",
-        "downloads": "Sťahovania"
+        "downloads": "Sťahovania",
+        "memory": "Pamäť"
       },
       "risk": {
         "critical": "Kritické",
@@ -1461,9 +1535,14 @@
         "updatedMany_few": "{{count}} pluginy aktualizované",
         "updatedMany_many": "{{count}} pluginov aktualizovaných",
         "updatedMany_other": "{{count}} plugin aktualizovaný",
+        "needsReview_one": "1 plugin vyžaduje nové oprávnenia. Skontrolujte ho pre aktualizáciu.",
+        "needsReview_few": "{{count}} pluginov vyžaduje nové oprávnenia. Skontrolujte každý z nich pre aktualizáciu.",
+        "needsReview_many": "{{count}} pluginov vyžaduje nové oprávnenia. Skontrolujte každý z nich pre aktualizáciu.",
+        "needsReview_other": "{{count}} pluginov vyžaduje nové oprávnenia. Skontrolujte každý z nich pre aktualizáciu.",
         "uninstalled": "{{name}} odinštalovaný",
         "dataDeleted": "Údaje pre {{name}} vymazané",
-        "failedToStart": "{{name}} sa nepodarilo spustiť. Otvorte ho a zistite dôvod."
+        "failedToStart": "{{name}} sa nepodarilo spustiť. Otvorte ho a zistite dôvod.",
+        "held": "{{name}} čaká {{minutes}} minút, kým sa zmena prejaví, aby to mohli vidieť aj ostatní administrátori"
       },
       "errors": {
         "generic": "Niečo sa pokazilo",
@@ -1524,6 +1603,27 @@
       "pin": "Zostať na tejto verzii",
       "pinHint": "Udrží verziu {{version}} a preskočí všetky aktualizácie, kým túto možnosť nevypnete.",
       "pinnedTo": "Pripnuté na verziu {{version}}",
+      "legacy": {
+        "notice_one": "1 plugin bol vytvorený pre staršiu verziu Termixu a zostáva vypnutý, kým nebude aktualizovaný: {{names}}.",
+        "notice_few": "{{count}} pluginov bolo vytvorených pre staršiu verziu Termixu a zostávajú vypnuté, kým nebudú aktualizované: {{names}}.",
+        "notice_many": "{{count}} pluginov bolo vytvorených pre staršiu verziu Termixu a zostávajú vypnuté, kým nebudú aktualizované: {{names}}.",
+        "notice_other": "{{count}} pluginov bolo vytvorených pre staršiu verziu Termixu a zostávajú vypnuté, kým nebudú aktualizované: {{names}}.",
+        "why": "Boli vytvorené pre plugin API 1, ktoré bežalo vo vnútri servera. Termix teraz spúšťa každý plugin vo vlastnom procese, takže každý potrebuje verziu pre plugin API 2. Aktualizujte oficiálne pluginy tu a požiadajte autora komunitného pluginu o novú verziu.",
+        "guide": "Ako presunúť pluginy na API 2"
+      },
+      "provenance": {
+        "verified": "Build overený",
+        "verifiedHint": "Pôvod buildu bol podpísaný workflow uvoľňovania Termix registry a zodpovedá tomuto súboru. Otvára build.",
+        "unchecked": "Build neoverený",
+        "uncheckedHint": "Pôvod buildu sa nedal overiť pri sťahovaní. Jeho podpis registry bol overený."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} je vonku. 1 plugin zostane vypnutý, kým ho neaktualizujete: {{names}}.",
+        "notice_few": "Termix {{version}} je vonku. {{count}} pluginov zostane vypnutých, kým ich neaktualizujete: {{names}}.",
+        "notice_many": "Termix {{version}} je vonku. {{count}} pluginov zostane vypnutých, kým ich neaktualizujete: {{names}}.",
+        "notice_other": "Termix {{version}} je vonku. {{count}} pluginov zostane vypnutých, kým ich neaktualizujete: {{names}}.",
+        "needs": "{{name}} (vyžaduje Termix {{range}})"
+      },
       "version": "Verzia",
       "versionPickHint": "Nainštalujte staršiu verziu namiesto najnovšej. Zostane na tejto verzii, kým ju neodpnete.",
       "versionPickHintInstalled": "Prepnite na inú verziu. Výber inej ako najnovšej verzie ju pripne.",
@@ -1599,7 +1699,13 @@
         "unreachable": "Nepodarilo sa ho prečítať: {{error}}",
         "filter": "Registr",
         "allRegistries": "Všetky registry",
-        "browseHint": "Zapnite komunitné pluginy alebo pridajte vlastný registr v karte Registry."
+        "browseHint": "Zapnite komunitné pluginy alebo pridajte vlastný registr v karte Registry.",
+        "looksName": "Komunitné rozloženia a témy",
+        "looksHint": "Umožňuje rozloženiam a témam, ktoré nie sú od Termix, spúšťať sa mimo sandboxu, rovnako ako oficiálne. Rozloženie vykresľuje celú aplikáciu, takže môže vidieť a robiť všetko, čo viete vy. Inštalujte len tie, ktorým dôverujete. Po zmene túto možnosť obnovte stránku.",
+        "looksConfirmTitle": "Povoliť spúšťanie komunitných rozložením mimo sandboxu?",
+        "looksConfirmBody": "Komunitné rozloženie alebo téma bude spustená na stránke s plným prístupom k Termixu ako prihlásený používateľ. To môže byť rizikové. Túto možnosť zapnite len vtedy, ak dôverujete inštalovaným rozloženiam a témam.",
+        "looksConfirm": "Zapnúť",
+        "looksSaved": "Uložené. Obnovte stránku pre aplikovanie."
       },
       "upToDate": "Všetko je aktuálne.",
       "lastChecked": "Posledná kontrola {{time}}",
@@ -1690,8 +1796,30 @@
       "unsupportedHint": "Na tejto verzii Termixu nebeží žiadna verzia tohto pluginu. Aktualizujte Termix na jeho inštaláciu.",
       "needsTermix": "Vyžaduje Termix {{range}}",
       "showUnsupported": "Zobraziť nepodporované ({{count}})",
-      "showMore": "Zobraziť {{count}} ďalších (zostáva {{total}})"
-    }
+      "showMore": "Zobraziť {{count}} ďalších (zostáva {{total}})",
+      "memory": {
+        "summary": "Pamäť: {{total}} z {{limit}} | pluginy {{plugins}} | {{running}} beží",
+        "lowTitle": "Tento server má málo pamäte",
+        "lowBody": "Termix a jeho pluginy používajú {{total}} z {{limit}}. Dajte serveru viac pamäte alebo vypnite pluginy, ktoré nepoužívate.",
+        "idle": "Nečinný",
+        "idleHint": "Teraz nebeží. Spustí sa, keď ho niečo potrebuje.",
+        "keptOn": "Zostáva bežať: {{reason}}",
+        "stopsWhenIdle": "Zastaví sa pri nečinnosti"
+      }
+    },
+    "firstLoad": {
+      "title": "Príprava pluginov",
+      "progress": "{{done}} z {{total}}",
+      "hint": "Pluginy sa spúšťajú prvýkrát. Po tejto operácii sa Termix otvorí okamžite.",
+      "skip": "Pokračovať"
+    },
+    "framesBlocked": "Pluginy nemôžu načítať svoje súbory. Pravdepodobne ich blokuje prihlasovací proxy pred Termixom.",
+    "framesBlockedHelp": "Ako opraviť",
+    "framesFailed_one": "{{names}} sa nepodarilo načítať, preto sú jeho časti skryté",
+    "framesFailed_few": "{{count}} pluginov sa nepodarilo načítať, preto sú ich časti skryté: {{names}}",
+    "framesFailed_many": "{{count}} pluginov sa nepodarilo načítať, preto sú ich časti skryté: {{names}}",
+    "framesFailed_other": "{{count}} pluginov sa nepodarilo načítať, preto sú ich časti skryté: {{names}}",
+    "framesFailedReload": "Obnoviť"
   },
   "settings": {
     "secretSet": "Nastavené",
@@ -1747,6 +1875,12 @@
       "title": "Stĺpce",
       "auto": "Automaticky",
       "count": "Šírka {{count}}"
+    },
+    "pager": {
+      "previous": "Predchádzajúca",
+      "next": "Nasledujúca",
+      "page": "Strana {{page}}",
+      "pageOf": "Strana {{page}} z {{pages}}"
     }
   },
   "fields": {
@@ -1769,7 +1903,108 @@
   "rbac": {
     "roles": {
       "admin": "Administrátor",
-      "user": "Používateľ"
+      "user": "Používateľ",
+      "viewer": "Sledovateľ",
+      "operator": "Operátor",
+      "auditor": "Auditór",
+      "helpdesk": "Podpora"
+    }
+  },
+  "tileGrid": {
+    "empty": "Zatiaľ žiadne dlaždice. Pridajte niektoré zo zoznamu.",
+    "move": "Ťahaním presunúť",
+    "moveTile": "Presunúť {{tile}}",
+    "settings": "Nastavenia {{tile}}",
+    "remove": "Odstrániť {{tile}}",
+    "width": "Šírka",
+    "height": "Výška",
+    "addTiles": "Pridať dlaždice",
+    "closePicker": "Zavrieť",
+    "search": "Hľadať dlaždice",
+    "noMatches": "Žiadne zhody.",
+    "kind": {
+      "all": "Všetky",
+      "card": "Karty",
+      "chart": "Grafy",
+      "signal": "Stav",
+      "action": "Akcie",
+      "resource": "Zoznamy",
+      "session": "Sedenia"
+    },
+    "reset": "Obnoviť",
+    "done": "Hotovo"
+  },
+  "diagnostics": {
+    "title": "Diagnostika",
+    "makeReport": "Vytvoriť diagnostickú správu",
+    "slowBoot": "Trvá to dlho? Vytvorte diagnostickú správu",
+    "troubleSigningIn": "Problémy so prihlásením? Vytvorte diagnostickú správu",
+    "reportTab": "Správa",
+    "logsTab": "Serverové protokoly",
+    "intro": "Týmto sa vytvorí jeden súbor s informáciami, ktoré Termix potrebuje na nájdenie problému: chyby, protokoly, stavy pluginov a spôsob, akým sa požiadavky dostávajú na server. Stiahnite si ho a pripojte k problému na GitHubu alebo ho pošlite cez Discord.",
+    "notAdmin": "Serverové protokoly a podrobnosti o serveri vyžadujú práva správcu. Ak je problém na strane servera, požiadajte správcu, aby tiež vytvoril správu.",
+    "signedOut": "Nie ste prihlásený, takže sú zahrnuté iba údaje z časti prehliadača.",
+    "whatHappened": "Čo sa stalo",
+    "whatHappenedHint": "Voliteľné. Čo ste robili a čo sa pokazilo?",
+    "include": "Zahrnúť",
+    "adminOnly": "Vyžaduje správcu",
+    "privacy": "Ochrana súkromia",
+    "mask": "Skryť mená a adresy",
+    "maskHint": "IP adresy, názvy hostiteľov, používateľské mená a e-maily sa nahradia hodnotami host-1, user-1 atď. Heslá, kľúče a tokeny sa vždy odstránia.",
+    "domText": "Zahrnúť text stránky",
+    "domTextHint": "Pridá text na obrazovke do rozloženia stránky. Predvolene vypnuté, pretože môže odhaliť vaše údaje.",
+    "warnOnly": "Len varovania a chyby zo serverového protokolu",
+    "warnOnlyHint": "Zmenší veľkosť súboru.",
+    "focus": "Plugin",
+    "focusHint": "Zobrazí tento plugin ako prvý a vytvorí problém v jeho repozitári.",
+    "allPlugins": "Všetky pluginy",
+    "findings": "Zistené kontrolami",
+    "preview": "Čo bude odoslané",
+    "previewCut": "(Náhľad sa tu končí. Súbor obsahuje všetko.)",
+    "cut": "Súbor bol väčší ako 5 MB, preto boli najstaršie riadky protokolu orezané.",
+    "footerHint": "Pred odoslaním si overte náhľad.",
+    "copy": "Kopírovať",
+    "copied": "Správa skopírovaná",
+    "copyFailed": "Nepodarilo sa skopírovať správu",
+    "download": "Stiahnuť",
+    "downloaded": "Správa stiahnutá",
+    "openIssue": "Otvoriť problém na GitHubu",
+    "logsSearch": "Hľadať v protokoloch",
+    "logsLevel": "Úroveň",
+    "logsAll": "Všetky úrovne",
+    "logsWarn": "Varovania a chyby",
+    "logsError": "Chyby",
+    "logsPlugin": "Plugin",
+    "logsCount": "{{count}} riadkov",
+    "logsFailed": "Nepodarilo sa načítať protokoly",
+    "logsPause": "Pozastaviť",
+    "logsResume": "Obnoviť",
+    "logsEmpty": "Zatiaľ žiadne riadky protokolu.",
+    "parts": {
+      "server": "Server",
+      "plugins": "Pluginy",
+      "sections": "Podrobnosti o pluginoch",
+      "logs": "Serverové protokoly",
+      "request": "Pripojenie",
+      "probes": "Kontroly pripojenia",
+      "errors": "Chyby prehliadača",
+      "console": "Konzola prehliadača",
+      "network": "Sieť",
+      "page": "Prehliadač a okno",
+      "dom": "Rozloženie stránky"
+    },
+    "partHints": {
+      "server": "Verzia, databáza, SSL a ktoré nastavenia sú aktivované",
+      "plugins": "Verzie a stavy na serveri aj v prehliadači",
+      "sections": "Ďalšie podrobnosti, ktoré pridávajú spustené pluginy",
+      "logs": "Serverový log od spustenia a posledné riadky",
+      "request": "Názvy hlavičiek, ktoré ukazujú proxy pred Termixom",
+      "probes": "Testy, či sa Termix a súbory pluginov načítajú",
+      "errors": "Nezachytené chyby a blokované načítania",
+      "console": "Posledné riadky konzoly zo stránky a pluginov",
+      "network": "Posledné požiadavky a ich stav",
+      "page": "Prehliadač, veľkosť obrazovky a názvy kľúčov úložiska",
+      "dom": "Rozloženie stránky bez textu"
     }
   }
 }

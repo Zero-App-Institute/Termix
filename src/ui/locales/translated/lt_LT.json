@@ -131,6 +131,8 @@
     "updateLinkLabel": "Yra naujinimas. Atidarykite išleidimo pastabas GitHub"
   },
   "common": {
+    "showPassword": "Rodyti slaptažodį",
+    "hidePassword": "Slėpti slaptažodį",
     "scrollTabsLeft": "Slinkti korteles į kairę",
     "scrollTabsRight": "Slinkti korteles į dešinę",
     "close": "Uždaryti",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Priedų sąrašo įkelti nepavyko. Priedus galite pasirinkti vėliau iš skirtuko „Priedai“.",
     "securityTitle": "Apsaugokite savo paskyrą",
     "securityIntro": "Pridėkite prieigos raktą arba autentifikatoriaus programėlę prie savo paskyros. Tai taip pat galite padaryti vėliau „Nustatymuose“, skiltyje „Saugumas“.",
-    "pluginsDocsLink": "Skaityti apie kiekvieną"
+    "pluginsDocsLink": "Skaityti apie kiekvieną",
+    "layoutTitle": "Pasirinkite išdėstymą",
+    "layoutIntro": "Išdėstymas nusako, kaip yra suformuota visa programa: meniu, šoninė juosta ir kortelės. Spustelėkite norimą išdėstymą, kad jį naudotumėte. Pakeitimas įsigalioja iškart.",
+    "layoutInstalled": "Įdiegta",
+    "layoutMore": "Daugiau išdėstymų",
+    "layoutNoMore": "Šiuo metu kitų išdėstymų nėra.",
+    "layoutDefault": "Numatytasis",
+    "layoutInstall": "Įdiegti",
+    "layoutTurnOn": "Įjungti",
+    "layoutVideo": "Žiūrėti vaizdo įrašą",
+    "layoutChangeLater": "Išdėstymą bet kada galite pakeisti Nustatymuose skiltyje Išvaizda. Jei norite įdiegti daugiau išdėstymų, kreipkitės į administratorių.",
+    "layoutChangeLaterAdmin": "Išdėstymą bet kada galite pakeisti Nustatymuose skiltyje Išvaizda. Vėliau daugiau išdėstymų galima įdiegti iš Priedų kortelės."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix vis dar veikia",
+    "noticeBody": "Uždarius langą, Termix toliau veikia sistemos dėkle. Norėdami visiškai užbaigti veikimą, atidarykite sistemos dėkle esančio piktogramos meniu ir pasirinkite „Išeiti“. Šią funkciją galite išjungti nustatymuose."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automatiškai",
@@ -503,6 +520,7 @@
     "deleteSelected": "Ištrinti",
     "exitSelection": "Išeiti iš pasirinkimo",
     "collapseBtn": "Sutraukti",
+    "importExportBtn": "Importuoti / Eksportuoti",
     "hostStatusesRefreshed": "Serverių būsenos atnaujintos",
     "failedToRefreshHosts": "Nepavyko atnaujinti serverių",
     "movedHostTo": "Serveris „{{host}}“ perkeltas į „{{folder}}“",
@@ -621,6 +639,7 @@
     "hostClickBehavior": "Paspaudus serverį",
     "hostClickBehaviorDesc": "Kas nutinka, kai paspaudžiate serverį, kurio skirtukas jau atidarytas. Paspaudus su Ctrl/Cmd, vidiniu pelės mygtuku arba pasirinkus „Atidaryti naujame skirtuke“, visada atidaromas naujas skirtukas.",
     "hostClickNewTab": "Visada atidaryti naują skirtuką",
+    "hostClickHostPage": "Atidaryti serverio puslapį, jei priedas jį siūlo",
     "hostClickFocusExisting": "Perjungti į atidarytą skirtuką",
     "hostClickFocusExistingDoubleNew": "Paspaudus – perjungti, dukart paspaudus – naujas skirtukas",
     "openInNewTab": "Atidaryti naujame skirtuke",
@@ -852,7 +871,12 @@
     "editorUpdate": "Atnaujinti serverį",
     "editorAdd": "Pridėti serverį",
     "speedSearch": "Ieškoti serverių. Rodyklės klavišai pasirinkimui, Enter prisijungimui, Esc uždarymui",
-    "speedSearchList": "Serverių sąrašas. Rašykite arba paspauskite /, kad ieškotumėte."
+    "speedSearchList": "Serverių sąrašas. Rašykite arba paspauskite /, kad ieškotumėte.",
+    "openFromLink": {
+      "title": "Atidaryti „{{name}}“?",
+      "description": "Nuoroda paprašė „Termix“ prisijungti prie šio serverio.",
+      "confirm": "Prisijungti"
+    }
   },
   "splitScreen": {
     "title": "Padalintas ekranas",
@@ -933,6 +957,16 @@
     "empty": "Nėra kortelių. Naudokite „Pridėti“ žemiau, kad įdėtumėte korteles."
   },
   "auth": {
+    "inviteIntro": "Jūs buvote pakviesti į šį serverį. Pasirinkite vartotojo vardą ir slaptažodį, kad sukurtumėte paskyrą.",
+    "inviteInvalid": "Šis pakvietimo nuorodos galiojimo laikas pasibaigė arba ji jau buvo panaudota. Paprašykite administratoriaus išsiųsti naują.",
+    "accountDisabled": "Ši paskyra išjungta. Paprašykite administratoriaus ją vėl įjungti.",
+    "accountPending": "Jūsų paskyra laukia administratoriaus patvirtinimo.",
+    "stepUp": {
+      "title": "Patvirtinkite, kad tai esate jūs",
+      "description": "Pateikite antrąjį patvirtinimo veiksnį, kad tęstumėte.",
+      "noFactor": "Jūs nesate nustatę antrojo patvirtinimo veiksnio. Pridėkite vieną „Nustatymuose“ ir bandykite dar kartą.",
+      "failed": "Tai nepavyko. Bandykite dar kartą."
+    },
     "tagline": "Savimi talpinama, papildiniais paremta serverių valdymo sistema.",
     "loginTitle": "Sveiki sugrįžę",
     "registerTitle": "Sukurti paskyrą",
@@ -959,6 +993,14 @@
     "loginWithExternal": "Prisijungti naudojant išorinį tiekėją",
     "loginWithExternalDesc": "Prisijunkite naudodami sukonfigūruotą išorinį tapatybės tiekėją",
     "loginWithProvider": "Prisijungti su {{name}}",
+    "pluginLogin": {
+      "signIn": "Prisijungti",
+      "verify": "Patvirtinti",
+      "code": "Kodas",
+      "useKey": "Naudoti saugos raktą",
+      "keyPrompt": "Naudokite savo saugos raktą arba prisijungimo raktą, kad tęstumėte.",
+      "keyFailed": "Saugos rakto žingsnis nepavyko. Bandykite dar kartą."
+    },
     "resetPasswordButton": "Atkurti slaptažodį",
     "sendResetCode": "Siųsti atkūrimo kodą",
     "resetCodeDesc": "Įveskite savo vartotojo vardą, kad gautumėte slaptažodžio atkūrimo kodą. Kodas bus įrašytas į Docker konteinerio žurnalus.",
@@ -1036,6 +1078,8 @@
     "registrationSuccess": "Registracija sėkminga"
   },
   "placeholders": {
+    "username": "Jūsų vartotojo vardas",
+    "newUsername": "Pasirinkite vartotojo vardą",
     "keyPassword": "rakto slaptažodis",
     "pastePrivateKey": "Įklijuokite savo privačią raktą čia...",
     "enterPassword": "Įveskite savo slaptažodį"
@@ -1086,7 +1130,8 @@
         "actionNextTab": "Perjungti į kitą skirtuką",
         "actionPreviousTab": "Perjungti į ankstesnį skirtuką",
         "actionOpenCommandPalette": "Atidaryti greitąją paiešką",
-        "actionReconnectSession": "Perjungti dabartinę sesiją"
+        "actionReconnectSession": "Perjungti dabartinę sesiją",
+        "actionToggleSidebar": "Perjungti šoninę juostą"
       },
       "userProfile": {
         "preset_simple": "Paprasta",
@@ -1228,6 +1273,10 @@
         "title": "Prieiga prie interneto",
         "consequence": "Jis gali siųsti užklausas išorinėms paslaugoms."
       },
+      "network:sockets": {
+        "title": "Atidaryti savo tinklo ryšius",
+        "consequence": "Jis gali klausytis prievadų ir tiesiogiai jungtis prie bet kurios adreso, nereikalaujant, kad Termix tikrintų kiekvieną ryšį."
+      },
       "network:serve": {
         "title": "Priimti ryšius",
         "consequence": "Jis atidaro prievadą Termix serveryje."
@@ -1248,6 +1297,18 @@
         "title": "Siųsti įspėjimus",
         "consequence": "Jums arba kitiems vartotojams, per nustatytus kanalus."
       },
+      "operations:provide": {
+        "title": "Siūlyti veiksmus",
+        "consequence": "Jo veiksmus gali vykdyti Automations, CLI, telefono programėlė ir kitur, naudotojai, kuriems tai leidžiama."
+      },
+      "operations:invoke": {
+        "title": "Vykdyti kitų priedų veiksmus",
+        "consequence": "Veikia prisijungusio naudotojo vardu su manifeste išvardytais veiksmais. Toliau taikomos patvirtinimo taisyklės."
+      },
+      "operations:approve": {
+        "title": "Nustatyti, kas reikalauja patvirtinimo",
+        "consequence": "Gali leisti veiksmus vykdyti be patvirtinimo arba juos blokuoti visiems naudotojams."
+      },
       "notify:hub": {
         "title": "Gauti visus įspėjimus",
         "consequence": "Laiko ir pristato visus įskiepių siunčiamus įspėjimus, įskaitant jų turinį."
@@ -1258,7 +1319,7 @@
       },
       "network:probe": {
         "title": "Patikrinti, ar portai atsako",
-        "consequence": "Gali atidaryti paprastą ryšį su bet kokia adrese nuo serverio, kad pamatytų, ar jis pasiekiamas."
+        "consequence": "Gali atidaryti paprastą ryšį su bet kuriuo adresu iš serverio, kad patikrintų, ar jis pasiekiamas, ir ieškoti serverio vardų."
       },
       "hosts:status-provide": {
         "title": "Teikti serverio būseną",
@@ -1271,6 +1332,10 @@
       "hosts:lock": {
         "title": "Tvarkyti serverius kaip tik skaitymo režimu",
         "consequence": "Serverių, kuriuos jis tvarko, negalima redaguoti, ištrinti ar dalintis kitais būdais."
+      },
+      "hosts:connect-policy": {
+        "title": "Nustatyti, kas gali prisijungti",
+        "consequence": "Gali blokuoti arba leisti visus SSH ir nuotolinio darbalaukio prisijungimus prie bet kurio serverio."
       },
       "desktop:window": {
         "title": "Atidaryti darbalaukio langus",
@@ -1308,6 +1373,10 @@
         "title": "Saugoti savo slaptažodžius",
         "consequence": "Šifruojama Termix. Priedas niekada neturi rakto."
       },
+      "config:secrets": {
+        "title": "Skaityti serverio saugomas paslaptis",
+        "consequence": "Aplinkos kintamieji ir failai serveryje, išskyrus Termix pačių raktus."
+      },
       "settings:read-core": {
         "title": "Skaityti Termix nustatymus",
         "consequence": "Serverio nustatymai, ne jūsų serveriai ar prisijungimo duomenys."
@@ -1328,6 +1397,10 @@
         "title": "Pridėti spalvų temas",
         "consequence": "Tik spalvos ir stiliai. Temoms joks kodas nevykdomas."
       }
+    },
+    "webView": {
+      "unavailable": "Šis puslapis nebepasiekiamas. Atidarykite jį iš naujo iš jo papildinio.",
+      "isolationUnavailable": "Šis naršyklė negali saugiai atidaryti puslapio čia. Naudokite naujausią „Chrome“ arba „Edge“ versiją arba darbalaukio programą."
     },
     "runtime": {
       "needsPlugin": "{{name}} nėra prieinamas",
@@ -1352,7 +1425,7 @@
         "running": "Veikia",
         "disabled": "Išjungta",
         "failed": "Nenumatomai sustabdyta",
-        "blocked": "Laukiama kito priedo",
+        "blocked": "Nepavyksta paleisti",
         "server": "Veikia jūsų serveryje",
         "safeMode": "Išjungta saugiu režimu"
       },
@@ -1374,7 +1447,8 @@
         "version": "Versija",
         "status": "Būsena",
         "category": "Kategorija",
-        "downloads": "Atsisiuntimai"
+        "downloads": "Atsisiuntimai",
+        "memory": "Atmintis"
       },
       "risk": {
         "critical": "Kritinė",
@@ -1461,9 +1535,14 @@
         "updatedMany_few": "Atnaujinti {{count}} priedai",
         "updatedMany_many": "Atnaujinta {{count}} priedų",
         "updatedMany_other": "Atnaujinta {{count}} priedų",
+        "needsReview_one": "1 priedas prašo naujų leidimų. Peržiūrėkite jį, kad atnaujintumėte.",
+        "needsReview_few": "{{count}} priedai prašo naujų leidimų. Peržiūrėkite kiekvieną, kad atnaujintumėte.",
+        "needsReview_many": "{{count}} priedų prašo naujų leidimų. Peržiūrėkite kiekvieną, kad atnaujintumėte.",
+        "needsReview_other": "{{count}} priedai prašo naujų leidimų. Peržiūrėkite kiekvieną, kad atnaujintumėte.",
         "uninstalled": "„{{name}}“ pašalinta",
         "dataDeleted": "„{{name}}“ duomenys ištrinti",
-        "failedToStart": "Nepavyko paleisti „{{name}}“. Atidarykite jį, kad sužinotumėte priežastį."
+        "failedToStart": "Nepavyko paleisti „{{name}}“. Atidarykite jį, kad sužinotumėte priežastį.",
+        "held": "{{name}} laukia {{minutes}} min., kol pakeitimai įsigalios, kad kiti administratoriai galėtų tai pamatyti"
       },
       "errors": {
         "generic": "Kažkas nutiko ne taip",
@@ -1524,6 +1603,27 @@
       "pin": "Palaikyti šią versiją",
       "pinHint": "Laikosi {{version}} ir ignoruoja visus naujinimus, kol tai išjungsite.",
       "pinnedTo": "Pritvirtinta prie {{version}}",
+      "legacy": {
+        "notice_one": "1 papildinys sukurtas senesnei Termix versijai ir lieka išjungtas, kol bus atnaujintas: {{names}}.",
+        "notice_few": "{{count}} papildiniai sukurti senesnei Termix versijai ir lieka išjungti, kol bus atnaujinti: {{names}}.",
+        "notice_many": "{{count}} papildinių sukurti senesnei Termix versijai ir lieka išjungti, kol bus atnaujinti: {{names}}.",
+        "notice_other": "{{count}} papildinių sukurti senesnei Termix versijai ir lieka išjungti, kol bus atnaujinti: {{names}}.",
+        "why": "Jie sukurti papildinių API 1, kuri veikė serveryje. Dabar Termix vykdo kiekvieną papildinį atskiru procesu, todėl kiekvienam reikia versijos, skirtos papildinių API 2. Atnaujinkite oficialius čia, o bendruomenės papildiniui paprašykite autoriaus.",
+        "guide": "Kaip papildiniai pereina prie API 2"
+      },
+      "provenance": {
+        "verified": "Sukompiliuota patikrinta",
+        "verifiedHint": "Jos sukompiliavimo kilmė pasirašyta Termix registro išleidimo darbo srautu ir atitinka šį failą. Atidaro sukompiliavimą.",
+        "unchecked": "Sukompiliuota nepatikrinta",
+        "uncheckedHint": "Jos sukompiliavimo kilmės nebuvo galima patikrinti atsisiunčiant. Jos registro parašas buvo patikrintas."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} jau išleista. 1 papildinys liks išjungtas, kol jį atnaujinsite: {{names}}.",
+        "notice_few": "Termix {{version}} jau išleista. {{count}} papildiniai liks išjungti, kol juos atnaujinsite: {{names}}.",
+        "notice_many": "Termix {{version}} jau išleista. {{count}} papildinių liks išjungti, kol juos atnaujinsite: {{names}}.",
+        "notice_other": "Termix {{version}} jau išleista. {{count}} papildinių liks išjungti, kol juos atnaujinsite: {{names}}.",
+        "needs": "{{name}} (reikia Termix {{range}})"
+      },
       "version": "Versija",
       "versionPickHint": "Įdiekite senesnę versiją vietoj naujausios. Ji išliks šioje versijoje, kol ją atjungsite.",
       "versionPickHintInstalled": "Perjunkite į kitą versiją. Pasirinkus ne naujausią, ji bus pritraukta.",
@@ -1599,7 +1699,13 @@
         "unreachable": "Nepavyko jo perskaityti: {{error}}",
         "filter": "Registras",
         "allRegistries": "Visi registrai",
-        "browseHint": "Įjunkite bendruomenės priedus arba pridėkite savo registrą skirtuke „Registrai“."
+        "browseHint": "Įjunkite bendruomenės priedus arba pridėkite savo registrą skirtuke „Registrai“.",
+        "looksName": "Bendruomenės išdėstymai ir temos",
+        "looksHint": "Leidžia išdėstymams ir temoms, kurios nėra iš „Termix“, veikti už smėlio dėžės ribų, kaip ir oficialiems. Išdėstymas piešia visą programą, todėl gali matyti ir daryti viską, ką galite ir jūs. Įdiekite tik tas, kurioms pasitikite. Pakeitus tai, perkraukite puslapį.",
+        "looksConfirmTitle": "Leisti bendruomenės išdėstymams veikti už smėlio dėžės ribų?",
+        "looksConfirmBody": "Bendruomenės išdėstymas arba tema veiks puslapyje su pilna prieiga prie „Termix“ kaip prisijungęs vartotojas. Tai gali būti rizikinga. Įjunkite tai tik tada, jei pasitikite įdiegtais išdėstymais ir temomis.",
+        "looksConfirm": "Įjungti",
+        "looksSaved": "Išsaugota. Perkraukite puslapį, kad pritaikytumėte."
       },
       "upToDate": "Viskas yra naujausia.",
       "lastChecked": "Paskutinį kartą patikrinta {{time}}",
@@ -1690,8 +1796,30 @@
       "unsupportedHint": "Šio priedo nėra išleista šiai Termix versijai. Atnaujinkite Termix, kad galėtumėte jį įdiegti.",
       "needsTermix": "Reikia Termix {{range}}",
       "showUnsupported": "Rodyti nepalaikomus ({{count}})",
-      "showMore": "Rodyti dar {{count}} (liko {{total}})"
-    }
+      "showMore": "Rodyti dar {{count}} (liko {{total}})",
+      "memory": {
+        "summary": "Atmintis: {{total}} iš {{limit}} | papildiniai {{plugins}} | {{running}} veikia",
+        "lowTitle": "Šiame serveryje trūksta atminties",
+        "lowBody": "Termix ir jo papildiniai naudoja {{total}} iš {{limit}}. Pridėkite daugiau atminties serveriui arba išjunkite papildinius, kurių nenaudojate.",
+        "idle": "Nenaudojamas",
+        "idleHint": "Dabar neveikia. Jis paleidžiamas, kai kažkas jo reikia.",
+        "keptOn": "Lieka veikiantis: {{reason}}",
+        "stopsWhenIdle": "Stabdomas, kai nenaudojamas"
+      }
+    },
+    "firstLoad": {
+      "title": "Ruošiami papildiniai",
+      "progress": "{{done}} iš {{total}}",
+      "hint": "Priedai paleidžiami pirmą kartą. Po to „Termix“ atsidarys iškart.",
+      "skip": "Tęsti"
+    },
+    "framesBlocked": "Priedai negali įkelti savo failų. Tikėtina, kad prisijungimo tarpinis serveris prieš „Termix“ juos blokuoja.",
+    "framesBlockedHelp": "Kaip išspręsti",
+    "framesFailed_one": "Nepavyko įkelti „{{names}}“, todėl jo dalys paslėptos",
+    "framesFailed_few": "Nepavyko įkelti {{count}} priedų, todėl jų dalys paslėptos: {{names}}",
+    "framesFailed_many": "Nepavyko įkelti {{count}} priedų, todėl jų dalys paslėptos: {{names}}",
+    "framesFailed_other": "Nepavyko įkelti {{count}} priedų, todėl jų dalys paslėptos: {{names}}",
+    "framesFailedReload": "Perkrauti"
   },
   "settings": {
     "secretSet": "Nustatyta",
@@ -1747,6 +1875,12 @@
       "title": "Stulpeliai",
       "auto": "Automatiškai",
       "count": "{{count}} pločio"
+    },
+    "pager": {
+      "previous": "Ankstesnis",
+      "next": "Kitas",
+      "page": "{{page}} puslapis",
+      "pageOf": "{{page}} iš {{pages}} puslapio"
     }
   },
   "fields": {
@@ -1769,7 +1903,108 @@
   "rbac": {
     "roles": {
       "admin": "Administratorius",
-      "user": "Vartotojas"
+      "user": "Vartotojas",
+      "viewer": "Žiūrovas",
+      "operator": "Operatorius",
+      "auditor": "Auditorius",
+      "helpdesk": "Pagalbos tarnyba"
+    }
+  },
+  "tileGrid": {
+    "empty": "Dar nėra plytelių. Pridėkite keletą iš sąrašo.",
+    "move": "Vilkite, kad perkeltumėte",
+    "moveTile": "Perkelti „{{tile}}“",
+    "settings": "„{{tile}}“ nustatymai",
+    "remove": "Pašalinti „{{tile}}“",
+    "width": "Plotis",
+    "height": "Aukštis",
+    "addTiles": "Pridėti plyteles",
+    "closePicker": "Uždaryti",
+    "search": "Ieškoti plytelių",
+    "noMatches": "Nėra sutapimų.",
+    "kind": {
+      "all": "Visos",
+      "card": "Kortelės",
+      "chart": "Grafikai",
+      "signal": "Būsena",
+      "action": "Veiksmai",
+      "resource": "Sąrašai",
+      "session": "Sesijos"
+    },
+    "reset": "Atstatyti",
+    "done": "Atlikta"
+  },
+  "diagnostics": {
+    "title": "Diagnostika",
+    "makeReport": "Sukurti diagnostikos ataskaitą",
+    "slowBoot": "Užtrunka? Sukurkite diagnostikos ataskaitą",
+    "troubleSigningIn": "Kyla problemų prisijungiant? Sukurkite diagnostikos ataskaitą",
+    "reportTab": "Ataskaita",
+    "logsTab": "Serverio žurnalai",
+    "intro": "Tai sukuria vieną failą su viskuo, ko Termix reikia norint nustatyti problemą: klaidomis, žurnalais, priedų būsenomis ir užklausų maršrutais iki serverio. Atsisiųskite jį ir pridėkite prie GitHub problemos arba išsiųskite per Discord.",
+    "notAdmin": "Serverio žurnalams ir serverio duomenims reikia administratoriaus teisių. Jei problema yra serveryje, paprašykite administratoriaus taip pat sukurti ataskaitą.",
+    "signedOut": "Jūs nesate prisijungęs, todėl įtraukiami tik naršyklės duomenys.",
+    "whatHappened": "Kas įvyko",
+    "whatHappenedHint": "Pasirinktinai. Ką darėte ir kas nepavyko?",
+    "include": "Įtraukti",
+    "adminOnly": "Reikia administratoriaus",
+    "privacy": "Privatumas",
+    "mask": "Slėpti pavadinimus ir adresus",
+    "maskHint": "IP adresai, serverio pavadinimai, vartotojo vardai ir el. pašto adresai pakeičiami į host-1, user-1 ir t. t. Slaptažodžiai, raktai ir žetonai visada pašalinami.",
+    "domText": "Įtraukti puslapio tekstą",
+    "domTextHint": "Prideda ekrane matomą tekstą prie puslapio struktūros. Numatyta išjungta, nes gali būti rodomi jūsų duomenys.",
+    "warnOnly": "Tik įspėjimai ir klaidos iš serverio žurnalo",
+    "warnOnlyHint": "Mažina failo dydį.",
+    "focus": "Priedas",
+    "focusHint": "Rodo šį priedą pirmiausia ir registruoja problemą jo saugykloje.",
+    "allPlugins": "Visi priedai",
+    "findings": "Patikrinimų nustatyta",
+    "preview": "Kas bus išsiųsta",
+    "previewCut": "(Peržiūra čia baigiasi. Faile yra viskas.)",
+    "cut": "Failas viršijo 5 MB, todėl seniausi žurnalo įrašai buvo nukirpti.",
+    "footerHint": "Prieš siųsdami, patikrinkite peržiūrą.",
+    "copy": "Kopijuoti",
+    "copied": "Ataskaita nukopijuota",
+    "copyFailed": "Nepavyko nukopijuoti ataskaitos",
+    "download": "Atsisiųsti",
+    "downloaded": "Ataskaita atsisiųsta",
+    "openIssue": "Atidaryti GitHub problemą",
+    "logsSearch": "Ieškoti žurnaluose",
+    "logsLevel": "Lygis",
+    "logsAll": "Visi lygiai",
+    "logsWarn": "Įspėjimai ir klaidos",
+    "logsError": "Klaidos",
+    "logsPlugin": "Priedas",
+    "logsCount": "{{count}} eilutės",
+    "logsFailed": "Nepavyko įkelti žurnalų",
+    "logsPause": "Pauzė",
+    "logsResume": "Tęsti",
+    "logsEmpty": "Dar nėra žurnalo įrašų.",
+    "parts": {
+      "server": "Serveris",
+      "plugins": "Priedai",
+      "sections": "Priedo detalės",
+      "logs": "Serverio žurnalai",
+      "request": "Ryšys",
+      "probes": "Ryšio tikrinimai",
+      "errors": "Naršyklės klaidos",
+      "console": "Naršyklės konsolė",
+      "network": "Tinklas",
+      "page": "Naršyklė ir langas",
+      "dom": "Puslapio išdėstymas"
+    },
+    "partHints": {
+      "server": "Versija, duomenų bazė, SSL ir nustatyti nustatymai",
+      "plugins": "Versijos ir būsenos serveryje bei naršyklėje",
+      "sections": "Papildoma informacija, kurią prideda veikianti priedai",
+      "logs": "Serverio žurnalas nuo paleidimo ir naujausios eilutės",
+      "request": "Antraščių pavadinimai, rodantys, kad prieš Termix yra tarpinis serveris",
+      "probes": "Testai, ar Termix ir priedų failai įkeliami",
+      "errors": "Neapdorotos klaidos ir blokuojami įkėlimai",
+      "console": "Naujausios konsolės eilutės iš puslapio ir priedų",
+      "network": "Naujausi užklausos ir jų būsena",
+      "page": "Naršyklė, ekrano dydis ir saugojimo rakto pavadinimai",
+      "dom": "Puslapio išdėstymas, be teksto"
     }
   }
 }

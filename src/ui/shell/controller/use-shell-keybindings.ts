@@ -2,13 +2,17 @@
 import { useEffect, useRef, useState, type MutableRefObject } from "react";
 import type { TabHandle } from "@termix-ssh/plugin-sdk/frontend";
 import {
-  dispatchCtrlW,
   createCommandPaletteShortcutMatcher,
+  isCloseTabKey,
   isShiftKey,
 } from "@/lib/app-keyboard-shortcuts";
+import { isElectron } from "@/lib/electron";
 import { getUserPreferences } from "@/main-axios";
 import { parseCustomKeybindings } from "@/api/open-tabs-api";
-import { findMatchingKeybinding } from "@/lib/keybinding-match";
+import {
+  eventMatchesCombo,
+  findMatchingKeybinding,
+} from "@/lib/keybinding-match";
 import type {
   CustomKeybinding,
   KeybindingActionType,
@@ -16,11 +20,13 @@ import type {
 import {
   GLOBAL_KEYBINDING_EVENT,
   getKeybindingAction,
+  listKeybindingDefaults,
+  SHELL_KEYBINDING_ACTION_IDS,
   runKeybindingAction,
 } from "@/shell/keybinding-registry";
 import { globalShortcutHandler } from "@/lib/global-shortcut-handler";
 import { getPaneNavDirection } from "@/lib/pane-nav-hotkey";
-import { getTabJumpDigit } from "@/lib/tab-jump-hotkey";
+import { getTabJumpDigit, isMacPlatform } from "@/lib/tab-jump-hotkey";
 import type { TabsState } from "./use-tabs";
 import type { SplitActions } from "./use-split";
 import type { ShellPalette, ShellRegions } from "./types";
@@ -53,7 +59,7 @@ export function useShellKeybindings({
           if (cancelled) return;
           globalKeybindingsRef.current = parseCustomKeybindings(
             prefs.customKeybindings,
-          ).filter((binding) => binding.enabled);
+          );
         })
         .catch(() => {});
     };
@@ -78,6 +84,10 @@ export function useShellKeybindings({
         (termRef?.current as TabHandle | null)?.reconnect?.();
         return;
       }
+      if (type === "toggleSidebar") {
+        regions.left.setOpen((open) => !open);
+        return;
+      }
       const currentTabs = tabsRef.current.filter(
         (tab) => !tab.parentSplitTabId,
       );
@@ -97,16 +107,35 @@ export function useShellKeybindings({
       )
         return;
       // Only actions that run anywhere; a terminal's own are its to handle.
+      const customBindings = globalKeybindingsRef.current;
       const binding = findMatchingKeybinding(
         event,
-        globalKeybindingsRef.current.filter(
-          (entry) => getKeybindingAction(entry.action.type)?.scope === "global",
+        customBindings.filter(
+          (entry) =>
+            entry.enabled &&
+            getKeybindingAction(entry.action.type)?.scope === "global",
         ),
       );
-      if (!binding) return;
+      if (binding) {
+        event.preventDefault();
+        event.stopPropagation();
+        runKeybindingAction(binding.action);
+        return;
+      }
+
+      // Plugins run their own defaults, so only the shell's are handled here.
+      const defaultBinding = listKeybindingDefaults().find(
+        (entry) =>
+          SHELL_KEYBINDING_ACTION_IDS.includes(entry.id) &&
+          !customBindings.some(
+            (custom) => custom.overridesDefaultId === entry.id,
+          ) &&
+          eventMatchesCombo(event, entry.combo),
+      );
+      if (!defaultBinding || !getKeybindingAction(defaultBinding.id)) return;
       event.preventDefault();
       event.stopPropagation();
-      runKeybindingAction(binding.action);
+      runKeybindingAction({ type: defaultBinding.id });
     };
     const handleAction = (event: Event) =>
       runAction(
@@ -121,11 +150,18 @@ export function useShellKeybindings({
     };
   }, []);
 
+  // Desktop app on Windows and Linux: Ctrl+W closes the tab unless what has
+  // focus used it, like a terminal for nano or deleting a word. A plugin view
+  // sends up the keys it left alone, so they land here too.
   useEffect(() => {
-    return window.electronAPI?.onCloseActiveTab?.(() => {
-      if (dispatchCtrlW(document.activeElement)) return;
+    if (!isElectron() || isMacPlatform()) return;
+    const handle = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || !isCloseTabKey(event)) return;
+      event.preventDefault();
       closeActiveTabRef.current();
-    });
+    };
+    window.addEventListener("keydown", handle);
+    return () => window.removeEventListener("keydown", handle);
   }, []);
 
   const [commandPaletteShortcutEnabled, setCommandPaletteShortcutEnabled] =
@@ -154,23 +190,26 @@ export function useShellKeybindings({
     };
   }, [commandPaletteShortcutEnabled]);
 
-  // Ctrl+Shift+E toggles between the two most recent sidebar panels.
-  const railView = regions.left.view;
-  const sidebarOpen = regions.left.open;
+  // Ctrl+Shift+E toggles between the two most recent sidebar panels. Read
+  // through a ref: railClick also depends on what the right dock shows.
+  const regionsRef = useRef(regions);
+  regionsRef.current = regions;
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!e.ctrlKey || !e.shiftKey || e.altKey || e.code !== "KeyE") return;
       e.preventDefault();
-      const previous = regions.previousView();
-      if (!sidebarOpen) {
-        regions.left.setOpen(true);
+      const current = regionsRef.current;
+      const previous = current.previousView();
+      if (!current.left.open) {
+        current.left.setOpen(true);
         return;
       }
-      if (previous && previous !== railView) regions.railClick(previous);
+      if (previous && previous !== current.left.view)
+        current.railClick(previous);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [railView, sidebarOpen]);
+  }, []);
 
   // Split-screen and tab navigation hotkeys
   // Also registered in globalShortcutHandler so xterm can invoke directly

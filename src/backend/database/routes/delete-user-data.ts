@@ -3,12 +3,14 @@ import { recentActivity } from "../../plugins/activity-provider.js";
 import {
   createCurrentApiKeyRepository,
   createCurrentAuditLogRepository,
+  createCurrentOperationRepository,
   createCurrentCredentialRepository,
   createCurrentHostFolderRepository,
   createCurrentHostRepository,
   createCurrentHostSidebarPreferenceRepository,
   createCurrentCredentialSidebarPreferenceRepository,
   createCurrentUiPreferenceRepository,
+  createCurrentFrameRegistrationRepository,
   createCurrentOpenTabRepository,
   createCurrentRbacAccessRepository,
   createCurrentRoleRepository,
@@ -61,6 +63,7 @@ export async function deleteUserAndRelatedData(
 
     await createCurrentRoleRepository().removeAllRolesFromUser(userId);
     await createCurrentAuditLogRepository().anonymizeByUserId(userId);
+    await createCurrentOperationRepository().anonymizeUser(userId);
 
     await createCurrentSshCredentialUsageRepository().deleteByUserId(userId);
 
@@ -73,6 +76,7 @@ export async function deleteUserAndRelatedData(
       userId,
     );
     await createCurrentUiPreferenceRepository().deleteByUserId(userId);
+    await createCurrentFrameRegistrationRepository().deleteByUserId(userId);
     await createCurrentHostRepository().deleteByUserId(userId);
     await createCurrentCredentialRepository().deleteByUserId(userId);
 

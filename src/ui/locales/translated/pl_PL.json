@@ -131,6 +131,8 @@
     "updateLinkLabel": "Dostępna aktualizacja. Otwórz informacje o wydaniu na GitHubie"
   },
   "common": {
+    "showPassword": "Pokaż hasło",
+    "hidePassword": "Ukryj hasło",
     "scrollTabsLeft": "Przewiń karty w lewo",
     "scrollTabsRight": "Przewiń karty w prawo",
     "close": "Zamknij",
@@ -215,7 +217,22 @@
     "pluginsLoadFailed": "Nie udało się załadować listy wtyczek. Możesz wybrać wtyczki później z karty Wtyczki.",
     "securityTitle": "Zabezpiecz swoje konto",
     "securityIntro": "Dodaj klucz dostępu lub aplikację uwierzytelniającą do swojego konta. Możesz to również zrobić później w Ustawieniach, w sekcji Bezpieczeństwo.",
-    "pluginsDocsLink": "Przeczytaj o każdej z nich"
+    "pluginsDocsLink": "Przeczytaj o każdej z nich",
+    "layoutTitle": "Wybierz układ",
+    "layoutIntro": "Układ decyduje o rozmieszczeniu elementów aplikacji: menu, paska bocznego i kart. Kliknij, aby go użyć. Zmiana następuje natychmiast.",
+    "layoutInstalled": "Zainstalowane",
+    "layoutMore": "Więcej układów",
+    "layoutNoMore": "Obecnie nie ma innych dostępnych układów.",
+    "layoutDefault": "Domyślny",
+    "layoutInstall": "Zainstaluj",
+    "layoutTurnOn": "Włącz",
+    "layoutVideo": "Obejrzyj film",
+    "layoutChangeLater": "Układ możesz zmienić w dowolnym momencie w Ustawieniach, w sekcji Wygląd. Jeśli chcesz zainstalować więcej układów, skontaktuj się z administratorem.",
+    "layoutChangeLaterAdmin": "Układ możesz zmienić w dowolnym momencie w Ustawieniach, w sekcji Wygląd. Więcej układów można zainstalować później z karty Wtyczki."
+  },
+  "desktopTray": {
+    "noticeTitle": "Termix nadal działa",
+    "noticeBody": "Zamknięcie okna pozostawia Termix działający w zasobniku. Aby zakończyć działanie, otwórz menu ikony w zasobniku i wybierz opcję Zakończ. Możesz wyłączyć tę funkcję w ustawieniach."
   },
   "desktopUpdates": {
     "modeAutomatic": "Automatycznie",
@@ -503,6 +520,7 @@
     "deleteSelected": "Usuń",
     "exitSelection": "Zakończ zaznaczanie",
     "collapseBtn": "Zwiń",
+    "importExportBtn": "Importuj / Eksportuj",
     "hostStatusesRefreshed": "Statusy hostów zostały odświeżone",
     "failedToRefreshHosts": "Nie udało się odświeżyć hostów",
     "movedHostTo": "Przeniesiono {{host}} do \"{{folder}}\"",
@@ -621,6 +639,7 @@
     "hostClickBehavior": "Kliknięcie hosta",
     "hostClickBehaviorDesc": "Co się stanie, gdy klikniesz hosta, który ma już otwartą kartę. Kliknięcie z Ctrl/Cmd, kliknięcie środkowym przyciskiem lub opcja „Otwórz w nowej karcie” zawsze tworzą nową kartę.",
     "hostClickNewTab": "Zawsze otwieraj nową kartę",
+    "hostClickHostPage": "Otwórz stronę hosta, jeśli wtyczka ją oferuje",
     "hostClickFocusExisting": "Przełącz na otwartą kartę",
     "hostClickFocusExistingDoubleNew": "Kliknij, aby przełączyć, podwójne kliknięcie dla nowej karty",
     "openInNewTab": "Otwórz w nowej karcie",
@@ -852,7 +871,12 @@
     "editorUpdate": "Aktualizuj hosta",
     "editorAdd": "Dodaj hosta",
     "speedSearch": "Szukaj hostów. Strzałki do wyboru, Enter do połączenia, Esc do zamknięcia",
-    "speedSearchList": "Lista hostów. Pisz lub naciśnij / aby szukać."
+    "speedSearchList": "Lista hostów. Pisz lub naciśnij / aby szukać.",
+    "openFromLink": {
+      "title": "Otworzyć {{name}}?",
+      "description": "Link poprosił Termix o połączenie z tym hostem.",
+      "confirm": "Połącz"
+    }
   },
   "splitScreen": {
     "title": "Podzielony ekran",
@@ -933,6 +957,16 @@
     "empty": "Brak kart. Użyj opcji Dodaj poniżej, aby umieścić karty."
   },
   "auth": {
+    "inviteIntro": "Zostałeś zaproszony na ten serwer. Wybierz nazwę użytkownika i hasło, aby utworzyć konto.",
+    "inviteInvalid": "To zaproszenie wygasło lub zostało już użyte. Poproś administratora o nowe.",
+    "accountDisabled": "To konto jest wyłączone. Poproś administratora o jego ponowne włączenie.",
+    "accountPending": "Twoje konto oczekuje na zatwierdzenie przez administratora.",
+    "stepUp": {
+      "title": "Zweryfikuj tożsamość",
+      "description": "Potwierdź drugi czynnik uwierzytelniający, aby kontynuować.",
+      "noFactor": "Nie masz skonfigurowanego drugiego czynnika uwierzytelniającego. Dodaj go w Ustawieniach, a następnie spróbuj ponownie.",
+      "failed": "To nie zadziałało. Spróbuj ponownie."
+    },
     "tagline": "Zarządzanie serwerami hostowane lokalnie, oparte na wtyczkach.",
     "loginTitle": "Witaj ponownie",
     "registerTitle": "Utwórz konto",
@@ -959,6 +993,14 @@
     "loginWithExternal": "Zaloguj się za pomocą dostawcy zewnętrznego",
     "loginWithExternalDesc": "Zaloguj się, używając skonfigurowanego zewnętrznego dostawcy tożsamości",
     "loginWithProvider": "Zaloguj się przez {{name}}",
+    "pluginLogin": {
+      "signIn": "Zaloguj się",
+      "verify": "Zweryfikuj",
+      "code": "Kod",
+      "useKey": "Użyj klucza bezpieczeństwa",
+      "keyPrompt": "Użyj klucza bezpieczeństwa lub passkey, aby kontynuować.",
+      "keyFailed": "Krok z kluczem bezpieczeństwa nie powiódł się. Spróbuj ponownie."
+    },
     "resetPasswordButton": "Resetuj hasło",
     "sendResetCode": "Wyślij kod resetowania",
     "resetCodeDesc": "Wprowadź nazwę użytkownika, aby otrzymać kod resetowania hasła. Kod zostanie wyświetlony w logach kontenera Docker.",
@@ -1036,6 +1078,8 @@
     "registrationSuccess": "Rejestracja udana"
   },
   "placeholders": {
+    "username": "Twój login",
+    "newUsername": "Wybierz login",
     "keyPassword": "hasło klucza",
     "pastePrivateKey": "Wklej tutaj swój klucz prywatny...",
     "enterPassword": "Wprowadź swoje hasło"
@@ -1086,7 +1130,8 @@
         "actionNextTab": "Przełącz na następną kartę",
         "actionPreviousTab": "Przełącz na poprzednią kartę",
         "actionOpenCommandPalette": "Otwórz szybkie wyszukiwanie",
-        "actionReconnectSession": "Ponownie połącz bieżącą sesję"
+        "actionReconnectSession": "Ponownie połącz bieżącą sesję",
+        "actionToggleSidebar": "Przełącz pasek boczny"
       },
       "userProfile": {
         "preset_simple": "Prosty",
@@ -1228,6 +1273,10 @@
         "title": "Dostęp do internetu",
         "consequence": "Może wysyłać żądania do zewnętrznych usług."
       },
+      "network:sockets": {
+        "title": "Otwieranie własnych połączeń sieciowych",
+        "consequence": "Może nasłuchiwać na portach i łączyć się bezpośrednio z dowolnym adresem, bez sprawdzania każdego połączenia przez Termix."
+      },
       "network:serve": {
         "title": "Akceptowanie połączeń",
         "consequence": "Otwiera port na serwerze Termix."
@@ -1248,6 +1297,18 @@
         "title": "Wysyłanie alertów",
         "consequence": "Do Ciebie lub innych użytkowników, przez skonfigurowane przez nich kanały."
       },
+      "operations:provide": {
+        "title": "Oferuj akcje",
+        "consequence": "Jej akcje mogą być uruchamiane z Automatyzacji, CLI, aplikacji mobilnej i innych miejsc przez użytkowników, którzy mają do nich uprawnienia."
+      },
+      "operations:invoke": {
+        "title": "Uruchamiaj akcje innych wtyczek",
+        "consequence": "Działa w imieniu zalogowanego użytkownika dla akcji wymienionych w jej manifeście. Zasady zatwierdzania nadal obowiązują."
+      },
+      "operations:approve": {
+        "title": "Decyduj, co wymaga zatwierdzenia",
+        "consequence": "Może pozwalać na uruchamianie akcji bez zatwierdzenia lub je blokować dla każdego użytkownika."
+      },
       "notify:hub": {
         "title": "Otrzymywanie wszystkich alertów",
         "consequence": "Przechowuje i dostarcza alerty wysyłane przez wszystkie wtyczki, w tym ich treść."
@@ -1258,7 +1319,7 @@
       },
       "network:probe": {
         "title": "Sprawdź, czy porty odpowiadają",
-        "consequence": "Może otwierać zwykłe połączenie z dowolnym adresem z serwera, aby sprawdzić, czy jest on osiągalny."
+        "consequence": "Może otwierać zwykłe połączenia z dowolnym adresem z serwera, aby sprawdzić, czy jest osiągalny, oraz wyszukiwać nazwy hostów."
       },
       "hosts:status-provide": {
         "title": "Dostarczaj status hosta",
@@ -1271,6 +1332,10 @@
       "hosts:lock": {
         "title": "Zarządzaj hostami w trybie tylko do odczytu",
         "consequence": "Hosty nimi zarządzane nie mogą być edytowane, usuwane ani udostępniane ponownie przez innych użytkowników."
+      },
+      "hosts:connect-policy": {
+        "title": "Decyduj, kto może się łączyć",
+        "consequence": "Może blokować lub zezwalać na każde połączenie SSH i zdalnego pulpitu z dowolnym hostem."
       },
       "desktop:window": {
         "title": "Otwieranie okien pulpitu",
@@ -1308,6 +1373,10 @@
         "title": "Przechowywanie własnych haseł",
         "consequence": "Szyfrowane przez Termix. Wtyczka nigdy nie posiada klucza."
       },
+      "config:secrets": {
+        "title": "Czytanie haseł przechowywanych na serwerze",
+        "consequence": "Zmienne środowiskowe i pliki na serwerze, z wyjątkiem własnych kluczy Termix."
+      },
       "settings:read-core": {
         "title": "Odczytywanie ustawień Termix",
         "consequence": "Ustawienia serwera, a nie Twoich hostów ani danych logowania."
@@ -1328,6 +1397,10 @@
         "title": "Dodaj motywy kolorystyczne",
         "consequence": "Tylko kolory i style. Żaden kod nie jest uruchamiany dla motywu."
       }
+    },
+    "webView": {
+      "unavailable": "Ta strona nie jest już dostępna. Otwórz ją ponownie z jej wtyczki.",
+      "isolationUnavailable": "Ta przeglądarka nie może bezpiecznie otworzyć strony tutaj. Użyj najnowszej wersji Chrome lub Edge lub aplikacji desktopowej."
     },
     "runtime": {
       "needsPlugin": "{{name}} nie jest dostępny",
@@ -1352,7 +1425,7 @@
         "running": "Uruchomione",
         "disabled": "Wyłączone",
         "failed": "Zatrzymane nieoczekiwanie",
-        "blocked": "Oczekiwanie na inną wtyczkę",
+        "blocked": "Nie można uruchomić",
         "server": "Uruchamiane na Twoim serwerze",
         "safeMode": "Wyłączone w trybie awaryjnym"
       },
@@ -1374,7 +1447,8 @@
         "version": "Wersja",
         "status": "Status",
         "category": "Kategoria",
-        "downloads": "Pobrania"
+        "downloads": "Pobrania",
+        "memory": "Pamięć"
       },
       "risk": {
         "critical": "Krytyczne",
@@ -1461,9 +1535,14 @@
         "updatedMany_few": "{{count}} wtyczki zaktualizowane",
         "updatedMany_many": "{{count}} zaktualizowanych wtyczek",
         "updatedMany_other": "{{count}} wtyczki zaktualizowane",
+        "needsReview_one": "1 wtyczka prosi o nowe uprawnienia. Przeglądaj ją, aby zaktualizować.",
+        "needsReview_few": "{{count}} wtyczek prosi o nowe uprawnienia. Przeglądaj każdą z nich, aby zaktualizować.",
+        "needsReview_many": "{{count}} wtyczek prosi o nowe uprawnienia. Przeglądaj każdą z nich, aby zaktualizować.",
+        "needsReview_other": "{{count}} wtyczek prosi o nowe uprawnienia. Przeglądaj każdą z nich, aby zaktualizować.",
         "uninstalled": "{{name}} odinstalowane",
         "dataDeleted": "Dane dla {{name}} usunięte",
-        "failedToStart": "Nie udało się uruchomić {{name}}. Otwórz, aby zobaczyć przyczynę."
+        "failedToStart": "Nie udało się uruchomić {{name}}. Otwórz, aby zobaczyć przyczynę.",
+        "held": "{{name}} czeka {{minutes}} minut, zanim zmiana zostanie zastosowana, aby inni administratorzy mogli ją zobaczyć"
       },
       "errors": {
         "generic": "Coś poszło nie tak",
@@ -1524,6 +1603,27 @@
       "pin": "Zablokuj tę wersję",
       "pinHint": "Zostaje przy wersji {{version}} i pomija wszystkie aktualizacje, dopóki nie wyłączysz tej opcji.",
       "pinnedTo": "Zablokowano do wersji {{version}}",
+      "legacy": {
+        "notice_one": "1 wtyczka została stworzona dla starszej wersji Termix i pozostanie wyłączona do czasu jej aktualizacji: {{names}}.",
+        "notice_few": "{{count}} wtyczki zostały stworzone dla starszej wersji Termix i pozostaną wyłączone do czasu ich aktualizacji: {{names}}.",
+        "notice_many": "{{count}} wtyczek zostało stworzonych dla starszej wersji Termix i pozostaną wyłączone do czasu ich aktualizacji: {{names}}.",
+        "notice_other": "{{count}} wtyczek zostało stworzonych dla starszej wersji Termix i pozostaną wyłączone do czasu ich aktualizacji: {{names}}.",
+        "why": "Zostały stworzone dla interfejsu API wtyczek 1, który działał wewnątrz serwera. Termix teraz uruchamia każdą wtyczkę w osobnym procesie, więc każda potrzebuje wersji stworzonej dla interfejsu API wtyczek 2. Zaktualizuj oficjalne wtyczki tutaj i poproś autora wtyczki społecznościowej o nową wersję.",
+        "guide": "Jak wtyczki przechodzą na interfejs API 2"
+      },
+      "provenance": {
+        "verified": "Budowanie zweryfikowane",
+        "verifiedHint": "Pochodzenie budowania zostało podpisane przez workflow wydawania rejestru Termix i zgadza się z tym plikiem. Otwiera budowanie.",
+        "unchecked": "Budowanie niezweryfikowane",
+        "uncheckedHint": "Pochodzenie budowania nie mogło zostać zweryfikowane podczas pobierania. Jego podpis rejestru został."
+      },
+      "updateCheck": {
+        "notice_one": "Termix {{version}} jest już dostępny. 1 wtyczka pozostanie wyłączona, dopóki jej nie zaktualizujesz: {{names}}.",
+        "notice_few": "Termix {{version}} jest już dostępny. {{count}} wtyczki pozostaną wyłączone, dopóki ich nie zaktualizujesz: {{names}}.",
+        "notice_many": "Termix {{version}} jest już dostępny. {{count}} wtyczek pozostanie wyłączonych, dopóki ich nie zaktualizujesz: {{names}}.",
+        "notice_other": "Termix {{version}} jest już dostępny. {{count}} wtyczek pozostanie wyłączonych, dopóki ich nie zaktualizujesz: {{names}}.",
+        "needs": "{{name}} (wymaga Termix {{range}})"
+      },
       "version": "Wersja",
       "versionPickHint": "Zainstaluj starszą wersję zamiast najnowszej. Zostanie przy tej wersji, dopóki nie odblokujesz jej.",
       "versionPickHintInstalled": "Przełącz na inną wersję. Wybór wersji innej niż najnowsza blokuje ją.",
@@ -1599,7 +1699,13 @@
         "unreachable": "Nie udało się odczytać: {{error}}",
         "filter": "Rejestr",
         "allRegistries": "Wszystkie rejestry",
-        "browseHint": "Włącz wtyczki społecznościowe lub dodaj własny rejestr w zakładce Rejestry."
+        "browseHint": "Włącz wtyczki społecznościowe lub dodaj własny rejestr w zakładce Rejestry.",
+        "looksName": "Układy i motywy społeczności",
+        "looksHint": "Pozwala układom i motywom spoza Termix działać poza piaskownicą, tak jak oficjalne. Układ rysuje całą aplikację, więc może widzieć i robić wszystko, co Ty. Instaluj tylko te, którym ufasz. Odśwież stronę po zmianie tej opcji.",
+        "looksConfirmTitle": "Pozwolić układom społeczności działać poza piaskownicą?",
+        "looksConfirmBody": "Układ lub motyw społeczności będzie działał na stronie z pełnym dostępem do Termix jako zalogowany użytkownik. To może być ryzykowne. Włącz tę opcję tylko wtedy, gdy ufasz instalowanym układom i motywom.",
+        "looksConfirm": "Włącz",
+        "looksSaved": "Zapisano. Odśwież stronę, aby zastosować zmiany."
       },
       "upToDate": "Wszystko jest aktualne.",
       "lastChecked": "Ostatnio sprawdzono {{time}}",
@@ -1690,8 +1796,30 @@
       "unsupportedHint": "Żadna wersja tej wtyczki nie działa na tej wersji Termix. Zaktualizuj Termix, aby ją zainstalować.",
       "needsTermix": "Wymaga Termix {{range}}",
       "showUnsupported": "Pokaż nieobsługiwane ({{count}})",
-      "showMore": "Pokaż {{count}} więcej (pozostało {{total}})"
-    }
+      "showMore": "Pokaż {{count}} więcej (pozostało {{total}})",
+      "memory": {
+        "summary": "Pamięć: {{total}} z {{limit}} | wtyczki {{plugins}} | {{running}} uruchomionych",
+        "lowTitle": "Ten serwer ma mało pamięci",
+        "lowBody": "Termix i jego wtyczki używają {{total}} z {{limit}}. Dodaj więcej pamięci do serwera lub wyłącz wtyczki, których nie używasz.",
+        "idle": "Bezczynny",
+        "idleHint": "Nie działa teraz. Uruchamia się, gdy coś go potrzebuje.",
+        "keptOn": "Pozostaje uruchomiony: {{reason}}",
+        "stopsWhenIdle": "Zatrzymuje się, gdy jest bezczynny"
+      }
+    },
+    "firstLoad": {
+      "title": "Przygotowywanie wtyczek",
+      "progress": "{{done}} z {{total}}",
+      "hint": "Wtyczki uruchamiają się po raz pierwszy. Po tym Termix będzie otwierać się od razu.",
+      "skip": "Kontynuuj"
+    },
+    "framesBlocked": "Wtyczki nie mogą załadować swoich plików. Prawdopodobnie proxy logowania przed Termixem je blokuje.",
+    "framesBlockedHelp": "Jak naprawić",
+    "framesFailed_one": "{{names}} nie mógł się załadować, więc jego elementy są ukryte",
+    "framesFailed_few": "{{count}} wtyczek nie mogło się załadować, więc ich elementy są ukryte: {{names}}",
+    "framesFailed_many": "{{count}} wtyczek nie mogło się załadować, więc ich elementy są ukryte: {{names}}",
+    "framesFailed_other": "{{count}} wtyczek nie mogło się załadować, więc ich elementy są ukryte: {{names}}",
+    "framesFailedReload": "Odśwież"
   },
   "settings": {
     "secretSet": "Ustawione",
@@ -1747,6 +1875,12 @@
       "title": "Kolumny",
       "auto": "Automatycznie",
       "count": "Szerokość: {{count}}"
+    },
+    "pager": {
+      "previous": "Poprzednia",
+      "next": "Następna",
+      "page": "Strona {{page}}",
+      "pageOf": "Strona {{page}} z {{pages}}"
     }
   },
   "fields": {
@@ -1769,7 +1903,108 @@
   "rbac": {
     "roles": {
       "admin": "Administrator",
-      "user": "Użytkownik"
+      "user": "Użytkownik",
+      "viewer": "Obserwator",
+      "operator": "Operator",
+      "auditor": "Revisor",
+      "helpdesk": "Wsparcie techniczne"
+    }
+  },
+  "tileGrid": {
+    "empty": "Brak kafelków. Dodaj kilka z listy.",
+    "move": "Przeciągnij, aby przenieść",
+    "moveTile": "Przenieś {{tile}}",
+    "settings": "Ustawienia {{tile}}",
+    "remove": "Usuń {{tile}}",
+    "width": "Szerokość",
+    "height": "Wysokość",
+    "addTiles": "Dodaj kafelki",
+    "closePicker": "Zamknij",
+    "search": "Szukaj kafelków",
+    "noMatches": "Brak wyników.",
+    "kind": {
+      "all": "Wszystkie",
+      "card": "Karty",
+      "chart": "Wykresy",
+      "signal": "Status",
+      "action": "Akcje",
+      "resource": "Listy",
+      "session": "Sesje"
+    },
+    "reset": "Resetuj",
+    "done": "Gotowe"
+  },
+  "diagnostics": {
+    "title": "Diagnostyka",
+    "makeReport": "Utwórz raport diagnostyczny",
+    "slowBoot": "Trwa to chwilę? Utwórz raport diagnostyczny",
+    "troubleSigningIn": "Problemy z logowaniem? Utwórz raport diagnostyczny",
+    "reportTab": "Raport",
+    "logsTab": "Dzienniki serwera",
+    "intro": "Tworzy jeden plik zawierający informacje potrzebne Termixowi do znalezienia problemu: błędy, dzienniki, stany wtyczek oraz sposób dotarcia żądań do serwera. Pobierz go i dołącz do zgłoszenia na GitHubie lub wyślij na Discordzie.",
+    "notAdmin": "Dzienniki serwera i szczegóły serwera wymagają uprawnień administratora. Poproś administratora o utworzenie raportu, jeśli problem leży po stronie serwera.",
+    "signedOut": "Nie jesteś zalogowany, więc raport zawiera tylko dane z przeglądarki.",
+    "whatHappened": "Co się stało",
+    "whatHappenedHint": "Opcjonalnie. Co zrobiłeś i co poszło nie tak?",
+    "include": "Dołącz",
+    "adminOnly": "Wymaga administratora",
+    "privacy": "Prywatność",
+    "mask": "Ukryj nazwy i adresy",
+    "maskHint": "Adresy IP, nazwy hostów, nazwy użytkowników i adresy e-mail zostaną zastąpione przez host-1, user-1 itd. Hasła, klucze i tokeny są zawsze usuwane.",
+    "domText": "Dołącz tekst strony",
+    "domTextHint": "Dodaje tekst widoczny na ekranie do układu strony. Domyślnie wyłączone, ponieważ może ujawnić Twoje dane.",
+    "warnOnly": "Tylko ostrzeżenia i błędy z dziennika serwera",
+    "warnOnlyHint": "Zmniejsza rozmiar pliku.",
+    "focus": "Wtyczka",
+    "focusHint": "Wyświetla tę wtyczkę na początku i zgłasza problem w jej repozytorium.",
+    "allPlugins": "Wszystkie wtyczki",
+    "findings": "Wyniki sprawdzania",
+    "preview": "Co zostanie wysłane",
+    "previewCut": "(Podgląd kończy się tutaj. Plik zawiera wszystko.)",
+    "cut": "Plik przekroczył 5 MB, więc najstarsze wpisy dziennika zostały usunięte.",
+    "footerHint": "Sprawdź podgląd przed wysłaniem.",
+    "copy": "Kopiuj",
+    "copied": "Raport skopiowany",
+    "copyFailed": "Nie udało się skopiować raportu",
+    "download": "Pobierz",
+    "downloaded": "Raport pobrany",
+    "openIssue": "Otwórz zgłoszenie na GitHubie",
+    "logsSearch": "Szukaj w dziennikach",
+    "logsLevel": "Poziom",
+    "logsAll": "Wszystkie poziomy",
+    "logsWarn": "Ostrzeżenia i błędy",
+    "logsError": "Błędy",
+    "logsPlugin": "Wtyczka",
+    "logsCount": "{{count}} wierszy",
+    "logsFailed": "Nie udało się załadować dzienników",
+    "logsPause": "Wstrzymaj",
+    "logsResume": "Wznów",
+    "logsEmpty": "Brak wpisów w dzienniku.",
+    "parts": {
+      "server": "Serwer",
+      "plugins": "Wtyczki",
+      "sections": "Szczegóły wtyczki",
+      "logs": "Dzienniki serwera",
+      "request": "Połączenie",
+      "probes": "Sprawdzanie połączenia",
+      "errors": "Błędy przeglądarki",
+      "console": "Konsola przeglądarki",
+      "network": "Sieć",
+      "page": "Przeglądarka i okno",
+      "dom": "Układ strony"
+    },
+    "partHints": {
+      "server": "Wersja, baza danych, SSL i ustawione opcje",
+      "plugins": "Wersje i stany na serwerze oraz w przeglądarce",
+      "sections": "Dodatkowe szczegóły dodawane przez uruchomione wtyczki",
+      "logs": "Dziennik serwera od uruchomienia i ostatnie wpisy",
+      "request": "Nagłówki wskazujące na proxy przed Termix",
+      "probes": "Testy ładowania Termix i plików wtyczek",
+      "errors": "Nieobsłużone błędy i zablokowane ładowania",
+      "console": "Ostatnie wpisy konsoli ze strony i wtyczek",
+      "network": "Ostatnie żądania i ich status",
+      "page": "Przeglądarka, rozmiar ekranu i nazwy kluczy pamięci",
+      "dom": "Układ strony bez tekstu"
     }
   }
 }

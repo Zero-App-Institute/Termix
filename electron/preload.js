@@ -4,7 +4,6 @@ const ALLOWED_INVOKE_CHANNELS = new Set([
   "get-desktop-settings",
   "get-previous-server-url",
   "save-desktop-settings",
-  "allow-invalid-certificate-for-origin",
 ]);
 
 function invokeAllowed(channel, ...args) {
@@ -32,6 +31,14 @@ contextBridge.exposeInMainWorld("electronAPI", {
     webFrame.setZoomFactor(Math.min(2, Math.max(0.5, value)));
   },
   getPlatform: () => ipcRenderer.invoke("get-platform"),
+
+  // termix:// links and --host shortcuts. The callback gets every new one,
+  // and the returned promise the ones that came before it listened.
+  onDeepLink: (callback) => {
+    const listener = (_event, link) => callback(link);
+    ipcRenderer.on("deep-link", listener);
+    return ipcRenderer.invoke("deep-link:take");
+  },
 
   // Whether the app-drawn title bar shows in this window, and when it changes
   // (full screen hides it).
@@ -72,13 +79,11 @@ contextBridge.exposeInMainWorld("electronAPI", {
   getSetting: (key) => ipcRenderer.invoke("get-setting", key),
   setSetting: (key, value) => ipcRenderer.invoke("set-setting", key, value),
 
-  onCloseActiveTab: (callback) => {
-    const listener = () => callback();
-    ipcRenderer.on("close-active-tab", listener);
-    return () => ipcRenderer.removeListener("close-active-tab", listener);
-  },
-
   clearSessionCookies: () => ipcRenderer.invoke("clear-session-cookies"),
+
+  // Translated text for the notice shown the first time closing the window
+  // leaves the app running in the tray.
+  setTrayNoticeText: (text) => ipcRenderer.send("set-tray-notice-text", text),
 
   externalBrowserLogin: (authUrl, callbackPort) =>
     ipcRenderer.invoke("external-browser-login", authUrl, callbackPort),
@@ -91,6 +96,7 @@ contextBridge.exposeInMainWorld("electronAPI", {
     ipcRenderer.invoke("create-temp-folder", folderData),
   startDragToDesktop: (dragData) =>
     ipcRenderer.invoke("start-drag-to-desktop", dragData),
+  startDragFiles: (tempIds) => ipcRenderer.send("start-drag-files", tempIds),
   cleanupTempFile: (tempId) => ipcRenderer.invoke("cleanup-temp-file", tempId),
 
   // Native web views placed over an element of the page (WebContentsView).

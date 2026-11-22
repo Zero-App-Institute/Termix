@@ -35,7 +35,8 @@ import {
   capabilityRefused,
   hasCapability,
 } from "./permissions.js";
-import { getActor, runAsActor } from "./actor.js";
+import { getActor, getActorSessionId, runAsActor } from "./actor.js";
+import { createViewGrant } from "./web-view-grants.js";
 import { DisposableBag } from "./disposables.js";
 import {
   createPluginRouter,
@@ -50,6 +51,7 @@ import {
   type PluginContext,
   type PluginModule,
   type PluginOpenIsolatedWindowRequest,
+  type PluginViewGrantRequest,
   type PluginExternalClientRequest,
 } from "@termix-ssh/plugin-sdk/backend";
 import type { PluginTableDefinition } from "@termix-ssh/plugin-sdk/db";
@@ -68,12 +70,15 @@ import { createPluginAuth, createPluginSsh } from "./ctx-ssh-auth.js";
 import { createPluginHosts } from "./ctx-hosts.js";
 import { createPluginSchedule } from "./schedule.js";
 import { createPluginFetch, createPluginNotify } from "./ctx-notify.js";
+import { createPluginOperations } from "./ctx-operations.js";
 import { createPluginProcess } from "./ctx-process.js";
 import { createPluginSystem } from "./ctx-system.js";
 import { createPluginPlugins } from "./ctx-plugins.js";
 import { createPluginUsers } from "./ctx-users.js";
+import { provideDiagnosticsSection } from "../diagnostics/sections.js";
 import { createPluginCredentials } from "./ctx-credentials.js";
 import { isElectronIpcAvailable } from "../utils/electron-ipc-bridge.js";
+import { answeredSync } from "./api1-sync.js";
 
 export type { PluginModule };
 
@@ -359,6 +364,34 @@ export function createPluginContext(
     { action: "files_data_dir", once: true },
   );
 
+  // Audited once per variable: a plugin may read its file every few seconds.
+  const envFilesAudited = new Set<string>();
+  const filesReadEnvFile = async (name: string) => {
+    const { readPluginEnvFile } = await import("./env-files.js");
+    const result = await readPluginEnvFile(manifest, String(name));
+    if (!envFilesAudited.has(name)) {
+      envFilesAudited.add(name);
+      void auditCall("files_read_env_file", `read the file named in ${name}`, {
+        success: true,
+      });
+    }
+    return result;
+  };
+
+  const filesReadSecret = guarded(
+    manifest,
+    "config:secrets",
+    async (ref: { env: string } | { file: string }) => {
+      const { readConfigSecret } = await import("./env-files.js");
+      return readConfigSecret(ref);
+    },
+    {
+      action: "files_read_secret",
+      details: () => "read a secret named in a config file",
+      once: true,
+    },
+  );
+
   const dbDefine = guarded(
     manifest,
     "db:own",
@@ -429,6 +462,46 @@ export function createPluginContext(
     {
       action: "desktop_open_isolated_window",
       details: () => "opened an isolated Electron window",
+    },
+  );
+
+  const desktopGrantView = guarded(
+    manifest,
+    "desktop:window",
+    async (request: PluginViewGrantRequest) => {
+      const userId = getActor();
+      if (!userId) {
+        throw new Error(
+          `Plugin ${pluginId} can only grant a view inside a person's request`,
+        );
+      }
+      const entry = createViewGrant({
+        pluginId,
+        userId,
+        sessionId: getActorSessionId(),
+        url: request?.url,
+        ignoreCert: request?.ignoreCert,
+      });
+      // The desktop app's main process keeps its own copy, so a native view
+      // opens from the grant alone and never from an address the page sends.
+      // The user it is granted to picks which kept login the view shares.
+      const { isElectronIpcAvailable, requestFromElectronMain } =
+        await import("../utils/electron-ipc-bridge.js");
+      if (isElectronIpcAvailable()) {
+        await requestFromElectronMain("web-view-grant", {
+          grant: entry.grant,
+          pluginId,
+          url: entry.url,
+          ignoreCert: entry.ignoreCert,
+          userId,
+          expiresAt: entry.expiresAt,
+        }).catch(() => undefined);
+      }
+      return { grant: entry.grant, expiresAt: entry.expiresAt };
+    },
+    {
+      action: "desktop_grant_view",
+      details: () => "let its frames show a page",
     },
   );
 
@@ -536,6 +609,19 @@ export function createPluginContext(
       define: (definition) => dbDefine(definition) as never,
       client: () => dbClient() as never,
       refs: () => dbRefs() as never,
+      // Every statement or none. The plugin's own process sends these to core,
+      // which checks each one (sandbox/bridge.ts).
+      batch: async (queries) => {
+        await assertCapability(pluginId, "db:own", manifest.capabilities);
+        const { runPluginSqlBatch } = await import("./sandbox/db-exec.js");
+        await runPluginSqlBatch(
+          resolveDatabaseDialect(),
+          queries.map((query) => {
+            const { sql, params } = query.toSQL();
+            return { sql, params, method: "run" };
+          }),
+        );
+      },
       // Gated but not audited: it follows every write, and client() was
       // already audited when the plugin first asked for it.
       persist: async (options) => {
@@ -565,6 +651,8 @@ export function createPluginContext(
 
     files: {
       dataDir: () => filesDataDir(),
+      readEnvFile: (name) => filesReadEnvFile(name),
+      readSecret: (ref) => filesReadSecret(ref),
     },
 
     registry: {
@@ -579,10 +667,12 @@ export function createPluginContext(
         );
       },
       consume: (key) => registry.consume(key),
-      revoke: (key, value) => {
-        assertOwnRegistryKey(pluginId, key);
-        return registry.revoke(key, value);
-      },
+      revoke: answeredSync<PluginContext["registry"]["revoke"]>(
+        (key: string, value?: unknown) => {
+          assertOwnRegistryKey(pluginId, key);
+          return registry.revoke(key, value);
+        },
+      ),
     },
 
     services: {
@@ -647,7 +737,9 @@ export function createPluginContext(
         );
       },
 
-      providers: (service) => serviceRegistry.listProviderNames(service),
+      providers: answeredSync<PluginContext["services"]["providers"]>(
+        (service: string) => serviceRegistry.listProviderNames(service),
+      ),
     },
 
     secrets: {
@@ -697,24 +789,18 @@ export function createPluginContext(
         { action: "secret_delete", details: () => "deleted a secret" },
       ),
 
+      // Sealed for this plugin only: another plugin can't open it, and it
+      // never passes as one of core's own sealed values.
       seal: async (value) => {
         await assertCapability(pluginId, "secrets:own", declared);
-        const { encryptSystemSecret } =
-          await import("../utils/system-secret-crypto.js");
-        return encryptSystemSecret(value);
+        const { sealForPlugin } = await import("./plugin-seal.js");
+        return sealForPlugin(pluginId, value);
       },
 
       unseal: async (sealed) => {
         await assertCapability(pluginId, "secrets:own", declared);
-        const { decryptSystemSecret, isSystemEncrypted } =
-          await import("../utils/system-secret-crypto.js");
-        // Only values seal() wrote: a plain string must not pass as sealed.
-        if (!sealed || !isSystemEncrypted(sealed)) return null;
-        try {
-          return await decryptSystemSecret(sealed);
-        } catch {
-          return null;
-        }
+        const { unsealForPlugin } = await import("./plugin-seal.js");
+        return unsealForPlugin(pluginId, sealed);
       },
 
       offer: (key, resolve) => {
@@ -741,15 +827,17 @@ export function createPluginContext(
         );
       },
 
-      withdraw: (key) => {
-        const registration = handle.offeredSecrets.find(
-          (entry) => entry.key === key,
-        );
-        handle.offeredSecrets = handle.offeredSecrets.filter(
-          (entry) => entry !== registration,
-        );
-        return secretRegistry.withdrawSecret(pluginId, key, registration);
-      },
+      withdraw: answeredSync<PluginContext["secrets"]["withdraw"]>(
+        (key: string) => {
+          const registration = handle.offeredSecrets.find(
+            (entry) => entry.key === key,
+          );
+          handle.offeredSecrets = handle.offeredSecrets.filter(
+            (entry) => entry !== registration,
+          );
+          return secretRegistry.withdrawSecret(pluginId, key, registration);
+        },
+      ),
 
       getShared: (providerPluginId, key, options) =>
         secretRegistry.readSharedSecret(manifest, providerPluginId, key, {
@@ -976,6 +1064,8 @@ export function createPluginContext(
       void reportRuntimeError(pluginId, error);
     }),
     ssh: createPluginSsh({ manifest, bag: handle.bag, audit: auditCall }),
+    operations: createPluginOperations({ manifest, bag: handle.bag }),
+
     notify: createPluginNotify({
       manifest,
       audit: auditCall,
@@ -993,10 +1083,24 @@ export function createPluginContext(
     plugins: createPluginPlugins(manifest),
     users: createPluginUsers(manifest),
 
+    diagnostics: {
+      provide: (provider) => {
+        const remove = provideDiagnosticsSection(pluginId, provider);
+        const drop = handle.bag.add(remove, "diagnostics section");
+        return () => {
+          drop();
+          remove();
+        };
+      },
+    },
+
     desktop: {
       openIsolatedWindow: (request) => desktopOpenIsolatedWindow(request),
       launchExternalClient: (request) => desktopLaunchExternalClient(request),
-      available: () => isElectronIpcAvailable(),
+      grantView: (request) => desktopGrantView(request),
+      available: answeredSync<PluginContext["desktop"]["available"]>(() =>
+        isElectronIpcAvailable(),
+      ),
       local: createPluginDesktopLocal({
         manifest,
         bag: handle.bag,
@@ -1052,6 +1156,15 @@ export function createPluginContext(
       }
       if (!declared.includes("users:impersonate")) {
         throw capabilityRefused(pluginId, "users:impersonate");
+      }
+      // Nothing runs as an account that is turned off or gone.
+      const { createCurrentUserRepository } =
+        await import("../database/repositories/factory.js");
+      const actor = await createCurrentUserRepository().findById(userId);
+      if (!actor || actor.disabledAt) {
+        throw new Error(
+          `Plugin ${pluginId} can't run work as ${userId}: the account is turned off or gone`,
+        );
       }
       await writeAudit(
         manifest,
